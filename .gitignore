@@ -1,0 +1,26 @@
+# Ignore credit card statement PDFs
+*.pdf
+*_raw.txt
+*pdftotext*.txt
+*pypdf*.txt
+
+# Ignore credentials and OAuth tokens
+credentials.json
+token.json
+
+# Ignore local environment configs containing passwords
+.env
+
+# Ignore parsed alert data, data summaries, and reports
+gmail_alerts.json
+validation_report.json
+validation_report_combined.json
+statements_data.json
+
+# Python caches
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+.ipynb_checkpoints/
