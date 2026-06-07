@@ -10,7 +10,7 @@ from datetime import datetime
 # --- Configuration ---
 PDF_DIR = "/Users/ejazanwar/Documents/Gmail Automations/Airtel Axis Statements"
 ALERTS_FILE = os.path.join(PDF_DIR, "gmail_alerts.json")
-REPORT_PATH = "/Users/ejazanwar/.gemini/antigravity/brain/7e48d011-4f84-4327-bcc1-49d6046b7cdc/cashback_cap_report.md"
+REPORT_PATH = "/Users/ejazanwar/.gemini/antigravity/brain/bbed8903-cd94-4ab4-aa79-91383f9837a5/cashback_cap_report.md"
 
 def load_json(path):
     """Loads data from a JSON file."""
@@ -91,8 +91,8 @@ def update_report():
         airtel_status = "✅ **₹250.00 *(100%)***"
         airtel_action = "⚠️ **Capped Out.** Postpone any additional Airtel Thanks/telecom recharges until June 13."
     else:
-        airtel_status = f"₹{airtel_cb:.2f} *({(airtel_cb/250.00)*100:.1f}%)*"
-        airtel_action = f"**Under Cap.** You can pay another ₹{(250.00-airtel_cb)/0.25:.2f} in telecom plans."
+        airtel_status = f"₹{airtel_cb:,.2f} *({(airtel_cb/250.00)*100:.1f}%)*"
+        airtel_action = f"**Under Cap.** You can pay another ₹{(250.00-airtel_cb)/0.25:,.2f} in telecom plans."
 
     # 10% Utilities (Shared with Airtel App spends)
     utility_spend = airtel_spend
@@ -102,8 +102,8 @@ def update_report():
         utility_status = "✅ **₹250.00 *(100%)***"
         utility_action = "⚠️ **Capped Out.**"
     else:
-        utility_status = f"₹{utility_cb:.2f} *({(utility_cb/250.00)*100:.1f}%)*"
-        utility_action = f"**Under Cap.** You can pay another ₹{(250.00-utility_cb)/0.10:.2f} in electricity/water/gas bills via Airtel Thanks before June 12."
+        utility_status = f"₹{utility_cb:,.2f} *({(utility_cb/250.00)*100:.1f}%)*"
+        utility_action = f"**Under Cap.** You can pay another ₹{(250.00-utility_cb)/0.10:,.2f} in electricity/water/gas bills via Airtel Thanks before June 12."
 
     # 10% Preferred Merchants
     merchant_spend = sum(t["amount"] for t in merchant_txs)
@@ -113,8 +113,8 @@ def update_report():
         merchant_status = "✅ **₹500.00 *(100%)***"
         merchant_action = "⚠️ **Capped Out.**"
     else:
-        merchant_status = f"₹{merchant_cb:.2f} *({(merchant_cb/500.00)*100:.1f}%)*"
-        merchant_action = f"**Under Cap.** You have room to spend another ₹{(500.00-merchant_cb)/0.10:.2f} on Zomato, Swiggy, or BigBasket before June 12."
+        merchant_status = f"₹{merchant_cb:,.2f} *({(merchant_cb/500.00)*100:.1f}%)*"
+        merchant_action = f"**Under Cap.** You have room to spend another ₹{(500.00-merchant_cb)/0.10:,.2f} on Zomato, Swiggy, or BigBasket before June 12."
 
     # 1% General
     general_spend = sum(t["amount"] for t in general_txs)
@@ -123,9 +123,9 @@ def update_report():
     total_june_cb = airtel_cb + utility_cb + merchant_cb + general_cb
     
     # Generate Section 2 ongoing row values
-    june_row_25 = f"✅ ₹250.00 (100%)" if airtel_cb >= 250.00 else f"₹{airtel_cb:.2f} ({(airtel_cb/250.00)*100:.1f}%)"
-    june_row_10_u = f"✅ ₹250.00 (100%)" if utility_cb >= 250.00 else f"₹{utility_cb:.2f} ({(utility_cb/250.00)*100:.1f}%)"
-    june_row_10_m = f"✅ ₹500.00 (100%)" if merchant_cb >= 500.00 else f"₹{merchant_cb:.2f} ({(merchant_cb/500.00)*100:.1f}%)"
+    june_row_25 = f"✅ ₹250.00 (100%)" if airtel_cb >= 250.00 else f"₹{airtel_cb:,.2f} ({(airtel_cb/250.00)*100:.1f}%)"
+    june_row_10_u = f"✅ ₹250.00 (100%)" if utility_cb >= 250.00 else f"₹{utility_cb:,.2f} ({(utility_cb/250.00)*100:.1f}%)"
+    june_row_10_m = f"✅ ₹500.00 (100%)" if merchant_cb >= 500.00 else f"₹{merchant_cb:,.2f} ({(merchant_cb/500.00)*100:.1f}%)"
     
     # Format bullet lists
     airtel_bullets = format_bullet_points(airtel_txs)
@@ -162,7 +162,7 @@ Below is the status of your monthly cashback caps. The percentages indicate how 
 | **March 2026** | ₹0.00 *(0%)* | ₹179.00 *(71.6%)* | ₹0.00 *(0%)* | **₹179.00** |
 | **April 2026** | ₹0.00 *(0%)* | ✅ **₹250.00 *(100%)*** | ₹31.00 *(6.2%)* | **₹281.00** |
 | **May 2026** | ✅ **₹250.00 *(100%)*** | ₹180.00 *(72.0%)* | ₹60.00 *(12.0%)* | **₹490.00** |
-| **June 2026 *(Ongoing)*** | {june_row_25} | *{june_row_10_u}* | *{june_row_10_m}* | ***₹{total_june_cb:.2f} (Est.)*** |
+| **June 2026 *(Ongoing)*** | {june_row_25} | *{june_row_10_u}* | *{june_row_10_m}* | ***₹{total_june_cb:,.2f} (Est.)*** |
 
 *Note: In May 2026, your ₹1,850.54 Airtel broadband spend qualified for ₹462.63 in cashback, but was capped at the ₹250.00 maximum.*
 
@@ -173,10 +173,10 @@ This combined table aggregates the individual transactions tracked via Gmail ale
 
 | Category (Rate) | Max Cap | Transactions (Date: Amount) | Total Spend | Cashback Earned | Remaining Cap Room | Status / Spend Action |
 | :--- | :---: | :--- | :---: | :---: | :---: | :--- |
-| **25% Airtel** | **₹250.00** | {airtel_bullets} | **₹{airtel_spend:.2f}** | **₹{airtel_cb:.2f}** *(Capped)* | **₹0.00** | {airtel_action} |
-| **10% Utilities** | **₹250.00** | {utility_bullets} | **₹{utility_spend:.2f}** | **₹{utility_cb:.2f}** | **₹{250.00 - utility_cb:.2f}** | {utility_action} |
-| **10% Merchants** | **₹500.00** | {merchant_bullets} | **₹{merchant_spend:.2f}** | **₹{merchant_cb:.2f}** | **₹{500.00 - merchant_cb:.2f}** | {merchant_action} |
-| **1% General** | **No Cap** | {general_bullets} | **₹{general_spend:.2f}** | **₹{general_cb:.2f}** | **Unlimited** | **Active.** Flat 1% cashback on other card spends. |
+| **25% Airtel** | **₹250.00** | {airtel_bullets} | **₹{airtel_spend:,.2f}** | **₹{airtel_cb:,.2f}** *(Capped)* | **₹0.00** | {airtel_action} |
+| **10% Utilities** | **₹250.00** | {utility_bullets} | **₹{utility_spend:,.2f}** | **₹{utility_cb:,.2f}** | **₹{250.00 - utility_cb:,.2f}** | {utility_action} |
+| **10% Merchants** | **₹500.00** | {merchant_bullets} | **₹{merchant_spend:,.2f}** | **₹{merchant_cb:,.2f}** | **₹{500.00 - merchant_cb:,.2f}** | {merchant_action} |
+| **1% General** | **No Cap** | {general_bullets} | **₹{general_spend:,.2f}** | **₹{general_cb:,.2f}** | **Unlimited** | **Active.** Flat 1% cashback on other card spends. |
 
 ---
 
