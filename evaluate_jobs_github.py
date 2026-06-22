@@ -55,7 +55,9 @@ Lead AI Analyst with 8+ years of experience in product analytics, designing A/B 
 def send_email_brief(high_matches):
     sender_email = os.environ.get("SENDER_EMAIL")
     sender_pwd = os.environ.get("SENDER_PASSWORD")
-    receiver_email = os.environ.get("RECEIVER_EMAIL", "anwar.ejaz181@gmail.com")
+    receiver_email = os.environ.get("RECEIVER_EMAIL")
+    if not receiver_email or not receiver_email.strip():
+        receiver_email = "anwar.ejaz181@gmail.com"
     
     if not sender_email or not sender_pwd:
         print("Sender email/password secrets not set. Skipping email briefing.", file=sys.stderr)
