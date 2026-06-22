@@ -40,7 +40,8 @@ jobs:
       run: |
         git config --global user.name "github-actions[bot]"
         git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
-        git add scraped_jobs.json job_matches_report.md
+        git add scraped_jobs.json
+        if [ -f job_matches_report.md ]; then git add job_matches_report.md; fi
         if ! git diff --cached --quiet; then
           git commit -m "Automated update: scraped jobs and match report [skip ci]"
           git pull --rebase origin main
