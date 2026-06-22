@@ -173,7 +173,7 @@ def main():
         
     print(f"Scraper found {len(new_jobs)} new jobs.", file=sys.stderr)
     
-    if not new_jobs:
+    if not new_jobs and os.environ.get("SEND_TEST_EMAIL") != "true":
         print("No new jobs to process. Exiting.", file=sys.stderr)
         sys.exit(0)
         
