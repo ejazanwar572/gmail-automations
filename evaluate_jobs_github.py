@@ -360,6 +360,22 @@ Output structure:
     # 5. Send email notification if new high match roles are found
     if high_matches:
         send_email_brief(high_matches)
+    elif os.environ.get("SEND_TEST_EMAIL") == "true":
+        print("SEND_TEST_EMAIL is true. Sending a mock test email to verify configuration.", file=sys.stderr)
+        mock_job = {
+            "title": "Lead AI Analyst (TEST PIPELINE RUN)",
+            "company": "GitHub Automation Tester",
+            "location": "Bengaluru (Remote)",
+            "url": "https://github.com/ejazanwar572/gmail-automations",
+            "score": 95,
+            "key_matches": [
+                "This is an automated mock run to check your pipeline.",
+                "Your SMTP credentials and Google Account App Password are correct.",
+                "GitHub Actions environment variables are loaded and working."
+            ],
+            "gaps": ["No gaps - this is a test."]
+        }
+        send_email_brief([mock_job])
     else:
         print("No high-matching roles found. Skipping email briefing.", file=sys.stderr)
 

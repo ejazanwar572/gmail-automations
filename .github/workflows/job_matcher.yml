@@ -5,7 +5,12 @@ on:
     # Run every 2 hours
     - cron: '0 */2 * * *'
   workflow_dispatch:
-    # Allow manual execution via GitHub UI
+    # Allow manual execution via GitHub UI and support mock run briefings
+    inputs:
+      send_test_email:
+        description: 'Send a mock test email (true/false)'
+        required: false
+        default: 'false'
 
 jobs:
   run-scraper-and-eval:
@@ -33,6 +38,7 @@ jobs:
         SENDER_EMAIL: ${{ secrets.SENDER_EMAIL }}
         SENDER_PASSWORD: ${{ secrets.SENDER_PASSWORD }}
         RECEIVER_EMAIL: ${{ secrets.RECEIVER_EMAIL }}
+        SEND_TEST_EMAIL: ${{ github.event.inputs.send_test_email || 'false' }}
       run: |
         python evaluate_jobs_github.py
 
