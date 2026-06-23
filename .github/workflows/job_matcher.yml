@@ -2,8 +2,8 @@ name: Job Matcher Scraper
 
 on:
   schedule:
-    # Run every 2 hours
-    - cron: '0 */2 * * *'
+    # Run every 3 hours
+    - cron: '0 */3 * * *'
   workflow_dispatch:
     # Allow manual execution via GitHub UI and support mock run briefings
     inputs:
