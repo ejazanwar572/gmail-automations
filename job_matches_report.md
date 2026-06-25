@@ -1,5 +1,14 @@
 # Automated Job Matcher Run History
 
+## 📅 Scan Run: 2026-06-25 15:42:43
+- **Total New Jobs Scraped**: 10
+- **High-Match Roles (Score &ge; 70)**: 1
+
+| Job Title | Company | Location | Match Score | Key Matches | Gaps |
+| :--- | :--- | :--- | :-: | :--- | :--- |
+| [Manager, Data Science (Analytics)](https://jobs.ebayinc.com/us/en/job/R0074582/manager-data-science-analytics) | eBay | Bengaluru, India | **92/100** | • The candidate's 8+ years of experience as a Lead AI Analyst and Senior Product Analyst aligns perfectly with the 6-9 years required for an Analytics Manager role, including prior mentorship experience. 'Analytics Manager' is also a direct target role.<br>• Extensive experience in A/B testing, experiment design, statistical analysis, predictive modeling, and causal inference directly matches core basic and preferred qualifications of the role.<br>• Strong proficiency in SQL and Python for data analysis, automation, and building prototypes, coupled with familiarity with large-scale data environments like BigQuery and PySpark.<br>• Proven experience in product analytics within e-commerce/marketplace contexts (e.g., OLX Autos, PayPal Shopping surfaces), influencing roadmap decisions and user engagement, which is highly relevant to eBay's domain.<br>• Demonstrated expertise in LLM/agent workflows, automating reports, translating product data to business decisions, cross-functional collaboration, and data storytelling, addressing key responsibilities and preferred qualifications. The candidate's location in Bengaluru is also a perfect match. | • While the candidate has experience with 'offers' and driving business impact in e-commerce, the resume could explicitly highlight experience in 'promotion sizing, targeting, and overall incentives strategy' to further align with this specific focus in the job description.<br>• The resume could more explicitly detail experience in analyzing 'seller behavior and inventory patterns' in addition to the strong 'user behavior analytics' and marketplace experience already present. |
+
+---
 ## 📅 Scan Run: 2026-06-25 09:28:48
 - **Total New Jobs Scraped**: 6
 - **High-Match Roles (Score &ge; 70)**: 1
