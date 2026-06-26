@@ -1,5 +1,14 @@
 # Automated Job Matcher Run History
 
+## 📅 Scan Run: 2026-06-26 14:29:54
+- **Total New Jobs Scraped**: 11
+- **High-Match Roles (Score &ge; 70)**: 1
+
+| Job Title | Company | Location | Match Score | Key Matches | Gaps |
+| :--- | :--- | :--- | :-: | :--- | :--- |
+| [Associate Manager -  Revenue Growth management](https://globalcareers-pepsico.icims.com/jobs/459996/login) | PepsiCo | Hyderabad, India | **70/100** | • Extensive experience (8+ years) in advanced analytics, including A/B testing, statistical analysis, predictive modeling, and causal inference, directly matching the job's analytical requirements.<br>• Strong proficiency in critical analytical tools such as SQL, Python, Tableau, and Power BI, essential for data analysis, predictive modeling, and dashboard creation.<br>• Proven capabilities in data storytelling, cross-functional collaboration, and stakeholder management, which are vital for aligning strategies and presenting findings.<br>• Demonstrated experience in automating reports, building dynamic dashboards, and improving data utility for various business intelligence efforts.<br>• The candidate is based in Bangalore, India, which aligns well with the job location in Hyderabad, India, falling within the preferred geographical region. | • Lack of explicit experience within the Fast-Moving Consumer Goods (FMCG) sector, which is stated as a core qualification for the role.<br>• Limited direct experience in specific Revenue Growth Management (RGM) strategies, brand ladder, price pack architecture analysis, or dedicated pricing and promotions management.<br>• The candidate's current title and experience as a 'Lead AI Analyst' (8+ years) might indicate a more senior functional level than an 'Associate Manager' title, potentially suggesting a slight mismatch in seniority expectations for the role's scope. |
+
+---
 ## 📅 Scan Run: 2026-06-26 09:31:26
 - **Total New Jobs Scraped**: 10
 - **High-Match Roles (Score &ge; 70)**: 1
