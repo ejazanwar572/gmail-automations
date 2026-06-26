@@ -1,5 +1,14 @@
 # Automated Job Matcher Run History
 
+## 📅 Scan Run: 2026-06-26 03:40:32
+- **Total New Jobs Scraped**: 1
+- **High-Match Roles (Score &ge; 70)**: 1
+
+| Job Title | Company | Location | Match Score | Key Matches | Gaps |
+| :--- | :--- | :--- | :-: | :--- | :--- |
+| [Senior Business Analyst](https://spgi.wd5.myworkdayjobs.com/en-us/SPGI_Careers/job/Gurugram-Haryana/Senior-Business-Analyst_328927-2/apply) | S&P Global | Gurgaon, India | **75/100** | • Ejaz demonstrates expert-level proficiency in SQL, Python, A/B testing, statistical analysis, predictive modeling, and causal inference, which are highly relevant for optimizing workflows, diagnosing metric variance, and ensuring data quality.<br>• With 8+ years of experience as a Lead AI Analyst, Senior Product Analyst, and Business Analyst, Ejaz's background directly aligns with the experience level and responsibilities of a Senior Business Analyst, including translating data into business decisions and influencing product roadmaps.<br>• Ejaz's resume highlights strong skills in cross-functional collaboration, stakeholder management, and data storytelling, which are crucial for partnering with product, engineering, and client teams as required by the role.<br>• Proficiency in data visualization tools like Tableau and Power BI, along with experience using platforms like BigQuery, is a strong match for building dashboards and reporting solutions.<br>• The job location in Gurgaon, India, aligns well with the candidate's preference for major cities in India, following Bangalore and Remote. | • The job description specifically emphasizes an understanding of and experience in financial regulatory reporting, compliance solutions, and the trade lifecycle for financial asset classes, which is not explicitly present in Ejaz's experience in product analytics for tech companies.<br>• While Ejaz has strong stakeholder management, the role requires 'ongoing support and training to clients,' which is not a highlighted responsibility in his resume.<br>• Ejaz's resume does not prominently feature experience in conducting market and competitor analysis to identify opportunities for innovation and growth, as mentioned in the job description. |
+
+---
 ## 📅 Scan Run: 2026-06-25 15:42:43
 - **Total New Jobs Scraped**: 10
 - **High-Match Roles (Score &ge; 70)**: 1
