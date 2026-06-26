@@ -1,5 +1,14 @@
 # Automated Job Matcher Run History
 
+## 📅 Scan Run: 2026-06-26 09:31:26
+- **Total New Jobs Scraped**: 10
+- **High-Match Roles (Score &ge; 70)**: 1
+
+| Job Title | Company | Location | Match Score | Key Matches | Gaps |
+| :--- | :--- | :--- | :-: | :--- | :--- |
+| [Data & Insights Analyst (Risk & Fraud Analytics, SQL, Advanced Analytics, Data Storytelling)](https://visa.wd5.myworkdayjobs.com/visa/visa/job/IN---Bengaluru-India/Data---Insights-Analyst--Risk---Fraud-Analytics--SQL--Advanced-Analytics--Data-Storytelling-_REF083433W-1) | Visa | IN - Bengaluru, India | **83/100** | • Excellent match on location: The candidate is based in Bangalore, India, which is the exact job location preference (Preference #1).<br>• Strong and relevant experience: With 8+ years in product analytics at companies like PayPal and Uber, the candidate significantly exceeds the preferred 3-5 years of experience, demonstrating a strong track record in driving data-driven decisions and leading analytical initiatives.<br>• Proficiency in critical skills and tools: The candidate possesses deep expertise in SQL, Python, A/B Testing, Experiment Design, Statistical Analysis, Predictive Modelling, Causal Inference, Tableau, Power BI, BigQuery, and Databricks, which are all explicitly required or highly valued by the job description and matching parameters.<br>• Demonstrated AI integration and advanced analytics: Experience as a Lead AI Analyst, building AI/data prototypes, and working with LLM/agent-enabled workflows directly aligns with the job's mention of AI integration and developing predictive analytical tools.<br>• Expertise in data storytelling and stakeholder management: The candidate's summary and experience highlight translating complex data into actionable insights for roadmap decisions and influencing product teams, directly addressing the need for strong data storytelling and strategic advisory skills. | • Lack of explicit experience in "Risk & Fraud Analytics," which is a core focus of this role, including identifying fraud trends, developing mitigation opportunities, and quantifying impacts of emerging payment threats.<br>• No explicit experience in regulatory reporting on payments, fraud, and disputes, as required by the job description.<br>• Limited direct experience engaging external clients (e.g., issuing banks, acquirers, merchants) specifically on payment security and fraud mitigation strategies.<br>• No stated knowledge of Visa's specific products, services, or client engagement strategies, which is listed as a preferred qualification. |
+
+---
 ## 📅 Scan Run: 2026-06-26 03:40:32
 - **Total New Jobs Scraped**: 1
 - **High-Match Roles (Score &ge; 70)**: 1
