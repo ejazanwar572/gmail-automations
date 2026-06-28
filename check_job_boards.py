@@ -6,6 +6,8 @@ import os
 import html
 import sys
 from urllib.parse import urlparse, parse_qs, urlencode, urlunparse
+import socket
+socket.setdefaulttimeout(15)
 
 def slugify(text):
     text = text.lower()
@@ -368,6 +370,9 @@ def scrape_jibe_board(url):
             if not job_id or not title:
                 continue
                 
+            if job_id in existing_jobs:
+                continue
+                
             location = job.get("full_location") or job.get("short_location") or job.get("location_name") or "India"
             job_url = job.get("apply_url") or f"https://{parsed_url.netloc}/jobs/{job_id}"
             
@@ -416,11 +421,23 @@ def scrape_smartrecruiters_board(url):
             break
             
         page_jobs = []
+        consecutive_existing = 0
+        stop_pagination = False
         for post in postings:
             job_id = str(post.get("id"))
             title = post.get("name")
             if not job_id or not title:
                 continue
+                
+            if job_id in existing_jobs:
+                consecutive_existing += 1
+                if consecutive_existing >= 3:
+                    print(f"Found {consecutive_existing} consecutive existing SmartRecruiters jobs. Stopping pagination.", file=sys.stderr)
+                    stop_pagination = True
+                    break
+                continue
+            else:
+                consecutive_existing = 0
                 
             loc_obj = post.get("location", {})
             location = f"{loc_obj.get('city', '')}, {loc_obj.get('country', '')}".strip(', ') or "India"
@@ -459,6 +476,8 @@ def scrape_smartrecruiters_board(url):
                 print(f"Error fetching SmartRecruiters job {job_id} details: {e}", file=sys.stderr)
                 
         all_parsed_jobs.extend(page_jobs)
+        if stop_pagination:
+            break
         if len(postings) < limit:
             break
         offset += limit
@@ -493,6 +512,8 @@ def scrape_workday_board(url):
             break
             
         page_jobs = []
+        consecutive_existing = 0
+        stop_pagination = False
         for post in postings:
             ext_path = post.get("externalPath")
             title = post.get("title")
@@ -500,6 +521,17 @@ def scrape_workday_board(url):
                 continue
                 
             job_id = ext_path.split('_')[-1]
+            
+            if job_id in existing_jobs:
+                consecutive_existing += 1
+                if consecutive_existing >= 3:
+                    print(f"Found {consecutive_existing} consecutive existing Workday jobs. Stopping pagination.", file=sys.stderr)
+                    stop_pagination = True
+                    break
+                continue
+            else:
+                consecutive_existing = 0
+                
             location = post.get("locationsText") or "India"
             
             # Pre-filter location before fetching details to minimize HTTP calls
@@ -532,6 +564,8 @@ def scrape_workday_board(url):
                 print(f"Error fetching Workday job details from {details_url}: {e}", file=sys.stderr)
                 
         all_parsed_jobs.extend(page_jobs)
+        if stop_pagination:
+            break
         if len(postings) < limit:
             break
         offset += limit
@@ -565,6 +599,8 @@ def scrape_expedia_wordpress_board(url):
             break
             
         page_jobs = []
+        consecutive_existing = 0
+        stop_pagination = False
         for link in job_links:
             absolute_link = link if link.startswith("http") else f"https://{parsed_url.netloc}{link}"
             
@@ -577,6 +613,16 @@ def scrape_expedia_wordpress_board(url):
                 title = title_slug.replace('-', ' ').title()
                 location = location_slug.replace('-', ' ').title()
                 
+                if job_id in existing_jobs:
+                    consecutive_existing += 1
+                    if consecutive_existing >= 3:
+                        print(f"Found {consecutive_existing} consecutive existing Expedia jobs. Stopping pagination.", file=sys.stderr)
+                        stop_pagination = True
+                        break
+                    continue
+                else:
+                    consecutive_existing = 0
+                    
                 # Pre-filter location before fetching details to minimize HTTP calls
                 if location and not any(loc in location.lower() for loc in target_locations):
                     continue
@@ -607,6 +653,8 @@ def scrape_expedia_wordpress_board(url):
                     print(f"Error fetching Expedia job details from {absolute_link}: {e}", file=sys.stderr)
                     
         all_parsed_jobs.extend(page_jobs)
+        if stop_pagination:
+            break
         if page >= 5:
             break
         page += 1
@@ -637,11 +685,23 @@ def scrape_microsoft_board(url):
             break
             
         page_jobs = []
+        consecutive_existing = 0
+        stop_pagination = False
         for pos in positions:
             job_id = str(pos.get("id"))
             title = pos.get("name")
             if not job_id or not title:
                 continue
+                
+            if job_id in existing_jobs:
+                consecutive_existing += 1
+                if consecutive_existing >= 3:
+                    print(f"Found {consecutive_existing} consecutive existing Microsoft jobs. Stopping pagination.", file=sys.stderr)
+                    stop_pagination = True
+                    break
+                continue
+            else:
+                consecutive_existing = 0
                 
             loc_list = pos.get("standardizedLocations") or pos.get("locations") or ["India"]
             location = ", ".join(loc_list)
@@ -691,6 +751,8 @@ def scrape_microsoft_board(url):
                 print(f"Error fetching Microsoft job {job_id} details: {e}", file=sys.stderr)
                 
         all_parsed_jobs.extend(page_jobs)
+        if stop_pagination:
+            break
         if len(positions) < 10:
             break
         start += 10
@@ -722,6 +784,9 @@ def scrape_medianet_board(url):
                 job_id = parts[1]
                 title = job_id.replace('-', ' ').title()
                 
+                if job_id in existing_jobs:
+                    continue
+                    
                 try:
                     det_req = urllib.request.Request(m, headers=headers)
                     with urllib.request.urlopen(det_req, timeout=15) as det_res:
