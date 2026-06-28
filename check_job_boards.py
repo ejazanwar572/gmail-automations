@@ -745,6 +745,117 @@ def scrape_medianet_board(url):
                     
     return all_parsed_jobs
 
+# ==================== UBER (ORACLE RECRUITING / HAPPY DANCE) ====================
+def scrape_uber_board(url):
+    from selenium import webdriver
+    from selenium.webdriver.chrome.options import Options
+    from bs4 import BeautifulSoup
+    import time
+    
+    all_parsed_jobs = []
+    
+    options = Options()
+    options.add_argument("--headless=new")
+    options.add_argument("--no-sandbox")
+    options.add_argument("--disable-dev-shm-usage")
+    options.add_argument("user-agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36")
+    
+    print(f"Starting Selenium Chrome Driver for Uber search: {url}", file=sys.stderr)
+    driver = None
+    try:
+        driver = webdriver.Chrome(options=options)
+        driver.get(url)
+        time.sleep(5)
+        html_content = driver.page_source
+    except Exception as e:
+        print(f"Error starting Selenium Chrome Driver or loading Uber page: {e}", file=sys.stderr)
+        if driver:
+            try:
+                driver.quit()
+            except:
+                pass
+        return []
+        
+    try:
+        driver.quit()
+    except:
+        pass
+        
+    soup = BeautifulSoup(html_content, 'html.parser')
+    cards = soup.find_all('div', {'data-slot': 'card'})
+    print(f"Scraped {len(cards)} job cards from Uber board", file=sys.stderr)
+    
+    for card in cards:
+        title_el = card.find('div', {'data-slot': 'card-title'})
+        a_tag = title_el.find('a') if title_el else None
+        if not a_tag:
+            continue
+            
+        title = a_tag.get_text().strip()
+        href = a_tag['href']
+        job_id = card.get('data-id') or href.strip('/').split('/')[-1]
+        
+        # Determine exact location
+        desc_el = card.find('div', {'data-slot': 'card-description'})
+        location = "Bengaluru, India" # default fallback
+        if desc_el:
+            badges = desc_el.find_all('div')
+            badge_texts = [b.get_text().strip() for b in badges if b.get_text().strip()]
+            if badge_texts:
+                loc_txt = badge_texts[0]
+                for dept_suffix in ["Engineer", "Sales", "Operations", "Product", "Design", "Marketing", "Customer Support"]:
+                    if loc_txt.endswith(dept_suffix) and len(loc_txt) > len(dept_suffix):
+                        loc_txt = loc_txt[:-len(dept_suffix)].strip()
+                location = loc_txt
+                
+        # Resolve absolute job detail page URL
+        job_url = href
+        if not job_url.startswith('http'):
+            job_url = f"https://jobs.uber.com{href}"
+            
+        # Check if job is already in existing_jobs database to avoid fetching details (speeds up runs!)
+        if job_id in existing_jobs:
+            all_parsed_jobs.append({
+                'id': job_id,
+                'title': title,
+                'location': location,
+                'url': job_url,
+                'source_board': url
+            })
+            continue
+            
+        # Fetch job description over standard, fast HTTP request
+        print(f"Fetching Uber job details for {title} ({job_id}) from {job_url}...", file=sys.stderr)
+        try:
+            req = urllib.request.Request(job_url, headers={'User-Agent': headers['User-Agent']})
+            with urllib.request.urlopen(req, timeout=15) as res:
+                det_html = res.read().decode('utf-8')
+                
+            det_soup = BeautifulSoup(det_html, 'html.parser')
+            desc_div = det_soup.find('div', class_='wysiwyg')
+            if desc_div:
+                desc_html = str(desc_div)
+                desc_text = desc_div.get_text().strip()
+            else:
+                body_text = re.sub(r"<script[^>]*>.*?</script>", "", det_html, flags=re.DOTALL)
+                body_text = re.sub(r"<style[^>]*>.*?</style>", "", body_text, flags=re.DOTALL)
+                desc_html = det_html
+                desc_text = clean_html(body_text)
+                
+            all_parsed_jobs.append({
+                'id': job_id,
+                'title': title,
+                'location': location,
+                'url': job_url,
+                'description_html': desc_html,
+                'description_text': desc_text,
+                'source_board': url
+            })
+        except Exception as e:
+            print(f"Error fetching Uber job details from {job_url}: {e}", file=sys.stderr)
+            
+    return all_parsed_jobs
+
 # ==================== MAIN LOOP ====================
 target_locations = ["india", "bangalore", "bengaluru", "gurgaon", "gurugram", "hyderabad", "noida", "pune", "mumbai", "chennai", "delhi", "ncr", "remote", "anywhere"]
 
@@ -834,6 +945,9 @@ for board_url in target_urls:
         
     elif "careers.media.net" in board_url:
         scraped_posts = scrape_medianet_board(board_url)
+        
+    elif "jobs.uber.com" in board_url:
+        scraped_posts = scrape_uber_board(board_url)
         
     # Apply global location filter and deduplication to updates
     board_new_count = 0
