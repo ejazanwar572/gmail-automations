@@ -921,6 +921,71 @@ def scrape_uber_board(url):
             
     return all_parsed_jobs
 
+# ==================== LEVER (CRED) ====================
+def scrape_lever_board(url):
+    all_parsed_jobs = []
+    parsed_url = urlparse(url)
+    path_parts = [p for p in parsed_url.path.split('/') if p]
+    company = path_parts[-1] if path_parts else "cred"
+    
+    api_url = f"https://api.lever.co/v0/postings/{company}?mode=json"
+    print(f"Scraping Lever board: {api_url}", file=sys.stderr)
+    req = urllib.request.Request(api_url, headers=headers)
+    try:
+        with urllib.request.urlopen(req, timeout=15) as res:
+            postings = json.loads(res.read().decode('utf-8'))
+    except Exception as e:
+        print(f"Error fetching Lever board {company}: {e}", file=sys.stderr)
+        return []
+        
+    for post in postings:
+        job_id = str(post.get("id"))
+        title = post.get("text")
+        if not job_id or not title:
+            continue
+            
+        location = post.get("categories", {}).get("location") or "India"
+        job_url = post.get("hostedUrl") or f"https://jobs.lever.co/{company}/{job_id}"
+        
+        desc_html_parts = []
+        desc_text_parts = []
+        
+        intro_html = post.get("description") or post.get("descriptionBody") or ""
+        if intro_html:
+            desc_html_parts.append(intro_html)
+            desc_text_parts.append(clean_html(intro_html))
+            
+        lists = post.get("lists") or []
+        for lst in lists:
+            header = lst.get("text") or ""
+            content = lst.get("content") or ""
+            if header:
+                desc_html_parts.append(f"<h3>{header}</h3>")
+                desc_text_parts.append(header)
+            if content:
+                desc_html_parts.append(content)
+                desc_text_parts.append(clean_html(content))
+                
+        additional = post.get("additional") or post.get("additionalPlain") or ""
+        if additional:
+            desc_html_parts.append(additional)
+            desc_text_parts.append(clean_html(additional))
+            
+        desc_html = "\n".join(desc_html_parts)
+        desc_text = "\n".join(desc_text_parts)
+        
+        all_parsed_jobs.append({
+            'id': job_id,
+            'title': title,
+            'location': location,
+            'url': job_url,
+            'description_html': desc_html,
+            'description_text': desc_text,
+            'source_board': url
+        })
+        
+    return all_parsed_jobs
+
 # ==================== MAIN LOOP ====================
 target_locations = ["india", "bangalore", "bengaluru", "gurgaon", "gurugram", "hyderabad", "noida", "pune", "mumbai", "chennai", "delhi", "ncr", "remote", "anywhere"]
 
@@ -1013,6 +1078,9 @@ for board_url in target_urls:
         
     elif "jobs.uber.com" in board_url:
         scraped_posts = scrape_uber_board(board_url)
+        
+    elif "lever.co" in board_url or "jobs.lever.co" in board_url:
+        scraped_posts = scrape_lever_board(board_url)
         
     # Apply global location filter and deduplication to updates
     board_new_count = 0
