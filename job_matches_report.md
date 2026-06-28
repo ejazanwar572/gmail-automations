@@ -1,5 +1,14 @@
 # Automated Job Matcher Run History
 
+## 📅 Scan Run: 2026-06-28 07:46:00
+- **Total New Jobs Scraped**: 7
+- **High-Match Roles (Score &ge; 70)**: 1
+
+| Job Title | Company | Location | Match Score | Key Matches | Gaps |
+| :--- | :--- | :--- | :-: | :--- | :--- |
+| [Senior Product Manager - AI Quality](https://jobs.uber.com/en/jobs/159933/) | Career Portal | Bengaluru, India | **75/100** | • Location: Perfect match with the job's Bengaluru, India location and the candidate's current location preference.<br>• AI/LLM/Agent Workflows: Extensive experience in 'LLM workflows', 'agent-enabled workflows', 'RAG Concepts', and building 'functional AI and data prototypes' directly aligns with the JD's focus on AI/LLM products, intelligent agents, and evaluation infrastructure.<br>• Data-Driven Product Analytics: 8+ years in product analytics, A/B testing, experiment design, causal inference, and translating product data into roadmap decisions, directly supporting the JD's requirement for data-driven decisions and building testing/benchmarking frameworks for AI.<br>• Technical Skills & Cross-functional Leadership: Strong proficiency in SQL, Python, PySpark, coupled with demonstrated skills in cross-functional collaboration, stakeholder management, and data storytelling, which are crucial for success in this role and for executive communication.<br>• Previous Uber Experience: The candidate has prior work experience at Uber as a Business Analyst, which could be beneficial. | • Direct Product Management Experience: The job explicitly requires 5+ years of *product management* experience, specifically in owning roadmaps and defining product strategy. The candidate's background is primarily in *product analytics* and as a *Lead AI Analyst*, which, while highly relevant, is a distinct career path from core Product Management.<br>• User Research & Design Thinking: While the candidate has experience with user behavior analytics, the job description emphasizes integrating 'design thinking and user research' to advocate for end-users, an area not explicitly detailed in the resume.<br>• Specific Tool Fluency: The job description lists 'Fluency with Claude Code/Cursor' as a preferred qualification, which is not mentioned in the candidate's skill set. |
+
+---
 ## 📅 Scan Run: 2026-06-27 08:39:01
 - **Total New Jobs Scraped**: 4
 - **High-Match Roles (Score &ge; 70)**: 0
