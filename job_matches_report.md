@@ -1,5 +1,14 @@
 # Automated Job Matcher Run History
 
+## 📅 Scan Run: 2026-06-30 14:20:25
+- **Total New Jobs Scraped**: 14
+- **High-Match Roles (Score &ge; 70)**: 1
+
+| Job Title | Company | Location | Match Score | Key Matches | Gaps |
+| :--- | :--- | :--- | :-: | :--- | :--- |
+| [Advanced Analytics & Reporting Analyst](https://careers.adobe.com/us/en/job/R170162/advanced-analytics-reporting-analyst) | Adobe | Noida, Uttar Pradesh, India | **85/100** | • Strong expertise in SQL, Python, PySpark, and Databricks, which are explicitly listed as highly desirable technologies in the job description.<br>• Extensive experience in applying advanced data analytics, including A/B testing, statistical analysis, predictive modeling, and causal inference, directly aligning with the requirement to build and run 'advanced BI solutions'.<br>• Proven ability to engineer data, automate workflows, and visualize data for non-technical audiences, demonstrated through automating reports, building dashboards, and practicing data storytelling.<br>• Experience in cross-functional collaboration and stakeholder management, which is essential for partnering with various teams and communicating insights broadly and regularly.<br>• The candidate's 8+ years of experience as a Lead AI Analyst and Senior Product Analyst make them well-suited for an 'Advanced' analytics role, and the location in Noida, India, aligns well with the preference for major Indian cities. | • While the candidate's analytical skills are highly transferable, their resume heavily emphasizes product analytics, influencing product roadmaps and user engagement. The job description focuses on analytics for a 'License Advisory team' within a 'DME Sales Organization', which represents a domain shift from core product to internal sales support/compliance analytics.<br>• The role title 'Advanced Analytics & Reporting Analyst' might be perceived as a slight horizontal move or even a minor step down in seniority compared to the candidate's current 'Lead AI Analyst' position, potentially not fully leveraging their leadership and strategic AI/LLM experience. |
+
+---
 ## 📅 Scan Run: 2026-06-30 09:40:22
 - **Total New Jobs Scraped**: 17
 - **High-Match Roles (Score &ge; 70)**: 3
