@@ -1,5 +1,14 @@
 # Automated Job Matcher Run History
 
+## 📅 Scan Run: 2026-07-02 08:58:23
+- **Total New Jobs Scraped**: 8
+- **High-Match Roles (Score &ge; 70)**: 1
+
+| Job Title | Company | Location | Match Score | Key Matches | Gaps |
+| :--- | :--- | :--- | :-: | :--- | :--- |
+| [Business Analytics Lead (7-10 years)](https://job-boards.greenhouse.io/phonepe/jobs/7789865003) | Career Portal | Bengaluru | **88/100** | • Extensive experience (8+ years total, 3+ years in Product Analytics) aligns with the 7+ years requirement, including a strong FinTech/payments background from PayPal.<br>• Deep proficiency in high-weight skills such as SQL, Python, A/B testing, experiment design, causal inference, statistical modeling, and data storytelling, all crucial for the role.<br>• Proven ability to influence product roadmaps, partner with business and product leaders, and translate complex data into actionable insights, demonstrated across multiple roles.<br>• Current location in Bangalore, India, is a perfect match for the job's preferred location. | • While the candidate has mentored analysts and holds a Lead role, explicit experience in directly managing a team, including responsibilities like hiring, designing team structure, and owning an end-to-end analytics function, is not clearly detailed.<br>• Experience with QlikSense, mentioned as a 'plus' in the job description, is not present, though other dashboarding tools like Tableau and Power BI are listed. |
+
+---
 ## 📅 Scan Run: 2026-07-01 19:56:16
 - **Total New Jobs Scraped**: 5
 - **High-Match Roles (Score &ge; 70)**: 0
