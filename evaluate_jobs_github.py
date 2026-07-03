@@ -244,9 +244,9 @@ def main():
         
         print(f"[{idx+1}/{len(new_jobs)}] Evaluating: {title} at {company} ({location})...", file=sys.stderr)
         
-        # Free-tier rate limiting spacer (15 RPM -> 4s sleep)
+        # Free-tier rate limiting spacer (12 RPM -> 5s sleep)
         if idx > 0:
-            time.sleep(4)
+            time.sleep(5)
             
         prompt = f"""
 You are an expert technical recruiter and resume matcher. Your job is to match a job description against a candidate's resume and return a structured JSON evaluation.
@@ -286,38 +286,48 @@ Output structure:
     "gaps": [<str>, ...]
 }}
 """
-        try:
-            response = model.generate_content(
-                prompt,
-                generation_config={"response_mime_type": "application/json"}
-            )
-            res_data = json.loads(response.text)
-            
-            score = int(res_data.get("score", 0))
-            key_matches = res_data.get("key_matches", [])
-            gaps = res_data.get("gaps", [])
-            
-            evaluated_matches.append({
-                "title": title,
-                "company": company,
-                "location": location,
-                "url": url,
-                "score": score,
-                "key_matches": key_matches,
-                "gaps": gaps
-            })
-            print(f"  -> Match Score: {score}/100", file=sys.stderr)
-        except Exception as e:
-            print(f"  -> Failed to evaluate job {title} via Gemini: {e}", file=sys.stderr)
-            evaluated_matches.append({
-                "title": title,
-                "company": company,
-                "location": location,
-                "url": url,
-                "score": 0,
-                "key_matches": [f"API Error during evaluation: {e}"],
-                "gaps": []
-            })
+        success = False
+        retries = 0
+        backoff = 6
+        res_data = {}
+        
+        while not success and retries < 5:
+            try:
+                response = model.generate_content(
+                    prompt,
+                    generation_config={"response_mime_type": "application/json"}
+                )
+                res_data = json.loads(response.text)
+                success = True
+            except Exception as e:
+                if "429" in str(e) or "Quota" in str(e) or "limit" in str(e).lower():
+                    print(f"  -> Rate limit (429) hit. Retrying in {backoff}s...", file=sys.stderr)
+                    time.sleep(backoff)
+                    retries += 1
+                    backoff *= 2
+                else:
+                    print(f"  -> Failed to evaluate job {title} via Gemini: {e}", file=sys.stderr)
+                    res_data = {
+                        "score": 0,
+                        "key_matches": [f"API Error during evaluation: {e}"],
+                        "gaps": []
+                    }
+                    break
+                    
+        score = int(res_data.get("score", 0))
+        key_matches = res_data.get("key_matches", [])
+        gaps = res_data.get("gaps", [])
+        
+        evaluated_matches.append({
+            "title": title,
+            "company": company,
+            "location": location,
+            "url": url,
+            "score": score,
+            "key_matches": key_matches,
+            "gaps": gaps
+        })
+        print(f"  -> Match Score: {score}/100", file=sys.stderr)
             
     # 4. Generate report
     report_path = os.path.join(script_dir, "job_matches_report.md")
