@@ -484,11 +484,12 @@ def scrape_smartrecruiters_board(url):
         
     return all_parsed_jobs
 
-# ==================== WORKDAY (VISA) ====================
 def scrape_workday_board(url):
     all_parsed_jobs = []
     parsed_url = urlparse(url)
-    base_api_path = parsed_url.path.replace("/jobs", "")
+    base_api_path = parsed_url.path
+    if base_api_path.endswith("/jobs"):
+        base_api_path = base_api_path[:-5]
     
     limit = 20
     offset = 0
