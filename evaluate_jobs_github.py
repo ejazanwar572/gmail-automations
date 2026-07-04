@@ -196,6 +196,7 @@ def main():
     model = genai.GenerativeModel("gemini-2.5-flash")
     
     evaluated_matches = []
+    quota_exhausted = False
     
     # 3. Evaluate each new job
     for idx, job in enumerate(new_jobs):
@@ -245,7 +246,7 @@ def main():
         print(f"[{idx+1}/{len(new_jobs)}] Evaluating: {title} at {company} ({location})...", file=sys.stderr)
         
         # Free-tier rate limiting spacer (12 RPM -> 5s sleep)
-        if idx > 0:
+        if idx > 0 and not quota_exhausted:
             time.sleep(5)
             
         prompt = f"""
@@ -291,28 +292,45 @@ Output structure:
         backoff = 6
         res_data = {}
         
-        while not success and retries < 5:
-            try:
-                response = model.generate_content(
-                    prompt,
-                    generation_config={"response_mime_type": "application/json"}
-                )
-                res_data = json.loads(response.text)
-                success = True
-            except Exception as e:
-                if "429" in str(e) or "Quota" in str(e) or "limit" in str(e).lower():
-                    print(f"  -> Rate limit (429) hit. Retrying in {backoff}s...", file=sys.stderr)
-                    time.sleep(backoff)
-                    retries += 1
-                    backoff *= 2
-                else:
-                    print(f"  -> Failed to evaluate job {title} via Gemini: {e}", file=sys.stderr)
-                    res_data = {
-                        "score": 0,
-                        "key_matches": [f"API Error during evaluation: {e}"],
-                        "gaps": []
-                    }
-                    break
+        if quota_exhausted:
+            print("  -> Quota exhausted flag is set. Skipping evaluation.", file=sys.stderr)
+            res_data = {
+                "score": 0,
+                "key_matches": ["Skipped: Gemini API quota exceeded"],
+                "gaps": ["Gemini API quota exceeded in this scan window"]
+            }
+        else:
+            while not success and retries < 5:
+                try:
+                    response = model.generate_content(
+                        prompt,
+                        generation_config={"response_mime_type": "application/json"}
+                    )
+                    res_data = json.loads(response.text)
+                    success = True
+                except Exception as e:
+                    if "429" in str(e) or "Quota" in str(e) or "limit" in str(e).lower():
+                        if retries >= 4:
+                            print(f"  -> Rate limit (429) hit continuously. Setting quota_exhausted flag.", file=sys.stderr)
+                            quota_exhausted = True
+                            res_data = {
+                                "score": 0,
+                                "key_matches": [f"API Quota exhausted during evaluation: {e}"],
+                                "gaps": []
+                            }
+                            break
+                        print(f"  -> Rate limit (429) hit. Retrying in {backoff}s...", file=sys.stderr)
+                        time.sleep(backoff)
+                        retries += 1
+                        backoff *= 2
+                    else:
+                        print(f"  -> Failed to evaluate job {title} via Gemini: {e}", file=sys.stderr)
+                        res_data = {
+                            "score": 0,
+                            "key_matches": [f"API Error during evaluation: {e}"],
+                            "gaps": []
+                        }
+                        break
                     
         score = int(res_data.get("score", 0))
         key_matches = res_data.get("key_matches", [])
