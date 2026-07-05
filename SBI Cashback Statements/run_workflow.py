@@ -10,6 +10,8 @@ import subprocess
 
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
 SYNC_SCRIPT = os.path.join(SCRIPT_DIR, "sync_alerts.py")
+DOWNLOAD_STATEMENTS_SCRIPT = os.path.join(SCRIPT_DIR, "download_statements.py")
+PARSE_STATEMENTS_SCRIPT = os.path.join(SCRIPT_DIR, "parse_statements.py")
 VALIDATE_SCRIPT = os.path.join(SCRIPT_DIR, "validate_statements.py")
 UPDATE_SCRIPT = os.path.join(SCRIPT_DIR, "update_report.py")
 CREDENTIALS_FILE = os.path.join(SCRIPT_DIR, "credentials.json")
@@ -50,15 +52,23 @@ def main():
     
     sync_ok = run_step("Sync Gmail Alerts", SYNC_SCRIPT, run_condition=has_creds)
     if not sync_ok:
-        print("\n⚠️  Workflow halted due to sync failure.")
-        sys.exit(1)
+        print("\n⚠️  Workflow warning: Gmail API sync failed. Proceeding using cached alerts.")
 
-    # 2. Run Statement Validations
+    # 2. Backfill and parse statement PDFs for fee/waiver tracking
+    backfill_ok = run_step("Backfill SBI Statement PDFs", DOWNLOAD_STATEMENTS_SCRIPT)
+    if not backfill_ok:
+        print("\n⚠️  Workflow warning: Statement backfill failed. Proceeding using local PDFs.")
+
+    parse_ok = run_step("Parse Statement PDFs", PARSE_STATEMENTS_SCRIPT)
+    if not parse_ok:
+        print("\n⚠️  Workflow warning: Statement parsing failed. Report will use direct PDF parsing fallback.")
+
+    # 3. Run Statement Validations
     val_ok = run_step("Validate Statement PDFs", VALIDATE_SCRIPT)
     if not val_ok:
         print("\n⚠️  Workflow warning: Statement validation checks encountered issues.")
 
-    # 3. Update Markdown Report
+    # 4. Update Markdown Report
     update_ok = run_step("Regenerate Cashback Cap Report", UPDATE_SCRIPT)
     if not update_ok:
         print("\n❌ Workflow failed: Could not regenerate cashback report.")

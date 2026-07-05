@@ -10,6 +10,7 @@ import os
 import re
 import json
 import subprocess
+import sys
 from pypdf import PdfReader
 from datetime import datetime
 
@@ -41,6 +42,10 @@ def get_env_password(var_name, default=""):
 
 PASSWORD = get_env_password("AIRTEL_AXIS_PASSWORD", PASSWORD)
 ALERTS_FILE = os.path.join(PDF_DIR, "gmail_alerts.json")
+ROOT_DIR = os.path.dirname(PDF_DIR)
+if ROOT_DIR not in sys.path:
+    sys.path.insert(0, ROOT_DIR)
+import card_freshness
 
 PASS_ICON = "✅"
 WARN_ICON = "⚠️ "
@@ -182,6 +187,24 @@ def validate_accounting(text, month):
     }, None
 
 # ─────────────────────────────────────────────────────────────
+# Layer 4 Helper: actual cashback credit from transactions list
+# ─────────────────────────────────────────────────────────────
+
+def extract_actual_cashback_credit(text):
+    """Extracts the sum of actual cashback credits from the transaction ledger."""
+    matches = re.findall(r'CASHBACK\s+CREDIT.*?\s+([\d,]+\.\d{2})\s+Cr', text, re.IGNORECASE)
+    if not matches:
+        matches = re.findall(r'CASHBACK.*?\s+([\d,]+\.\d{2})\s+Cr', text, re.IGNORECASE)
+    
+    total = 0.0
+    for m in matches:
+        try:
+            total += float(m.replace(',', ''))
+        except ValueError:
+            pass
+    return total if matches else None
+
+# ─────────────────────────────────────────────────────────────
 # Layer 3 Helper: Gmail alert cross-check (where available)
 # ─────────────────────────────────────────────────────────────
 
@@ -252,9 +275,10 @@ def run_validation():
 
     results = []
     all_pass = True
+    prev_cb_earned = None
 
     print("=" * 90)
-    print("  AIRTEL AXIS CARD — 3-LAYER DATA VALIDATION REPORT")
+    print("  AIRTEL AXIS CARD — 4-LAYER DATA VALIDATION REPORT")
     print("=" * 90)
 
     for pdf_file in pdf_files_sorted:
@@ -370,6 +394,48 @@ def run_validation():
         else:
             print(f"    {WARN_ICON} No Gmail alert data for this month")
 
+        # ── Layer 4: Cross-statement Cashback Credit Validation ────────────────
+        print("  LAYER 4 — Cross-statement cashback validation:")
+        cb_credited_val = fields_pypdf.get("cb_credited") or fields_pdftotext.get("cb_credited")
+        cb_earned_val = fields_pypdf.get("cb_earned") or fields_pdftotext.get("cb_earned")
+        
+        # Check actual transactions ledger first (since bank summary has 0.00 printing bugs in 2025)
+        ledger_credited = extract_actual_cashback_credit(text_pypdf) or extract_actual_cashback_credit(text_pdftotext)
+        
+        cb_credited_float = None
+        if ledger_credited is not None:
+            cb_credited_float = ledger_credited
+        elif cb_credited_val:
+            try:
+                cb_credited_float = float(cb_credited_val.replace(',', ''))
+            except ValueError:
+                pass
+                
+        cb_earned_float = None
+        if cb_earned_val:
+            try:
+                cb_earned_float = float(cb_earned_val.replace(',', ''))
+            except ValueError:
+                pass
+
+        cashback_verified = True
+        if prev_cb_earned is not None and cb_credited_float is not None:
+            if abs(cb_credited_float - prev_cb_earned) < 0.01:
+                print(f"    {PASS_ICON}  Cashback credited (₹{cb_credited_float:,.2f}) matches previous month's earned (₹{prev_cb_earned:,.2f})")
+            else:
+                print(f"    {FAIL_ICON} MISMATCH: Credited ₹{cb_credited_float:,.2f} but earned ₹{prev_cb_earned:,.2f} in previous statement")
+                issues.append(f"L4: Cashback credit mismatch (credited ₹{cb_credited_float:,.2f}, previous earned ₹{prev_cb_earned:,.2f})")
+                cashback_verified = False
+                all_pass = False
+        else:
+            if prev_cb_earned is None:
+                print(f"    {PASS_ICON}  First statement in sequence — no previous statement cashback to verify")
+            else:
+                print(f"    {WARN_ICON} Missing cashback credited or previous earned value for validation")
+                cashback_verified = False
+                
+        prev_cb_earned = cb_earned_float
+
         # ── Summary ───────────────────────────────────────────────────────────
         if not issues:
             print(f"\n  🟢 VERDICT: FULLY VALIDATED — no discrepancies found")
@@ -378,7 +444,13 @@ def run_validation():
             for iss in issues:
                 print(f"     • {iss}")
 
-        results.append({"month": month, "issues": issues, "validated": len(issues) == 0})
+        results.append({
+            "month": month,
+            "issues": issues,
+            "validated": len(issues) == 0,
+            "cashback_verified": cashback_verified,
+            "cb_credited": cb_credited_float
+        })
 
     # ── Global summary ─────────────────────────────────────────────────────────
     print(f"\n{'='*90}")
@@ -394,10 +466,31 @@ def run_validation():
     else:
         print(f"  🟢 ALL {len(results)} STATEMENTS PASSED VALIDATION")
 
+    freshness = card_freshness.validate_freshness(
+        PDF_DIR,
+        card_name="Airtel Axis",
+        env_prefix="AIRTEL_AXIS",
+        require_metadata=True,
+        require_connector_evidence=False,
+    )
+    if freshness["warnings"] or freshness["failures"]:
+        print(f"\n  {WARN_ICON} FRESHNESS / RECONCILIATION GATE")
+        for warning in freshness["warnings"]:
+            print(f"     • {warning}")
+        for failure in freshness["failures"]:
+            print(f"     • {failure}")
+    results.append({
+        "month": "Freshness / reconciliation gate",
+        "issues": freshness["warnings"] + freshness["failures"],
+        "validated": freshness["ok"],
+        "freshness": freshness,
+    })
+
     report_path = os.path.join(PDF_DIR, "validation_report.json")
     with open(report_path, 'w') as f:
         json.dump(results, f, indent=2)
     print(f"\n  Report saved → {report_path}")
+    return all(r.get("validated", False) for r in results)
 
 if __name__ == "__main__":
-    run_validation()
+    raise SystemExit(0 if run_validation() else 1)

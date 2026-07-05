@@ -987,6 +987,100 @@ def scrape_lever_board(url):
         
     return all_parsed_jobs
 
+# ==================== AMAZON ====================
+def scrape_amazon_board(url):
+    all_parsed_jobs = []
+    limit = 10
+    offset = 0
+    
+    # We will query Amazon.jobs JSON search API
+    api_url = "https://www.amazon.jobs/en/search.json?loc_query=India&country=IND"
+    
+    while True:
+        page_url = f"{api_url}&offset={offset}"
+        print(f"Scraping Amazon.jobs page offset {offset}: {page_url}", file=sys.stderr)
+        
+        req = urllib.request.Request(page_url, headers={'User-Agent': headers['User-Agent']})
+        try:
+            with urllib.request.urlopen(req, timeout=15) as res:
+                data = json.loads(res.read().decode('utf-8'))
+        except Exception as e:
+            print(f"Error fetching Amazon page offset {offset}: {e}", file=sys.stderr)
+            break
+            
+        postings = data.get("jobs", [])
+        if not postings:
+            break
+            
+        consecutive_existing = 0
+        stop_pagination = False
+        page_jobs = []
+        
+        for post in postings:
+            job_id = str(post.get("id_icims"))
+            title = post.get("title")
+            if not job_id or not title:
+                continue
+                
+            if job_id in existing_jobs:
+                consecutive_existing += 1
+                if consecutive_existing >= 3:
+                    print(f"Found {consecutive_existing} consecutive existing Amazon jobs. Stopping pagination.", file=sys.stderr)
+                    stop_pagination = True
+                    break
+                continue
+            else:
+                consecutive_existing = 0
+                
+            location = post.get("city", "")
+            if post.get("state"):
+                location += f", {post.get('state')}"
+            location += f", {post.get('country_code', 'IND')}"
+            
+            job_path = post.get("job_path", "")
+            job_url = f"https://www.amazon.jobs{job_path}" if job_path else f"https://www.amazon.jobs/en/jobs/{job_id}"
+            
+            desc_html_parts = []
+            desc_text_parts = []
+            
+            desc = post.get("description") or ""
+            basic = post.get("basic_qualifications") or ""
+            preferred = post.get("preferred_qualifications") or ""
+            
+            if desc:
+                desc_html_parts.append(desc)
+                desc_text_parts.append(clean_html(desc))
+            if basic:
+                desc_html_parts.append(f"<h3>Basic Qualifications</h3>\n{basic}")
+                desc_text_parts.append(f"Basic Qualifications:\n{clean_html(basic)}")
+            if preferred:
+                desc_html_parts.append(f"<h3>Preferred Qualifications</h3>\n{preferred}")
+                desc_text_parts.append(f"Preferred Qualifications:\n{clean_html(preferred)}")
+                
+            desc_html = "\n\n".join(desc_html_parts)
+            desc_text = "\n\n".join(desc_text_parts)
+            
+            page_jobs.append({
+                'id': job_id,
+                'title': title,
+                'location': location,
+                'url': job_url,
+                'description_html': desc_html,
+                'description_text': desc_text,
+                'source_board': url
+            })
+            
+        all_parsed_jobs.extend(page_jobs)
+        if stop_pagination:
+            break
+            
+        offset += len(postings)
+        # Avoid going infinite if the api stops paginating but returns results
+        if len(postings) < 10 or offset >= 100:
+            break
+            
+    return all_parsed_jobs
+
 # ==================== MAIN LOOP ====================
 target_locations = ["india", "bangalore", "bengaluru", "gurgaon", "gurugram", "hyderabad", "noida", "pune", "mumbai", "chennai", "delhi", "ncr", "remote", "anywhere"]
 
@@ -1067,6 +1161,9 @@ for board_url in target_urls:
         
     elif "myworkdayjobs.com" in board_url:
         scraped_posts = scrape_workday_board(board_url)
+        
+    elif "amazon.jobs" in board_url:
+        scraped_posts = scrape_amazon_board(board_url)
         
     elif "careers.expediagroup.com" in board_url:
         scraped_posts = scrape_expedia_wordpress_board(board_url)

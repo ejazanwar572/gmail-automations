@@ -2,10 +2,15 @@
 import os
 import re
 import json
+import sys
 from datetime import datetime
 
 ALERTS_FILE = "/Users/ejazanwar/Documents/Gmail Automations/SBI Cashback Statements/gmail_alerts.json"
-STEP_DIR = "/Users/ejazanwar/.gemini/antigravity/brain/bbed8903-cd94-4ab4-aa79-91383f9837a5/.system_generated/steps"
+STEP_DIR = "/Users/ejazanwar/.gemini/antigravity/brain/a9fcd66a-382c-4edf-9ca7-a3fe14a6acaf/.system_generated/steps"
+ROOT_DIR = os.path.dirname(os.path.dirname(ALERTS_FILE))
+if ROOT_DIR not in sys.path:
+    sys.path.insert(0, ROOT_DIR)
+import card_freshness
 
 def clean_html(html_text):
     text = re.sub(r'<[^>]+>', ' ', html_text)
@@ -34,6 +39,7 @@ def main():
     else:
         alerts = []
         
+    previous_count = len(alerts)
     print(f"Loaded {len(alerts)} existing alerts.")
 
     # Convert to set of tuples for easy duplicate checking
@@ -47,6 +53,7 @@ def main():
         existing_set.add((a["date"], float(a["amount"]), merchant))
 
     new_count = 0
+    skipped_duplicate_count = 0
     
     # 2. Scan step directories
     if os.path.exists(STEP_DIR):
@@ -100,6 +107,8 @@ def main():
                 existing_set.add(key)
                 new_count += 1
                 print(f"Added new alert: {date_formatted} | ₹{amt} at {merchant}")
+            else:
+                skipped_duplicate_count += 1
 
     # 3. Sort alerts by date descending
     def get_alert_date(alert):
@@ -113,8 +122,21 @@ def main():
     # 4. Write back to alerts file
     with open(ALERTS_FILE, 'w') as f:
         json.dump(alerts, f, indent=2)
+
+    metadata = card_freshness.write_sync_metadata(
+        os.path.dirname(ALERTS_FILE),
+        card_name="SBI Cashback Credit Card",
+        card_ending="0846",
+        source="gmail-plugin-step-logs",
+        query='from:onlinesbicard@sbicard.com subject:"Transaction Alert from CASHBACK SBI Card" "ending 0846"',
+        alerts=alerts,
+        previous_count=previous_count,
+        new_count=new_count,
+        skipped_duplicate_count=skipped_duplicate_count,
+    )
         
-    print(f"Finished. Total alerts in file: {len(alerts)} ({new_count} new alerts added).")
+    print(f"Finished. Total alerts in file: {len(alerts)} ({new_count} new alerts added, {skipped_duplicate_count} duplicates skipped).")
+    print(f"Sync metadata saved → {os.path.join(os.path.dirname(ALERTS_FILE), 'sync_metadata.json')}")
 
 if __name__ == "__main__":
     main()

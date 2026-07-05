@@ -1,8 +1,8 @@
-# Airtel Axis Cashback Tracker Checklist
+# Job Board Pagination Scraper and Workflow Checklist
 
-- [ ] Sync Axis Bank transaction alerts from Gmail using the `gmail` MCP server
-- [ ] Run validation checks on Airtel Axis statement PDFs using `validate_statements.py`
-- [ ] Update `update_report.py` to target the current conversation's `cashback_cap_report.md`
-- [ ] Update the cashback cap report using `update_report.py`
-- [ ] Ensure formatting conforms to all requirements (bullets on a single line, checkmarks for caps, no crosses, etc.)
-- [ ] Verify correctness and document results in task list
+- [x] Update `job_boards.json` to include Adobe's careers search page
+- [x] Modify `check_job_boards.py` to add `slugify` and pagination layout detection for Phenom People (Gartner/Adobe)
+- [x] Update `tide-job-matcher.md` global workflow to specify multi-page pagination and location prioritization (Bangalore first)
+- [x] Run the scraper and verify multi-page scraping runs correctly for Tide, Gartner, and Adobe
+- [x] Update `scraped_jobs.json` and verify jobs are correctly identified and stored
+- [x] Capture lessons if any new lessons are learned

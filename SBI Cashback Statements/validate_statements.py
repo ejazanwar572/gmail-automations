@@ -10,6 +10,7 @@ import os
 import re
 import json
 import subprocess
+import sys
 from pypdf import PdfReader
 from datetime import datetime
 
@@ -41,6 +42,10 @@ def get_env_password(var_name, default=""):
 
 PASSWORD = get_env_password("SBI_CASHBACK_PASSWORD", PASSWORD)
 ALERTS_FILE = os.path.join(PDF_DIR, "gmail_alerts.json")
+ROOT_DIR = os.path.dirname(PDF_DIR)
+if ROOT_DIR not in sys.path:
+    sys.path.insert(0, ROOT_DIR)
+import card_freshness
 
 PASS_ICON = "✅"
 WARN_ICON = "⚠️ "
@@ -91,6 +96,7 @@ def extract_key_fields_pdftotext(text):
         "payments": None,
         "purchases": None,
         "fees": None,
+        "total_outstanding": None,
         "cb_earned": None,
         "cb_credited": None,
     }
@@ -120,6 +126,7 @@ def extract_key_fields_pdftotext(text):
             fields["payments"] = summary_row.group(2).replace(",", "").strip()
             fields["purchases"] = summary_row.group(3).replace(",", "").strip()
             fields["fees"] = summary_row.group(4).replace(",", "").strip()
+            fields["total_outstanding"] = summary_row.group(5).replace(",", "").strip()
             if "total_due" not in fields or not fields["total_due"]:
                 fields["total_due"] = summary_row.group(5).replace(",", "").strip()
 
@@ -147,6 +154,7 @@ def extract_key_fields_pypdf(text):
         "payments": None,
         "purchases": None,
         "fees": None,
+        "total_outstanding": None,
         "cb_earned": None,
         "cb_credited": None,
     }
@@ -169,6 +177,7 @@ def extract_key_fields_pypdf(text):
             fields["payments"] = floats[6]
             fields["purchases"] = floats[7]
             fields["fees"] = floats[8]
+            fields["total_outstanding"] = floats[9]
 
     # 3. Cashback Section in pypdf
     pos_cb = text.find("SAVINGS AND BENEFITS SECTION")
@@ -196,13 +205,13 @@ def extract_key_fields_pypdf(text):
 # ─────────────────────────────────────────────────────────────
 
 def validate_accounting(fields):
-    """Validates the accounting equation: Prev Bal - Payments + Purchases + Fees = Total Due"""
+    """Validates the accounting equation against the statement's total outstanding."""
     try:
         prev_bal = float(fields["prev_balance"])
         payments = float(fields["payments"])
         purchases = float(fields["purchases"])
         fees = float(fields["fees"])
-        total_due = float(fields["total_due"])
+        total_due = float(fields.get("total_outstanding") or fields["total_due"])
     except (ValueError, KeyError, TypeError):
         return None, "Missing or invalid numerical values in fields"
 
@@ -459,10 +468,31 @@ def run_validation():
     else:
         print(f"  🟢 ALL {len(results)} STATEMENTS PASSED VALIDATION")
 
+    freshness = card_freshness.validate_freshness(
+        PDF_DIR,
+        card_name="SBI Cashback",
+        env_prefix="SBI_CASHBACK",
+        require_metadata=True,
+        require_connector_evidence=False,
+    )
+    if freshness["warnings"] or freshness["failures"]:
+        print(f"\n  {WARN_ICON} FRESHNESS / RECONCILIATION GATE")
+        for warning in freshness["warnings"]:
+            print(f"     • {warning}")
+        for failure in freshness["failures"]:
+            print(f"     • {failure}")
+    results.append({
+        "month": "Freshness / reconciliation gate",
+        "issues": freshness["warnings"] + freshness["failures"],
+        "validated": freshness["ok"],
+        "freshness": freshness,
+    })
+
     report_path = os.path.join(PDF_DIR, "validation_report.json")
     with open(report_path, 'w') as f:
         json.dump(results, f, indent=2)
     print(f"\n  Report saved → {report_path}")
+    return all(r.get("validated", False) for r in results)
 
 if __name__ == "__main__":
-    run_validation()
+    raise SystemExit(0 if run_validation() else 1)

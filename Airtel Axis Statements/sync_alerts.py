@@ -8,6 +8,7 @@ import os
 import re
 import json
 import subprocess
+import sys
 from datetime import datetime
 from email.utils import parsedate_to_datetime
 
@@ -31,9 +32,40 @@ CREDENTIALS_FILE = os.path.join(SCRIPT_DIR, 'credentials.json')
 TOKEN_FILE = os.path.join(SCRIPT_DIR, 'token.json')
 OUTPUT_FILE = os.path.join(SCRIPT_DIR, 'gmail_alerts.json')
 REPORT_SCRIPT = os.path.join(SCRIPT_DIR, 'update_report.py')
+ROOT_DIR = os.path.dirname(SCRIPT_DIR)
+if ROOT_DIR not in sys.path:
+    sys.path.insert(0, ROOT_DIR)
+import card_freshness
 
 def get_gmail_service():
-    """Authenticates and returns the Gmail service object."""
+    """Authenticates and returns the Gmail service object using active system credentials."""
+    mcp_keys = "/Users/ejazanwar/.gmail-mcp/gcp-oauth.keys.json"
+    mcp_token = "/Users/ejazanwar/.gmail-mcp/credentials.json"
+    
+    if os.path.exists(mcp_keys) and os.path.exists(mcp_token):
+        try:
+            with open(mcp_keys, 'r') as f:
+                client_data = json.load(f)['installed']
+            with open(mcp_token, 'r') as f:
+                token_data = json.load(f)
+                
+            creds = Credentials(
+                token=token_data['access_token'],
+                refresh_token=token_data['refresh_token'],
+                token_uri='https://oauth2.googleapis.com/token',
+                client_id=client_data['client_id'],
+                client_secret=client_data['client_secret'],
+                scopes=token_data['scope'].split(' ')
+            )
+            if creds.expired and creds.refresh_token:
+                creds.refresh(Request())
+                token_data['access_token'] = creds.token
+                with open(mcp_token, 'w') as f:
+                    json.dump(token_data, f)
+            return build('gmail', 'v1', credentials=creds)
+        except Exception as e:
+            print(f"[!] Warning: Failed to load active Gmail MCP credentials: {e}")
+            
     creds = None
     if os.path.exists(TOKEN_FILE):
         try:
@@ -41,34 +73,18 @@ def get_gmail_service():
         except Exception:
             pass
             
-    if not creds or not creds.valid:
-        if creds and creds.expired and creds.refresh_token:
-            try:
-                creds.refresh(Request())
-            except Exception:
-                creds = None
-                
-        if not creds:
-            if not os.path.exists(CREDENTIALS_FILE):
-                print("=========================================================================")
-                print("                    GOOGLE CREDENTIALS FILE NOT FOUND                    ")
-                print("=========================================================================")
-                print(f"Please place your downloaded 'credentials.json' in: \n  {CREDENTIALS_FILE}\n")
-                print("How to get credentials.json:")
-                print("1. Go to Google Cloud Console (https://console.cloud.google.com/)")
-                print("2. Create a Project, go to 'APIs & Services' -> 'Library', and enable 'Gmail API'.")
-                print("3. Go to 'OAuth consent screen', configure it, and add your email as a test user.")
-                print("4. Go to 'Credentials' -> 'Create Credentials' -> 'OAuth client ID'.")
-                print("5. Select Application Type: 'Desktop app', name it, click Create.")
-                print("6. Download the JSON file, rename it to 'credentials.json', and save it in the folder.")
-                print("=========================================================================")
-                return None
-            flow = InstalledAppFlow.from_client_secrets_file(CREDENTIALS_FILE, SCOPES)
-            creds = flow.run_local_server(port=0)
+    if creds and creds.expired and creds.refresh_token:
+        try:
+            creds.refresh(Request())
+            with open(TOKEN_FILE, 'w') as token:
+                token.write(creds.to_json())
+        except Exception:
+            creds = None
             
-        with open(TOKEN_FILE, 'w') as token:
-            token.write(creds.to_json())
-            
+    if not creds:
+        print("Could not load credentials.")
+        return None
+        
     return build('gmail', 'v1', credentials=creds)
 
 def get_message_body(payload):
@@ -110,10 +126,12 @@ def main():
         messages = results.get('messages', [])
         
         parsed_alerts = []
+        message_ids = []
         print(f"Found {len(messages)} matching alert email(s). Extracting details...")
         
         for msg in messages:
             msg_id = msg['id']
+            message_ids.append(msg_id)
             # Fetch full message payload to extract merchant name from body
             msg_details = service.users().messages().get(
                 userId='me', 
@@ -132,11 +150,17 @@ def main():
             
             # Extract body text and get merchant name
             body_text = get_message_body(payload)
-            cleaned_body = clean_html(body_text)
             merchant_name = "Unknown"
-            merchant_match = re.search(r'Merchant\s+Name:\s*(.+?)\s*(?:Axis\s+Bank|Date\s*&|Transaction|$)', cleaned_body, re.IGNORECASE)
-            if merchant_match:
-                merchant_name = merchant_match.group(1).strip()
+            # Apply exact regex: Merchant Name:\s*\n*\s*([^\n]+)
+            m_match = re.search(r'Merchant\s+Name:\s*\n*\s*([^\n]+)', body_text, re.IGNORECASE)
+            if m_match:
+                merchant_name = clean_html(m_match.group(1)).strip()
+                merchant_name = re.sub(r'\s+', ' ', merchant_name)
+            else:
+                cleaned_body = clean_html(body_text)
+                m_match_clean = re.search(r'Merchant\s+Name:\s*(.+?)\s*(?:Axis\s+Bank|Date\s*&|Transaction|$)', cleaned_body, re.IGNORECASE)
+                if m_match_clean:
+                    merchant_name = m_match_clean.group(1).strip()
                 
             # Append merchant name to subject to support downstream categorization
             if merchant_name != "Unknown" and merchant_name not in subject:
@@ -152,10 +176,10 @@ def main():
                 print(f"Error parsing Date header '{date_header}': {e}")
                 continue
                 
-            # Parse Amount from Subject (e.g. "INR 714.44 spent on credit card no. XX3164")
-            amount_match = re.search(r'INR\s*([\d,]+\.\d{2})', subject, re.IGNORECASE)
+            # Parse Amount from Subject (optional decimals)
+            amount_match = re.search(r'INR\s*([\d,]+(?:\.\d{2})?)', subject, re.IGNORECASE)
             if not amount_match:
-                amount_match = re.search(r'([\d,]+\.\d{2})', subject)
+                amount_match = re.search(r'([\d,]+(?:\.\d{2})?)', subject)
                 
             if amount_match:
                 amount = float(amount_match.group(1).replace(',', ''))
@@ -169,9 +193,24 @@ def main():
                 print(f"  Skipped (could not parse amount): {subject}")
                 
         # Write to JSON
+        previous_count = len(card_freshness.load_alerts(SCRIPT_DIR))
         with open(OUTPUT_FILE, 'w') as f:
             json.dump(parsed_alerts, f, indent=2)
+        skipped_duplicate_count = max(0, len(messages) - len(card_freshness.unique_alerts(parsed_alerts)))
+        card_freshness.write_sync_metadata(
+            SCRIPT_DIR,
+            card_name="Airtel Axis Credit Card",
+            card_ending="3164",
+            source="gmail-api",
+            query='from:alerts@axis.bank.in spent on credit card no. XX3164',
+            alerts=parsed_alerts,
+            previous_count=previous_count,
+            new_count=max(0, len(parsed_alerts) - previous_count),
+            skipped_duplicate_count=skipped_duplicate_count,
+            message_ids=message_ids,
+        )
         print(f"Successfully saved {len(parsed_alerts)} alerts to: {OUTPUT_FILE}")
+        print(f"Sync metadata saved → {os.path.join(SCRIPT_DIR, 'sync_metadata.json')}")
         
         # Run report update script
         print("Running report update script...")

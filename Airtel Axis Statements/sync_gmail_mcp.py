@@ -2,11 +2,16 @@
 import os
 import re
 import json
+import sys
 from datetime import datetime
 from email.utils import parsedate_to_datetime
 
 ALERTS_FILE = "/Users/ejazanwar/Documents/Gmail Automations/Airtel Axis Statements/gmail_alerts.json"
-STEP_DIR = "/Users/ejazanwar/.gemini/antigravity/brain/bbed8903-cd94-4ab4-aa79-91383f9837a5/.system_generated/steps"
+STEP_DIR = "/Users/ejazanwar/.gemini/antigravity/brain/a9fcd66a-382c-4edf-9ca7-a3fe14a6acaf/.system_generated/steps"
+ROOT_DIR = os.path.dirname(os.path.dirname(ALERTS_FILE))
+if ROOT_DIR not in sys.path:
+    sys.path.insert(0, ROOT_DIR)
+import card_freshness
 
 def clean_html(html_text):
     text = re.sub(r'<[^>]+>', ' ', html_text)
@@ -20,6 +25,7 @@ def main():
     else:
         alerts = []
 
+    previous_count = len(alerts)
     print(f"Loaded {len(alerts)} existing alerts.")
 
     # Convert existing alerts to set for duplicate checking
@@ -28,15 +34,12 @@ def main():
         existing_set.add((a["date"], float(a["amount"]), a["subject"]))
 
     new_count = 0
+    skipped_duplicate_count = 0
 
     if os.path.exists(STEP_DIR):
         for folder in sorted(os.listdir(STEP_DIR), key=lambda x: int(x) if x.isdigit() else 999):
             folder_path = os.path.join(STEP_DIR, folder)
             if not os.path.isdir(folder_path):
-                continue
-            
-            # We only want to parse steps that are Airtel Axis alerts (174, 178, 180, 182, 184, 186, 188, 190, 192, 194)
-            if folder not in ["174", "178", "180", "182", "184", "186", "188", "190", "192", "194"]:
                 continue
                 
             file_path = os.path.join(folder_path, "output.txt")
@@ -45,6 +48,10 @@ def main():
                 
             with open(file_path, 'r') as f:
                 content = f.read()
+
+            # Ensure it is an Airtel Axis transaction alert
+            if "XX3164" not in content or "spent on credit card" not in content:
+                continue
 
             # 1. Parse Subject
             subject_match = re.search(r'^Subject:\s*(.*)$', content, re.MULTILINE)
@@ -113,6 +120,8 @@ def main():
                 existing_set.add(key)
                 new_count += 1
                 print(f"Added new alert: {date_formatted} | ₹{amount} at {merchant_name}")
+            else:
+                skipped_duplicate_count += 1
 
     # Sort alerts by date descending
     def get_alert_date(alert):
@@ -126,7 +135,20 @@ def main():
     with open(ALERTS_FILE, 'w') as f:
         json.dump(alerts, f, indent=2)
 
-    print(f"Finished. Total alerts in file: {len(alerts)} ({new_count} new alerts added).")
+    metadata = card_freshness.write_sync_metadata(
+        os.path.dirname(ALERTS_FILE),
+        card_name="Airtel Axis Credit Card",
+        card_ending="3164",
+        source="gmail-plugin-step-logs",
+        query='from:alerts@axis.bank.in "spent on credit card no. XX3164"',
+        alerts=alerts,
+        previous_count=previous_count,
+        new_count=new_count,
+        skipped_duplicate_count=skipped_duplicate_count,
+    )
+
+    print(f"Finished. Total alerts in file: {len(alerts)} ({new_count} new alerts added, {skipped_duplicate_count} duplicates skipped).")
+    print(f"Sync metadata saved → {os.path.join(os.path.dirname(ALERTS_FILE), 'sync_metadata.json')}")
 
 if __name__ == "__main__":
     main()

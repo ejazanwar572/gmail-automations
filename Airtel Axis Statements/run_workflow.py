@@ -52,8 +52,7 @@ def main():
     
     sync_ok = run_step("Sync Gmail Alerts", SYNC_SCRIPT, run_condition=has_creds)
     if not sync_ok:
-        print("\n⚠️  Workflow halted due to sync failure.")
-        sys.exit(1)
+        print("\n⚠️  Workflow warning: Gmail API sync failed. Proceeding using cached alerts.")
 
     # 2. Run Statement Validations
     val_ok = run_step("Validate Statement PDFs", VALIDATE_SCRIPT)
