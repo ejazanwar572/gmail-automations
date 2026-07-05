@@ -497,7 +497,7 @@ def scrape_workday_board(url):
     workday_headers['Content-Type'] = 'application/json'
     
     while True:
-        payload = {"searchText": "", "limit": limit, "offset": offset, "appliedFacets": {}}
+        payload = {"searchText": "India", "limit": limit, "offset": offset, "appliedFacets": {}}
         print(f"Scraping Workday page offset {offset}: {url}", file=sys.stderr)
         
         req = urllib.request.Request(url, data=json.dumps(payload).encode('utf-8'), headers=workday_headers, method='POST')
