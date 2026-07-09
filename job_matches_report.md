@@ -1,5 +1,14 @@
 # Automated Job Matcher Run History
 
+## 📅 Scan Run: 2026-07-09 15:20:24
+- **Total New Jobs Scraped**: 21
+- **High-Match Roles (Score &ge; 70)**: 1
+
+| Job Title | Company | Location | Match Score | Key Matches | Gaps |
+| :--- | :--- | :--- | :-: | :--- | :--- |
+| [Digital Product Analyst](https://jobs.gartner.com/jobs/job/111539-digital-product-analyst/) | Gartner | Gurgaon, Haryāna | **70/100** | • Extensive experience in Product Analytics, A/B testing, user behavior analysis, and causal inference, directly aligning with core responsibilities for understanding user journeys and making data-driven decisions.<br>• Strong proficiency in SQL, Python, and BI tools such as Tableau and Power BI for data analysis, reporting, dashboard creation, and automating analytical workflows.<br>• Proven ability in stakeholder management, cross-functional collaboration, and data storytelling to articulate complex product issues and influence roadmap decisions.<br>• Demonstrated experience in automating reports and building dynamic dashboards, directly matching the job's requirement to improve and streamline data delivery.<br>• Previous work experience in Gurgaon aligns with the job's specified location. | • The candidate's 8+ years of experience and current 'Lead AI Analyst' role significantly exceed the job's requirement of 2-3 years for a 'Digital Product Analyst', indicating a potential mismatch in seniority and role scope.<br>• Lack of explicit mention of experience with Salesforce reporting/Tableau CRM (a 'plus' skill in the job description).<br>• No mention of AAS (another 'plus' skill in the job description). |
+
+---
 ## 📅 Scan Run: 2026-07-09 12:05:37
 - **Total New Jobs Scraped**: 60
 - **High-Match Roles (Score &ge; 70)**: 0
