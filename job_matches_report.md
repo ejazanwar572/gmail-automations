@@ -1,5 +1,14 @@
 # Automated Job Matcher Run History
 
+## 📅 Scan Run: 2026-07-11 07:56:34
+- **Total New Jobs Scraped**: 4
+- **High-Match Roles (Score &ge; 70)**: 1
+
+| Job Title | Company | Location | Match Score | Key Matches | Gaps |
+| :--- | :--- | :--- | :-: | :--- | :--- |
+| [Manager I, Operations, External Fulfillment](https://www.amazon.jobs/en/jobs/10471767/manager-i-operations-external-fulfillment) | Career Portal | Bengaluru, KA, IND | **72/100** | • Strong Analytical & Problem-Solving Skills: Ejaz has 8+ years of experience in data-driven decision making, A/B testing, causal inference, and root cause analysis, directly aligning with the JD's need for defect analysis and systematic problem-solving.<br>• Proficiency in Core Tools: Expertise in SQL, Python, and data visualization tools (Power BI, Tableau) directly matches the preferred qualifications for data extraction, manipulation, and reporting.<br>• Stakeholder Management & Data Communication: Proven ability to communicate complex insights, collaborate cross-functionally, and translate findings into decisions, aligning with the JD's requirement to summarize complex data for stakeholders and drive initiatives.<br>• Relevant Foundational Experience & Automation Mindset: Early experience at Aditya Birla Group in analyzing process efficiency and identifying bottlenecks, coupled with automating reports at Uber, demonstrates a strong inclination towards operational improvements and efficiency.<br>• Location Alignment: The candidate's current and preferred location in Bangalore, India, perfectly matches the job's location in Bengaluru, KA, IND. | • Functional Role Mismatch: The candidate is explicitly targeting AI/Product Analyst and Analytics Leadership roles, while the job is an Operations Manager in External Fulfillment, representing a different primary functional focus despite requiring strong analytical skills.<br>• Specific Operations/Supply Chain Domain Expertise: While possessing general analytical skills, the candidate's recent experience lacks deep, specific domain knowledge in fulfillment, transportation, reverse logistics, and third-party seller operations, which are central to this role.<br>• Lean/Six Sigma/Kaizen Methodologies: The job description explicitly prefers knowledge of these process improvement methodologies, which are not listed or detailed in the candidate's resume.<br>• Advanced Excel Skills: The JD prefers 'Advanced Excel skills with experience handling Macros/Look-ups' which is not explicitly mentioned in the candidate's skill set.<br>• Supply Chain Coursework: The candidate's B.Tech is in Chemical Engineering, not directly related to 'supply chain management, production planning, and control' coursework preferred by the role. |
+
+---
 ## 📅 Scan Run: 2026-07-11 05:43:18
 - **Total New Jobs Scraped**: 2
 - **High-Match Roles (Score &ge; 70)**: 0
