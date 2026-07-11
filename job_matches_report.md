@@ -1,5 +1,14 @@
 # Automated Job Matcher Run History
 
+## 📅 Scan Run: 2026-07-11 13:18:30
+- **Total New Jobs Scraped**: 1
+- **High-Match Roles (Score &ge; 70)**: 1
+
+| Job Title | Company | Location | Match Score | Key Matches | Gaps |
+| :--- | :--- | :--- | :-: | :--- | :--- |
+| [Pricing Manager, OTR Strategy, Now LM OTR Strategy](https://www.amazon.jobs/en/jobs/10471769/pricing-manager-otr-strategy-now-lm-otr-strategy) | Career Portal | Bengaluru, KA, IND | **78/100** | • Possesses 8+ years of experience in product analytics, A/B testing, causal inference, and data-driven decision making, aligning well with the analytical and strategic demands of the role.<br>• Strong proficiency in SQL, Python, statistical analysis, and experiment design directly supports the 'Pricing Analytics' responsibilities and building frameworks.<br>• Experience at Uber (Business Analyst) and OLX Autos (Product Analyst) provides relevant exposure to quick commerce/last-mile dynamics and user behavior economics.<br>• Demonstrated skills in cross-functional collaboration, stakeholder management, and data storytelling are essential for partnering with diverse teams and senior leadership reporting.<br>• The candidate is currently located in Bangalore, India, which perfectly matches the job's preferred location. | • Lacks explicit mention of 'last mile rate card design experience' within quick commerce, which is a specific requirement in the basic qualifications.<br>• While highly proficient in Python, the job description mentions 'SQL/R' for pricing analytics, and R is not listed in the candidate's skills.<br>• Basic qualifications require 'advanced Excel (Pivot Tables, VLookUps),' which is implied by the candidate's analytical roles and Power BI experience, but not explicitly detailed at that specific skill level on the resume. |
+
+---
 ## 📅 Scan Run: 2026-07-11 10:15:35
 - **Total New Jobs Scraped**: 2
 - **High-Match Roles (Score &ge; 70)**: 0
