@@ -1,5 +1,14 @@
 # Automated Job Matcher Run History
 
+## 📅 Scan Run: 2026-07-13 02:43:50
+- **Total New Jobs Scraped**: 2
+- **High-Match Roles (Score &ge; 70)**: 1
+
+| Job Title | Company | Location | Match Score | Key Matches | Gaps |
+| :--- | :--- | :--- | :-: | :--- | :--- |
+| [Sr Analyst](https://spgi.wd5.myworkdayjobs.com/en-us/SPGI_Careers/job/Bengaluru-Karnataka/Sr-Analyst_330108-1/apply) | S&P Global | Bangalore, India; Hyderabad, India | **70/100** | • Candidate possesses extensive experience (8+ years) as a Lead/Senior Analyst in product analytics, well exceeding the 2-3 years requirement, demonstrating strong ownership and analytical depth.<br>• Strong proficiency in core high-weight skills including SQL, Python, A/B testing, experiment design, causal inference, statistical analysis, and data storytelling/stakeholder management.<br>• Direct experience with Power BI for dashboard creation and a proven track record of automating reports and workflows using Python, aligning with the role's automation focus.<br>• Candidate has built AI/data prototypes and implemented LLM/Agent Workflows, which directly aligns with the job description's focus on developing AI- and Copilot-powered solutions.<br>• Perfect geographical match, with the candidate located in Bangalore, India, which is a primary location for the role. | • Lack of explicit demonstration of advanced Power BI skills (e.g., DAX, semantic models, Power BI Service optimization) beyond basic dashboard creation.<br>• No explicit experience with Microsoft Fabric (Notebooks, Pipelines, Lakehouse, Dataflows Gen2), which is a key platform emphasized for end-to-end data automation in the role.<br>• No direct experience with Snowflake SQL, though strong general SQL skills are present, and no explicit knowledge of Salesforce data structures or CRM-driven analytics.<br>• The candidate's experience is primarily in product and user behavior analytics, while the role is centered on sales, commercial, and financial services analytics, requiring a domain knowledge shift.<br>• No explicit mention of experience with Power Automate or Power Query, which are listed as required for workflow automation. |
+
+---
 ## 📅 Scan Run: 2026-07-12 19:06:10
 - **Total New Jobs Scraped**: 1
 - **High-Match Roles (Score &ge; 70)**: 0
