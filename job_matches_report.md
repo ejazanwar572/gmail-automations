@@ -1,5 +1,14 @@
 # Automated Job Matcher Run History
 
+## 📅 Scan Run: 2026-07-14 19:21:47
+- **Total New Jobs Scraped**: 14
+- **High-Match Roles (Score &ge; 70)**: 1
+
+| Job Title | Company | Location | Match Score | Key Matches | Gaps |
+| :--- | :--- | :--- | :-: | :--- | :--- |
+| [Sr. Business Operations Manager, Rider Experience](https://jobs.uber.com/en/jobs/159993/) | Career Portal | Bengaluru, India + 1 location | **88/100** | • Possesses 8+ years of experience in product analytics, A/B testing, causal inference, and translating product data into roadmap and growth decisions, directly aligning with the strategic and analytical demands of the role.<br>• Demonstrates strong proficiency in high-weight skills such as SQL, Python, A/B Testing, Experiment Design, Causal Inference, Stakeholder Management, and Data Storytelling, along with experience in Tableau/Power BI and predictive modeling.<br>• Proven ability to influence cross-functional teams and drive outcomes in consumer-facing products and marketplaces (e.g., PayPal, OLX Autos), with a focus on understanding user behavior, improving retention, and reducing pain points.<br>• Has prior experience as a Business Analyst at Uber, providing valuable familiarity with the company's environment, and is located in Bangalore, India, matching the preferred job location.<br>• Excels in analytical and problem-solving skills with a customer-first mindset, experience turning customer insights into business recommendations, and influencing stakeholders, which are core requirements of the job. | • While highly skilled in driving strategy through analytics, the resume does not explicitly detail experience in building and owning broad regional charters or defining and evolving overarching business operations frameworks, as implied by the 'Business Operations Manager' title.<br>• The job description emphasizes leading specific rider research and competitive benchmarking initiatives, which are not explicitly highlighted as primary responsibilities within the candidate's previous analytical roles.<br>• The role's focus on 'reimagining the physical ride experience' and 'creating compelling rider value propositions for user acquisition' leans into a broader product/marketing strategy that might extend beyond the candidate's core analytical contributions, despite strong alignment on user engagement and product growth. |
+
+---
 ## 📅 Scan Run: 2026-07-14 16:17:23
 - **Total New Jobs Scraped**: 15
 - **High-Match Roles (Score &ge; 70)**: 0
