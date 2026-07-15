@@ -1,5 +1,14 @@
 # Automated Job Matcher Run History
 
+## 📅 Scan Run: 2026-07-15 02:28:02
+- **Total New Jobs Scraped**: 8
+- **High-Match Roles (Score &ge; 70)**: 1
+
+| Job Title | Company | Location | Match Score | Key Matches | Gaps |
+| :--- | :--- | :--- | :-: | :--- | :--- |
+| [Senior Applied Scientist, Alexa Smart Home](https://www.amazon.jobs/en/jobs/10474742/senior-applied-scientist-alexa-smart-home) | Career Portal | Bengaluru, KA, IND | **75/100** | • Extensive experience (8+ years) in data and product analytics, exceeding the 4+ years of ML model building experience required.<br>• Direct experience with LLM workflows and RAG concepts, aligning with the job's focus on Large Language Models.<br>• Strong proficiency in Python, SQL, A/B testing, causal inference, and statistical analysis, which are highly relevant skills.<br>• Current location in Bangalore, India, perfectly matching the job's preferred location.<br>• Experience in mentoring analysts, which aligns with the job's responsibility of mentoring junior scientists. | • Lack of explicit experience in computer vision, video summarization, video search, or synthetic data generation, which are key responsibilities for the role.<br>• The job emphasizes 'developing new inference and training techniques' and 'neural deep learning methods,' where the candidate's experience leans more towards applying and analyzing ML for product decisions rather than core algorithm/model development and research.<br>• Educational background (B.Tech in Chemical Engineering) does not align with the PhD or Master's + 6 years applied research qualification typically sought for an 'Applied Scientist' role, despite strong professional experience.<br>• No explicit mention of programming experience in Java or C++, which are listed as basic qualifications alongside Python. |
+
+---
 ## 📅 Scan Run: 2026-07-14 22:00:10
 - **Total New Jobs Scraped**: 2
 - **High-Match Roles (Score &ge; 70)**: 0
