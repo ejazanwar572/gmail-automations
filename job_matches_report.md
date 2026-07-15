@@ -1,5 +1,14 @@
 # Automated Job Matcher Run History
 
+## 📅 Scan Run: 2026-07-15 19:13:22
+- **Total New Jobs Scraped**: 7
+- **High-Match Roles (Score &ge; 70)**: 1
+
+| Job Title | Company | Location | Match Score | Key Matches | Gaps |
+| :--- | :--- | :--- | :-: | :--- | :--- |
+| [Data Scientist, Knowledge Management](https://jobs.ebayinc.com/us/en/job/R0075561/data-scientist-knowledge-management) | eBay | Bengaluru, India | **90/100** | • Over 8 years of experience in product analytics, A/B testing, causal inference, and data storytelling, significantly exceeding the 4+ years required and directly aligning with core responsibilities.<br>• Strong proficiency in SQL and Python for data analysis, wrangling, and automation, as demonstrated across multiple roles and explicitly listed in skills.<br>• Hands-on experience with LLM workflows, RAG concepts, and building AI/data prototypes, directly addressing the 'AI/LLM Experience (Preferred)' and 'Leverage LLMs for Analytical Solutions' requirements.<br>• Extensive background in product analytics across e-commerce/marketplace companies (PayPal, OLX Autos, Uber), with a proven track record of influencing roadmap decisions and improving user engagement, a perfect fit for eBay's focus on eCommerce product discovery.<br>• Located in Bangalore, India, which is the exact location for the job description. | • While experienced in LLM workflows, specific hands-on experience with prompt engineering *for taxonomy validation, data enrichment, and classification* as detailed in the JD is not explicitly demonstrated.<br>• The candidate possesses strong general model evaluation skills (A/B testing, statistical analysis), but direct experience defining evaluation frameworks for *ML-driven taxonomy and classification models, embeddings, or semantic search solutions* is not explicitly stated.<br>• Explicit experience with 'knowledge graph development' and direct optimization of 'taxonomy, ontology, and catalog data' for e-commerce is not detailed, though related product analytics and search engagement experience exists. |
+
+---
 ## 📅 Scan Run: 2026-07-15 16:27:00
 - **Total New Jobs Scraped**: 32
 - **High-Match Roles (Score &ge; 70)**: 0
