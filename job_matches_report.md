@@ -1,5 +1,14 @@
 # Automated Job Matcher Run History
 
+## 📅 Scan Run: 2026-07-16 05:43:39
+- **Total New Jobs Scraped**: 3
+- **High-Match Roles (Score &ge; 70)**: 1
+
+| Job Title | Company | Location | Match Score | Key Matches | Gaps |
+| :--- | :--- | :--- | :-: | :--- | :--- |
+| [Lead Data Analyst](https://job-boards.greenhouse.io/razorpaysoftwareprivatelimited/jobs/4715340005) | Razorpay | Bengaluru | **90/100** | • Exceptional alignment with core technical skills: strong in SQL (including advanced queries), Python for data analysis and automation, A/B Testing, Experiment Design, Causal Inference, Statistical Analysis, and Predictive Modelling.<br>• Extensive hands-on experience with dashboarding and visualization tools like Power BI and Tableau, matching a key requirement for building interactive reports.<br>• Proven leadership and mentorship experience as a 'Lead AI Analyst' and 'Senior Product Analyst', including owning end-to-end analytical initiatives and guiding junior team members, directly aligning with the 'Lead Data Analyst' responsibilities.<br>• Direct experience with LLM workflows, agent-enabled workflows, and RAG concepts, perfectly matching the job's emphasis on AI tools, GenAI platforms, and AI-driven automation use cases.<br>• Strong capabilities in stakeholder management, cross-functional collaboration, and data storytelling, essential for presenting insights and influencing business decisions. The candidate's current location in Bangalore perfectly matches the job location. | • The job description specifies an experience range of 2-5 years, while the candidate possesses 8+ years of extensive experience, potentially indicating overqualification for the stated experience band.<br>• While highly skilled in data analysis and visualization tools, 'Advanced Excel skills' are explicitly listed as a required skill but are not specifically highlighted in the resume. |
+
+---
 ## 📅 Scan Run: 2026-07-16 02:33:51
 - **Total New Jobs Scraped**: 6
 - **High-Match Roles (Score &ge; 70)**: 0
