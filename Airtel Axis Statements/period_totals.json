@@ -1,0 +1,31 @@
+{
+  "alert_count": 42,
+  "cap_room": {
+    "cap": 1000.0,
+    "remaining": 1000.0,
+    "remaining_percent": 100.0,
+    "reset_date": "2026-09-13"
+  },
+  "generated_at": "2026-08-14T22:59:16.719218+05:30",
+  "period_totals": {
+    "cashback": {
+      "confirmed": 4370.0,
+      "confirmed_through": "2026-04-12",
+      "current_cycle": 0.0,
+      "evidence_status": "mixed",
+      "lifetime": 5770.82,
+      "lifetime_start": "2025-03-01",
+      "pending": 1400.82,
+      "tracked_through": "2026-08-07"
+    },
+    "spend": {
+      "current_cycle": 0,
+      "evidence_status": "mixed",
+      "lifetime": 332032.13,
+      "lifetime_start": "2025-03-01",
+      "tracked_through": "2026-08-07"
+    }
+  },
+  "run_id": "f3d60e7a7a01db62fd39329d",
+  "schema_version": 1
+}

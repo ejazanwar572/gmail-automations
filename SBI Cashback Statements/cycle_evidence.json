@@ -1,0 +1,16 @@
+{
+  "card_ending": "0846",
+  "cycle": {
+    "end_day": 23,
+    "start_day": 24
+  },
+  "latest_statement": {
+    "gmail_message_id": "19f9fb94c81d8117",
+    "period_end": "2026-07-23",
+    "period_start": "2026-06-24",
+    "source_filename": "8791197479959229_23072026.pdf",
+    "statement_date": "2026-07-23"
+  },
+  "schema_version": 1,
+  "status": "confirmed"
+}

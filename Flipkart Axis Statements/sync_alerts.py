@@ -12,11 +12,9 @@ import sys
 from datetime import datetime
 from email.utils import parsedate_to_datetime
 
-# Google OAuth & API Libraries
 try:
     from google.auth.transport.requests import Request
     from google.oauth2.credentials import Credentials
-    from google_auth_oauthlib.flow import InstalledAppFlow
     from googleapiclient.discovery import build
 except ImportError:
     print("=========================================================================")
@@ -28,11 +26,9 @@ except ImportError:
 SCOPES = ['https://www.googleapis.com/auth/gmail.readonly']
 
 SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
-CREDENTIALS_FILE = os.path.join(SCRIPT_DIR, 'credentials.json')
 TOKEN_FILE = os.path.join(SCRIPT_DIR, 'token.json')
 OUTPUT_FILE = os.path.join(SCRIPT_DIR, 'gmail_alerts.json')
 REPORT_SCRIPT = os.path.join(SCRIPT_DIR, 'update_report.py')
-MAX_MATCHING_MESSAGES = 500
 ROOT_DIR = os.path.dirname(SCRIPT_DIR)
 if ROOT_DIR not in sys.path:
     sys.path.insert(0, ROOT_DIR)
@@ -114,51 +110,25 @@ def clean_html(html_text):
     text = re.sub(r'\s+', ' ', text)
     return text.strip()
 
-def parse_alert_amount(subject):
-    """Parse Axis alert amounts without truncating one-decimal values."""
-    amount_match = re.search(r'INR\s*([\d,]+(?:\.\d{1,2})?)', subject, re.IGNORECASE)
-    if not amount_match:
-        amount_match = re.search(r'([\d,]+(?:\.\d{1,2})?)', subject)
-    return float(amount_match.group(1).replace(',', '')) if amount_match else None
-
-def list_matching_message_ids(service, query, max_messages=MAX_MATCHING_MESSAGES):
-    """Return matching Gmail message IDs across pages, capped for safe local runs."""
-    message_ids = []
-    page_token = None
-    while len(message_ids) < max_messages:
-        batch_size = min(100, max_messages - len(message_ids))
-        request = {
-            'userId': 'me',
-            'q': query,
-            'maxResults': batch_size,
-        }
-        if page_token:
-            request['pageToken'] = page_token
-        results = service.users().messages().list(**request).execute()
-        message_ids.extend(message['id'] for message in results.get('messages', []))
-        page_token = results.get('nextPageToken')
-        if not page_token:
-            break
-    return message_ids[:max_messages]
-
 def main():
     service = get_gmail_service()
     if not service:
-        return 1
+        return
         
-    print("Searching Gmail for Axis Card transaction alerts...")
-    query = "from:alerts@axis.bank.in spent on credit card no. XX3164"
+    print("Searching Gmail for Flipkart Axis transaction alerts...")
+    query = "from:alerts@axis.bank.in spent on credit card no. XX6969"
     
     try:
-        message_ids = list_matching_message_ids(service, query)
-        messages = [{'id': message_id} for message_id in message_ids]
+        results = service.users().messages().list(userId='me', q=query, maxResults=100).execute()
+        messages = results.get('messages', [])
         
         parsed_alerts = []
+        message_ids = []
         print(f"Found {len(messages)} matching alert email(s). Extracting details...")
         
         for msg in messages:
             msg_id = msg['id']
-            # Fetch full message payload to extract merchant name from body
+            message_ids.append(msg_id)
             msg_details = service.users().messages().get(
                 userId='me', 
                 id=msg_id, 
@@ -177,12 +147,12 @@ def main():
             # Extract body text and get merchant name
             body_text = get_message_body(payload)
             merchant_name = "Unknown"
-            # Apply exact regex: Merchant Name:\s*\n*\s*([^\n]+)
             m_match = re.search(r'Merchant\s+Name:\s*\n*\s*([^\n]+)', body_text, re.IGNORECASE)
             if m_match:
                 merchant_name = clean_html(m_match.group(1)).strip()
                 merchant_name = re.sub(r'\s+', ' ', merchant_name)
-            else:
+            
+            if merchant_name == "Unknown" or not merchant_name:
                 cleaned_body = clean_html(body_text)
                 m_match_clean = re.search(r'Merchant\s+Name:\s*(.+?)\s*(?:Axis\s+Bank|Date\s*&|Transaction|$)', cleaned_body, re.IGNORECASE)
                 if m_match_clean:
@@ -202,9 +172,13 @@ def main():
                 print(f"Error parsing Date header '{date_header}': {e}")
                 continue
                 
-            # Parse Amount from Subject (integer, one-decimal, or two-decimal values)
-            amount = parse_alert_amount(subject)
-            if amount is not None:
+            # Parse Amount from Subject
+            amount_match = re.search(r'INR\s*([\d,]+(?:\.\d{2})?)', subject, re.IGNORECASE)
+            if not amount_match:
+                amount_match = re.search(r'([\d,]+(?:\.\d{2})?)', subject)
+                
+            if amount_match:
+                amount = float(amount_match.group(1).replace(',', ''))
                 parsed_alerts.append({
                     "subject": subject_with_merchant,
                     "date": date_formatted,
@@ -221,10 +195,10 @@ def main():
         skipped_duplicate_count = max(0, len(messages) - len(card_freshness.unique_alerts(parsed_alerts)))
         card_freshness.write_sync_metadata(
             SCRIPT_DIR,
-            card_name="Airtel Axis Credit Card",
-            card_ending="3164",
+            card_name="Flipkart Axis Credit Card",
+            card_ending="6969",
             source="gmail-api",
-            query='from:alerts@axis.bank.in spent on credit card no. XX3164',
+            query='from:alerts@axis.bank.in spent on credit card no. XX6969',
             alerts=parsed_alerts,
             previous_count=previous_count,
             new_count=max(0, len(parsed_alerts) - previous_count),
@@ -234,10 +208,17 @@ def main():
         print(f"Successfully saved {len(parsed_alerts)} alerts to: {OUTPUT_FILE}")
         print(f"Sync metadata saved → {os.path.join(SCRIPT_DIR, 'sync_metadata.json')}")
         
-        return 0
+        # Run report update script if it exists
+        if os.path.exists(REPORT_SCRIPT):
+            print("Running report update script...")
+            result = subprocess.run(['python3', REPORT_SCRIPT], capture_output=True, text=True)
+            if result.returncode == 0:
+                print(result.stdout)
+            else:
+                print(f"Error updating report:\n{result.stderr}")
+            
     except Exception as e:
         print(f"An error occurred: {e}")
-        return 1
 
 if __name__ == "__main__":
-    sys.exit(main())
+    main()

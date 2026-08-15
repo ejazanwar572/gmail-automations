@@ -1,0 +1,239 @@
+{
+  "alert_count": 15,
+  "annual_fee": {
+    "amount": 999,
+    "eligible_spend": 22288.82,
+    "evidence_source": "HSBC PIN-reset confirmation for card ending 8690 dated 29 June 2026; used as the closest issuance proxy.",
+    "evidence_state": "provisional",
+    "period_end": "2027-06-28",
+    "period_start": "2026-06-29",
+    "remaining_spend_for_waiver": 177711.18,
+    "status": "In progress",
+    "waiver_spend": 200000
+  },
+  "benefits": [
+    {
+      "cap": null,
+      "cap_group_id": "accelerated-live-plus",
+      "earned": 0.0,
+      "evidence_status": "unavailable",
+      "name": "Dining and food delivery",
+      "provisional": false,
+      "rate": 0.1,
+      "remaining": null,
+      "spend": 0.0
+    },
+    {
+      "cap": null,
+      "cap_group_id": "accelerated-live-plus",
+      "earned": 0.0,
+      "evidence_status": "unavailable",
+      "name": "Grocery",
+      "provisional": false,
+      "rate": 0.1,
+      "remaining": null,
+      "spend": 0.0
+    },
+    {
+      "cap": null,
+      "cap_group_id": "accelerated-live-plus",
+      "earned": 0.0,
+      "evidence_status": "unavailable",
+      "name": "Shopping",
+      "provisional": false,
+      "rate": 0.1,
+      "remaining": null,
+      "spend": 0.0
+    },
+    {
+      "cap": null,
+      "cap_group_id": "accelerated-live-plus",
+      "earned": 0.0,
+      "evidence_status": "unavailable",
+      "name": "Utilities",
+      "provisional": false,
+      "rate": 0.1,
+      "remaining": null,
+      "spend": 0.0
+    },
+    {
+      "cap": null,
+      "cap_group_id": null,
+      "earned": 0.0,
+      "evidence_status": "unavailable",
+      "name": "1.5% Other Eligible Spends",
+      "provisional": false,
+      "rate": 0.015,
+      "remaining": null,
+      "spend": 0.0
+    }
+  ],
+  "card": {
+    "ending": "8690",
+    "name": "HSBC Live+ Credit Card"
+  },
+  "cycle": {
+    "end": "2026-09-13",
+    "evidence_status": "confirmed",
+    "source": "HSBC monthly statement artifact 20260713.pdf delivered by HSBC India.",
+    "spend": 0,
+    "start": "2026-08-14",
+    "statement_date": "2026-07-13"
+  },
+  "entitlements": {
+    "lounges": [
+      {
+        "allowance": 1,
+        "available": false,
+        "evidence_status": "unavailable",
+        "id": "domestic-h1",
+        "label": "Domestic lounge \u00b7 Jan\u2013Jun",
+        "period_end": "2026-06-30",
+        "period_start": "2026-01-01",
+        "remaining": null,
+        "used": null
+      },
+      {
+        "allowance": 1,
+        "available": true,
+        "evidence_status": "unavailable",
+        "id": "domestic-h2",
+        "label": "Domestic lounge \u00b7 Jul\u2013Dec",
+        "period_end": "2026-12-31",
+        "period_start": "2026-07-01",
+        "remaining": null,
+        "used": null
+      },
+      {
+        "allowance": 1,
+        "available": false,
+        "evidence_status": "unavailable",
+        "id": "international",
+        "label": "International lounge",
+        "period_end": "2026-12-31",
+        "period_start": "2026-09-01",
+        "remaining": null,
+        "used": null
+      }
+    ]
+  },
+  "evergreen_benefits": [],
+  "evidence": {
+    "variant_status": "confirmed"
+  },
+  "generated_at": "2026-08-14T23:00:46.713550+05:30",
+  "limited_offers": {
+    "fuel": {
+      "days_left": 47,
+      "deadline": "2026-09-30",
+      "evidence_status": "unavailable",
+      "id": "fuel-contactless",
+      "label": "Contactless fuel offer",
+      "offer_ends_on": "2026-12-31",
+      "percent": 0.0,
+      "period_start": "2026-07-26",
+      "progress": 0,
+      "remaining": 10000.0,
+      "reward": 250.0,
+      "source_conflict": true,
+      "status": "In progress",
+      "target": 10000.0
+    }
+  },
+  "period_totals": {
+    "cashback": {
+      "confirmed": 0.0,
+      "confirmed_through": null,
+      "current_cycle": 0.0,
+      "evidence_status": "estimated",
+      "lifetime": 1016.35,
+      "pending": 1016.35
+    },
+    "spend": {
+      "current_cycle": 0,
+      "evidence_status": "estimated",
+      "lifetime": 22288.82,
+      "lifetime_start": "2026-06-29",
+      "tracked_through": "2026-08-13"
+    }
+  },
+  "perks": [
+    {
+      "detail": "Curated dining and lifestyle privileges from 1 August 2026.",
+      "label": "Live+ Reserve dining",
+      "url": "https://www.hsbc.co.in/credit-cards/products/live-plus/"
+    },
+    {
+      "detail": "ITC hotel, Avis, Meet & Assist and concierge benefits remain subject to Visa terms.",
+      "label": "Visa Infinite travel",
+      "url": "https://www.hsbc.co.in/credit-cards/products/live-plus/"
+    },
+    {
+      "detail": "Current partner offers include IHG, Agoda, Ajio Luxe and Tattva Spa.",
+      "label": "Visa Infinite lifestyle",
+      "url": "https://www.hsbc.co.in/credit-cards/products/live-plus/"
+    }
+  ],
+  "policy": {
+    "effective_from": "2026-07-26",
+    "reviewed_at": "2026-07-29",
+    "sources": [
+      {
+        "label": "HSBC Live+ product page",
+        "url": "https://www.hsbc.co.in/credit-cards/products/live-plus/"
+      },
+      {
+        "label": "HSBC Live+ Service Guide",
+        "url": "https://www.hsbc.co.in/content/dam/hsbc/in/documents/credit-cards/live-plus-credit-card-services-guide.pdf"
+      },
+      {
+        "label": "HSBC contactless fuel offer terms",
+        "url": "https://www.hsbc.co.in/content/dam/hsbc/in/documents/credit-cards/offers/visa-platinum-and-liveplus-fuel-contactless-offer-tncs.pdf"
+      }
+    ],
+    "version": "2026-07-26"
+  },
+  "provisional": false,
+  "quarterly_bonus": null,
+  "rewards": null,
+  "run_id": "cac3ac20-ac38-49b6-8a9e-f4bf8f49d60d",
+  "schema_version": 2,
+  "shared_cap": {
+    "bucket_ids": [
+      "Dining and food delivery",
+      "Grocery",
+      "Shopping",
+      "Utilities"
+    ],
+    "cap": 1200.0,
+    "earned": 0.0,
+    "evidence_status": "unavailable",
+    "id": "accelerated-live-plus",
+    "label": "10% accelerated cashback",
+    "period_end": "2026-09-13",
+    "period_start": "2026-08-14",
+    "remaining": 1200.0,
+    "reset_date": "2026-09-14"
+  },
+  "unclassified": {
+    "spend": 0,
+    "transactions": 0
+  },
+  "welcome": {
+    "activation_date": "2026-06-29",
+    "activation_proxy_date": "2026-06-29",
+    "activation_proxy_source": "Supported by HSBC app setup and PIN reset.",
+    "deadline": "2026-07-29",
+    "evidence_source": "Supported by HSBC app setup and PIN reset.",
+    "evidence_state": "provisional",
+    "memberships": [],
+    "notes": [
+      "INR 1,000 cashback requires HSBC India mobile app login and INR 20,000 spend within first 30 days."
+    ],
+    "remaining": 0.0,
+    "reward": 1000,
+    "spend": 20796.46,
+    "status": "Met",
+    "target": 20000
+  }
+}

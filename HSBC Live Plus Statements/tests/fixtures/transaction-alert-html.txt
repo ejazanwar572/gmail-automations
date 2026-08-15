@@ -1,0 +1,16 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>HSBC purchase transaction alert</title>
+  </head>
+  <body>
+    <p>Dear Customer,</p>
+    <p>We write to confirm that your Credit card no ending with 8690,has been used for INR 437.00<br>
+    for payment to BLINKIT<br>
+    on 13 Jul 2026 at 22:19.</p>
+    <p>(This is a system generated communication and hence please do not reply to this<br>
+    email)</p>
+    <p>HSBC Bank</p>
+  </body>
+</html>

@@ -1,0 +1,16 @@
+[
+  {
+    "date": "18/07/2026",
+    "amount": 1857.70,
+    "category": "utilities",
+    "confidence": 1.0,
+    "evidence_source": "Google Messages: matching Axis, Airtel Electricity, and electricity-provider confirmations"
+  },
+  {
+    "date": "15/07/2026",
+    "amount": 919.22,
+    "category": "airtel",
+    "confidence": 1.0,
+    "evidence_source": "User-confirmed Airtel Wi-Fi recharge"
+  }
+]

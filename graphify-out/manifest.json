@@ -1,0 +1,72 @@
+{
+  "Airtel Axis Statements/parse_statements.py": {
+    "mtime": 1780861505.978456,
+    "ast_hash": "3b86dbf4cf2398a0ff6eae6ab216b587",
+    "semantic_hash": ""
+  },
+  "Airtel Axis Statements/run_workflow.py": {
+    "mtime": 1780845484.8209193,
+    "ast_hash": "9892824aad5e856aeb0dc48866426115",
+    "semantic_hash": ""
+  },
+  "Airtel Axis Statements/sync_alerts.py": {
+    "mtime": 1780844613.957507,
+    "ast_hash": "aa51484cf1a507951f02ed81181ad752",
+    "semantic_hash": ""
+  },
+  "Airtel Axis Statements/sync_gmail_mcp.py": {
+    "mtime": 1780861871.628373,
+    "ast_hash": "78ad7a34427901f953042f81d8a77287",
+    "semantic_hash": ""
+  },
+  "Airtel Axis Statements/update_report.py": {
+    "mtime": 1780861909.102762,
+    "ast_hash": "12a3fee77e9833bd726d7f1bd1c08bfa",
+    "semantic_hash": ""
+  },
+  "Airtel Axis Statements/validate_statements.py": {
+    "mtime": 1780861510.3351185,
+    "ast_hash": "459d86533d3e86eab0f43d3f917f1914",
+    "semantic_hash": ""
+  },
+  "SBI Cashback Statements/run_workflow.py": {
+    "mtime": 1780850744.06941,
+    "ast_hash": "3e16666cd4ae4ab81de91bf1fda26ab0",
+    "semantic_hash": ""
+  },
+  "SBI Cashback Statements/sync_alerts.py": {
+    "mtime": 1780850831.0281007,
+    "ast_hash": "e5f71af80699b07d141caa0295d3be8a",
+    "semantic_hash": ""
+  },
+  "SBI Cashback Statements/sync_gmail_mcp.py": {
+    "mtime": 1780861368.7041378,
+    "ast_hash": "d2a089e83559f0c075ef780641d95c81",
+    "semantic_hash": ""
+  },
+  "SBI Cashback Statements/update_report.py": {
+    "mtime": 1780861495.9477599,
+    "ast_hash": "e9ff97d9a4188b93fdfc45d48533644c",
+    "semantic_hash": ""
+  },
+  "SBI Cashback Statements/validate_statements.py": {
+    "mtime": 1780861502.4356105,
+    "ast_hash": "70c49fecdba3045079d34d9ca69eb370",
+    "semantic_hash": ""
+  },
+  ".gemini/skills/cashback-tracker/SKILL.md": {
+    "mtime": 1780845542.986865,
+    "ast_hash": "63fc72d9b59f96d1427648b1cf7aaa73",
+    "semantic_hash": ""
+  },
+  "tasks/lessons.md": {
+    "mtime": 1780846507.311361,
+    "ast_hash": "3df185c20985312c8ae9d54000909fa3",
+    "semantic_hash": ""
+  },
+  "tasks/todo.md": {
+    "mtime": 1780860636.1195462,
+    "ast_hash": "fcbd8bebcbfc0adb4c81b4b155bc6514",
+    "semantic_hash": ""
+  }
+}

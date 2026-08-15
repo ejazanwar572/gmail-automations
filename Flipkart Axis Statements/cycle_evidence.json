@@ -1,0 +1,16 @@
+{
+  "card_ending": "6969",
+  "cycle": {
+    "end_day": 15,
+    "start_day": 16
+  },
+  "latest_statement": {
+    "gmail_message_id": "19f6bdc3e00575b1",
+    "period_end": "2026-07-15",
+    "period_start": "2026-06-17",
+    "source_filename": "Credit Card Statement.pdf",
+    "statement_date": "2026-07-15"
+  },
+  "schema_version": 1,
+  "status": "confirmed"
+}

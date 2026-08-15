@@ -6,13 +6,29 @@ Automatically update the Airtel Axis cashback cap report based on Gmail alerts.
 import os
 import json
 import re
+import sys
 from datetime import datetime, timedelta
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[1]
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
+from card_progress import render_milestone
+from transaction_classifier import classify_transactions
+from period_totals import (
+    calculate_lifetime_cashback,
+    calculate_lifetime_spend,
+    evidence_run_id,
+)
 
 # --- Configuration ---
 PDF_DIR = "/Users/ejazanwar/Documents/Gmail Automations/Airtel Axis Statements"
 ALERTS_FILE = os.path.join(PDF_DIR, "gmail_alerts.json")
 STATEMENTS_DATA_FILE = os.path.join(PDF_DIR, "statements_data.json")
 REPORT_PATH = os.path.join(PDF_DIR, "cashback_cap_report.md")
+CLASSIFICATIONS_FILE = os.path.join(PDF_DIR, "transaction_classifications.json")
+METADATA_FILE = os.path.join(PDF_DIR, "sync_metadata.json")
+PERIOD_TOTALS_FILE = os.path.join(PDF_DIR, "period_totals.json")
 ANNUAL_FEE_WAIVER_TARGET = 200000.00
 
 def load_json(path):
@@ -242,6 +258,7 @@ def decorate_waiver_year(spend_data, start_date, end_date, source):
         **spend_data,
         "source": source,
         "period": format_waiver_period(start_date, end_date),
+        "deadline": end_date.date() if isinstance(end_date, datetime) else end_date,
         "target": ANNUAL_FEE_WAIVER_TARGET,
         "progress_pct": min(100.0, round((eligible / ANNUAL_FEE_WAIVER_TARGET) * 100, 1)),
         "remaining": round(remaining, 2),
@@ -270,6 +287,7 @@ def build_annual_fee_waiver_summary(statements_data, alerts, as_of=None):
         current_source = "posted statements"
 
     return {
+        "as_of": as_of.date() if isinstance(as_of, datetime) else as_of,
         "joining_fee": joining_fee,
         "renewal_fees": renewal_fees,
         "completed_year": decorate_waiver_year(completed_spend, completed_start, completed_end, "posted statements"),
@@ -290,12 +308,14 @@ def format_fee_event(event):
 def update_report():
     """Main function to process alerts and generate the report."""
     alerts = load_json(ALERTS_FILE)
+    classifications = load_json(CLASSIFICATIONS_FILE)
     statements_data = load_json(STATEMENTS_DATA_FILE)
     waiver_summary = build_annual_fee_waiver_summary(statements_data, alerts)
     
     # Load validation report
     val_report_path = os.path.join(PDF_DIR, "validation_report.json")
     val_data = {}
+    val_list = []
     if os.path.exists(val_report_path):
         try:
             with open(val_report_path, 'r') as f:
@@ -350,21 +370,12 @@ def update_report():
             
     current_txs_raw.sort(key=lambda x: x[0])
     
-    # Categorize
-    airtel_txs = []
-    merchant_txs = []
-    general_txs = []
-    
-    for dt, amt, subj, merchant in current_txs_raw:
-        date_str = dt.strftime("%b %d")
-        tx_item = {"date": date_str, "amount": amt, "merchant": merchant}
-        
-        if "AIRTEL" in subj:
-            airtel_txs.append(tx_item)
-        elif any(x in subj for x in ["ZOMATO", "ETERNAL", "SWIGGY", "BIGBASKET"]):
-            merchant_txs.append(tx_item)
-        else:
-            general_txs.append(tx_item)
+    categorized = classify_transactions(current_txs_raw, classifications)
+    airtel_txs = categorized["airtel"]
+    utility_txs = categorized["utilities"]
+    merchant_txs = categorized["merchants"]
+    general_txs = categorized["general"]
+    unclassified_txs = categorized["unclassified"]
             
     # --- Calculations ---
     
@@ -384,8 +395,8 @@ def update_report():
         airtel_cap_note = ""
         airtel_action = f"**Room Available.** Cashback room equals about ₹{(250.00-airtel_cb)/0.25:,.2f} of eligible Airtel spend."
 
-    # 10% Utilities (Shared with Airtel App spends)
-    utility_spend = airtel_spend
+    # 10% Utilities — only transactions backed by utility-specific evidence.
+    utility_spend = sum(t["amount"] for t in utility_txs)
     utility_cb = round(min(utility_spend * 0.10, 250.00), 2)
     utility_remaining = round(max(0.0, 250.00 - utility_cb), 2)
     
@@ -418,10 +429,63 @@ def update_report():
     
     total_june_cb = airtel_cb + utility_cb + merchant_cb + general_cb
     total_capped_cb = airtel_cb + utility_cb + merchant_cb
-    total_unique_spend = airtel_spend + merchant_spend + general_spend
+    unclassified_spend = sum(t["amount"] for t in unclassified_txs)
+    total_unique_spend = airtel_spend + utility_spend + merchant_spend + general_spend + unclassified_spend
     total_remaining_cap = airtel_remaining + utility_remaining + merchant_remaining
     total_capped_cap = 1000.00
     total_capped_pct = (total_capped_cb / total_capped_cap) * 100 if total_capped_cap else 0.0
+
+    metadata = load_json(METADATA_FILE)
+    gate = next((row for row in val_list if row.get("month") == "Freshness / reconciliation gate"), None)
+    if not isinstance(metadata, dict) or not gate or gate.get("validated") is not True or gate.get("freshness", {}).get("ok") is not True:
+        raise RuntimeError("Validated current-run Airtel evidence is required before totals can be generated")
+    lifetime_spend = calculate_lifetime_spend(
+        statements_data, val_list, alerts, waiver_summary["joining_fee"]
+        and parse_statement_date(waiver_summary["joining_fee"]["date"]).date()
+        or datetime(2025, 3, 1).date(),
+    )
+    lifetime_cashback = calculate_lifetime_cashback(
+        statements_data, val_list, alerts, classifications, lifetime_spend["latest_statement_end"],
+    )
+    alert_count = metadata.get("alert_count", metadata.get("unique_alert_count"))
+    run_id = evidence_run_id(metadata)
+    period_totals_artifact = {
+        "schema_version": 1,
+        "run_id": run_id,
+        "alert_count": alert_count,
+        "generated_at": datetime.now().astimezone().isoformat(),
+        "period_totals": {
+            "spend": {
+                "lifetime": lifetime_spend["lifetime"],
+                "current_cycle": round(total_unique_spend, 2),
+                "lifetime_start": (
+                    parse_statement_date(waiver_summary["joining_fee"]["date"]).date()
+                    if waiver_summary["joining_fee"] else datetime(2025, 3, 1).date()
+                ).isoformat(),
+                "tracked_through": lifetime_spend["tracked_through"].isoformat(),
+                "evidence_status": "mixed",
+            },
+            "cashback": {
+                "lifetime": lifetime_cashback["lifetime"],
+                "current_cycle": round(total_june_cb, 2),
+                "confirmed": lifetime_cashback["confirmed"],
+                "pending": lifetime_cashback["pending"],
+                "confirmed_through": lifetime_cashback["confirmed_through"].isoformat(),
+                "lifetime_start": (
+                    parse_statement_date(waiver_summary["joining_fee"]["date"]).date()
+                    if waiver_summary["joining_fee"] else datetime(2025, 3, 1).date()
+                ).isoformat(),
+                "tracked_through": lifetime_spend["tracked_through"].isoformat(),
+                "evidence_status": "mixed",
+            },
+        },
+        "cap_room": {
+            "cap": total_capped_cap,
+            "remaining": round(total_remaining_cap, 2),
+            "remaining_percent": round((total_remaining_cap / total_capped_cap) * 100, 3),
+            "reset_date": next_cycle_start.date().isoformat(),
+        },
+    }
     
     # Generate Section 2 ongoing row values
     june_row_25 = f"✅ ₹250.00 (100%)" if airtel_cb >= 250.00 else f"₹{airtel_cb:,.2f} ({(airtel_cb/250.00)*100:.1f}%)"
@@ -430,9 +494,11 @@ def update_report():
     
     alert_range = format_date_range(current_txs_raw, start_date, end_date)
     transaction_rows = format_transaction_rows([
-        ("25% Airtel + 10% Utilities", airtel_txs),
+        ("25% Airtel", airtel_txs),
+        ("10% Utilities", utility_txs),
         ("10% Merchants", merchant_txs),
         ("1% General", general_txs),
+        ("Needs classification", unclassified_txs),
     ])
     
     # Generate Section 2 verified column values
@@ -490,6 +556,32 @@ def update_report():
         f"{format_amount(current_waiver['remaining'])}. Keep rent and wallet reloads out of this count."
     )
 
+    current_waiver_tracker = render_milestone(
+        current=current_waiver["eligible_spend"],
+        target=current_waiver["target"],
+        format_value=format_amount,
+        period=current_waiver["period"],
+        deadline=current_waiver["deadline"],
+        as_of=waiver_summary["as_of"],
+        supporting_lines=(f"Source: {current_waiver['source']}",),
+    )
+    current_cap_trackers = "\n\n".join(
+        f"### {label}\n\n" + render_milestone(
+            current=earned,
+            target=cap,
+            format_value=format_amount,
+            period=cycle_period,
+            deadline=end_date,
+            as_of=today,
+            supporting_lines=(f"Qualifying spend: {format_amount(spend)}",),
+        )
+        for label, earned, cap, spend in (
+            ("25% Airtel Cashback Cap", airtel_cb, 250.00, airtel_spend),
+            ("10% Utilities Cashback Cap", utility_cb, 250.00, utility_spend),
+            ("10% Merchants Cashback Cap", merchant_cb, 500.00, merchant_spend),
+        )
+    )
+
     content = f"""# Airtel Axis Credit Card: Cashback Cap & Spend Progress Report
 
 **Account Holder:** Md Ejaz Anwar  
@@ -535,6 +627,10 @@ Axis lists the annual fee waiver condition as annual spends over ₹2,00,000, ex
 - Joining fee: {joining_fee_text}
 - Renewal/annual fee: {renewal_fee_text}
 
+### Current Waiver Year
+
+{current_waiver_tracker}
+
 | Waiver Year | Source | Eligible Spend | Target | Progress | Remaining / Surplus | Status |
 | :--- | :--- | ---: | ---: | ---: | ---: | :--- |
 | {completed_waiver['period']} | {completed_waiver['source']} | **{format_amount(completed_waiver['eligible_spend'])}** | {format_amount(completed_waiver['target'])} | {completed_waiver['progress_pct']:.1f}% | +{format_amount(completed_waiver['over_target'])} | {completed_waiver['status']} |
@@ -545,6 +641,8 @@ Axis lists the annual fee waiver condition as annual spends over ₹2,00,000, ex
 ## 4. Current Cycle Progress
 **Cycle:** {cycle_period}  
 **Tracking window used from Gmail alerts:** {alert_range}
+
+{current_cap_trackers}
 
 | Category | Cap | Progress | Est. Cashback | Remaining Cap Room | State |
 | :--- | ---: | ---: | ---: | ---: | :--- |
@@ -562,9 +660,10 @@ This table summarizes transactions tracked via Gmail alerts ({alert_range}) alon
 | Category (Rate) | Max Cap | Tracked Transactions | Total Spend | Cashback Earned | Remaining Cap Room | Status / Spend Action |
 | :--- | :---: | :---: | :---: | :---: | :---: | :--- |
 | **25% Airtel** | **₹250.00** | {format_transaction_count(airtel_txs)} | **₹{airtel_spend:,.2f}** | **₹{airtel_cb:,.2f}**{airtel_cap_note} | **₹{airtel_remaining:,.2f}** | {airtel_action} |
-| **10% Utilities** | **₹250.00** | {format_transaction_count(airtel_txs)} | **₹{utility_spend:,.2f}** | **₹{utility_cb:,.2f}** | **₹{utility_remaining:,.2f}** | {utility_action} |
+| **10% Utilities** | **₹250.00** | {format_transaction_count(utility_txs)} | **₹{utility_spend:,.2f}** | **₹{utility_cb:,.2f}** | **₹{utility_remaining:,.2f}** | {utility_action} |
 | **10% Merchants** | **₹500.00** | {format_transaction_count(merchant_txs)} | **₹{merchant_spend:,.2f}** | **₹{merchant_cb:,.2f}** | **₹{merchant_remaining:,.2f}** | {merchant_action} |
 | **1% General** | **No Cap** | {format_transaction_count(general_txs)} | **₹{general_spend:,.2f}** | **₹{general_cb:,.2f}** | **Unlimited** | **Active.** Flat 1% cashback on other card spends. |
+| **Unclassified Airtel Payments** | **Pending** | {format_transaction_count(unclassified_txs)} | **₹{unclassified_spend:,.2f}** | **₹0.00** | **Pending** | Requires Airtel/SMS biller evidence before cashback is estimated. |
 | **Total** | **₹1,000.00** | - | **₹{total_unique_spend:,.2f}** | **₹{total_june_cb:,.2f}** | **₹{total_remaining_cap:,.2f}** | **Active.** Tracked cashback progress. |
 
 ---
@@ -585,7 +684,13 @@ This table summarizes transactions tracked via Gmail alerts ({alert_range}) alon
 
     with open(REPORT_PATH, 'w') as f:
         f.write(content.strip() + "\n")
+    artifact_tmp = f"{PERIOD_TOTALS_FILE}.tmp"
+    with open(artifact_tmp, "w") as f:
+        json.dump(period_totals_artifact, f, indent=2, sort_keys=True)
+        f.write("\n")
+    os.replace(artifact_tmp, PERIOD_TOTALS_FILE)
     print(f"Report updated successfully: {REPORT_PATH}")
+    print(f"Structured totals updated successfully: {PERIOD_TOTALS_FILE}")
 
 if __name__ == "__main__":
     update_report()

@@ -1,0 +1,520 @@
+# Combined Cashback Tracker
+
+**Account Holder:** Md Ejaz Anwar  
+**Report Generation Date:** July 14, 2026  
+**Cards Tracked:** 🟦 SBI Cashback, 🟥 Airtel Axis, 🟨 Flipkart Axis
+
+---
+
+## 1. Combined Executive Dashboard
+| Card | Current Window | Source Report |
+| :--- | :--- | :--- |
+| 🟦 SBI Cashback | June 24, 2026 – July 23, 2026 | [SBI Cashback Statements/cashback_cap_report.md](SBI%20Cashback%20Statements/cashback_cap_report.md) |
+| 🟥 Airtel Axis | July 13, 2026 – August 12, 2026 | [Airtel Axis Statements/cashback_cap_report.md](Airtel%20Axis%20Statements/cashback_cap_report.md) |
+| 🟨 Flipkart Axis | June 16, 2026 – July 15, 2026 | [Flipkart Axis Statements/cashback_cap_report.md](Flipkart%20Axis%20Statements/cashback_cap_report.md) |
+
+---
+
+## 2. Executive Summaries
+
+### 🟦 SBI Cashback
+
+#### Executive Summary
+| Bucket | Cashback Rate | Statement-Cycle Cap | Achieved So Far | Left | Spend Needed to Fill |
+| :--- | :---: | ---: | ---: | ---: | ---: |
+| 5% Online | 5% | ₹2,000.00 | ₹288.26 (14.4%) | ₹1,711.74 | ₹34,234.80 |
+| 1% Offline | 1% | ₹2,000.00 | ₹0.00 (0.0%) | ₹2,000.00 | ₹200,000.00 |
+| **Total** | Mixed | **₹4,000.00** | **₹288.26 (7.2%)** | **₹3,711.74** | Category-specific |
+
+- **Window:** Current statement-cycle cap window is **June 24, 2026 to July 23, 2026**; 5% online resets on **July 24, 2026**.
+- **Important:** Spend needed is category-specific. Online spend cannot consume the 1% offline cashback room.
+
+---
+
+### 🟥 Airtel Axis
+
+#### Executive Summary
+| Bucket | Cashback Rate | Statement-Cycle Cap | Achieved So Far | Left | Spend Needed to Fill |
+| :--- | :---: | ---: | ---: | ---: | ---: |
+| 25% Airtel | 25% | ₹250.00 | ₹0.00 (0.0%) | ₹250.00 | ₹1,000.00 |
+| 10% Utilities | 10% | ₹250.00 | ₹0.00 (0.0%) | ₹250.00 | ₹2,500.00 |
+| 10% Merchants | 10% | ₹500.00 | ₹0.00 (0.0%) | ₹500.00 | ₹5,000.00 |
+| **Total** | Mixed | **₹1,000.00** | **₹0.00 (0.0%)** | **₹1,000.00** | Category-specific |
+
+- **Window:** Current statement-cycle cap window is **July 13, 2026 – August 12, 2026**.
+- **Important:** Spend needed is category-specific. Extra Airtel spend cannot consume utility or preferred merchant cashback room.
+
+---
+
+### 🟨 Flipkart Axis
+
+#### Executive Summary
+### Flipkart Cashback Cap
+
+`█░░░░░░░░░░░░░░░░░░░ 4.8%`
+
+- Period: June 16, 2026 – September 15, 2026
+
+- Days left: 63
+
+- Progress: ₹191 of ₹4,000
+- Remaining: ₹3,809
+- Status: In progress
+- Current-cycle qualifying spend: ₹3,853
+
+### Myntra Cashback Cap
+
+`██████░░░░░░░░░░░░░░ 32.0%`
+
+- Period: June 16, 2026 – September 15, 2026
+
+- Days left: 63
+
+- Progress: ₹1,282 of ₹4,000
+- Remaining: ₹2,718
+- Status: In progress
+- Current-cycle qualifying spend: ₹17,110
+
+### Cleartrip Cashback Cap
+
+`█████░░░░░░░░░░░░░░░ 23.7%`
+
+- Period: June 16, 2026 – September 15, 2026
+
+- Days left: 63
+
+- Progress: ₹949 of ₹4,000
+- Remaining: ₹3,051
+- Status: In progress
+- Current-cycle qualifying spend: ₹18,992
+
+| Bucket | Cashback Rate | Statement-Quarter Cap | Achieved So Far | Left | Spend Needed to Fill |
+| :--- | :---: | ---: | ---: | ---: | ---: |
+| Flipkart | 5% | ₹4,000.00 | ₹191.00 (4.8%) | ₹3,809.00 | ₹76,180.00 |
+| Myntra | 7.5% | ₹4,000.00 | ₹1,282.00 (32.0%) | ₹2,718.00 | ₹36,240.00 |
+| Cleartrip | 5% | ₹4,000.00 | ₹949.00 (23.7%) | ₹3,051.00 | ₹61,020.00 |
+| **Total** | Mixed | **₹12,000.00** | **₹2,422.00 (20.2%)** | **₹9,578.00** | Category-specific |
+
+- **Window:** Current Axis statement-quarter cap window is **June 16, 2026 to September 15, 2026**.
+- **Important:** Spend needed is category-specific. Extra Flipkart spend cannot consume Myntra or Cleartrip cashback room.
+
+---
+
+---
+
+## 3. Full Stacked Reports
+
+### 1. 🟦 SBI Cashback
+
+### 🟦 SBI Cashback Full Report
+
+**Account Holder:** Md Ejaz Anwar  
+**Credit Card ending in:** XX0846  
+**Report Generation Date:** July 14, 2026  
+**Current Statement Period (Ongoing):** June 24, 2026 – July 23, 2026  
+
+---
+
+## 1. Executive Summary
+| Bucket | Cashback Rate | Statement-Cycle Cap | Achieved So Far | Left | Spend Needed to Fill |
+| :--- | :---: | ---: | ---: | ---: | ---: |
+| 5% Online | 5% | ₹2,000.00 | ₹288.26 (14.4%) | ₹1,711.74 | ₹34,234.80 |
+| 1% Offline | 1% | ₹2,000.00 | ₹0.00 (0.0%) | ₹2,000.00 | ₹200,000.00 |
+| **Total** | Mixed | **₹4,000.00** | **₹288.26 (7.2%)** | **₹3,711.74** | Category-specific |
+
+- **Window:** Current statement-cycle cap window is **June 24, 2026 to July 23, 2026**; 5% online resets on **July 24, 2026**.
+- **Important:** Spend needed is category-specific. Online spend cannot consume the 1% offline cashback room.
+
+---
+
+## 2. Current Cycle Status
+**Statement Cycle:** June 24, 2026 - July 23, 2026  
+**5% online reset date:** July 24, 2026 (10 days from report generation)
+
+### 5% Online Cashback Cap
+
+`███░░░░░░░░░░░░░░░░░ 14.4%`
+
+- Period: June 24, 2026 – July 23, 2026
+
+- Days left: 9
+
+- Progress: ₹288.26 of ₹2,000.00
+- Remaining: ₹1,711.74
+- Status: In progress
+- Qualifying spend: ₹5,765.12
+
+### 1% Offline Cashback Cap
+
+`░░░░░░░░░░░░░░░░░░░░ 0.0%`
+
+- Period: June 24, 2026 – July 23, 2026
+
+- Days left: 9
+
+- Progress: ₹0.00 of ₹2,000.00
+- Remaining: ₹2,000.00
+- Status: In progress
+- Qualifying spend: ₹0.00
+
+| Category | Tracked Transactions | Max Cap | Total Spend | Cashback Earned | Remaining Cap Room | Status |
+| :--- | :---: | ---: | ---: | ---: | ---: | :--- |
+| **5% Online** | 3 transactions | **₹2,000.00** | **₹5,765.12** | **₹288.26** | **₹1,711.74** | ₹1,711.74 cashback room left. |
+| **1% Offline** | 0 transactions | **₹2,000.00** | **₹0.00** | **₹0.00** | **₹2,000.00** | ₹2,000.00 cashback room left; use only if needed. |
+| **0% Excluded** | 0 transactions | **₹0.00** | **₹0.00** | **₹0.00** | **₹0.00** | Excluded from cashback. |
+| **Total** | 3 transactions | **₹4,000.00** | **₹5,765.12** | **₹288.26** | **₹3,711.74** | **Active.** Cashback room remains in both eligible categories. |
+
+---
+
+## 3. Current Cycle Transaction Cap Log
+This table shows estimated cashback by transaction and where the 5% online cap was reached. Transactions after the cap hit show zero incremental 5% cashback.
+
+| Date | Category | Amount | Merchant | Est. Cashback | Cum. Cashback | Cap Status |
+| :--- | :--- | ---: | :--- | ---: | ---: | :--- |
+| Jun 27 | 5% Online | ₹354.30 | Amazon | ₹17.71 | ₹17.71 | Active |
+| Jul 02 | 5% Online | ₹4,586.00 | LandmarkOnlineInd | ₹229.30 | ₹247.01 | Active |
+| Jul 03 | 5% Online | ₹824.82 | Reliance Retail | ₹41.24 | ₹288.25 | Active |
+
+---
+
+## 4. Historical Statement Performance
+Closed statement months below show spend, estimated category cashback, official statement cashback, and whether the 5% online cap was reached.
+
+| Statement Month | 5% Online Spend | Est. 5% Online Cashback | 1% Offline Spend | Est. 1% Offline Cashback | Total Eligible Spend | Statement Cashback | Cap Status |
+| :--- | ---: | ---: | ---: | ---: | ---: | ---: | :--- |
+| **August 2025** | ₹55,823.81 | ₹2,000.00 | ₹815.08 | ₹8.15 | **₹56,638.89** | **₹2,332.00** | ✅ Capped |
+| **September 2025** | ₹6,001.84 | ₹300.09 | ₹801.29 | ₹8.01 | **₹6,803.13** | **₹160.00** | Not capped |
+| **October 2025** | ₹5,903.51 | ₹295.18 | ₹424.50 | ₹4.25 | **₹6,328.01** | **₹250.00** | Not capped |
+| **November 2025** | ₹17,100.79 | ₹855.04 | ₹976.06 | ₹9.76 | **₹18,076.85** | **₹592.00** | Not capped |
+| **December 2025** | ₹19,833.53 | ₹991.68 | ₹745.50 | ₹7.46 | **₹20,579.03** | **₹1,025.00** | Not capped |
+| **January 2026** | ₹10,293.42 | ₹514.67 | ₹990.22 | ₹9.90 | **₹11,283.64** | **₹559.00** | Not capped |
+| **February 2026** | ₹5,383.23 | ₹269.16 | ₹1,318.07 | ₹13.18 | **₹6,701.30** | **₹270.00** | Not capped |
+| **March 2026** | ₹19,099.25 | ₹531.00 | ₹0.00 | ₹0.00 | **₹19,099.25** | **₹531.00** | Not capped |
+| **April 2026** | ₹17,498.74 | ₹599.00 | ₹1,501.08 | ₹0.00 | **₹18,999.82** | **₹599.00** | Not capped |
+| **May 2026** | ₹106,652.07 | ₹2,000.00 | ₹1,918.34 | ₹23.00 | **₹108,570.41** | **₹2,023.00** | ✅ Capped |
+| **June 2026** | ₹61,592.02 | ₹2,000.00 | ₹0.00 | ₹0.00 | **₹61,592.02** | **₹2,004.00** | ✅ Capped |
+
+*Note: Category spend and category cashback are workflow estimates from parsed transactions. Statement Cashback is the official cashback earned value extracted from each statement PDF. Eligible spend excludes payment, cashback-credit, fee, and workflow-excluded categories.*
+
+---
+
+## 5. Annual Fee / Renewal Waiver Tracker
+CASHBACK SBI Card annual/renewal fee ₹999; waiver on annual spends of ₹2,00,000 or more in the preceding year. The tracker excludes non-spend lines such as payments, cashback credits, card fees, GST/fees, EMI accounting lines, and categories already excluded by this workflow.
+
+**Fee evidence from parsed statements**
+
+| Date | Statement | Amount | Evidence |
+| :--- | :--- | ---: | :--- |
+| 23 Aug 25 | August 2025 | ₹999.00 | ANNUAL FEE CHARGED (EXCL TAX 179.82) |
+
+### Current Waiver Year
+
+`████████████████████ 100.0%`
+
+- Period: August 23, 2025 - August 22, 2026
+
+- Days left: Not applicable — milestone met
+
+- Progress: ₹222,073.27 of ₹200,000.00
+- Remaining: ₹0.00
+- Exceeded by: ₹22,073.27
+- Status: Met
+- Source: Gmail alerts
+
+| Waiver Year | Source | Eligible Spend | Target | Progress | Remaining / Surplus | Status |
+| :--- | :--- | ---: | ---: | ---: | ---: | :--- |
+| August 23, 2024 - August 22, 2025 | posted statements | **₹4,212.90** | ₹200,000.00 | 2.1% | ₹195,787.10 left | Not met - fee charged |
+| August 23, 2025 - August 22, 2026 | Gmail alerts | **₹222,073.27** | ₹200,000.00 | 100.0% | +₹22,073.27 | Met |
+
+---
+
+## 6. Notes / Assumptions
+- Current-cycle transactions are based on Gmail alerts from June 27, 2026 – July 3, 2026; posted statement totals can differ after settlement, refunds, or delayed posting.
+- Historical category cashback is a workflow estimate. The `Statement Cashback` column is the official cashback earned value extracted from the statement PDF.
+- Rent, wallet loads, utilities, fuel, education, insurance, tax, payments, cashback credits, and card fees are excluded where this workflow can identify them.
+
+### 2. 🟥 Airtel Axis
+
+### 🟥 Airtel Axis Full Report
+
+**Account Holder:** Md Ejaz Anwar  
+**Credit Card ending in:** XX3164  
+**Report Generation Date:** July 14, 2026  
+**Current Statement Period (Ongoing):** July 13, 2026 – August 12, 2026  
+
+---
+
+## 1. Executive Summary
+| Bucket | Cashback Rate | Statement-Cycle Cap | Achieved So Far | Left | Spend Needed to Fill |
+| :--- | :---: | ---: | ---: | ---: | ---: |
+| 25% Airtel | 25% | ₹250.00 | ₹0.00 (0.0%) | ₹250.00 | ₹1,000.00 |
+| 10% Utilities | 10% | ₹250.00 | ₹0.00 (0.0%) | ₹250.00 | ₹2,500.00 |
+| 10% Merchants | 10% | ₹500.00 | ₹0.00 (0.0%) | ₹500.00 | ₹5,000.00 |
+| **Total** | Mixed | **₹1,000.00** | **₹0.00 (0.0%)** | **₹1,000.00** | Category-specific |
+
+- **Window:** Current statement-cycle cap window is **July 13, 2026 – August 12, 2026**.
+- **Important:** Spend needed is category-specific. Extra Airtel spend cannot consume utility or preferred merchant cashback room.
+
+---
+
+## 2. Closed Statement Summary (2026)
+This table covers completed statement months only. "Earned This Cycle" is the cashback generated by that month's spends, while "Credited on Statement" reflects cashback posted from the prior cycle.
+
+| Statement Month | 25% Airtel Cap | 10% Utility Cap | 10% Preferred Merchant Cap | Earned This Cycle | Credited on Statement | Verification |
+| :--- | ---: | ---: | ---: | ---: | ---: | :--- |
+| **January 2026** | ₹0.00 (0%) | ₹94.00 (37.6%) | ₹0.00 (0%) | **₹94.00** | ₹440.00 | Verified |
+| **February 2026** | ₹0.00 (0%) | ₹111.00 (44.4%) | ₹0.00 (0%) | **₹111.00** | ₹94.00 | Verified |
+| **March 2026** | ₹0.00 (0%) | ₹179.00 (71.6%) | ₹0.00 (0%) | **₹179.00** | ₹111.00 | Verified |
+| **April 2026** | ₹0.00 (0%) | ₹250.00 (100%) | ₹31.00 (6.2%) | **₹281.00** | ₹179.00 | Verified |
+| **May 2026** | ₹250.00 (100%) | ₹180.00 (72.0%) | ₹60.00 (12.0%) | **₹490.00** | ₹281.00 | Verified |
+| **YTD Total (Closed)** | **₹250.00** | **₹814.00** | **₹91.00** | **₹1,155.00** | **₹1,105.00** | Jan-May |
+
+*Note: In May 2026, your ₹1,850.54 Airtel broadband spend qualified for ₹462.63 in cashback, but was capped at the ₹250.00 maximum.*
+
+---
+
+## 3. Annual Fee / Renewal Waiver Tracker
+Axis lists the annual fee waiver condition as annual spends over ₹2,00,000, excluding rent and wallet reloads. This tracker also excludes card fees, GST on fees, EMI accounting lines, and cashback credits from the spend total.
+
+**Fee evidence from parsed statements**
+- Joining fee: 01/03/2025 in April 2025: JOINING FEE ₹500 + GST ₹90 = ₹590
+- Renewal/annual fee: No annual or renewal fee debit found in parsed statements through May 2026.
+
+### Current Waiver Year
+
+`██░░░░░░░░░░░░░░░░░░ 9.5%`
+
+- Period: March 1, 2026 - February 28, 2027
+
+- Days left: 229
+
+- Progress: ₹18,975.16 of ₹200,000
+- Remaining: ₹181,024.84
+- Status: In progress
+- Source: Gmail alerts
+
+| Waiver Year | Source | Eligible Spend | Target | Progress | Remaining / Surplus | Status |
+| :--- | :--- | ---: | ---: | ---: | ---: | :--- |
+| March 1, 2025 - February 28, 2026 | posted statements | **₹309,935.52** | ₹200,000 | 100.0% | +₹109,935.52 | Met |
+| March 1, 2026 - February 28, 2027 | Gmail alerts | **₹18,975.16** | ₹200,000 | 9.5% | ₹181,024.84 left | In progress |
+
+---
+
+## 4. Current Cycle Progress
+**Cycle:** July 13, 2026 – August 12, 2026  
+**Tracking window used from Gmail alerts:** July 13, 2026 – August 12, 2026
+
+### 25% Airtel Cashback Cap
+
+`░░░░░░░░░░░░░░░░░░░░ 0.0%`
+
+- Period: July 13, 2026 – August 12, 2026
+
+- Days left: 29
+
+- Progress: ₹0 of ₹250
+- Remaining: ₹250
+- Status: In progress
+- Qualifying spend: ₹0
+
+### 10% Utilities Cashback Cap
+
+`░░░░░░░░░░░░░░░░░░░░ 0.0%`
+
+- Period: July 13, 2026 – August 12, 2026
+
+- Days left: 29
+
+- Progress: ₹0 of ₹250
+- Remaining: ₹250
+- Status: In progress
+- Qualifying spend: ₹0
+
+### 10% Merchants Cashback Cap
+
+`░░░░░░░░░░░░░░░░░░░░ 0.0%`
+
+- Period: July 13, 2026 – August 12, 2026
+
+- Days left: 29
+
+- Progress: ₹0 of ₹500
+- Remaining: ₹500
+- Status: In progress
+- Qualifying spend: ₹0
+
+| Category | Cap | Progress | Est. Cashback | Remaining Cap Room | State |
+| :--- | ---: | ---: | ---: | ---: | :--- |
+| **Airtel 25%** | ₹250.00 | ₹0.00 (0.0%) | ₹0.00 | ₹250.00 | Open |
+| **Utility 10%** | ₹250.00 | ₹0.00 (0.0%) | ₹0.00 | ₹250.00 | Open |
+| **Merchant 10%** | ₹500.00 | ₹0.00 (0.0%) | ₹0.00 | ₹500.00 | Open |
+| **General 1%** | No cap | - | ₹0.00 | Unlimited | Open |
+| **Total** | ₹1,000.00 | - | ₹0.00 | ₹1,000.00 | In progress |
+
+---
+
+## 5. August 2026 Spends & Cap Progress (Ongoing Cycle)
+This table summarizes transactions tracked via Gmail alerts (July 13, 2026 – August 12, 2026) alongside their category caps, spends, and remaining room. Individual transactions are listed in the next section.
+
+| Category (Rate) | Max Cap | Tracked Transactions | Total Spend | Cashback Earned | Remaining Cap Room | Status / Spend Action |
+| :--- | :---: | :---: | :---: | :---: | :---: | :--- |
+| **25% Airtel** | **₹250.00** | 0 transactions | **₹0.00** | **₹0.00** | **₹250.00** | **Room Available.** Cashback room equals about ₹1,000.00 of eligible Airtel spend. |
+| **10% Utilities** | **₹250.00** | 0 transactions | **₹0.00** | **₹0.00** | **₹250.00** | **Room Available.** Cashback room equals about ₹2,500.00 of eligible utility spend before August 12, 2026. |
+| **10% Merchants** | **₹500.00** | 0 transactions | **₹0.00** | **₹0.00** | **₹500.00** | **Room Available.** Cashback room equals about ₹5,000.00 of eligible Zomato, Swiggy, or BigBasket spend before August 12, 2026. |
+| **1% General** | **No Cap** | 0 transactions | **₹0.00** | **₹0.00** | **Unlimited** | **Active.** Flat 1% cashback on other card spends. |
+| **Total** | **₹1,000.00** | - | **₹0.00** | **₹0.00** | **₹1,000.00** | **Active.** Tracked cashback progress. |
+
+---
+
+## 6. August 2026 Transaction Details
+| Date | Category | Amount | Merchant |
+| :--- | :--- | ---: | :--- |
+| - | - | - | No tracked transactions in this statement cycle. |
+
+---
+
+## 7. Spend Optimization Recommendations
+*   **Use remaining merchant room only for planned spends**: Zomato, Swiggy, or BigBasket purchases still have about ₹5,000.00 of eligible spend room before the 10% merchant cap fills on August 12, 2026.
+*   **Airtel room available**: Eligible Airtel spend room is about ₹1,000.00 before August 12, 2026.
+*   **Prepay Utilities**: If you have a utility bill due soon, paying it before August 12, 2026 via the Airtel Thanks App can use the remaining ₹250.00 of utility cashback.
+*   **Annual fee waiver**: Current tracked eligible spend is ₹18,975.16 against the ₹200,000 waiver target, leaving ₹181,024.84. Keep rent and wallet reloads out of this count.
+
+### 3. 🟨 Flipkart Axis
+
+### 🟨 Flipkart Axis Full Report
+
+**Account Holder:** Md Ejaz Anwar  
+**Credit Card ending in:** XX6969  
+**Report Generation Date:** July 14, 2026  
+**Current Statement Period (Ongoing):** June 16, 2026 – July 15, 2026  
+**Current Axis Statement Quarter:** June 16, 2026 – September 15, 2026 (Statement Quarter 2)  
+
+---
+
+## 1. Executive Summary
+### Flipkart Cashback Cap
+
+`█░░░░░░░░░░░░░░░░░░░ 4.8%`
+
+- Period: June 16, 2026 – September 15, 2026
+
+- Days left: 63
+
+- Progress: ₹191 of ₹4,000
+- Remaining: ₹3,809
+- Status: In progress
+- Current-cycle qualifying spend: ₹3,853
+
+### Myntra Cashback Cap
+
+`██████░░░░░░░░░░░░░░ 32.0%`
+
+- Period: June 16, 2026 – September 15, 2026
+
+- Days left: 63
+
+- Progress: ₹1,282 of ₹4,000
+- Remaining: ₹2,718
+- Status: In progress
+- Current-cycle qualifying spend: ₹17,110
+
+### Cleartrip Cashback Cap
+
+`█████░░░░░░░░░░░░░░░ 23.7%`
+
+- Period: June 16, 2026 – September 15, 2026
+
+- Days left: 63
+
+- Progress: ₹949 of ₹4,000
+- Remaining: ₹3,051
+- Status: In progress
+- Current-cycle qualifying spend: ₹18,992
+
+| Bucket | Cashback Rate | Statement-Quarter Cap | Achieved So Far | Left | Spend Needed to Fill |
+| :--- | :---: | ---: | ---: | ---: | ---: |
+| Flipkart | 5% | ₹4,000.00 | ₹191.00 (4.8%) | ₹3,809.00 | ₹76,180.00 |
+| Myntra | 7.5% | ₹4,000.00 | ₹1,282.00 (32.0%) | ₹2,718.00 | ₹36,240.00 |
+| Cleartrip | 5% | ₹4,000.00 | ₹949.00 (23.7%) | ₹3,051.00 | ₹61,020.00 |
+| **Total** | Mixed | **₹12,000.00** | **₹2,422.00 (20.2%)** | **₹9,578.00** | Category-specific |
+
+- **Window:** Current Axis statement-quarter cap window is **June 16, 2026 to September 15, 2026**.
+- **Important:** Spend needed is category-specific. Extra Flipkart spend cannot consume Myntra or Cleartrip cashback room.
+
+---
+
+## 2. Historical & Ongoing Cap Achievement Summary (2026)
+Below is the status of your monthly cashback caps. The percentages indicate how much of the maximum available cashback cap you successfully captured. A checkmark (✅) indicates that you reached the maximum cap for that category.
+
+| Statement Month | 5% Flipkart Cap | 7.5% Myntra Cap | 5% Cleartrip Cap | Total Cashback Earned | Cashback Credited & Verified? | Quarter Cashback Total |
+| :--- | :---: | :---: | :---: | :---: | :---: | :---: |
+| **January 2026** | ₹195.00 | ₹865.00 | ₹0.00 | **₹1,060.00** | ✅ Yes (₹474.00) | **₹2,689.00** |
+| **February 2026** | ₹439.00 | ₹120.00 | ₹0.00 | **₹559.00** | ✅ Yes (₹1,060.00) | **₹2,689.00** |
+| **March 2026** | ₹1,007.00 | ₹63.00 | ₹0.00 | **₹1,070.00** | ✅ Yes (₹559.00) | **₹2,689.00** |
+| **April 2026** | ₹195.00 | ₹165.00 | ₹0.00 | **₹360.00** | ✅ Yes (₹1,070.00) | **₹4,618.00** |
+| **May 2026** | ₹186.00 | ₹11.00 | ₹3,285.00 | **₹3,482.00** | ✅ Yes (₹360.00) | **₹4,618.00** |
+| **June 2026 *(Est.)*** | ₹500.00 | ₹272.00 | ₹0.00 | ***₹776.00 (Est.)*** | N/A | **₹4,618.00** |
+| **July 2026 *(Ongoing)*** | ₹191.00 (4.8%) | ₹1,282.00 (32.0%) | ₹949.00 (23.7%) | ***₹2,422.00 (Est.)*** | *Pending (Next Statement)* | **₹2,422.00** |
+
+*Note: The ₹4,000 cap is assessed per statement quarter. The current Axis statement quarter 2 window is June 16, 2026 – September 15, 2026.*
+
+---
+
+## 3. Annual Fee / Renewal Waiver Tracker
+Flipkart Axis annual fee ₹500; waiver on annual spends greater than ₹3,50,000, excluding rent and wallet loads. Missing later annual fee debits are treated as not found in parsed statements, not automatic proof of waiver.
+
+**Fee evidence from parsed statements**
+- 09/12/2022 in December 2022: ANNUAL FEE ₹500 + GST ₹90 = ₹590
+- 08/12/2023 in December 2023: ANNUAL FEE ₹500 + GST ₹90 = ₹590
+
+### Current Waiver Year
+
+`███████████░░░░░░░░░ 57.5%`
+
+- Period: December 8, 2025 - December 7, 2026
+
+- Days left: 146
+
+- Progress: ₹201,106 of ₹350,000
+- Remaining: ₹148,894
+- Status: In progress
+- Source: Gmail alerts
+
+| Waiver Year | Source | Eligible Spend | Target | Progress | Remaining / Surplus | Status |
+| :--- | :--- | ---: | ---: | ---: | ---: | :--- |
+| December 8, 2024 - December 7, 2025 | posted statements | **₹669,379.03** | ₹350,000 | 100.0% | +₹319,379.03 | Met |
+| December 8, 2025 - December 7, 2026 | Gmail alerts | **₹201,106** | ₹350,000 | 57.5% | ₹148,894 left | In progress |
+
+---
+
+## 4. July 2026 Spends & Cap Progress (Ongoing Cycle)
+This table summarizes transactions tracked via Gmail alerts (June 17, 2026 – June 28, 2026) alongside their category caps, spends, and remaining room. Individual transactions are listed in the next section.
+
+| Category (Rate) | Max Statement-Quarter Cap | Tracked Transactions | Total Spend | Cashback Earned | Remaining Statement-Quarter Cap Room | Status / Spend Action |
+| :--- | :---: | :---: | :---: | :---: | :---: | :--- |
+| **5% Flipkart** | **₹4,000.00** | 3 transactions | **₹3,853.00** | **₹191.00** | **₹3,809.00** | **Room Available.** Cashback room equals about ₹76,180.00 of eligible Flipkart spend before July 15, 2026. |
+| **7.5% Myntra** | **₹4,000.00** | 2 transactions | **₹17,110.00** | **₹1,282.00** | **₹2,718.00** | **Room Available.** Cashback room equals about ₹36,240.00 of eligible Myntra spend before July 15, 2026. |
+| **5% Cleartrip** | **₹4,000.00** | 1 transaction | **₹18,992.00** | **₹949.00** | **₹3,051.00** | **Room Available.** Cashback room equals about ₹61,020.00 of eligible Cleartrip spend before July 15, 2026. |
+| **4% Preferred** | **No Cap** | 0 transactions | **₹0.00** | **₹0.00** | **Unlimited** | **Active.** Swiggy, Uber, PVR, Cult.fit. |
+| **1% General** | **No Cap** | 0 transactions | **₹0.00** | **₹0.00** | **Unlimited** | **Active.** Flat 1% cashback on other card spends. |
+| **0% Excluded** | **No Cap** | 0 transactions | **₹0.00** | **₹0.00** | **None** | **Excluded.** EMIs, rent, gold, fuel, utilities. |
+| **Total** | **₹12,000.00** | - | **₹39,955.00** | **₹2,422.00** | **₹9,578.00** | **Active.** Tracked cashback progress. |
+
+---
+
+## 5. July 2026 Transaction Details
+| Date | Category | Amount | Merchant |
+| :--- | :--- | ---: | :--- |
+| Jun 26 | Flipkart | ₹1 | Flipkart |
+| Jun 28 | Flipkart | ₹113 | Flipkart |
+| Jun 28 | Flipkart | ₹3,739 | Flipkart |
+| Jun 17 | Myntra | ₹15,405 | Myntra |
+| Jun 28 | Myntra | ₹1,705 | Myntra |
+| Jun 18 | Cleartrip | ₹18,992 | Cleartrip |
+
+---
+
+## 6. Spend Optimization Recommendations
+*   **Use Flipkart only for planned purchases**: Flipkart has ₹3,809.00 cashback room left, equivalent to about ₹76,180.00 of eligible spend before the Statement Quarter 2 cap fills.
+*   **Use Myntra selectively**: Myntra has ₹2,718.00 cashback room left, equivalent to about ₹36,240.00 of eligible spend before the Statement Quarter 2 cap fills.
+*   **Avoid large Cleartrip bookings**: Cleartrip has only ₹3,051.00 cashback room left, equivalent to about ₹61,020.00 of eligible spend. Defer larger bookings until **July 16, 2026** to avoid losing cashback to the Statement Quarter 2 cap.

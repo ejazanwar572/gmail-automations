@@ -1,0 +1,26 @@
+{
+  "card_ending": "3366",
+  "card_name": "PhonePe SBI Card SELECT BLACK",
+  "issuer": "SBI Card",
+  "variant_status": "confirmed",
+  "variant_resolution": {
+    "status": "confirmed",
+    "evidence": [
+      "Official SBI membership e-kit identifies PhonePe SBI Card SELECT BLACK.",
+      "Card lifecycle evidence is associated with SBI card ending 3366."
+    ]
+  },
+  "cycle": {
+    "statement_day": 23,
+    "evidence_status": "confirmed",
+    "source": "PhonePe SBI statement PDF for 24 May 2026 to 23 July 2026.",
+    "statement_date": "2026-07-23"
+  },
+  "annual_fee": { "amount": 1499, "waiver_spend": 300000, "period_start": "2026-06-29", "period_end": "2027-06-28" },
+  "welcome": { "reward": 1500, "window_days": 45, "activation_proxy_date": "2026-06-29", "notes": ["INR 1,500 PhonePe voucher after qualifying membership-fee and first-bill evidence."] },
+  "annual_milestone": { "spend_target": 500000, "reward": "INR 5,000 travel voucher" },
+  "sources": [
+    { "label": "PhonePe SELECT BLACK product page", "url": "https://www.phonepe.com/credit-cards/phonepe-sbi-card-select-black-credit-card/" },
+    { "label": "Official SBI SELECT BLACK membership kit", "url": "https://www.sbicard.com/sbi-card-en/assets/docs/pdf/ekit-tncs/PhonePe-select-ekit.pdf" }
+  ]
+}

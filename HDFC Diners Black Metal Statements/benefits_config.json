@@ -1,0 +1,95 @@
+{
+  "annual_fee": {
+    "amount": 10000,
+    "evidence_source": "HDFC approval email dated 25 June 2026 (application reference P26F18673727H0S2).",
+    "evidence_state": "provisional",
+    "notes": [
+      "Renewal fee is waived on INR 8 lakh spends in 12 months; taxes are extra."
+    ],
+    "period_end": "2027-06-24",
+    "period_start": "2026-06-25",
+    "waiver_spend": 800000
+  },
+  "benefit_rules": [
+    {
+      "match": [
+        "DEFAULT"
+      ],
+      "monthly_cap": null,
+      "name": "Eligible Reward Points Spend",
+      "rate": 0.0
+    }
+  ],
+  "benefits": [
+    "SmartBuy hotel redemptions up to Rs.1/RP and flight/hotel accelerated rewards as per official page.",
+    "Airmiles transfer value up to 1 mile/RP, vouchers up to Rs.0.50/RP, cashback up to Rs.0.30/RP.",
+    "2% foreign currency markup, unlimited lounge access, and 6 complimentary golf games per quarter."
+  ],
+  "card_ending": "2360",
+  "card_name": "HDFC Diners Black Metal Credit Card",
+  "cycle": {
+    "end": "2026-07-13",
+    "evidence_status": "confirmed",
+    "source": "HDFC Diners Black statement PDF for 14 June 2026 to 13 July 2026.",
+    "start": "2026-06-14",
+    "statement_date": "2026-07-13"
+  },
+  "issuer": "HDFC Bank",
+  "transaction_order": "desc",
+  "reward_model": {
+    "accelerated_monthly_cap": 10000,
+    "airmile_value_per_point": 1.0,
+    "base_points_per_150": 5,
+    "cashback_value_per_point": 0.3,
+    "confirmed_statement_artifact": "statement_rewards.json",
+    "smartbuy_value_per_point": 1.0,
+    "smartbuy_classifications": {
+      "emt_flight_2026_07_15": {
+        "classification": "SmartBuy flight",
+        "evidence": "explicit transaction allowlist",
+        "reward_eligible": true,
+        "message_id": "19f66341fc43a5d0",
+        "accelerated_multiplier": 4
+      },
+      "yatra_flight_2026_07_08": {
+        "classification": "SmartBuy flight",
+        "evidence": "explicit transaction allowlist",
+        "reward_eligible": true,
+        "message_id": "19f40a4f2c112dbc",
+        "accelerated_multiplier": 4
+      }
+    },
+    "voucher_value_per_point": 0.5
+  },
+  "quarterly_bonus": {
+    "bonus_points": 10000,
+    "notes": [
+      "10,000 bonus reward points require INR 4 lakh eligible spend in a calendar quarter."
+    ],
+    "period_type": "calendar_quarter",
+    "spend_target": 400000
+  },
+  "sources": [
+    {
+      "label": "HDFC Diners Black Metal official product page",
+      "note": "Fee, waiver, reward redemption value, forex markup, welcome, lounge, and golf benefits source.",
+      "url": "https://www.hdfc.bank.in/credit-cards/diners-club-black-metal-edition-credit-card"
+    }
+  ],
+  "variant_status": "confirmed",
+  "welcome": {
+    "activation_proxy_date": "2026-06-30",
+    "activation_proxy_source": "HDFC MyCards control setting confirmation for xxxx2360 at 18:43 IST, followed by a successful card authorization at 18:47 IST.",
+    "evidence_state": "provisional",
+    "memberships": [
+      "Club Marriott",
+      "Amazon Prime",
+      "Swiggy One"
+    ],
+    "notes": [
+      "Spend INR 1.5 lakh within first 90 days for the listed welcome memberships on the official HDFC page."
+    ],
+    "spend_target": 150000,
+    "window_days": 90
+  }
+}

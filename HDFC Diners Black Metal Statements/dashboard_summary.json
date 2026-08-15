@@ -1,0 +1,105 @@
+{
+  "alert_count": 18,
+  "annual_fee": {
+    "amount": 10000,
+    "eligible_spend": 173625.59,
+    "evidence_source": "HDFC approval email dated 25 June 2026 (application reference P26F18673727H0S2).",
+    "evidence_state": "provisional",
+    "period_end": "2027-06-24",
+    "period_start": "2026-06-25",
+    "remaining_spend_for_waiver": 626374.41,
+    "status": "In progress",
+    "waiver_spend": 800000
+  },
+  "benefits": [
+    {
+      "cap": null,
+      "earned": 0.0,
+      "name": "Eligible Reward Points Spend",
+      "provisional": false,
+      "remaining": null,
+      "spend": 0.0
+    }
+  ],
+  "card": {
+    "ending": "2360",
+    "name": "HDFC Diners Black Metal Credit Card"
+  },
+  "cycle": {
+    "end": "2026-09-13",
+    "evidence_status": "confirmed",
+    "source": "HDFC Diners Black statement PDF for 14 June 2026 to 13 July 2026.",
+    "spend": 0,
+    "start": "2026-08-14",
+    "statement_date": "2026-07-13"
+  },
+  "evergreen_benefits": [
+    "SmartBuy hotel redemptions up to Rs.1/RP and flight/hotel accelerated rewards as per official page.",
+    "Airmiles transfer value up to 1 mile/RP, vouchers up to Rs.0.50/RP, cashback up to Rs.0.30/RP.",
+    "2% foreign currency markup, unlimited lounge access, and 6 complimentary golf games per quarter."
+  ],
+  "evidence": {
+    "variant_status": "confirmed"
+  },
+  "generated_at": "2026-08-14T22:57:54.862789+05:30",
+  "provisional": false,
+  "quarterly_bonus": {
+    "bonus_points": 10000,
+    "deadline": "2026-09-30",
+    "period_start": "2026-07-01",
+    "remaining": 236692.41,
+    "spend": 163307.59,
+    "status": "In progress",
+    "target": 400000.0
+  },
+  "rewards": {
+    "accelerated_cap": {
+      "cap": 10000,
+      "days_remaining": 17,
+      "earned": 0,
+      "evidence_status": "unavailable",
+      "month_end": "2026-08-31",
+      "month_start": "2026-08-01",
+      "remaining": 10000,
+      "remaining_percent": 100.0,
+      "reset_date": "2026-09-01"
+    },
+    "base_points": 4900,
+    "lifetime_points": {
+      "accelerated": 7220,
+      "base": 4900,
+      "bonus": 3,
+      "evidence_status": "mixed",
+      "total": 12123
+    },
+    "lifetime_spend": 173625.59,
+    "post_statement_points": {
+      "accelerated": 2620,
+      "base": 655
+    },
+    "statement_through": "2026-07-13"
+  },
+  "run_id": "91e42a55-eb3d-48a5-b75e-2e60da2ef717",
+  "schema_version": 1,
+  "welcome": {
+    "activation_date": "2026-06-30",
+    "activation_proxy_date": "2026-06-30",
+    "activation_proxy_source": "HDFC MyCards control setting confirmation for xxxx2360 at 18:43 IST, followed by a successful card authorization at 18:47 IST.",
+    "deadline": "2026-09-28",
+    "evidence_source": "HDFC MyCards control setting confirmation for xxxx2360 at 18:43 IST, followed by a successful card authorization at 18:47 IST.",
+    "evidence_state": "provisional",
+    "memberships": [
+      "Club Marriott",
+      "Amazon Prime",
+      "Swiggy One"
+    ],
+    "notes": [
+      "Spend INR 1.5 lakh within first 90 days for the listed welcome memberships on the official HDFC page."
+    ],
+    "remaining": 0.0,
+    "reward": null,
+    "spend": 173625.59,
+    "status": "Met",
+    "target": 150000
+  }
+}

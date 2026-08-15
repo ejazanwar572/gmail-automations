@@ -6,8 +6,15 @@ Automatically update the SBI Cashback cap report based on Gmail alerts and state
 import os
 import re
 import json
+import sys
 from datetime import datetime, timedelta
+from pathlib import Path
 from pypdf import PdfReader
+
+ROOT = Path(__file__).resolve().parents[1]
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
+from card_progress import render_milestone
 
 PDF_DIR = "/Users/ejazanwar/Documents/Gmail Automations/SBI Cashback Statements"
 ALERTS_FILE = os.path.join(PDF_DIR, "gmail_alerts.json")
@@ -318,6 +325,7 @@ def decorate_sbi_waiver_year(spend_data, start_date, end_date, source):
         **spend_data,
         "source": source,
         "period": format_waiver_period(start_date, end_date),
+        "deadline": end_date.date() if isinstance(end_date, datetime) else end_date,
         "target": SBI_ANNUAL_FEE_WAIVER_TARGET,
         "progress_pct": min(100.0, round((eligible / SBI_ANNUAL_FEE_WAIVER_TARGET) * 100, 1)),
         "remaining": round(remaining, 2),
@@ -351,6 +359,7 @@ def build_annual_fee_waiver_summary(statements_data, alerts, as_of=None):
         completed_year["status"] = "Not met - fee charged" if fee_events else "Incomplete evidence"
 
     return {
+        "as_of": as_of.date() if isinstance(as_of, datetime) else as_of,
         "rule_label": "CASHBACK SBI Card annual/renewal fee ₹999; waiver on annual spends of ₹2,00,000 or more in the preceding year.",
         "fee_events": fee_events,
         "blocked_reason": blocked_reason,
@@ -380,6 +389,15 @@ def format_waiver_delta(year):
 def format_annual_fee_waiver_section(summary, section_number=6):
     completed = summary["completed_year"]
     current = summary["current_year"]
+    current_tracker = render_milestone(
+        current=current["eligible_spend"],
+        target=current["target"],
+        format_value=format_amount,
+        period=current["period"],
+        deadline=current["deadline"],
+        as_of=summary["as_of"],
+        supporting_lines=(f"Source: {current['source']}",),
+    )
     return f"""## {section_number}. Annual Fee / Renewal Waiver Tracker
 {summary['rule_label']} The tracker excludes non-spend lines such as payments, cashback credits, card fees, GST/fees, EMI accounting lines, and categories already excluded by this workflow.
 
@@ -388,6 +406,10 @@ def format_annual_fee_waiver_section(summary, section_number=6):
 | Date | Statement | Amount | Evidence |
 | :--- | :--- | ---: | :--- |
 {format_fee_evidence_rows(summary["fee_events"])}
+
+### Current Waiver Year
+
+{current_tracker}
 
 | Waiver Year | Source | Eligible Spend | Target | Progress | Remaining / Surplus | Status |
 | :--- | :--- | ---: | ---: | ---: | ---: | :--- |
@@ -704,6 +726,21 @@ def update_report():
     executive_summary = build_summary(june_online_cb, june_offline_cb, june_total_cb, start_date, end_date, reset_date)
     days_until_reset = max(0, (reset_date.date() - datetime.now().date()).days)
     reset_countdown = f"{days_until_reset} day" if days_until_reset == 1 else f"{days_until_reset} days"
+    cashback_trackers = "\n\n".join(
+        f"### {label} Cashback Cap\n\n" + render_milestone(
+            current=earned,
+            target=2000.00,
+            format_value=format_amount,
+            period=f"{format_long_date(start_date)} – {format_long_date(end_date)}",
+            deadline=end_date,
+            as_of=today,
+            supporting_lines=(f"Qualifying spend: {format_amount(spend)}",),
+        )
+        for label, earned, spend in (
+            ("5% Online", june_online_cb, june_online_spend),
+            ("1% Offline", june_offline_cb, june_offline_spend),
+        )
+    )
     
     # 2. Historical calculations from statement PDFs
     historical_months = get_historical_statement_months(statements_data)
@@ -739,6 +776,8 @@ def update_report():
 ## 2. Current Cycle Status
 **Statement Cycle:** {format_long_date(start_date)} - {format_long_date(end_date)}  
 **5% online reset date:** {format_long_date(reset_date)} ({reset_countdown} from report generation)
+
+{cashback_trackers}
 
 | Category | Tracked Transactions | Max Cap | Total Spend | Cashback Earned | Remaining Cap Room | Status |
 | :--- | :---: | ---: | ---: | ---: | ---: | :--- |

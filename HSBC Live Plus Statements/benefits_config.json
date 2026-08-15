@@ -1,0 +1,173 @@
+{
+  "annual_fee": {
+    "amount": 999,
+    "evidence_source": "HSBC PIN-reset confirmation for card ending 8690 dated 29 June 2026; used as the closest issuance proxy.",
+    "evidence_state": "provisional",
+    "notes": [
+      "Annual fee is waived after annual spends above INR 200,000."
+    ],
+    "period_end": "2027-06-28",
+    "period_start": "2026-06-29",
+    "waiver_spend": 200000
+  },
+  "benefit_rules": [
+    {
+      "match": [
+        "ZOMATO",
+        "SWIGGY",
+        "BLINK",
+        "GROCERY",
+        "BIGBASKET",
+        "RESTAURANT",
+        "DINING",
+        "FOOD"
+      ],
+      "monthly_cap": 1200,
+      "name": "10% Dining, Food Delivery and Grocery",
+      "rate": 0.1
+    },
+    {
+      "match": [
+        "DEFAULT"
+      ],
+      "monthly_cap": null,
+      "name": "1.5% Other Eligible Spends",
+      "rate": 0.015
+    }
+  ],
+  "cashback_policy": {
+    "version": "2026-07-26",
+    "effective_from": "2026-07-26",
+    "reviewed_at": "2026-07-29",
+    "accelerated_rate": 0.1,
+    "accelerated_cap": 1200,
+    "standard_rate": 0.015,
+    "categories": {
+      "Dining and food delivery": {
+        "mccs": ["5811", "5812", "5813", "5814"],
+        "keywords": ["ZOMATO", "SWIGGY", "RESTAURANT", "DINING", "FOOD"]
+      },
+      "Grocery": {
+        "mccs": ["5411", "5422", "5441", "5451", "5462", "5499", "5921"],
+        "keywords": ["BLINK", "BIGBASKET", "GROCERY", "ZEPTO"]
+      },
+      "Shopping": {
+        "mccs": [
+          "4812", "5261", "5309", "5310", "5311", "5331", "5399", "5611",
+          "5621", "5631", "5641", "5651", "5655", "5661", "5681", "5691",
+          "5697", "5698", "5699", "5732", "5735", "5931", "5933", "5941",
+          "5945", "5947", "5948", "5950", "5964", "5965", "5969", "5977",
+          "5992", "5993", "5997", "5998", "5999", "7251", "7296", "7622",
+          "7631"
+        ],
+        "keywords": ["SHOPPING", "ELECTRONICS", "APPAREL", "CLOTHING"]
+      },
+      "Utilities": {
+        "mccs": ["4814", "4900"],
+        "keywords": ["UTILITY", "UTILITIES", "ELECTRICITY", "TELECOM"]
+      }
+    },
+    "excluded_mccs": [
+      "4111", "4784", "4829", "5094", "5172", "5300",
+      "5541", "5542", "5552", "5932", "5937", "5944", "5960", "5983",
+      "6010", "6011", "6012", "6051", "6211", "6300", "6513", "6540",
+      "7012", "7322", "7349", "7995", "8062", "8398", "8641"
+    ],
+    "merchant_overrides": {
+      "standard": ["AMAZON", "FLIPKART"],
+      "temporary_accelerated": [
+        {
+          "merchant": "MYNTRA",
+          "through": "2026-10-31",
+          "category": "Shopping"
+        }
+      ]
+    },
+    "fuel_offer": {
+      "effective_from": "2026-07-26",
+      "ends_on": "2026-12-31",
+      "eligible_mccs": ["5541", "5542", "5983"],
+      "minimum_transaction": 1000,
+      "maximum_transaction": 5000,
+      "quarterly_target": 10000,
+      "reward": 250,
+      "source_conflict": true
+    },
+    "lounge": {
+      "domestic_annual": 2,
+      "domestic_per_half_year": 1,
+      "international_annual": 1,
+      "international_available_from": "2026-09-01"
+    },
+    "sources": [
+      {
+        "label": "HSBC Live+ product page",
+        "url": "https://www.hsbc.co.in/credit-cards/products/live-plus/"
+      },
+      {
+        "label": "HSBC Live+ Service Guide",
+        "url": "https://www.hsbc.co.in/content/dam/hsbc/in/documents/credit-cards/live-plus-credit-card-services-guide.pdf"
+      },
+      {
+        "label": "HSBC contactless fuel offer terms",
+        "url": "https://www.hsbc.co.in/content/dam/hsbc/in/documents/credit-cards/offers/visa-platinum-and-liveplus-fuel-contactless-offer-tncs.pdf"
+      }
+    ]
+  },
+  "perks": [
+    {
+      "label": "Live+ Reserve dining",
+      "detail": "Curated dining and lifestyle privileges from 1 August 2026.",
+      "url": "https://www.hsbc.co.in/credit-cards/products/live-plus/"
+    },
+    {
+      "label": "Visa Infinite travel",
+      "detail": "ITC hotel, Avis, Meet & Assist and concierge benefits remain subject to Visa terms.",
+      "url": "https://www.hsbc.co.in/credit-cards/products/live-plus/"
+    },
+    {
+      "label": "Visa Infinite lifestyle",
+      "detail": "Current partner offers include IHG, Agoda, Ajio Luxe and Tattva Spa.",
+      "url": "https://www.hsbc.co.in/credit-cards/products/live-plus/"
+    }
+  ],
+  "card_ending": "8690",
+  "card_name": "HSBC Live+ Credit Card",
+  "cycle": {
+    "end": "2026-07-13",
+    "evidence_status": "confirmed",
+    "source": "HSBC monthly statement artifact 20260713.pdf delivered by HSBC India.",
+    "start": "2026-06-14",
+    "statement_date": "2026-07-13"
+  },
+  "issuer": "HSBC India",
+  "sources": [
+    {
+      "label": "HSBC Live+ official product page",
+      "note": "Fees, welcome benefit, cashback rates, monthly cap, and annual waiver source.",
+      "url": "https://www.hsbc.co.in/credit-cards/products/live-plus/"
+    },
+    {
+      "label": "HSBC Live+ Service Guide",
+      "note": "Official MCC eligibility, exclusions, lounge benefits, and cashback illustration.",
+      "url": "https://www.hsbc.co.in/content/dam/hsbc/in/documents/credit-cards/live-plus-credit-card-services-guide.pdf"
+    },
+    {
+      "label": "HSBC contactless fuel offer terms",
+      "note": "Fuel transaction thresholds, eligible MCCs, quarterly target, and offer validity.",
+      "url": "https://www.hsbc.co.in/content/dam/hsbc/in/documents/credit-cards/offers/visa-platinum-and-liveplus-fuel-contactless-offer-tncs.pdf"
+    }
+  ],
+  "variant_status": "confirmed",
+  "welcome": {
+    "activation_proxy_date": "2026-06-29",
+    "activation_proxy_source": "Supported by HSBC app setup and PIN reset.",
+    "evidence_state": "provisional",
+    "reward": 1000,
+    "notes": [
+      "INR 1,000 cashback requires HSBC India mobile app login and INR 20,000 spend within first 30 days."
+    ],
+    "spend_target": 20000,
+    "window_days": 30
+  }
+}
