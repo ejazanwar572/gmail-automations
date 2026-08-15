@@ -68,7 +68,7 @@ def clean_price(price_str):
         return None
 
 def compare_prices(target_location=None):
-    """Calculates price drops and historical comparisons per location directly from the SQLite database."""
+    """Calculates and displays ONLY price drops per location directly from the SQLite database."""
     if not os.path.exists(DB_PATH):
         print("No database found yet. Run a scraper command first (e.g. python3 instamart_scraper.py)!")
         return
@@ -97,12 +97,12 @@ def compare_prices(target_location=None):
         quantity,
         previous_price,
         price as current_price,
-        (previous_price - price) as price_change,
-        ROUND(((previous_price - price) / previous_price) * 100, 2) as change_percentage,
+        (previous_price - price) as price_drop,
+        ROUND(((previous_price - price) / previous_price) * 100, 2) as drop_percentage,
         previous_time,
         scraped_at as current_time
     FROM PriceHistory
-    WHERE previous_price IS NOT NULL
+    WHERE previous_price IS NOT NULL AND (previous_price - price) > 0
     """
     if target_location:
         query += " AND location LIKE ?"
@@ -113,38 +113,29 @@ def compare_prices(target_location=None):
     rows = cursor.fetchall()
     
     if not rows:
-        print("\n--- Price Comparison Summary ---")
-        print("No price changes detected yet for this location. Run the scraper across different runs to build comparison history!")
+        print("\n==================================================")
+        print("            PRICE DROP SUMMARY                    ")
+        print("==================================================")
+        print("No price drops detected for your watchlist items.")
+        print("==================================================\n")
         conn.close()
         return
 
     print("\n==================================================")
-    print("        PRICE COMPARISON & DROP SUMMARY           ")
+    print("            PRICE DROP SUMMARY                    ")
     print("==================================================")
-    
-    drops = 0
-    increases = 0
-    unchanged = 0
     
     for r in rows:
         prod_id, loc, name, qty, old_p, new_p, diff, pct, old_t, new_t = r
-        if diff > 0:
-            drops += 1
-            print(f"🎉 PRICE DROP! [{loc}] [{qty}] {name}")
-            print(f"   Old Price: ₹{old_p} ({old_t})")
-            print(f"   New Price: ₹{new_p} ({new_t})")
-            print(f"   SAVINGS:   ₹{diff:.2f} ({pct}% price drop!)\n")
-        elif diff < 0:
-            increases += 1
-            print(f"⚠️ Price Increase: [{loc}] [{qty}] {name}")
-            print(f"   Old Price: ₹{old_p} | New Price: ₹{new_p} (+₹{abs(diff):.2f})\n")
-        else:
-            unchanged += 1
-            print(f"↔️ Price Unchanged: [{loc}] [{qty}] {name} (₹{new_p})\n")
+        print(f"🎉 PRICE DROP! [{loc}] [{qty}] {name}")
+        print(f"   Old Price: ₹{old_p} ({old_t})")
+        print(f"   New Price: ₹{new_p} ({new_t})")
+        print(f"   SAVINGS:   ₹{diff:.2f} ({pct}% price drop!)\n")
             
-    print(f"Summary: {drops} Price Drops | {increases} Price Increases | {unchanged} Unchanged | {len(rows)} Total History Matches")
+    print(f"Total Price Drops Found: {len(rows)}")
     print("==================================================\n")
     conn.close()
+
 
 def main():
     parser = argparse.ArgumentParser(description="Swiggy Instamart Multi-Location Live Price Scraper & Tracker")
