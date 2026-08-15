@@ -10,6 +10,7 @@ import re
 import urllib.parse
 import sys
 import os
+import argparse
 
 # Dynamically resolve instamart_prices.db in the same directory as this script
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -36,7 +37,7 @@ def init_db():
             web_link TEXT,
             image_url TEXT,
             scraped_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-            PRIMARY KEY (product_id, scraped_at)
+            PRIMARY KEY (product_id, location, scraped_at)
         )
     """)
     conn.commit()
@@ -66,8 +67,8 @@ def clean_price(price_str):
     except ValueError:
         return None
 
-def compare_prices():
-    """Calculates price drops and historical comparisons directly from the SQLite database."""
+def compare_prices(target_location=None):
+    """Calculates price drops and historical comparisons per location directly from the SQLite database."""
     if not os.path.exists(DB_PATH):
         print("No database found yet. Run a scraper command first (e.g. python3 instamart_scraper.py)!")
         return
@@ -79,16 +80,19 @@ def compare_prices():
     WITH PriceHistory AS (
         SELECT 
             product_id,
+            search_query,
+            location,
             item_name,
             quantity,
             price,
             scraped_at,
-            LAG(price) OVER (PARTITION BY product_id ORDER BY scraped_at ASC) as previous_price,
-            LAG(scraped_at) OVER (PARTITION BY product_id ORDER BY scraped_at ASC) as previous_time
+            LAG(price) OVER (PARTITION BY product_id, location ORDER BY scraped_at ASC) as previous_price,
+            LAG(scraped_at) OVER (PARTITION BY product_id, location ORDER BY scraped_at ASC) as previous_time
         FROM instamart_prices
     )
     SELECT 
         product_id,
+        location,
         item_name,
         quantity,
         previous_price,
@@ -99,15 +103,18 @@ def compare_prices():
         scraped_at as current_time
     FROM PriceHistory
     WHERE previous_price IS NOT NULL
-    ORDER BY current_time DESC;
     """
-    
-    cursor.execute(query)
+    if target_location:
+        query += " AND location LIKE ?"
+        cursor.execute(query + " ORDER BY current_time DESC;", (f"%{target_location}%",))
+    else:
+        cursor.execute(query + " ORDER BY current_time DESC;")
+        
     rows = cursor.fetchall()
     
     if not rows:
         print("\n--- Price Comparison Summary ---")
-        print("No price changes detected yet. Run the scraper across different runs or items to build comparison history!")
+        print("No price changes detected yet for this location. Run the scraper across different runs to build comparison history!")
         conn.close()
         return
 
@@ -120,35 +127,43 @@ def compare_prices():
     unchanged = 0
     
     for r in rows:
-        prod_id, name, qty, old_p, new_p, diff, pct, old_t, new_t = r
+        prod_id, loc, name, qty, old_p, new_p, diff, pct, old_t, new_t = r
         if diff > 0:
             drops += 1
-            print(f"🎉 PRICE DROP! [{qty}] {name}")
+            print(f"🎉 PRICE DROP! [{loc}] [{qty}] {name}")
             print(f"   Old Price: ₹{old_p} ({old_t})")
             print(f"   New Price: ₹{new_p} ({new_t})")
             print(f"   SAVINGS:   ₹{diff:.2f} ({pct}% price drop!)\n")
         elif diff < 0:
             increases += 1
-            print(f"⚠️ Price Increase: [{qty}] {name}")
+            print(f"⚠️ Price Increase: [{loc}] [{qty}] {name}")
             print(f"   Old Price: ₹{old_p} | New Price: ₹{new_p} (+₹{abs(diff):.2f})\n")
         else:
             unchanged += 1
-            print(f"↔️ Price Unchanged: [{qty}] {name} (₹{new_p})\n")
+            print(f"↔️ Price Unchanged: [{loc}] [{qty}] {name} (₹{new_p})\n")
             
     print(f"Summary: {drops} Price Drops | {increases} Price Increases | {unchanged} Unchanged | {len(rows)} Total History Matches")
     print("==================================================\n")
     conn.close()
 
 def main():
-    # Handle instant comparison mode
-    if len(sys.argv) > 1 and sys.argv[1] in ["--compare", "-c", "compare"]:
-        print("Running Instant Database Price Comparison...\n")
-        compare_prices()
+    parser = argparse.ArgumentParser(description="Swiggy Instamart Multi-Location Live Price Scraper & Tracker")
+    parser.add_argument("query", nargs="?", default=None, help="Product query to search (e.g. milk, paneer, eggs)")
+    parser.add_argument("--location", "-l", default="Koramangala Bangalore", help="Delivery location (e.g. 'Indiranagar Bangalore')")
+    parser.add_argument("--compare", "-c", action="store_true", help="Run instant database price comparison without opening browser")
+    
+    args = parser.parse_args()
+
+    if args.compare:
+        print(f"Running Instant Database Price Comparison (Location filter: '{args.location}')...\n")
+        compare_prices(target_location=args.location)
         return
 
-    # Determine search queries to scrape
-    if len(sys.argv) > 1:
-        target_queries = [sys.argv[1]]
+    location_input_str = args.location
+    print(f"Target Delivery Location: '{location_input_str}'")
+
+    if args.query:
+        target_queries = [args.query]
         print(f"Scraping user-specified product query: {target_queries}\n")
     else:
         target_queries = get_tracked_search_queries()
@@ -181,9 +196,10 @@ def main():
         search_container.click()
         
         # 3. Input Location Coordinates / Query
-        print("Typing delivery location: 'Koramangala Bangalore'...")
+        print(f"Typing delivery location: '{location_input_str}'...")
         location_input = wait.until(EC.presence_of_element_located((By.CLASS_NAME, '_1wkJd')))
-        location_input.send_keys("Koramangala Bangalore")
+        location_input.clear()
+        location_input.send_keys(location_input_str)
         
         # 4. Click First Address Suggestion
         print("Waiting for suggestions list and clicking first result...")
@@ -201,7 +217,7 @@ def main():
         
         # Initialize SQLite database
         conn, cursor = init_db()
-        location_str = "Koramangala, Bangalore"
+        location_db_str = location_input_str
         total_inserted = 0
 
         # Loop over all target queries in a single browser session
@@ -223,7 +239,6 @@ def main():
             product_input.send_keys(search_query)
             time.sleep(1)
             product_input.send_keys("\n")
-
             
             # Wait for results
             print(f"   Waiting for listings for '{search_query}' to render...")
@@ -250,22 +265,20 @@ def main():
                 img_el = card.find('img')
                 image_url = img_el.get('src') if img_el and img_el.get('src') else 'N/A'
                 
-                # Construct Direct Item Web Link with exact name and quantity
                 full_item_query = f"{name} {weight}".strip()
                 encoded_name = urllib.parse.quote_plus(full_item_query)
                 web_link = f"https://www.swiggy.com/instamart/search?query={encoded_name}"
-                
                 product_id = generate_product_id(name, weight)
                 
                 cursor.execute("""
                     INSERT OR REPLACE INTO instamart_prices 
                     (product_id, search_query, location, item_name, quantity, price, description, web_link, image_url)
                     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
-                """, (product_id, search_query, location_str, name, weight, numeric_price, desc, web_link, image_url))
+                """, (product_id, search_query, location_db_str, name, weight, numeric_price, desc, web_link, image_url))
                 total_inserted += 1
 
             conn.commit()
-            print(f"   Successfully saved {len(cards)} listings for '{search_query}'.")
+            print(f"   Successfully saved {len(cards)} listings for '{search_query}' (Location: '{location_db_str}').")
             time.sleep(2)
             
         print(f"\nAll {len(target_queries)} queries completed. Total products stored/updated: {total_inserted}")
@@ -273,8 +286,8 @@ def main():
         driver.quit()
         print("Browser session closed cleanly.")
         
-        # Automatically run unified price drop comparison
-        compare_prices()
+        # Automatically run unified price drop comparison for this location
+        compare_prices(target_location=location_db_str)
         
     except Exception as e:
         print(f"\nScraping failed with error: {e}")
