@@ -237,13 +237,25 @@ def main():
             time.sleep(1)
             product_input.send_keys("\n")
             
-            # Wait for results
-            print(f"   Waiting for listings for '{search_query}' to render...")
-            time.sleep(6)
+            # Wait for initial results
+            print(f"   Waiting for initial listings for '{search_query}' to render...")
+            time.sleep(5)
             
+            # Infinite scroll loop to capture full product catalog
+            print(f"   Scrolling page to load full product catalog...")
+            last_card_count = 0
+            for scroll_step in range(6):
+                cards_in_dom = driver.find_elements(By.CSS_SELECTOR, 'div._3Rr1X')
+                current_count = len(cards_in_dom)
+                if current_count == 0 or current_count == last_card_count:
+                    break
+                last_card_count = current_count
+                driver.execute_script("arguments[0].scrollIntoView(true);", cards_in_dom[-1])
+                time.sleep(2.5)
+
             soup = BeautifulSoup(driver.page_source, 'html.parser')
             cards = soup.find_all('div', class_='_3Rr1X')
-            print(f"   Found {len(cards)} product cards for '{search_query}'.")
+            print(f"   Found {len(cards)} total product cards for '{search_query}'.")
             
             for idx, card in enumerate(cards):
                 name_el = card.find('div', class_='_1lbNR')
