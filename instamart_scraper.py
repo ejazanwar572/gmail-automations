@@ -295,8 +295,9 @@ def main():
         driver.quit()
         print("Browser session closed cleanly.")
         
-        # Automatically run unified price drop comparison for this location
-        compare_prices(target_location=location_db_str)
+        # Automatically run unified price drop comparison across all tracked locations (or target location if specified)
+        compare_prices(target_location=args.location)
+
         
     except Exception as e:
         print(f"\nScraping failed with error: {e}")
