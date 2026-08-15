@@ -140,18 +140,20 @@ def compare_prices(target_location=None):
 def main():
     parser = argparse.ArgumentParser(description="Swiggy Instamart Multi-Location Live Price Scraper & Tracker")
     parser.add_argument("query", nargs="?", default=None, help="Product query to search (e.g. milk, paneer, eggs)")
-    parser.add_argument("--location", "-l", default="Koramangala Bangalore", help="Delivery location (e.g. 'Indiranagar Bangalore')")
+    parser.add_argument("--location", "-l", default=None, help="Delivery location (e.g. 'Indiranagar Bangalore')")
     parser.add_argument("--compare", "-c", action="store_true", help="Run instant database price comparison without opening browser")
     
     args = parser.parse_args()
 
     if args.compare:
-        print(f"Running Instant Database Price Comparison (Location filter: '{args.location}')...\n")
+        loc_desc = f"'{args.location}'" if args.location else "All Locations"
+        print(f"Running Instant Database Price Comparison (Location filter: {loc_desc})...\n")
         compare_prices(target_location=args.location)
         return
 
-    location_input_str = args.location
+    location_input_str = args.location if args.location else "Koramangala Bangalore"
     print(f"Target Delivery Location: '{location_input_str}'")
+
 
     if args.query:
         target_queries = [args.query]
