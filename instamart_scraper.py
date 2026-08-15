@@ -85,6 +85,7 @@ def compare_prices(target_location=None):
             item_name,
             quantity,
             price,
+            web_link,
             scraped_at,
             LAG(price) OVER (PARTITION BY product_id, location ORDER BY scraped_at ASC) as previous_price,
             LAG(scraped_at) OVER (PARTITION BY product_id, location ORDER BY scraped_at ASC) as previous_time
@@ -100,7 +101,8 @@ def compare_prices(target_location=None):
         (previous_price - price) as price_drop,
         ROUND(((previous_price - price) / previous_price) * 100, 2) as drop_percentage,
         previous_time,
-        scraped_at as current_time
+        scraped_at as current_time,
+        web_link
     FROM PriceHistory
     WHERE previous_price IS NOT NULL AND (previous_price - price) > 0
     """
@@ -126,15 +128,17 @@ def compare_prices(target_location=None):
     print("==================================================")
     
     for r in rows:
-        prod_id, loc, name, qty, old_p, new_p, diff, pct, old_t, new_t = r
+        prod_id, loc, name, qty, old_p, new_p, diff, pct, old_t, new_t, link = r
         print(f"🎉 PRICE DROP! [{loc}] [{qty}] {name}")
         print(f"   Old Price: ₹{old_p} ({old_t})")
         print(f"   New Price: ₹{new_p} ({new_t})")
-        print(f"   SAVINGS:   ₹{diff:.2f} ({pct}% price drop!)\n")
+        print(f"   SAVINGS:   ₹{diff:.2f} ({pct}% price drop!)")
+        print(f"   Web Link:  {link}\n")
             
     print(f"Total Price Drops Found: {len(rows)}")
     print("==================================================\n")
     conn.close()
+
 
 
 def main():
