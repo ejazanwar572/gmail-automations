@@ -34,7 +34,7 @@ jobs:
           pip install selenium beautifulsoup4
 
       - name: Run Instamart Scraper & Check Price Drops
-        working-directory: ./Instamart Alerts
+        working-directory: ./Instamart_Alerts
         env:
           SENDER_EMAIL: ${{ secrets.SENDER_EMAIL }}
           SENDER_PASSWORD: ${{ secrets.SENDER_PASSWORD }}
@@ -46,6 +46,7 @@ jobs:
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add "Instamart Alerts/instamart_prices.db"
+          git add Instamart_Alerts/instamart_prices.db
+
           git diff --quiet && git diff --staged --quiet || (git commit -m "chore(auto): update instamart price database snapshot [skip ci]" && git push)
 
