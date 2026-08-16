@@ -110,7 +110,8 @@ def compare_prices(target_location=None):
         scraped_at as current_time,
         web_link
     FROM PriceHistory
-    WHERE previous_price IS NOT NULL AND price < 0.8*previous_price
+    WHERE previous_price IS NOT NULL AND price < 0.8 * previous_price
+
     """
     if target_location:
         query += " AND location LIKE ?"
