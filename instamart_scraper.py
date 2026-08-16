@@ -224,69 +224,82 @@ def main():
             print(f"\n[{q_idx + 1}/{len(target_queries)}] Processing search query: '{search_query}'...")
             
             try:
-                search_btns = driver.find_elements(By.XPATH, '//button[contains(., "Search for")]')
-                if search_btns:
-                    driver.execute_script("arguments[0].click();", search_btns[0])
-                    time.sleep(2)
-            except Exception:
-                pass
-            
-            product_input = wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, 'input[type="search"]')))
-            driver.execute_script("arguments[0].value = '';", product_input)
-            product_input.send_keys(search_query)
-            time.sleep(1)
-            product_input.send_keys("\n")
-            
-            print(f"   Waiting for initial listings for '{search_query}' to render...")
-            time.sleep(5)
-            
-            print(f"   Scrolling page to load full product catalog...")
-            last_card_count = 0
-            for scroll_step in range(6):
-                cards_in_dom = driver.find_elements(By.CSS_SELECTOR, 'div._3Rr1X')
-                current_count = len(cards_in_dom)
-                if current_count == 0 or current_count == last_card_count:
-                    break
-                last_card_count = current_count
-                driver.execute_script("arguments[0].scrollIntoView(true);", cards_in_dom[-1])
-                time.sleep(2.5)
+                # 1. Try input box typing first, fallback to direct search URL navigation if unclickable
+                search_success = False
+                try:
+                    search_btns = driver.find_elements(By.XPATH, '//button[contains(., "Search for")]')
+                    if search_btns:
+                        driver.execute_script("arguments[0].click();", search_btns[0])
+                        time.sleep(1.5)
+                    
+                    product_input = driver.find_element(By.CSS_SELECTOR, 'input[type="search"]')
+                    driver.execute_script("arguments[0].value = '';", product_input)
+                    product_input.send_keys(search_query)
+                    time.sleep(1)
+                    product_input.send_keys("\n")
+                    search_success = True
+                except Exception:
+                    pass
 
-            soup = BeautifulSoup(driver.page_source, 'html.parser')
-            cards = soup.find_all('div', class_='_3Rr1X')
-            print(f"   Found {len(cards)} total product cards for '{search_query}'.")
-            
-            for idx, card in enumerate(cards):
-                name_el = card.find('div', class_='_1lbNR')
-                name = name_el.get_text().strip() if name_el else 'N/A'
+                if not search_success:
+                    # Fallback to direct search URL navigation
+                    search_url = f"https://www.swiggy.com/instamart/search?query={urllib.parse.quote_plus(search_query)}"
+                    driver.get(search_url)
                 
-                desc_el = card.find('div', class_='_3bM-V')
-                desc = desc_el.get_text().strip() if desc_el else 'N/A'
+                print(f"   Waiting for initial listings for '{search_query}' to render...")
+                time.sleep(5)
                 
-                weight_el = card.find('div', class_='_3wq_F')
-                weight = weight_el.get_text().strip() if weight_el else 'N/A'
-                
-                price_el = card.find('div', class_='_2jn41')
-                raw_price = price_el.get_text().strip() if price_el else 'N/A'
-                numeric_price = clean_price(raw_price)
-                
-                img_el = card.find('img')
-                image_url = img_el.get('src') if img_el and img_el.get('src') else 'N/A'
-                
-                full_item_query = f"{name} {weight}".strip()
-                encoded_name = urllib.parse.quote_plus(full_item_query)
-                web_link = f"https://www.swiggy.com/instamart/search?query={encoded_name}"
-                product_id = generate_product_id(name, weight)
-                
-                cursor.execute("""
-                    INSERT OR REPLACE INTO instamart_prices 
-                    (product_id, search_query, location, item_name, quantity, price, description, web_link, image_url)
-                    VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
-                """, (product_id, search_query, location_input_str, name, weight, numeric_price, desc, web_link, image_url))
-                total_inserted += 1
+                print(f"   Scrolling page to load full product catalog...")
+                last_card_count = 0
+                for scroll_step in range(6):
+                    cards_in_dom = driver.find_elements(By.CSS_SELECTOR, 'div._3Rr1X')
+                    current_count = len(cards_in_dom)
+                    if current_count == 0 or current_count == last_card_count:
+                        break
+                    last_card_count = current_count
+                    driver.execute_script("arguments[0].scrollIntoView(true);", cards_in_dom[-1])
+                    time.sleep(2.5)
 
-            conn.commit()
-            print(f"   Successfully saved {len(cards)} listings for '{search_query}' (Location: '{location_input_str}').")
-            time.sleep(2)
+                soup = BeautifulSoup(driver.page_source, 'html.parser')
+                cards = soup.find_all('div', class_='_3Rr1X')
+                print(f"   Found {len(cards)} total product cards for '{search_query}'.")
+                
+                for idx, card in enumerate(cards):
+                    name_el = card.find('div', class_='_1lbNR')
+                    name = name_el.get_text().strip() if name_el else 'N/A'
+                    
+                    desc_el = card.find('div', class_='_3bM-V')
+                    desc = desc_el.get_text().strip() if desc_el else 'N/A'
+                    
+                    weight_el = card.find('div', class_='_3wq_F')
+                    weight = weight_el.get_text().strip() if weight_el else 'N/A'
+                    
+                    price_el = card.find('div', class_='_2jn41')
+                    raw_price = price_el.get_text().strip() if price_el else 'N/A'
+                    numeric_price = clean_price(raw_price)
+                    
+                    img_el = card.find('img')
+                    image_url = img_el.get('src') if img_el and img_el.get('src') else 'N/A'
+                    
+                    full_item_query = f"{name} {weight}".strip()
+                    encoded_name = urllib.parse.quote_plus(full_item_query)
+                    web_link = f"https://www.swiggy.com/instamart/search?query={encoded_name}"
+                    product_id = generate_product_id(name, weight)
+                    
+                    cursor.execute("""
+                        INSERT OR REPLACE INTO instamart_prices 
+                        (product_id, search_query, location, item_name, quantity, price, description, web_link, image_url)
+                        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)
+                    """, (product_id, search_query, location_input_str, name, weight, numeric_price, desc, web_link, image_url))
+                    total_inserted += 1
+
+                conn.commit()
+                print(f"   Successfully saved {len(cards)} listings for '{search_query}' (Location: '{location_input_str}').")
+                time.sleep(2)
+
+            except Exception as q_err:
+                print(f"   ⚠️ Warning: Error processing query '{search_query}': {q_err}. Continuing to next query...")
+
 
         print(f"\nAll {len(target_queries)} queries completed for '{location_input_str}'. Total products stored/updated: {total_inserted}")
         conn.close()
