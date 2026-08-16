@@ -19,15 +19,7 @@ DB_PATH = os.path.join(BASE_DIR, "instamart_prices.db")
 DEFAULT_LOCATION = "HSR Layout Bangalore"
 
 # Watchlist Keywords (Add or remove keywords here anytime in the future!)
-TRACKED_KEYWORDS = [
-    "milk",
-    "mustard oil",
-    "mustard",
-    "eggs",
-    "aata",
-    "oil",
-    "soap",
-]
+TRACKED_KEYWORDS = [ "milk", "mustard oil", "mustard","eggs", "aata", "oil", "soap","shampoo"]
 
 
 def generate_product_id(item_name, quantity):
@@ -118,7 +110,7 @@ def compare_prices(target_location=None):
         scraped_at as current_time,
         web_link
     FROM PriceHistory
-    WHERE previous_price IS NOT NULL AND (previous_price - price) > 0
+    WHERE previous_price IS NOT NULL AND price < 0.8*previous_price
     """
     if target_location:
         query += " AND location LIKE ?"
@@ -247,18 +239,26 @@ def main():
                     driver.get(search_url)
                 
                 print(f"   Waiting for initial listings for '{search_query}' to render...")
-                time.sleep(5)
+                try:
+                    WebDriverWait(driver, 12).until(EC.presence_of_element_located((By.CSS_SELECTOR, 'div._3Rr1X')))
+                except Exception:
+                    time.sleep(4)
                 
                 print(f"   Scrolling page to load full product catalog...")
                 last_card_count = 0
                 for scroll_step in range(6):
                     cards_in_dom = driver.find_elements(By.CSS_SELECTOR, 'div._3Rr1X')
                     current_count = len(cards_in_dom)
+                    if current_count == 0:
+                        time.sleep(3)
+                        cards_in_dom = driver.find_elements(By.CSS_SELECTOR, 'div._3Rr1X')
+                        current_count = len(cards_in_dom)
                     if current_count == 0 or current_count == last_card_count:
                         break
                     last_card_count = current_count
                     driver.execute_script("arguments[0].scrollIntoView(true);", cards_in_dom[-1])
                     time.sleep(2.5)
+
 
                 soup = BeautifulSoup(driver.page_source, 'html.parser')
                 cards = soup.find_all('div', class_='_3Rr1X')
