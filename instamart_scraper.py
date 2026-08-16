@@ -18,6 +18,18 @@ DB_PATH = os.path.join(BASE_DIR, "instamart_prices.db")
 
 DEFAULT_LOCATION = "HSR Layout Bangalore"
 
+# Watchlist Keywords (Add or remove keywords here anytime in the future!)
+TRACKED_KEYWORDS = [
+    "milk",
+    "mustard oil",
+    "mustard",
+    "eggs",
+    "aata",
+    "oil",
+    "soap",
+]
+
+
 def generate_product_id(item_name, quantity):
     """Generates a unique, readable slug for a product based on name and weight."""
     raw = f"{item_name.lower().strip()}-{quantity.lower().strip()}"
@@ -162,8 +174,9 @@ def main():
         target_queries = [args.query]
         print(f"Scraping user-specified product query: {target_queries}\n")
     else:
-        target_queries = get_tracked_search_queries()
-        print(f"Auto-discovered tracked product queries from database: {target_queries}\n")
+        target_queries = TRACKED_KEYWORDS
+        print(f"Watchlist product queries to scrape ({len(target_queries)}): {target_queries}\n")
+
 
     options = Options()
     options.add_argument('--headless')
