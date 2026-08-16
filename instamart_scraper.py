@@ -94,7 +94,8 @@ def compare_prices(target_location=None):
             web_link,
             scraped_at,
             LAG(price) OVER (PARTITION BY product_id, location ORDER BY scraped_at ASC) as previous_price,
-            LAG(scraped_at) OVER (PARTITION BY product_id, location ORDER BY scraped_at ASC) as previous_time
+            LAG(scraped_at) OVER (PARTITION BY product_id, location ORDER BY scraped_at ASC) as previous_time,
+            ROW_NUMBER() OVER (PARTITION BY product_id, location ORDER BY scraped_at DESC) as rn
         FROM instamart_prices
     )
     SELECT 
@@ -110,7 +111,8 @@ def compare_prices(target_location=None):
         scraped_at as current_time,
         web_link
     FROM PriceHistory
-    WHERE previous_price IS NOT NULL AND price < 0.8 * previous_price
+    WHERE rn = 1 AND previous_price IS NOT NULL AND price < 0.8 * previous_price
+
     """
     if target_location:
         query += " AND location LIKE ?"
