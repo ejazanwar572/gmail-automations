@@ -18,6 +18,17 @@ import argparse
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 DB_PATH = os.path.join(BASE_DIR, "instamart_prices.db")
 
+# Load local .env variables if present
+env_path = os.path.join(BASE_DIR, ".env")
+if os.path.exists(env_path):
+    with open(env_path, "r") as f:
+        for line in f:
+            line = line.strip()
+            if line and not line.startswith("#") and "=" in line:
+                k, v = line.split("=", 1)
+                os.environ.setdefault(k.strip(), v.strip())
+
+
 DEFAULT_LOCATION = "HSR Layout Bangalore"
 
 # Watchlist Keywords (Add or remove keywords here anytime in the future!)
