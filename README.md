@@ -8,37 +8,27 @@ A comprehensive personal utility suite that automates finance tracking (credit c
 
 This repository contains several automated pipelines organized into modular scripts:
 
-### 1. 🛒 Swiggy Instamart Live Price Tracker & Scraper
-* **Automated Scraper (`instamart_scraper.py`)**: Headless Chrome scraper using Selenium Stealth & BeautifulSoup. It sets delivery locations, searches Swiggy Instamart, and executes `scrollIntoView()` infinite scrolling to load full product catalogs (up to 140+ items per category).
+### 1. 🛒 Swiggy Instamart Live Price Tracker & Scraper (`Instamart Alerts/`)
+* **Dedicated Subfolder**: [`Instamart Alerts/`](file:///Users/ejazanwar/Documents/Gmail%20Automations/Instamart%20Alerts) (Contains its own standalone [`Instamart Alerts/README.md`](file:///Users/ejazanwar/Documents/Gmail%20Automations/Instamart%20Alerts/README.md)).
+* **Automated Scraper (`Instamart Alerts/instamart_scraper.py`)**: Headless Chrome scraper using Selenium Stealth & BeautifulSoup. It sets delivery locations, searches Swiggy Instamart, and executes `scrollIntoView()` infinite scrolling to load full product catalogs (up to 140+ items per category).
 * **Location & Watchlist**:
   * **Default Location**: `HSR Layout Bangalore` (Override via `--location "Neighborhood City"`).
   * **Watchlist Keywords (`TRACKED_KEYWORDS`)**: Configurable python list (`milk`, `mustard oil`, `eggs`, `oil`, `soap`, `shampoo`).
-* **SQLite Price Database (`instamart_prices.db`)**: Stores historical timestamped price snapshots with composite primary key `(product_id, location, scraped_at)`. Uses clean slug product IDs (`nandini-pasteurised-toned-milk-500-ml`).
-* **Instant SQL Comparison Engine (`--compare` / `-c`)**:
-  * Evaluates price drops using SQL `LAG()` window function.
-  * Ranks rows with `ROW_NUMBER() OVER (PARTITION BY product_id, location ORDER BY scraped_at DESC) WHERE rn = 1` to evaluate strictly the latest scraped snapshot of each item (preventing duplicate alerts).
-  * Filters for items with **> 20% price drop** (`WHERE price < 0.8 * previous_price`).
-  * Sorts output by absolute rupee savings (`ORDER BY price_drop DESC`).
-  * Includes direct clickable Swiggy Instamart web links (`https://www.swiggy.com/instamart/search?query=...`) for instant purchase.
-* **Mobile HTML Email & WhatsApp Alerts**:
-  * **Mobile-Responsive HTML Email**: Delivers styled HTML product cards with green savings badges (`Save ₹421 • 41% OFF`) and touch-friendly view buttons directly to `anwar.ejaz181@gmail.com` via Gmail SMTP. Triggers **only** when price drops exist (`if not rows: return`).
-  * **WhatsApp Alerts**: Supports free CallMeBot WhatsApp API (`CALLMEBOT_PHONE` & `CALLMEBOT_API_KEY`).
-* **Hourly Cloud Automation (`.github/workflows/instamart_scraper.yml`)**: Automated hourly GitHub Actions cron (`0 * * * *`) running on $0 free tier for public repository, auto-committing updated `instamart_prices.db` snapshots back to git.
+* **SQLite Price Database (`Instamart Alerts/instamart_prices.db`)**: Stores historical timestamped price snapshots with composite primary key `(product_id, location, scraped_at)`.
+* **Mobile HTML Email Alerts**: Delivers mobile-responsive HTML cards with green savings badges and direct purchase buttons to `anwar.ejaz181@gmail.com` via Gmail SMTP (**only** when price drops exist).
+* **Hourly Cloud Automation (`.github/workflows/instamart_scraper.yml`)**: Automated hourly GitHub Actions cron (`0 * * * *`) running on $0 free tier, auto-committing updated `Instamart Alerts/instamart_prices.db` snapshots back to git.
 
 #### Instamart Scraper CLI Commands:
 ```bash
-# 1. Live scrape all watchlist items for HSR Layout & send HTML email on > 20% price drops
+cd "Instamart Alerts"
+
+# Live scrape all watchlist items & send HTML email on > 20% price drops
 python3 instamart_scraper.py
 
-# 2. Live scrape specific location and keyword
-python3 instamart_scraper.py --location "Indiranagar Bangalore" "milk"
-
-# 3. Instant offline database price drop comparison
+# Instant offline database price drop comparison
 python3 instamart_scraper.py --compare
-
-# 4. Instant offline comparison for a specific location
-python3 instamart_scraper.py --location "HSR Layout Bangalore" --compare
 ```
+
 
 ---
 
