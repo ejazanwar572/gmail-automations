@@ -110,9 +110,10 @@ def compare_prices(target_location=None):
     """
     if target_location:
         query += " AND location LIKE ?"
-        cursor.execute(query + " ORDER BY current_time DESC;", (f"%{target_location}%",))
+        cursor.execute(query + " ORDER BY price_drop DESC;", (f"%{target_location}%",))
     else:
-        cursor.execute(query + " ORDER BY current_time DESC;")
+        cursor.execute(query + " ORDER BY price_drop DESC;")
+
         
     rows = cursor.fetchall()
     
