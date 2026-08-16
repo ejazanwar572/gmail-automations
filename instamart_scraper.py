@@ -79,12 +79,16 @@ DEFAULT_RECIPIENT_EMAIL = "anwar.ejaz181@gmail.com"
 
 def send_email_alert(rows):
     """Sends a formatted HTML email price drop alert via Gmail SMTP if SENDER_EMAIL and SENDER_PASSWORD are set."""
+    if not rows:
+        return
+
     sender_email = os.getenv("SENDER_EMAIL")
     sender_password = os.getenv("SENDER_PASSWORD") or os.getenv("GMAIL_APP_PASSWORD")
     recipient_email = os.getenv("RECIPIENT_EMAIL", DEFAULT_RECIPIENT_EMAIL)
     
     if not sender_email or not sender_password:
         return
+
         
     try:
         from email.mime.multipart import MIMEMultipart
