@@ -18,8 +18,16 @@ DB_PATH = os.path.join(BASE_DIR, "instamart_prices.db")
 
 DEFAULT_LOCATION = "HSR Layout Bangalore"
 
-# Watchlist Keywords (Add or remove keywords here anytime in the future!)
-TRACKED_KEYWORDS = [ "milk", "mustard oil", "mustard","eggs", "aata", "oil", "soap","shampoo"]
+TRACKED_KEYWORDS = [
+    "milk",
+    "mustard oil",
+    "mustard",
+    "eggs",
+    "oil",
+    "soap",
+    "shampoo",
+]
+
 
 
 def generate_product_id(item_name, quantity):
