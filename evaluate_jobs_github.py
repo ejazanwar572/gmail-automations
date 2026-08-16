@@ -197,6 +197,7 @@ def main():
     
     evaluated_matches = []
     quota_exhausted = False
+    api_calls_made = 0
     
     # 3. Evaluate each new job
     for idx, job in enumerate(new_jobs):
@@ -243,10 +244,19 @@ def main():
         url = job.get("url", "#")
         desc_text = job.get("description_text", "")
         
+        # Title-based relevance filter to conserve API quota and speed up runs
+        title_lower = title.lower()
+        keywords = ["analyst", "analytics", "data", "product", "manager", "science", "scientist", "experiment", "decision", "lead"]
+        is_relevant = any(kw in title_lower for kw in keywords)
+        
+        if not is_relevant:
+            print(f"[{idx+1}/{len(new_jobs)}] Skipping irrelevant role (title filter): {title} at {company}", file=sys.stderr)
+            continue
+            
         print(f"[{idx+1}/{len(new_jobs)}] Evaluating: {title} at {company} ({location})...", file=sys.stderr)
         
         # Free-tier rate limiting spacer (12 RPM -> 5s sleep)
-        if idx > 0 and not quota_exhausted:
+        if api_calls_made > 0 and not quota_exhausted:
             time.sleep(5)
             
         prompt = f"""
@@ -308,6 +318,7 @@ Output structure:
                     )
                     res_data = json.loads(response.text)
                     success = True
+                    api_calls_made += 1
                 except Exception as e:
                     if "429" in str(e) or "Quota" in str(e) or "limit" in str(e).lower():
                         if retries >= 4:

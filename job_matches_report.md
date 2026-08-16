@@ -1,5 +1,14 @@
 # Automated Job Matcher Run History
 
+## 📅 Scan Run: 2026-08-16 13:35:40
+- **Total New Jobs Scraped**: 16
+- **High-Match Roles (Score &ge; 70)**: 1
+
+| Job Title | Company | Location | Match Score | Key Matches | Gaps |
+| :--- | :--- | :--- | :-: | :--- | :--- |
+| [Senior Manager, Risk Management](https://jobs.ebayinc.com/us/en/job/R0076200/senior-manager-risk-management) | eBay | Bengaluru, India | **75/100** | • Over 8 years of experience aligns with the Senior Manager requirement, including leadership as Lead AI Analyst and mentoring experience at PayPal.<br>• Strong proficiency in key analytical skills such as SQL, Python, A/B testing, statistical analysis, predictive modeling, and causal inference directly matches the job's quantitative requirements.<br>• Experience at PayPal (a major payments company) and OLX Autos (e-commerce) provides highly relevant industry context, particularly for understanding payments ecosystems.<br>• Demonstrated ability in building dashboards (Power BI), reporting, driving insights, and cross-functional collaboration, which are crucial for this role.<br>• Location in Bengaluru, India is a perfect match for the job description's specified location. | • While Ejaz has strong analytical experience within a payments company, the resume does not explicitly detail extensive, direct experience in designing, implementing, and managing specific fraud and credit risk policy frameworks, which is a core functional requirement for a 'Senior Manager, Risk Management' role.<br>• Limited explicit mention of 'account-level and portfolio-level risk strategy development' within a dedicated risk management context.<br>• Although people management is desired, the resume highlights mentoring rather than direct management of a team. |
+
+---
 ## 📅 Scan Run: 2026-07-16 13:51:56
 - **Total New Jobs Scraped**: 9
 - **High-Match Roles (Score &ge; 70)**: 0
