@@ -18,16 +18,8 @@ DB_PATH = os.path.join(BASE_DIR, "instamart_prices.db")
 
 DEFAULT_LOCATION = "HSR Layout Bangalore"
 
-TRACKED_KEYWORDS = [
-    "milk",
-    "mustard oil",
-    "mustard",
-    "eggs",
-    "oil",
-    "soap",
-    "shampoo",
-]
-
+# Watchlist Keywords (Add or remove keywords here anytime in the future!)
+TRACKED_KEYWORDS = [ "milk", "mustard oil","eggs", "oil", "soap","shampoo"]
 
 
 def generate_product_id(item_name, quantity):
@@ -119,7 +111,6 @@ def compare_prices(target_location=None):
         web_link
     FROM PriceHistory
     WHERE previous_price IS NOT NULL AND price < 0.8 * previous_price
-
     """
     if target_location:
         query += " AND location LIKE ?"
