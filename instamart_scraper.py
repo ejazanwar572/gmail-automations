@@ -8,9 +8,11 @@ import time
 import sqlite3
 import re
 import urllib.parse
+import urllib.request
 import sys
 import os
 import argparse
+
 
 # Dynamically resolve instamart_prices.db in the same directory as this script
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -19,7 +21,7 @@ DB_PATH = os.path.join(BASE_DIR, "instamart_prices.db")
 DEFAULT_LOCATION = "HSR Layout Bangalore"
 
 # Watchlist Keywords (Add or remove keywords here anytime in the future!)
-TRACKED_KEYWORDS = [ "milk", "mustard oil","eggs", "oil", "soap","shampoo"]
+TRACKED_KEYWORDS = [ "milk", "mustard oil","eggs", "oil", "soap","shampoo","sugar","coffee"]
 
 
 def generate_product_id(item_name, quantity):
@@ -73,6 +75,26 @@ def clean_price(price_str):
     except ValueError:
         return None
 
+def send_whatsapp_alert(message_text):
+    """Sends a free WhatsApp alert via CallMeBot API if CALLMEBOT_PHONE and CALLMEBOT_API_KEY environment variables are set."""
+    phone = os.getenv("CALLMEBOT_PHONE")
+    api_key = os.getenv("CALLMEBOT_API_KEY")
+    
+    if not phone or not api_key:
+        return
+        
+    try:
+        encoded_text = urllib.parse.quote(message_text)
+        url = f"https://api.callmebot.com/whatsapp.php?phone={phone}&text={encoded_text}&apikey={api_key}"
+        req = urllib.request.Request(url, headers={'User-Agent': 'Mozilla/5.0'})
+        with urllib.request.urlopen(req, timeout=10) as resp:
+            if resp.status in (200, 201):
+                print("📱 WhatsApp price drop alert delivered successfully!")
+            else:
+                print(f"⚠️ WhatsApp API returned status: {resp.status}")
+    except Exception as e:
+        print(f"⚠️ Failed to send WhatsApp alert: {e}")
+
 def compare_prices(target_location=None):
     """Calculates and displays ONLY price drops per location directly from the SQLite database."""
     if not os.path.exists(DB_PATH):
@@ -112,7 +134,6 @@ def compare_prices(target_location=None):
         web_link
     FROM PriceHistory
     WHERE rn = 1 AND previous_price IS NOT NULL AND price < 0.8 * previous_price
-
     """
     if target_location:
         query += " AND location LIKE ?"
@@ -120,7 +141,6 @@ def compare_prices(target_location=None):
     else:
         cursor.execute(query + " ORDER BY price_drop DESC;")
 
-        
     rows = cursor.fetchall()
     
     if not rows:
@@ -136,6 +156,7 @@ def compare_prices(target_location=None):
     print("            PRICE DROP SUMMARY                    ")
     print("==================================================")
     
+    whatsapp_lines = ["🎉 *SWIGGY INSTAMART PRICE DROP ALERT!*"]
     for r in rows:
         prod_id, loc, name, qty, old_p, new_p, diff, pct, old_t, new_t, link = r
         print(f"🎉 PRICE DROP! [{loc}] [{qty}] {name}")
@@ -143,10 +164,20 @@ def compare_prices(target_location=None):
         print(f"   New Price: ₹{new_p} ({new_t})")
         print(f"   SAVINGS:   ₹{diff:.2f} ({pct}% price drop!)")
         print(f"   Web Link:  {link}\n")
+        
+        whatsapp_lines.append(
+            f"\n🛒 *{name}* ({qty})\n"
+            f"   Old: ₹{old_p} ➔ New: ₹{new_p} (*Save ₹{diff:.0f} - {pct}% OFF!*)\n"
+            f"   🔗 {link}"
+        )
             
     print(f"Total Price Drops Found: {len(rows)}")
     print("==================================================\n")
     conn.close()
+
+    # Send WhatsApp notification if configured
+    send_whatsapp_alert("\n".join(whatsapp_lines))
+
 
 def main():
     parser = argparse.ArgumentParser(description="Swiggy Instamart Live Price Scraper & Tracker")
