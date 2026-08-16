@@ -111,48 +111,56 @@ def send_email_alert(rows):
         msg["From"] = f"Instamart Tracker <{sender_email}>"
         msg["To"] = recipient_email
 
-        html_table_rows = ""
+        html_cards = ""
         for r in rows:
             prod_id, loc, name, qty, old_p, new_p, diff, pct, old_t, new_t, link = r
-            html_table_rows += f"""
-            <tr style="border-bottom: 1px solid #eee;">
-                <td style="padding: 12px; font-weight: bold; color: #333;">{name}<br><span style="font-weight: normal; color: #666; font-size: 12px;">{qty} | {loc}</span></td>
-                <td style="padding: 12px; color: #888; text-decoration: line-through;">₹{old_p:.0f}</td>
-                <td style="padding: 12px; font-weight: bold; color: #e53935;">₹{new_p:.0f}</td>
-                <td style="padding: 12px; font-weight: bold; color: #2e7d32;">₹{diff:.0f} ({pct}% OFF)</td>
-                <td style="padding: 12px; text-align: center;"><a href="{link}" style="background-color: #fc8019; color: white; padding: 6px 12px; text-decoration: none; border-radius: 4px; font-size: 13px; font-weight: bold;" target="_blank">View Item</a></td>
-            </tr>
+            html_cards += f"""
+            <div style="background: #ffffff; border: 1px solid #e0e0e0; border-radius: 8px; padding: 16px; margin-bottom: 16px; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
+                <div style="font-size: 15px; font-weight: bold; color: #1a1a1a; margin-bottom: 6px; line-height: 1.3;">{name}</div>
+                <div style="margin-bottom: 12px;">
+                    <span style="font-size: 12px; color: #555; background: #f0f0f0; padding: 3px 8px; border-radius: 12px; font-weight: 500;">{qty}</span>
+                    <span style="font-size: 12px; color: #777; margin-left: 6px;">📍 {loc}</span>
+                </div>
+                <div style="background: #fff5ed; border: 1px solid #ffd8be; border-radius: 6px; padding: 10px 14px; margin-bottom: 14px; display: flex; align-items: center; justify-content: space-between;">
+                    <div>
+                        <span style="font-size: 13px; color: #888; text-decoration: line-through;">₹{old_p:.0f}</span>
+                        <span style="font-size: 20px; font-weight: 800; color: #e53935; margin-left: 8px;">₹{new_p:.0f}</span>
+                    </div>
+                    <div style="background-color: #2e7d32; color: #ffffff; font-size: 12px; font-weight: bold; padding: 4px 10px; border-radius: 20px;">
+                        Save ₹{diff:.0f} ({pct}% OFF)
+                    </div>
+                </div>
+                <a href="{link}" style="display: block; width: 100%; text-align: center; background-color: #fc8019; color: #ffffff; padding: 12px 0; text-decoration: none; border-radius: 6px; font-size: 14px; font-weight: bold; box-sizing: border-box;" target="_blank">
+                    🛒 View Item on Instamart
+                </a>
+            </div>
             """
 
         html_body = f"""
+        <!DOCTYPE html>
         <html>
-        <body style="font-family: Arial, sans-serif; background-color: #f9f9f9; padding: 20px;">
-            <div style="max-width: 650px; margin: 0 auto; background: white; border-radius: 8px; padding: 24px; box-shadow: 0 2px 8px rgba(0,0,0,0.08);">
-                <div style="background-color: #fc8019; color: white; padding: 16px; border-radius: 6px; text-align: center; margin-bottom: 20px;">
-                    <h2 style="margin: 0;">🎉 Swiggy Instamart Price Drop Alert!</h2>
-                    <p style="margin: 4px 0 0 0; font-size: 14px;">We found {len(rows)} significant price drop(s) on your watchlist.</p>
+        <head>
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        </head>
+        <body style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background-color: #f4f5f7; margin: 0; padding: 12px;">
+            <div style="max-width: 500px; margin: 0 auto;">
+                <div style="background-color: #fc8019; color: #ffffff; padding: 18px 16px; border-radius: 8px; text-align: center; margin-bottom: 16px;">
+                    <h2 style="margin: 0; font-size: 20px; font-weight: 800;">🎉 Swiggy Instamart Price Drop!</h2>
+                    <p style="margin: 4px 0 0 0; font-size: 13px; opacity: 0.95;">Found {len(rows)} discount(s) > 20% on your watchlist</p>
                 </div>
-                <table style="width: 100%; border-collapse: collapse;">
-                    <thead>
-                        <tr style="background-color: #f2f2f2; text-align: left;">
-                            <th style="padding: 10px;">Item</th>
-                            <th style="padding: 10px;">Old</th>
-                            <th style="padding: 10px;">New</th>
-                            <th style="padding: 10px;">Savings</th>
-                            <th style="padding: 10px; text-align: center;">Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {html_table_rows}
-                    </tbody>
-                </table>
-                <p style="font-size: 12px; color: #999; margin-top: 24px; text-align: center;">Automated alert generated by Instamart Tracker • HSR Layout Bangalore</p>
+
+                {html_cards}
+
+                <div style="text-align: center; padding: 12px 0; font-size: 11px; color: #888;">
+                    Automated Alert • Swiggy Instamart Price Tracker • HSR Layout Bangalore
+                </div>
             </div>
         </body>
         </html>
         """
 
         msg.attach(MIMEText(html_body, "html"))
+
 
         server = smtplib.SMTP_SSL("smtp.gmail.com", 465, timeout=15)
         server.login(sender_email, sender_password)
