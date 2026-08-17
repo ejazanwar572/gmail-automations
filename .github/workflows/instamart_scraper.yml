@@ -4,7 +4,10 @@ on:
   schedule:
     # Runs automatically at the top of every hour (00:00, 01:00, 02:00 UTC)
     - cron: '0 * * * *'
+  push:
+    branches: [ main ]
   workflow_dispatch:
+
 
 permissions:
   contents: write
