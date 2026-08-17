@@ -4,6 +4,12 @@ on:
   schedule:
     # Run every 3 hours
     - cron: '0 */3 * * *'
+  push:
+    branches:
+      - main
+    paths:
+      - '.github/workflows/job_matcher.yml'
+      - 'job_boards.json'
   workflow_dispatch:
     # Allow manual execution via GitHub UI and support mock run briefings
     inputs:
