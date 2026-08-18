@@ -1,5 +1,14 @@
 # Automated Job Matcher Run History
 
+## 📅 Scan Run: 2026-08-18 01:11:20
+- **Total New Jobs Scraped**: 3
+- **High-Match Roles (Score &ge; 70)**: 1
+
+| Job Title | Company | Location | Match Score | Key Matches | Gaps |
+| :--- | :--- | :--- | :-: | :--- | :--- |
+| [Senior Product Manager - Tech, Global Transportation Technology Services](https://www.amazon.jobs/en/jobs/10504416/senior-product-manager-tech-global-transportation-technology-services) | Career Portal | Hyderabad, TS, IND | **78/100** | • Candidate's 8+ years of experience as a Lead AI Analyst and Senior Product Analyst aligns well with the seniority and analytical depth required for a Senior Product Manager - Tech role, especially in complex problem spaces.<br>• Strong technical skills in SQL, Python, PySpark, A/B Testing, Causal Inference, Statistical Analysis, Predictive Modelling, and LLM/Agent Workflows directly match the job's emphasis on big data processing (Spark), optimization algorithms, machine learning models, and GenAI.<br>• Proven experience in translating product data into roadmap and growth decisions, influencing roadmap bets, and working with Product teams demonstrates relevant experience in strategic input and stakeholder management for product initiatives.<br>• Experience with analytical tools such as Tableau and Power BI is a direct match for the preferred qualifications, indicating proficiency in data visualization and reporting.<br>• The job location in Hyderabad is a good match, aligning with the candidate's preference for major cities in India. | • While the candidate influenced roadmap decisions, there is a lack of explicit experience in *owning* and *driving* roadmap strategy, feature definition, and end-to-end product delivery from a Product Manager perspective, which are core requirements for this role.<br>• The resume does not explicitly detail experience contributing to *engineering discussions* around technology decisions and strategy related to product development, which is a key basic qualification.<br>• While PySpark is listed, direct experience with Scala (mentioned in the JD for big data processing) is not evident. |
+
+---
 ## 📅 Scan Run: 2026-08-17 21:28:34
 - **Total New Jobs Scraped**: 2
 - **High-Match Roles (Score &ge; 70)**: 0
