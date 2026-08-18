@@ -34,8 +34,8 @@ if os.path.exists(env_path):
 
 # Tracked Delivery Locations (Add or remove locations here anytime in the future!)
 TRACKED_LOCATIONS = [
-    "HSR Layout Bangalore",
-    # "Koramangala Bangalore",
+    "HSR Layout Bangalore", 
+    "Manganapallaya Bangalore",
     # "Indiranagar Bangalore",
 ]
 
