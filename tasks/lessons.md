@@ -93,3 +93,13 @@ Never declare a UI task complete based on code alone.
 **Rule**:
 1. When calling APIs under a free-tier rate limit, always implement a `quota_exhausted` tracker. If retries on a single request fail continuously, flip the flag and skip all subsequent API calls in the queue immediately (avoiding massive cumulative sleep delay).
 2. For cron-scheduled tasks that commit/push back to the repository, write a dedicated merge conflict resolution script (`git_push_retry.py`) that stashes changes, pulls/rebases, and programmatically merges JSON database arrays and prepended markdown log headers before retrying the push. Never rely on raw `git pull --rebase` to resolve automatically on concurrent pushes.
+
+---
+
+## L-013 · Never Generate Synthetic / Placeholder URLs in Research Briefings
+**Trigger**: The Indian Stock Market Reddit Radar briefing included synthesized Reddit thread slug URLs (e.g. `reddit.com/r/.../comments/slug`) that failed with 404s.
+
+**Rule**:
+1. When citing external discussions or community posts in briefings and summaries, **NEVER** fabricate placeholder URLs or hypothetical permalink slugs.
+2. If exact post permalinks cannot be verified, always construct functional, live targeted search URLs (e.g. `https://www.reddit.com/r/<subreddit>/search/?q=<query>&restrict_sr=1&sort=relevance`) or direct subreddit feeds.
+3. Validate link structure before reporting completion.
