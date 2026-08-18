@@ -32,10 +32,25 @@ if os.path.exists(env_path):
                 os.environ.setdefault(k.strip(), v.strip())
 
 
-DEFAULT_LOCATION = "HSR Layout Bangalore"
+# Tracked Delivery Locations (Add or remove locations here anytime in the future!)
+TRACKED_LOCATIONS = [
+    "HSR Layout Bangalore",
+    # "Koramangala Bangalore",
+    # "Indiranagar Bangalore",
+]
 
 # Watchlist Keywords (Add or remove keywords here anytime in the future!)
-TRACKED_KEYWORDS = [ "milk", "mustard oil","eggs", "oil", "soap","shampoo","sugar","coffee"]
+TRACKED_KEYWORDS = [
+    "milk",
+    "mustard oil",
+    "eggs",
+    "oil",
+    "soap",
+    "shampoo",
+    "sugar",
+    "coffee",
+]
+
 
 
 def generate_product_id(item_name, quantity):
@@ -286,31 +301,55 @@ def compare_prices(target_location=None, min_scraped_at=None):
 
 
 
+def set_browser_location(driver, wait, location_str):
+    """Sets the active delivery location in the Swiggy Instamart browser session."""
+    print(f"Setting location: '{location_str}'...")
+    try:
+        driver.get("https://www.swiggy.com/instamart")
+        time.sleep(3)
+        
+        search_containers = driver.find_elements(By.CSS_SELECTOR, '[data-testid="search-location"]')
+        if search_containers:
+            search_containers[0].click()
+            time.sleep(1)
+            
+            location_input = wait.until(EC.presence_of_element_located((By.CLASS_NAME, '_1wkJd')))
+            driver.execute_script("arguments[0].value = '';", location_input)
+            location_input.send_keys(location_str)
+            
+            first_suggestion = wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, 'div._2esgM')))
+            first_suggestion.click()
+            time.sleep(1)
+            
+            confirm_btn = wait.until(EC.element_to_be_clickable((By.XPATH, '//button[contains(., "Confirm Location")]')))
+            confirm_btn.click()
+            time.sleep(5)
+            print(f"✓ Location set to '{location_str}'")
+    except Exception as loc_err:
+        print(f"Location modal handled (note: {loc_err})")
+
+
 def main():
     parser = argparse.ArgumentParser(description="Swiggy Instamart Live Price Scraper & Tracker")
     parser.add_argument("query", nargs="?", default=None, help="Product query to search (e.g. milk, paneer, eggs)")
-    parser.add_argument("--location", "-l", default=DEFAULT_LOCATION, help="Delivery location (default: HSR Layout Bangalore)")
+    parser.add_argument("--location", "-l", default=None, help="Specific delivery location (defaults to all TRACKED_LOCATIONS)")
     parser.add_argument("--compare", "-c", action="store_true", help="Run instant database price comparison without opening browser")
     
     args = parser.parse_args()
 
+    target_locations = [args.location] if args.location else TRACKED_LOCATIONS
+    target_queries = [args.query] if args.query else TRACKED_KEYWORDS
+
     if args.compare:
-        print(f"Running Instant Database Price Comparison (Location filter: '{args.location}')...\n")
+        loc_display = args.location if args.location else "ALL TRACKED LOCATIONS"
+        print(f"Running Instant Database Price Comparison (Location filter: '{loc_display}')...\n")
         compare_prices(target_location=args.location)
         return
 
-    location_input_str = args.location
-    print(f"Target Delivery Location: '{location_input_str}'")
+    print(f"Tracked Locations ({len(target_locations)}): {target_locations}")
+    print(f"Watchlist Keywords ({len(target_queries)}): {target_queries}\n")
 
     run_start_time = datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M:%S')
-
-    if args.query:
-        target_queries = [args.query]
-        print(f"Scraping user-specified product query: {target_queries}\n")
-    else:
-        target_queries = TRACKED_KEYWORDS
-        print(f"Watchlist product queries to scrape ({len(target_queries)}): {target_queries}\n")
-
 
     options = Options()
     options.add_argument('--headless')
@@ -327,165 +366,126 @@ def main():
             'source': 'Object.defineProperty(navigator, "webdriver", {get: () => undefined})'
         })
 
-        # Set Geolocation override for HSR Layout Bangalore (12.9121, 77.6446)
-        try:
-            driver.execute_cdp_cmd('Emulation.setGeolocationOverride', {
-                'latitude': 12.9121,
-                'longitude': 77.6446,
-                'accuracy': 100
-            })
-        except Exception:
-            pass
-
         wait = WebDriverWait(driver, 10)
         conn, cursor = init_db()
         total_inserted = 0
 
-        # Pre-inject Swiggy location cookies for HSR Layout Bangalore
-        try:
-            driver.get("https://www.swiggy.com/404")
-            time.sleep(1)
-            driver.add_cookie({"name": "_lat", "value": "12.9121", "domain": ".swiggy.com", "path": "/"})
-            driver.add_cookie({"name": "_lng", "value": "77.6446", "domain": ".swiggy.com", "path": "/"})
-            driver.add_cookie({"name": "address", "value": urllib.parse.quote("HSR Layout, Bengaluru, Karnataka, India"), "domain": ".swiggy.com", "path": "/"})
-            driver.add_cookie({"name": "userLocation", "value": urllib.parse.quote(json.dumps({"lat": 12.9121, "lng": 77.6446, "address": "HSR Layout, Bengaluru, Karnataka, India"})), "domain": ".swiggy.com", "path": "/"})
-        except Exception:
-            pass
+        # Loop over each target location
+        for loc_idx, current_location in enumerate(target_locations):
+            print(f"\n{'='*60}")
+            print(f"📍 [{loc_idx + 1}/{len(target_locations)}] Target Delivery Location: '{current_location}'")
+            print(f"{'='*60}")
 
-        # 1. Access Landing Page & Set Location
-        print("Navigating to Swiggy Instamart...")
-        driver.get("https://www.swiggy.com/instamart")
-        time.sleep(3)
-        
-        try:
-            print(f"Setting location: '{location_input_str}'...")
-            search_containers = driver.find_elements(By.CSS_SELECTOR, '[data-testid="search-location"]')
-            if search_containers:
-                search_containers[0].click()
-                time.sleep(1)
-                
-                location_input = wait.until(EC.presence_of_element_located((By.CLASS_NAME, '_1wkJd')))
-                driver.execute_script("arguments[0].value = '';", location_input)
-                location_input.send_keys(location_input_str)
-                
-                first_suggestion = wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, 'div._2esgM')))
-                first_suggestion.click()
-                time.sleep(1)
-                
-                confirm_btn = wait.until(EC.element_to_be_clickable((By.XPATH, '//button[contains(., "Confirm Location")]')))
-                confirm_btn.click()
-                time.sleep(5)
-        except Exception as loc_err:
-            print(f"Location modal handled via preset cookies/CDP (note: {loc_err})")
+            set_browser_location(driver, wait, current_location)
 
-        # Loop over all target queries for this location
-        for q_idx, search_query in enumerate(target_queries):
-            print(f"\n[{q_idx + 1}/{len(target_queries)}] Processing search query: '{search_query}'...")
-            
-            try:
-                # 1. Try input box typing first, fallback to direct search URL navigation if unclickable
-                search_success = False
+            # Loop over all target queries for this location
+            for q_idx, search_query in enumerate(target_queries):
+                print(f"\n[{q_idx + 1}/{len(target_queries)}] Processing search query: '{search_query}' ({current_location})...")
+                
                 try:
-                    search_btns = driver.find_elements(By.XPATH, '//button[contains(., "Search for")]')
-                    if search_btns:
-                        driver.execute_script("arguments[0].click();", search_btns[0])
-                        time.sleep(1.5)
+                    # 1. Try input box typing first, fallback to direct search URL navigation if unclickable
+                    search_success = False
+                    try:
+                        search_btns = driver.find_elements(By.XPATH, '//button[contains(., "Search for")]')
+                        if search_btns:
+                            driver.execute_script("arguments[0].click();", search_btns[0])
+                            time.sleep(1.5)
+                        
+                        product_input = driver.find_element(By.CSS_SELECTOR, 'input[type="search"]')
+                        driver.execute_script("arguments[0].value = '';", product_input)
+                        product_input.send_keys(search_query)
+                        time.sleep(1)
+                        product_input.send_keys("\n")
+                        search_success = True
+                    except Exception:
+                        pass
+
+                    if not search_success:
+                        # Fallback to direct search URL navigation
+                        search_url = f"https://www.swiggy.com/instamart/search?query={urllib.parse.quote_plus(search_query)}"
+                        driver.get(search_url)
                     
-                    product_input = driver.find_element(By.CSS_SELECTOR, 'input[type="search"]')
-                    driver.execute_script("arguments[0].value = '';", product_input)
-                    product_input.send_keys(search_query)
-                    time.sleep(1)
-                    product_input.send_keys("\n")
-                    search_success = True
-                except Exception:
-                    pass
-
-                if not search_success:
-                    # Fallback to direct search URL navigation
-                    search_url = f"https://www.swiggy.com/instamart/search?query={urllib.parse.quote_plus(search_query)}"
-                    driver.get(search_url)
-                
-                print(f"   Waiting for initial listings for '{search_query}' to render...")
-                try:
-                    WebDriverWait(driver, 12).until(EC.presence_of_element_located((By.CSS_SELECTOR, 'div._3Rr1X, div[data-testid*="item"]')))
-                except Exception:
-                    time.sleep(4)
-                
-                print(f"   Scrolling page to load full product catalog...")
-                last_card_count = 0
-                for scroll_step in range(6):
-                    cards_in_dom = driver.find_elements(By.CSS_SELECTOR, 'div._3Rr1X, div[data-testid*="item"]')
-                    current_count = len(cards_in_dom)
-                    if current_count == 0:
-                        time.sleep(3)
+                    print(f"   Waiting for initial listings for '{search_query}' to render...")
+                    try:
+                        WebDriverWait(driver, 12).until(EC.presence_of_element_located((By.CSS_SELECTOR, 'div._3Rr1X, div[data-testid*="item"]')))
+                    except Exception:
+                        time.sleep(4)
+                    
+                    print(f"   Scrolling page to load full product catalog...")
+                    last_card_count = 0
+                    for scroll_step in range(6):
                         cards_in_dom = driver.find_elements(By.CSS_SELECTOR, 'div._3Rr1X, div[data-testid*="item"]')
                         current_count = len(cards_in_dom)
-                    if current_count == 0 or current_count == last_card_count:
-                        break
-                    last_card_count = current_count
-                    driver.execute_script("arguments[0].scrollIntoView(true);", cards_in_dom[-1])
-                    time.sleep(2.5)
+                        if current_count == 0:
+                            time.sleep(3)
+                            cards_in_dom = driver.find_elements(By.CSS_SELECTOR, 'div._3Rr1X, div[data-testid*="item"]')
+                            current_count = len(cards_in_dom)
+                        if current_count == 0 or current_count == last_card_count:
+                            break
+                        last_card_count = current_count
+                        driver.execute_script("arguments[0].scrollIntoView(true);", cards_in_dom[-1])
+                        time.sleep(2.5)
 
+                    soup = BeautifulSoup(driver.page_source, 'html.parser')
+                    cards = soup.find_all('div', class_='_3Rr1X')
+                    if not cards:
+                        cards = soup.select('div[data-testid*="item"]')
 
-                soup = BeautifulSoup(driver.page_source, 'html.parser')
-                cards = soup.find_all('div', class_='_3Rr1X')
-                if not cards:
-                    cards = soup.select('div[data-testid*="item"]')
-
-                print(f"   Found {len(cards)} total product cards for '{search_query}'.")
-                
-                current_timestamp = datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M:%S')
-
-                for idx, card in enumerate(cards):
-                    name_el = card.find('div', class_='_1lbNR')
-                    name = name_el.get_text().strip() if name_el else 'N/A'
+                    print(f"   Found {len(cards)} total product cards for '{search_query}'.")
                     
-                    desc_el = card.find('div', class_='_3bM-V')
-                    desc = desc_el.get_text().strip() if desc_el else 'N/A'
-                    
-                    weight_el = card.find('div', class_='_3wq_F')
-                    weight = weight_el.get_text().strip() if weight_el else 'N/A'
-                    
-                    price_el = card.find('div', class_='_2jn41')
-                    raw_price = price_el.get_text().strip() if price_el else 'N/A'
-                    numeric_price = clean_price(raw_price)
-                    
-                    img_el = card.find('img')
-                    image_url = img_el.get('src') if img_el and img_el.get('src') else 'N/A'
-                    
-                    full_item_query = f"{name} {weight}".strip()
-                    encoded_name = urllib.parse.quote_plus(full_item_query)
-                    web_link = f"https://www.swiggy.com/instamart/search?query={encoded_name}"
-                    product_id = generate_product_id(name, weight)
-                    
-                    cursor.execute("""
-                        INSERT OR REPLACE INTO instamart_prices 
-                        (product_id, search_query, location, item_name, quantity, price, description, web_link, image_url, scraped_at)
-                        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-                    """, (product_id, search_query, location_input_str, name, weight, numeric_price, desc, web_link, image_url, current_timestamp))
-                    total_inserted += 1
+                    current_timestamp = datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M:%S')
 
-                conn.commit()
-                print(f"   Successfully saved {len(cards)} listings for '{search_query}' (Location: '{location_input_str}').")
-                time.sleep(2)
+                    for idx, card in enumerate(cards):
+                        name_el = card.find('div', class_='_1lbNR')
+                        name = name_el.get_text().strip() if name_el else 'N/A'
+                        
+                        desc_el = card.find('div', class_='_3bM-V')
+                        desc = desc_el.get_text().strip() if desc_el else 'N/A'
+                        
+                        weight_el = card.find('div', class_='_3wq_F')
+                        weight = weight_el.get_text().strip() if weight_el else 'N/A'
+                        
+                        price_el = card.find('div', class_='_2jn41')
+                        raw_price = price_el.get_text().strip() if price_el else 'N/A'
+                        numeric_price = clean_price(raw_price)
+                        
+                        img_el = card.find('img')
+                        image_url = img_el.get('src') if img_el and img_el.get('src') else 'N/A'
+                        
+                        full_item_query = f"{name} {weight}".strip()
+                        encoded_name = urllib.parse.quote_plus(full_item_query)
+                        web_link = f"https://www.swiggy.com/instamart/search?query={encoded_name}"
+                        product_id = generate_product_id(name, weight)
+                        
+                        cursor.execute("""
+                            INSERT OR REPLACE INTO instamart_prices 
+                            (product_id, search_query, location, item_name, quantity, price, description, web_link, image_url, scraped_at)
+                            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+                        """, (product_id, search_query, current_location, name, weight, numeric_price, desc, web_link, image_url, current_timestamp))
+                        total_inserted += 1
 
-            except Exception as q_err:
-                print(f"   ⚠️ Warning: Error processing query '{search_query}': {q_err}. Continuing to next query...")
+                    conn.commit()
+                    print(f"   Successfully saved {len(cards)} listings for '{search_query}' (Location: '{current_location}').")
+                    time.sleep(2)
 
+                except Exception as q_err:
+                    print(f"   ⚠️ Warning: Error processing query '{search_query}': {q_err}. Continuing to next query...")
 
-        print(f"\nAll {len(target_queries)} queries completed for '{location_input_str}'. Total products stored/updated: {total_inserted}")
+        print(f"\nAll scraping runs completed across {len(target_locations)} location(s). Total products stored/updated: {total_inserted}")
         conn.close()
         driver.quit()
         print("Browser session closed cleanly.")
         
         # Run price drop comparison ONLY for items scraped in this specific run
         if total_inserted > 0:
-            compare_prices(target_location=location_input_str, min_scraped_at=run_start_time)
+            target_loc_filter = args.location if args.location else None
+            compare_prices(target_location=target_loc_filter, min_scraped_at=run_start_time)
         else:
             print("No new products were scraped in this run. Skipping price drop alert.")
         
     except Exception as e:
         print(f"\nScraping failed with error: {e}")
+
 
 
 if __name__ == "__main__":

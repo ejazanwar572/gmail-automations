@@ -12,9 +12,17 @@ An automated grocery price tracking and discount alerting engine built for Swigg
    - Executes `scrollIntoView()` infinite scrolling to load full product catalogs (up to 140+ items per category).
    - Per-query exception isolation & direct search URL fallbacks to ensure 100% resilient runs without crashes.
 
-2. **Watchlist Configuration (`TRACKED_KEYWORDS`)**:
-   - Easily manage your watchlist by editing the top-level list in `instamart_scraper.py`:
+2. **Location & Watchlist Configuration**:
+   - Easily manage your delivery locations and keyword watchlist by editing the top-level lists in `instamart_scraper.py`:
      ```python
+     # Tracked Delivery Locations (Add as many locations as you want!)
+     TRACKED_LOCATIONS = [
+         "HSR Layout Bangalore",
+         # "Koramangala Bangalore",
+         # "Indiranagar Bangalore",
+     ]
+
+     # Watchlist Keywords
      TRACKED_KEYWORDS = [
          "milk",
          "mustard oil",
@@ -22,8 +30,11 @@ An automated grocery price tracking and discount alerting engine built for Swigg
          "oil",
          "soap",
          "shampoo",
+         "sugar",
+         "coffee",
      ]
      ```
+
 
 3. **SQLite Historical Price Database (`instamart_prices.db`)**:
    - Tracks timestamped price snapshots with primary key `(product_id, location, scraped_at)`.
