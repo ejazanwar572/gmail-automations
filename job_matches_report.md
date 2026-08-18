@@ -1,5 +1,14 @@
 # Automated Job Matcher Run History
 
+## 📅 Scan Run: 2026-08-18 15:35:06
+- **Total New Jobs Scraped**: 20
+- **High-Match Roles (Score &ge; 70)**: 1
+
+| Job Title | Company | Location | Match Score | Key Matches | Gaps |
+| :--- | :--- | :--- | :-: | :--- | :--- |
+| [Product Analyst](https://visa.wd5.myworkdayjobs.com/visa/visa/job/IN---Bengaluru-India/Product-Analyst_REF087441W-1) | Visa | IN - Bengaluru, India | **92/100** | • Over 8 years of experience in product analytics, A/B testing, causal inference, and user behavior analytics, directly aligning with the core responsibilities of the Product Analyst role.<br>• Strong proficiency in SQL, Python, statistical analysis, and experiment design, which are high-weight skills essential for deriving insights and translating them into actionable strategies.<br>• Demonstrated experience in working with cross-functional stakeholders, influencing product roadmap decisions (e.g., at PayPal, OLX Autos), and improving reporting access for business stakeholders.<br>• Relevant experience with LLM/AI workflows, building AI/data prototypes, and automating processes, which aligns with the 'Fluency in AI Developing tools' requirement.<br>• The candidate's current location and preferred work location are Bangalore, India, which perfectly matches the job's location. | • While the candidate has strong analytical experience, specific mention of measuring CSAT/NPS (Customer Satisfaction and Net Promoter Score) is not explicitly detailed in the resume.<br>• The resume does not explicitly highlight experience focused on 'billing properties' or deep fintech experience specifically within a billing context, which is noted as a 'plus' in the job description.<br>• Direct experience with Microsoft Dynamics, which is listed as a 'plus', is not mentioned in the candidate's skills or experience.<br>• Some responsibilities like defining product vision/strategy, conducting market research, and managing product backlog/release plans are more typical of a Product Manager role, which the candidate has supported through analytics but not explicitly owned. |
+
+---
 ## 📅 Scan Run: 2026-08-18 12:46:03
 - **Total New Jobs Scraped**: 17
 - **High-Match Roles (Score &ge; 70)**: 0
