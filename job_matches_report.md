@@ -1,5 +1,14 @@
 # Automated Job Matcher Run History
 
+## 📅 Scan Run: 2026-08-19 21:27:10
+- **Total New Jobs Scraped**: 6
+- **High-Match Roles (Score &ge; 70)**: 1
+
+| Job Title | Company | Location | Match Score | Key Matches | Gaps |
+| :--- | :--- | :--- | :-: | :--- | :--- |
+| [Manager, Business Intelligence, FTV - Experience](https://www.amazon.jobs/en/jobs/10507367/manager-business-intelligence-ftv-experience) | Career Portal | Bengaluru, KA, IND | **78/100** | • Extensive Analytics and BI Experience: Candidate possesses 8+ years of experience in product analytics and business intelligence, exceeding the 7+ years basic qualification.<br>• Strong Technical Proficiency: Demonstrates expert-level skills in SQL, Python, A/B testing, experiment design, statistical analysis, predictive modeling, and causal inference, all of which are high-weight skills and core requirements.<br>• AI/ML/LLM Expertise: Proven experience in building AI/data prototypes, implementing LLM/agent-enabled workflows, and understanding RAG concepts, directly aligning with the job's focus on AI-powered insights and GenAI-enabled data products.<br>• Stakeholder Management and Impact: Track record of translating data into actionable insights, influencing roadmap decisions across various product areas, and effective cross-functional collaboration, meeting the requirement for working directly with business stakeholders.<br>• Location Alignment: The candidate is based in Bangalore, matching the job's primary preferred location. | • Managerial Experience: Lacks explicit 3+ years of formal experience in managing a business intelligence or analytics team, including employee development and performance management, which is a basic qualification. While the candidate has mentored analysts for 3 years and holds a recent 'Lead AI Analyst' title, it does not fully equate to direct team management responsibilities for the required duration.<br>• AWS Tools Experience: No explicit mention of experience with AWS tools and technologies (Redshift, S3, EC2) which are listed under preferred qualifications.<br>• Specific Industry Knowledge: While the candidate has relevant experience in consumer tech and e-commerce (PayPal, OLX, Uber), direct knowledge of the digital media, app marketplace, or entertainment technology space is a preferred qualification not explicitly demonstrated. |
+
+---
 ## 📅 Scan Run: 2026-08-19 18:36:28
 - **Total New Jobs Scraped**: 10
 - **High-Match Roles (Score &ge; 70)**: 0
