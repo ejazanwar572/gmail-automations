@@ -1,12 +1,10 @@
 name: Instamart Hourly Price Tracker
 
+# Note: Instamart scraping runs locally on macOS via native launchd scheduler
+# Cloud cron is disabled to prevent Swiggy geo-restriction issues on US Azure runners.
 on:
-  schedule:
-    # Runs automatically at the top of every hour (00:00, 01:00, 02:00 UTC)
-    - cron: '0 * * * *'
-  push:
-    branches: [ main ]
   workflow_dispatch:
+
 
 
 permissions:
