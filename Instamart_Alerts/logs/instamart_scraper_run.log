@@ -1,0 +1,16 @@
+==================================================
+Starting Instamart Scraper run at Wed Aug 19 23:55:20 IST 2026
+==================================================
+Tracked Locations (2): ['HSR Layout Bangalore', 'Manganapallaya Bangalore']
+Watchlist Keywords (8): ['milk', 'mustard oil', 'eggs', 'oil', 'soap', 'shampoo', 'sugar', 'coffee']
+
+
+============================================================
+📍 [1/2] Target Delivery Location: 'HSR Layout Bangalore'
+============================================================
+Setting location: 'HSR Layout Bangalore'...
+✓ Location set to 'HSR Layout Bangalore'
+
+[1/8] Processing search query: 'milk' (HSR Layout Bangalore)...
+   Waiting for initial listings for 'milk' to render...
+   Scrolling page to load full product catalog...

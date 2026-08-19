@@ -1,0 +1,186 @@
+[
+  {
+    "asin": "B0GPRPQF23",
+    "title": "Godrej Fab Liquid Detergent Refill Pouch for Machine & Hand Wash - 5L/5kg",
+    "category": "Cleaning & Household",
+    "baseline_price": 525.0,
+    "target_price": 499.0,
+    "active": true
+  },
+  {
+    "asin": "B00E3AP5KS",
+    "title": "Horlicks Chocolate Nutrition Drink (1 kg Refill Pack)",
+    "category": "Groceries & Food",
+    "baseline_price": 361.0,
+    "target_price": 330.0,
+    "active": true
+  },
+  {
+    "asin": "B06VX7PDXC",
+    "title": "Ezee Garbage Trash Bag for Dustbin (Large 24x32\", 30 Pieces / 2x15)",
+    "category": "Cleaning & Household",
+    "baseline_price": 119.0,
+    "target_price": 105.0,
+    "active": true
+  },
+  {
+    "asin": "B0FDKV3CK1",
+    "title": "Origami Online Facial Tissues (Soft Pack, Pack of 6, 100 Pulls Each)",
+    "category": "Paper & Tissues",
+    "baseline_price": 250.0,
+    "target_price": 220.0,
+    "active": true
+  },
+  {
+    "asin": "B0F8N6D3ZF",
+    "title": "Pureserve Premium Whole Cashews 1Kg",
+    "category": "Groceries & Food",
+    "baseline_price": 990.0,
+    "target_price": 899.0,
+    "active": true
+  },
+  {
+    "asin": "B09L7QWYC3",
+    "title": "LAKMÉ Eyeconic Black Kajal 0.35 g (Combo Pack of 2)",
+    "category": "Beauty & Personal Care",
+    "baseline_price": 239.0,
+    "target_price": 210.0,
+    "active": true
+  },
+  {
+    "asin": "B0D314FYDY",
+    "title": "DABUR Fem Fruity Squash Soft & Safe Handwash (1500 ml)",
+    "category": "Personal Care & Hygiene",
+    "baseline_price": 148.0,
+    "target_price": 135.0,
+    "active": true
+  },
+  {
+    "asin": "B07F38B4W9",
+    "title": "Johnson's Baby No More Tears Baby Shampoo (500 ml)",
+    "category": "Baby & Child Care",
+    "baseline_price": 219.0,
+    "target_price": 199.0,
+    "active": true
+  },
+  {
+    "asin": "B075Z1DL1Q",
+    "title": "EVEREADY 40W LED Hammer Bulb with B22 Base",
+    "category": "Appliances & Electrical",
+    "baseline_price": 367.0,
+    "target_price": 330.0,
+    "active": true
+  },
+  {
+    "asin": "B0F63HJXSR",
+    "title": "Go Vegan Healthy Nutmix (500g Jar Pack)",
+    "category": "Groceries & Food",
+    "baseline_price": 289.0,
+    "target_price": 260.0,
+    "active": true
+  },
+  {
+    "asin": "B06W9NN1JH",
+    "title": "Ezee Plastic Large Garbage Bags (24x32\", 45 Units / 3x15)",
+    "category": "Cleaning & Household",
+    "baseline_price": 194.0,
+    "target_price": 175.0,
+    "active": true
+  },
+  {
+    "asin": "B0BSWJB9GQ",
+    "title": "Havells 1200mm Ambrose Energy Saving High Speed Ceiling Fan",
+    "category": "Appliances & Electrical",
+    "baseline_price": 2349.0,
+    "target_price": 2199.0,
+    "active": true
+  },
+  {
+    "asin": "B076DNJMCV",
+    "title": "EVEREADY 30W LED Hammer Bulb with B22 Base",
+    "category": "Appliances & Electrical",
+    "baseline_price": 259.0,
+    "target_price": 230.0,
+    "active": true
+  },
+  {
+    "asin": "B07BNS25DB",
+    "title": "Pears Original Glycerin Soap Bar (125g x 8 Pack)",
+    "category": "Personal Care & Hygiene",
+    "baseline_price": 385.0,
+    "target_price": 350.0,
+    "active": true
+  },
+  {
+    "asin": "B079H72M8L",
+    "title": "Vim Antismell Dishwash Bar with Pudina 190g (Buy 4 Get 1 Free)",
+    "category": "Cleaning & Household",
+    "baseline_price": 230.0,
+    "target_price": 205.0,
+    "active": true
+  },
+  {
+    "asin": "B01LNA2MQK",
+    "title": "Dettol Liquid Handwash Refill Original (1350 ml)",
+    "category": "Personal Care & Hygiene",
+    "baseline_price": 186.0,
+    "target_price": 165.0,
+    "active": true
+  },
+  {
+    "asin": "B0D31473BC",
+    "title": "DABUR Fem Floral Bouquet Soft & Safe Handwash (1500 ml)",
+    "category": "Personal Care & Hygiene",
+    "baseline_price": 148.0,
+    "target_price": 135.0,
+    "active": true
+  },
+  {
+    "asin": "B07ZZD6XL1",
+    "title": "Genteel Matic Liquid Detergent Refill Pouch (Top Load, 2kg)",
+    "category": "Cleaning & Household",
+    "baseline_price": 290.0,
+    "target_price": 260.0,
+    "active": true
+  },
+  {
+    "asin": "B07KTKPHRT",
+    "title": "Amazon Brand - Presto! Bathroom Cleaner Lemon (1 L, Pack of 2)",
+    "category": "Cleaning & Household",
+    "baseline_price": 299.0,
+    "target_price": 269.0,
+    "active": true
+  },
+  {
+    "asin": "B00CBRHYKO",
+    "title": "Nihar Shanti Amla Badam Hair Oil (550 ml)",
+    "category": "Personal Care & Hygiene",
+    "baseline_price": 168.0,
+    "target_price": 150.0,
+    "active": true
+  },
+  {
+    "asin": "B08W36QBV9",
+    "title": "Dabur Jamun Neem Karela Juice (1 L)",
+    "category": "Groceries & Food",
+    "baseline_price": 269.0,
+    "target_price": 240.0,
+    "active": true
+  },
+  {
+    "asin": "B08DH8THKF",
+    "title": "Boroplus Antiseptic & Moisturising Bathing Soap (125g x 6 Pack)",
+    "category": "Personal Care & Hygiene",
+    "baseline_price": 196.0,
+    "target_price": 175.0,
+    "active": true
+  },
+  {
+    "asin": "B0C86D8D9V",
+    "title": "Bajaj Skive 5 Litre Instant Water Heater",
+    "category": "Appliances & Electrical",
+    "baseline_price": 3999.0,
+    "target_price": 3699.0,
+    "active": true
+  }
+]

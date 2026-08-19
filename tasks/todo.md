@@ -1,8 +1,17 @@
-# Job Board Pagination Scraper and Workflow Checklist
+# Amazon Price Tracker Implementation Checklist
 
-- [x] Update `job_boards.json` to include Adobe's careers search page
-- [x] Modify `check_job_boards.py` to add `slugify` and pagination layout detection for Phenom People (Gartner/Adobe)
-- [x] Update `tide-job-matcher.md` global workflow to specify multi-page pagination and location prioritization (Bangalore first)
-- [x] Run the scraper and verify multi-page scraping runs correctly for Tide, Gartner, and Adobe
-- [x] Update `scraped_jobs.json` and verify jobs are correctly identified and stored
-- [/] Capture lessons if any new lessons are learned
+- [x] Create `amazon_products.json` containing the 23 active tracked products with ASINs, clean titles, categories, baseline prices, and target price thresholds
+- [x] Implement `amazon_price_tracker.py` with:
+  - Standard-library resilient HTTP fetcher (custom browser user-agent, retry backoff)
+  - Price, availability, and title parsers for Amazon product pages
+  - SQLite database `amazon_prices.db` for timestamped historical price snapshots
+  - Price drop detection engine (comparing against baseline and previous checks)
+  - Markdown and console reporting formatters
+- [x] Implement standalone test suite `tests/test_amazon_tracker.py` to verify:
+  - Product loading and normalization
+  - SQLite schema creation and price history recording
+  - Price drop calculation and alerting logic
+- [x] Run end-to-end check on tracked products and verify database logging
+- [x] Document usage instructions and scheduled automation options in walkthrough
+
+
