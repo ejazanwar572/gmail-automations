@@ -1,5 +1,14 @@
 # Automated Job Matcher Run History
 
+## 📅 Scan Run: 2026-08-20 12:50:42
+- **Total New Jobs Scraped**: 22
+- **High-Match Roles (Score &ge; 70)**: 1
+
+| Job Title | Company | Location | Match Score | Key Matches | Gaps |
+| :--- | :--- | :--- | :-: | :--- | :--- |
+| [Lead Analyst, Channel Analytics](https://careers.adobe.com/us/en/job/R168975/lead-analyst-channel-analytics) | Adobe | Bangalore, Karnātaka, India | **75/100** | • Ejaz has 8+ years of experience as a Lead AI/Product Analyst, perfectly aligning with the '7+ years' experience and 'Lead Analyst' title.<br>• Strong expertise in core analytical skills including SQL, Python, A/B testing, experiment design, statistical analysis, causal inference, and data storytelling, which are highly weighted and central to the role.<br>• Proven experience in building and automating analytical workflows and applying AI/LLM/Agent-enabled workflows for insights and tooling, directly matching requirements for AI and automated analytical processes.<br>• Proficiency with data visualization tools (Power BI, Tableau) and experience with data infrastructure like Databricks, explicitly mentioned in the job description.<br>• The candidate's current location in Bangalore, India, is a perfect match for the job's preferred location. | • The candidate's experience is heavily focused on product analytics (e.g., PayPal Shopping, OLX Autos product features), rather than the specific domain of 'channel-level data analysis' or 'media analytics' (paid search, paid social, display, mobile) as emphasized in the job description.<br>• Lack of explicit experience or knowledge in specific media operations, third-party ad-serving and tracking tools (e.g., Flashtalking, Innovid), programmatic advertising, and specific media analytics frameworks like MMX and cross-channel attribution for revenue, LTV, and active use models.<br>• While Ejaz has strong analytical skills, the job description requires applying these to assist 'media buyers' and optimize 'campaigns' based on creative, audience, tactic, keyword, etc., which is not directly reflected in his resume. |
+
+---
 ## 📅 Scan Run: 2026-08-20 09:39:57
 - **Total New Jobs Scraped**: 31
 - **High-Match Roles (Score &ge; 70)**: 3
