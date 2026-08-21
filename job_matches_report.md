@@ -1,5 +1,12 @@
 # Automated Job Matcher Run History
 
+## 📅 Scan Run: 2026-08-21 01:14:38
+- **Total New Jobs Scraped**: 2
+- **High-Match Roles (Score &ge; 70)**: 0
+
+*No roles with score &ge; 70% found in this run.*
+
+---
 ## 📅 Scan Run: 2026-08-20 21:30:27
 - **Total New Jobs Scraped**: 18
 - **High-Match Roles (Score &ge; 70)**: 0
