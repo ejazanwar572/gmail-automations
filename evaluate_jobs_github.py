@@ -65,62 +65,62 @@ def send_email_brief(high_matches):
         
     subject = f"Incremental Job Match Brief - {len(high_matches)} High-Match Roles Found!"
     
-    # Build HTML table of roles
-    rows = ""
+    # Build HTML vertical cards of roles
+    cards_html = ""
     for m in high_matches:
-        matches_html = "".join([f"<li>{x}</li>" for x in m["key_matches"]])
-        gaps_html = "".join([f"<li>{x}</li>" for x in m["gaps"]]) if m["gaps"] else "<li>None</li>"
+        matches_html = "".join([f"<li style='margin-bottom: 4px;'>{x}</li>" for x in m["key_matches"]])
         
-        rows += f"""
-        <tr style="border-bottom: 1px solid #e0e0e0;">
-            <td style="padding: 14px 10px; vertical-align: top;"><a href="{m['url']}" style="color: #1a73e8; font-weight: bold; text-decoration: none; font-size: 15px;">{m['title']}</a></td>
-            <td style="padding: 14px 10px; vertical-align: top; font-weight: bold; font-size: 14px;">{m['company']}</td>
-            <td style="padding: 14px 10px; vertical-align: top; font-size: 14px; color: #5f6368;">{m['location']}</td>
-            <td style="padding: 14px 10px; vertical-align: top; text-align: center;"><span style="background-color: #e6f4ea; color: #137333; padding: 4px 10px; border-radius: 12px; font-weight: bold; font-size: 13px; display: inline-block;">{m['score']}/100</span></td>
-            <td style="padding: 14px 10px; vertical-align: top; font-size: 13px;">
-                <ul style="margin: 0; padding-left: 18px; color: #202124;">{matches_html}</ul>
-            </td>
-            <td style="padding: 14px 10px; vertical-align: top; font-size: 13px; color: #5f6368;">
-                <ul style="margin: 0; padding-left: 18px; color: #5f6368;">{gaps_html}</ul>
-            </td>
-        </tr>
+        badge_bg = "#e6f4ea" if m["score"] >= 85 else "#e8f0fe"
+        badge_color = "#137333" if m["score"] >= 85 else "#1a73e8"
+        
+        cards_html += f"""
+        <div style="background-color: #ffffff; border: 1px solid #e0e0e0; border-radius: 10px; padding: 20px; margin-bottom: 20px; box-shadow: 0 2px 6px rgba(0,0,0,0.03);">
+            <table style="width: 100%; border-collapse: collapse;">
+                <tr>
+                    <td style="vertical-align: top;">
+                        <a href="{m['url']}" style="font-size: 18px; font-weight: 700; color: #1a73e8; text-decoration: none; line-height: 1.3;">{m['title']}</a>
+                    </td>
+                    <td style="vertical-align: top; text-align: right; width: 85px;">
+                        <span style="background-color: {badge_bg}; color: {badge_color}; padding: 6px 12px; border-radius: 16px; font-size: 14px; font-weight: 700; display: inline-block;">{m['score']}/100</span>
+                    </td>
+                </tr>
+            </table>
+            
+            <div style="margin-top: 8px; font-size: 14px; color: #5f6368; font-weight: 500;">
+                <span style="color: #202124; font-weight: 600;">{m['company']}</span> &nbsp;•&nbsp; 📍 {m['location']}
+            </div>
+            
+            <hr style="border: none; border-top: 1px solid #f1f3f4; margin: 14px 0;">
+            
+            <div style="font-size: 14px; color: #3c4043;">
+                <ul style="margin: 0; padding-left: 18px; line-height: 1.7; color: #202124;">
+                    {matches_html}
+                </ul>
+            </div>
+            
+            <div style="margin-top: 16px; text-align: right;">
+                <a href="{m['url']}" style="background-color: #1a73e8; color: #ffffff; padding: 8px 16px; border-radius: 6px; font-size: 13px; font-weight: 600; text-decoration: none; display: inline-block;">Apply on {m['company']} &rarr;</a>
+            </div>
+        </div>
         """
         
     body_html = f"""
     <html>
-    <body style="font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; color: #202124; line-height: 1.6; background-color: #f4f6f9; padding: 20px; margin: 0;">
-        <div style="max-width: 900px; margin: 0 auto; background-color: #ffffff; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.08); border: 1px solid #e0e0e0;">
-            <div style="background: linear-gradient(135deg, #1a73e8 0%, #1557b0 100%); padding: 24px; color: #ffffff; text-align: center;">
-                <h1 style="margin: 0; font-size: 24px; font-weight: 600; letter-spacing: 0.5px;">Job Board Scraper Brief</h1>
-                <p style="margin: 6px 0 0 0; opacity: 0.9; font-size: 14px;">Found {len(high_matches)} roles matching your profile scoring &ge; 70%</p>
+    <body style="font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; color: #202124; line-height: 1.5; background-color: #f4f6f9; padding: 20px; margin: 0;">
+        <div style="max-width: 680px; margin: 0 auto; background-color: #ffffff; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.06); border: 1px solid #e0e0e0;">
+            <div style="background: linear-gradient(135deg, #1a73e8 0%, #1557b0 100%); padding: 24px 28px; color: #ffffff;">
+                <h1 style="margin: 0; font-size: 22px; font-weight: 700; letter-spacing: 0.3px;">💼 Job Matcher Daily Brief</h1>
+                <p style="margin: 6px 0 0 0; opacity: 0.95; font-size: 14px;">Found {len(high_matches)} roles matching your profile (Score &ge; 70%)</p>
             </div>
-            <div style="padding: 30px;">
-                <p style="font-size: 15px; color: #202124; margin-top: 0;">Hi Ejaz,</p>
-                <p style="font-size: 15px; color: #202124;">Here is the list of new matching roles identified from your automated career portal scan:</p>
+            <div style="padding: 24px;">
+                <p style="font-size: 15px; color: #3c4043; margin-top: 0; margin-bottom: 20px;">Hi Ejaz, here are the top matching opportunities from your automated scan:</p>
                 
-                <div style="overflow-x: auto; margin-top: 20px;">
-                    <table style="border-collapse: collapse; width: 100%; min-width: 600px; border: 1px solid #e0e0e0;">
-                        <thead>
-                            <tr style="background-color: #f8f9fa; border-bottom: 2px solid #e0e0e0;">
-                                <th style="padding: 12px 10px; text-align: left; font-weight: 600; font-size: 13px; color: #5f6368; text-transform: uppercase;">Job Title</th>
-                                <th style="padding: 12px 10px; text-align: left; font-weight: 600; font-size: 13px; color: #5f6368; text-transform: uppercase;">Company</th>
-                                <th style="padding: 12px 10px; text-align: left; font-weight: 600; font-size: 13px; color: #5f6368; text-transform: uppercase;">Location</th>
-                                <th style="padding: 12px 10px; text-align: center; font-weight: 600; font-size: 13px; color: #5f6368; text-transform: uppercase;">Score</th>
-                                <th style="padding: 12px 10px; text-align: left; font-weight: 600; font-size: 13px; color: #5f6368; text-transform: uppercase;">Key Matches</th>
-                                <th style="padding: 12px 10px; text-align: left; font-weight: 600; font-size: 13px; color: #5f6368; text-transform: uppercase;">Gaps</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {rows}
-                        </tbody>
-                    </table>
-                </div>
+                {cards_html}
                 
-                <p style="font-size: 15px; color: #202124; margin-top: 24px;">These opportunities have been logged into your repository history file <code>job_matches_report.md</code>.</p>
-                <p style="font-size: 15px; color: #202124;">Best of luck with your applications!</p>
+                <p style="font-size: 13px; color: #70757a; margin-top: 24px;">All opportunities are tracked in <code>job_matches_report.md</code> in your repository.</p>
             </div>
-            <div style="background-color: #f8f9fa; border-top: 1px solid #e0e0e0; padding: 16px; text-align: center; font-size: 12px; color: #5f6368;">
-                This briefing was automatically generated and sent by the GitHub Actions Job Matcher workflow.
+            <div style="background-color: #f8f9fa; border-top: 1px solid #e0e0e0; padding: 14px; text-align: center; font-size: 12px; color: #5f6368;">
+                Automated Job Matcher Brief • Sent via GitHub Actions
             </div>
         </div>
     </body>
@@ -286,8 +286,14 @@ Determine:
    - For a perfect/excellent fit, score should be >= 85.
    - Roles that are pre-sales, sales ops, or require MBAs/marketing PM should be scored < 60.
    - Lead/Manager roles requiring 8+ years experience fit well.
-2. Key Matches (3-5 bullet points summarizing what aligns: tools, skills, experience, location).
-3. Gaps (bullet points detailing requirements from the job description that the candidate lacks, e.g., java/scala, excessive years, specific industry, location mismatches).
+2. Key Matches: 3 to 4 ultra-concise bullet points summarizing key skill/experience alignments.
+   - CRITICAL REQUIREMENT: Keep each bullet point extremely short (2 to 5 words max). For example:
+     - "8+ Yrs Analytics Experience"
+     - "A/B Testing & Causal Inference"
+     - "SQL, Python & PySpark"
+     - "Bangalore Location Fit"
+   - Do NOT write long sentences, paragraphs, or explanations. Keep them as punchy bullet tags.
+3. Gaps: 1 to 2 ultra-concise bullet tags detailing any key missing requirements (2 to 5 words max).
 
 You MUST output your response in JSON format. Do not include markdown code block formatting. Just the raw JSON object.
 Output structure:
