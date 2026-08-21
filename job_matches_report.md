@@ -1,5 +1,15 @@
 # Automated Job Matcher Run History
 
+## 📅 Scan Run: 2026-08-21 16:59:53
+- **Total New Jobs Scraped**: 114
+- **High-Match Roles (Score &ge; 70)**: 2
+
+| Job Title | Company | Location | Match Score | Key Matches | Gaps |
+| :--- | :--- | :--- | :-: | :--- | :--- |
+| [Data Scientist - AI & Automation](https://jobs.ebayinc.com/us/en/job/R0075756/data-scientist-ai-automation) | eBay | Bengaluru, India | **90/100** | • 8+ Yrs Lead AI Experience<br>• Python, SQL, BigQuery<br>• AI & Automation Solutions<br>• LLM/Agent Workflows | • Limited Finance Domain |
+| [Data Analytics Lead](https://jobs.gartner.com/jobs/job/113074-data-analytics-lead/) | Gartner | Gurgaon, Haryāna | **85/100** | • 8+ Yrs Analytics Leadership<br>• A/B Testing, Causal Methods<br>• SQL, Python, ML/AI<br>• Mentorship & Strategy | • Gurgaon location not primary |
+
+---
 ## 📅 Scan Run: 2026-08-19 15:34:08
 - **Total New Jobs Scraped**: 16
 - **High-Match Roles (Score &ge; 70)**: 0
