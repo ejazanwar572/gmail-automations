@@ -1,5 +1,14 @@
 # Automated Job Matcher Run History
 
+## 📅 Scan Run: 2026-08-21 15:34:05
+- **Total New Jobs Scraped**: 6
+- **High-Match Roles (Score &ge; 70)**: 1
+
+| Job Title | Company | Location | Match Score | Key Matches | Gaps |
+| :--- | :--- | :--- | :-: | :--- | :--- |
+| [Agentic Analytics Products Developer](https://jobs.ebayinc.com/us/en/job/R0076062/agentic-analytics-products-developer) | eBay | Bengaluru, India | **75/100** | • Over 8 years of experience as a Lead AI Analyst and Senior Product Analyst with a strong focus on product analytics, A/B testing, causal inference, and data storytelling, directly aligning with the job's focus on insight delivery and evidence-based decision-making.<br>• Extensive experience with LLM/agent-enabled workflows, RAG concepts, and building functional AI and data prototypes using Python and Streamlit, which directly addresses the core need for AI-native applications and agentic pipelines.<br>• Strong technical proficiency in 'must-have' skills like SQL, Python, statistical analysis, A/B testing, experiment design, and measuring insight quality, with experience across various data platforms like BigQuery and Databricks.<br>• Current location in Bangalore, India, is a perfect match for the job's specified location (Bengaluru, India).<br>• His current title and target roles (Lead AI Analyst, Analytics Lead, Senior Product Analyst) align well with the 'AI Analytics Product Manager' aspect described in the job description. | • Lack of explicit experience with React for data visualization and interactive exploration, which is listed as a 'must-have' skill for designing analytical experiences and building intuitive interfaces.<br>• No direct mention of experience designing and developing Analytical APIs (e.g., FastAPI), data validation, or async retrieval, which are 'must-have' technical skills for the developer aspect of the role.<br>• Limited explicit experience in software deployment (e.g., Kubernetes) and DevOps workflows (automated testing pipelines, secret management, high-availability cloud environments), which are listed as 'nice-to-have' but beneficial for a product developer role. |
+
+---
 ## 📅 Scan Run: 2026-08-21 12:52:18
 - **Total New Jobs Scraped**: 30
 - **High-Match Roles (Score &ge; 70)**: 4
