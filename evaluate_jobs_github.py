@@ -202,46 +202,83 @@ def main():
     # 3. Evaluate each new job
     for idx, job in enumerate(new_jobs):
         title = job.get("title", "Unknown Title")
-        company = job.get("company", "")
-        if not company and job.get("source_board"):
-            sb = job.get("source_board")
-            if "tide.co" in sb or "tide" in sb:
-                company = "Tide"
-            elif "gartner.com" in sb:
-                company = "Gartner"
-            elif "adobe.com" in sb:
-                company = "Adobe"
-            elif "salesforce.com" in sb:
-                company = "Salesforce"
-            elif "nutanix.com" in sb:
-                company = "Nutanix"
-            elif "ebayinc.com" in sb:
-                company = "eBay"
-            elif "pepsico" in sb:
-                company = "PepsiCo"
-            elif "spglobal" in sb:
-                company = "S&P Global"
-            elif "stripe" in sb:
-                company = "Stripe"
-            elif "groww" in sb:
-                company = "Groww"
-            elif "razorpay" in sb:
-                company = "Razorpay"
-            elif "arcesium" in sb:
-                company = "Arcesium"
-            elif "visa" in sb:
-                company = "Visa"
-            elif "expedia" in sb:
-                company = "Expedia"
-            elif "microsoft" in sb:
-                company = "Microsoft"
-            elif "media.net" in sb:
-                company = "Media.net"
-            else:
-                company = "Career Portal"
-                
-        location = job.get("location", "Unknown Location")
         url = job.get("url", "#")
+        company = job.get("company", "")
+        
+        if not company:
+            sb = (job.get("source_board") or "").lower()
+            url_lower = url.lower()
+            combined_ref = f"{sb} {url_lower}"
+            
+            if "amazon" in combined_ref:
+                company = "Amazon"
+            elif "walmart" in combined_ref:
+                company = "Walmart"
+            elif "meesho" in combined_ref:
+                company = "Meesho"
+            elif "postman" in combined_ref:
+                company = "Postman"
+            elif "uber" in combined_ref:
+                company = "Uber"
+            elif "tide.co" in combined_ref or "tide" in combined_ref:
+                company = "Tide"
+            elif "gartner" in combined_ref:
+                company = "Gartner"
+            elif "adobe" in combined_ref:
+                company = "Adobe"
+            elif "salesforce" in combined_ref:
+                company = "Salesforce"
+            elif "nutanix" in combined_ref:
+                company = "Nutanix"
+            elif "ebay" in combined_ref:
+                company = "eBay"
+            elif "pepsico" in combined_ref:
+                company = "PepsiCo"
+            elif "spglobal" in combined_ref or "s&p" in combined_ref:
+                company = "S&P Global"
+            elif "stripe" in combined_ref:
+                company = "Stripe"
+            elif "groww" in combined_ref:
+                company = "Groww"
+            elif "razorpay" in combined_ref:
+                company = "Razorpay"
+            elif "arcesium" in combined_ref:
+                company = "Arcesium"
+            elif "visa" in combined_ref:
+                company = "Visa"
+            elif "expedia" in combined_ref:
+                company = "Expedia"
+            elif "microsoft" in combined_ref:
+                company = "Microsoft"
+            elif "media.net" in combined_ref or "medianet" in combined_ref:
+                company = "Media.net"
+            elif "inmobi" in combined_ref:
+                company = "InMobi"
+            elif "swiggy" in combined_ref:
+                company = "Swiggy"
+            elif "zomato" in combined_ref:
+                company = "Zomato"
+            elif "flipkart" in combined_ref:
+                company = "Flipkart"
+            elif "target" in combined_ref:
+                company = "Target"
+            elif "atlassian" in combined_ref:
+                company = "Atlassian"
+            elif "apple" in combined_ref:
+                company = "Apple"
+            elif "google" in combined_ref:
+                company = "Google"
+            elif "meta" in combined_ref or "facebook" in combined_ref:
+                company = "Meta"
+            else:
+                # Dynamic fallback: extract primary brand name from URL domain
+                import urllib.parse
+                try:
+                    netloc = urllib.parse.urlparse(url).netloc.lower()
+                    parts = [p for p in netloc.split('.') if p not in ('www', 'jobs', 'careers', 'com', 'co', 'io', 'in', 'org', 'net', 'en', 'myworkdayjobs')]
+                    company = parts[0].capitalize() if parts else "Career Portal"
+                except Exception:
+                    company = "Career Portal"
         desc_text = job.get("description_text", "")
         
         # Title-based relevance filter to conserve API quota and speed up runs

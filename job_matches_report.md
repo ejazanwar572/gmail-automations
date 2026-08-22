@@ -13,7 +13,7 @@
 
 | Job Title | Company | Location | Match Score | Key Matches | Gaps |
 | :--- | :--- | :--- | :-: | :--- | :--- |
-| [Data Scientist II, Risk and Compliance Solutions (RCS)](https://www.amazon.jobs/en/jobs/10510774/data-scientist-ii-risk-and-compliance-solutions-rcs) | Career Portal | Bengaluru, KA, IND | **83/100** | • 8+ Yrs AI Analytics<br>• A/B, Causal Inference<br>• SQL, Python, ML Models<br>• LLM/GenAI Expertise<br>• Bangalore Location Match<br>• Mentored Analysts | • Missing Research Publications<br>• Specific AWS Tool Experience<br>• New Risk Compliance Domain |
+| [Data Scientist II, Risk and Compliance Solutions (RCS)](https://www.amazon.jobs/en/jobs/10510774/data-scientist-ii-risk-and-compliance-solutions-rcs) | Amazon | Bengaluru, KA, IND | **83/100** | • 8+ Yrs AI Analytics<br>• A/B, Causal Inference<br>• SQL, Python, ML Models<br>• LLM/GenAI Expertise<br>• Bangalore Location Match<br>• Mentored Analysts | • Missing Research Publications<br>• Specific AWS Tool Experience<br>• New Risk Compliance Domain |
 
 ---
 ## 📅 Scan Run: 2026-08-21 18:38:57
