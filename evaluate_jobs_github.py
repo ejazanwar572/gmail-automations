@@ -204,6 +204,8 @@ def main():
         title = job.get("title", "Unknown Title")
         url = job.get("url", "#")
         company = job.get("company", "")
+        location = job.get("location", "Unknown Location")
+        desc_text = job.get("description_text", "")
         
         if not company:
             sb = (job.get("source_board") or "").lower()
