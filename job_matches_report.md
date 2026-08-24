@@ -1,5 +1,14 @@
 # Automated Job Matcher Run History
 
+## 📅 Scan Run: 2026-08-24 15:41:10
+- **Total New Jobs Scraped**: 13
+- **High-Match Roles (Score &ge; 70)**: 1
+
+| Job Title | Company | Location | Match Score | Key Matches | Gaps |
+| :--- | :--- | :--- | :-: | :--- | :--- |
+| [Program Manager II, Search - AI Data](https://www.amazon.jobs/en/jobs/10478237/program-manager-ii-search-ai-data) | Amazon | Bengaluru, KA, IND | **92/100** | • 8+ Yrs Analytics Leadership<br>• LLM Workflows, AI Data<br>• SQL, Python, A/B Testing<br>• Bengaluru Location Match | • Formal PMP Certification |
+
+---
 ## 📅 Scan Run: 2026-08-24 12:52:36
 - **Total New Jobs Scraped**: 38
 - **High-Match Roles (Score &ge; 70)**: 2
