@@ -1,5 +1,15 @@
 # Automated Job Matcher Run History
 
+## 📅 Scan Run: 2026-08-24 12:52:36
+- **Total New Jobs Scraped**: 38
+- **High-Match Roles (Score &ge; 70)**: 2
+
+| Job Title | Company | Location | Match Score | Key Matches | Gaps |
+| :--- | :--- | :--- | :-: | :--- | :--- |
+| [Product Manager, Assisted Service](https://jobs.ebayinc.com/us/en/job/R0075987/product-manager-assisted-service) | eBay | Bengaluru, India | **80/100** | • 8+ Yrs Product Analytics<br>• AI/LLM Workflow Expertise<br>• A/B Testing & Causal<br>• SQL, Python, Data Tools<br>• Bengaluru Location | • Product Manager Title<br>• Financial Services Focus<br>• Policy/Risk Integration |
+| [Program Manager-Control Tower- Central Operations, Control Tower](https://www.amazon.jobs/en/jobs/10511884/program-manager-control-tower-central-operations-control-tower) | Amazon | Hyderabad, TS, IND | **70/100** | • 8+ Yrs Analytics Experience<br>• SQL, Python, PowerBI/Tableau<br>• Data Analysis, Reporting<br>• Workflow Automation Experience | • Supply Chain Ops Domain<br>• Lean/DMAIC Principles |
+
+---
 ## 📅 Scan Run: 2026-08-24 09:51:36
 - **Total New Jobs Scraped**: 32
 - **High-Match Roles (Score &ge; 70)**: 3
