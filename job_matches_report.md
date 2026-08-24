@@ -1,5 +1,16 @@
 # Automated Job Matcher Run History
 
+## 📅 Scan Run: 2026-08-24 09:51:36
+- **Total New Jobs Scraped**: 32
+- **High-Match Roles (Score &ge; 70)**: 3
+
+| Job Title | Company | Location | Match Score | Key Matches | Gaps |
+| :--- | :--- | :--- | :-: | :--- | :--- |
+| [Business Analyst, Global Solutions & Risk Compliance (GSRC)](https://www.amazon.jobs/en/jobs/10511763/business-analyst-global-solutions-risk-compliance-gsrc) | Amazon | Bengaluru, KA, IND | **92/100** | • 8+ Yrs Analytics Lead<br>• SQL, Python, A/B Testing<br>• Tableau & Power BI<br>• Bengaluru Location Fit | • Compliance Domain Exp. |
+| [Business Intelligence Engineer, eCS Data Engineering and Analytics](https://www.amazon.jobs/en/jobs/10430401/business-intelligence-engineer-ecs-data-engineering-and-analytics) | Amazon | Bengaluru, KA, IND | **90/100** | • 8+ Yrs Analytics Experience<br>• Bangalore Location Match<br>• SQL, Python, A/B Testing<br>• Data Modeling, ETL, Viz | • Limited AWS services<br>• No explicit Redshift |
+| [lead – on deck payments](https://jobs.lever.co/cred/aa501081-1787-4617-bfa9-9f4ecaf68f30) | Lever | bengaluru | **73/100** | • 8+ years experience<br>• A/B testing, Causal<br>• SQL, Python, Tableau<br>• Bangalore location fit | • Payments P&L ownership<br>• Regulated payments experience |
+
+---
 ## 📅 Scan Run: 2026-08-24 06:59:34
 - **Total New Jobs Scraped**: 36
 - **High-Match Roles (Score &ge; 70)**: 0
