@@ -1,5 +1,15 @@
 # Automated Job Matcher Run History
 
+## 📅 Scan Run: 2026-08-25 18:41:42
+- **Total New Jobs Scraped**: 10
+- **High-Match Roles (Score &ge; 70)**: 2
+
+| Job Title | Company | Location | Match Score | Key Matches | Gaps |
+| :--- | :--- | :--- | :-: | :--- | :--- |
+| [Data Scientist II, Seller Fee Science](https://www.amazon.jobs/en/jobs/10514035/data-scientist-ii-seller-fee-science) | Amazon | Bengaluru, KA, IND | **92/100** | • 8+ Yrs Analytics Leadership<br>• A/B Testing & Causal Inference<br>• SQL, Python, ML/AI<br>• Bangalore Location Match | • No PhD (Preferred) |
+| [Risk Manager II, Selling Partner Identity Verification (SPIV)](https://www.amazon.jobs/en/jobs/10514224/risk-manager-ii-selling-partner-identity-verification-spiv) | Amazon | Hyderabad, TS, IND | **72/100** | • 8+ Yrs Analytics Exp.<br>• Expert SQL & Python<br>• A/B Testing, Causal<br>• Stakeholder Management<br>• Hyderabad Location Fit | • No explicit Risk/Fraud<br>• Missing Compliance PM |
+
+---
 ## 📅 Scan Run: 2026-08-25 15:43:51
 - **Total New Jobs Scraped**: 34
 - **High-Match Roles (Score &ge; 70)**: 1
