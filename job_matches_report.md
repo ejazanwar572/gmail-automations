@@ -1,5 +1,14 @@
 # Automated Job Matcher Run History
 
+## 📅 Scan Run: 2026-08-25 15:43:51
+- **Total New Jobs Scraped**: 34
+- **High-Match Roles (Score &ge; 70)**: 1
+
+| Job Title | Company | Location | Match Score | Key Matches | Gaps |
+| :--- | :--- | :--- | :-: | :--- | :--- |
+| [Data Scientist, Seller Fee Science](https://www.amazon.jobs/en/jobs/10513793/data-scientist-seller-fee-science) | Amazon | Bengaluru, KA, IND | **90/100** | • 8+ Yrs Analytics Experience<br>• A/B Testing, Causal Inference<br>• SQL, Python, ML/AI<br>• Bengaluru Location Fit | • No formal research papers<br>• B.Tech not Master's/PhD |
+
+---
 ## 📅 Scan Run: 2026-08-25 12:47:59
 - **Total New Jobs Scraped**: 51
 - **High-Match Roles (Score &ge; 70)**: 0
