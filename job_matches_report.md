@@ -1,5 +1,14 @@
 # Automated Job Matcher Run History
 
+## 📅 Scan Run: 2026-08-26 03:54:30
+- **Total New Jobs Scraped**: 2
+- **High-Match Roles (Score &ge; 70)**: 1
+
+| Job Title | Company | Location | Match Score | Key Matches | Gaps |
+| :--- | :--- | :--- | :-: | :--- | :--- |
+| [Manager II, Program Management, DPWI FIAT team](https://www.amazon.jobs/en/jobs/10515166/manager-ii-program-management-dpwi-fiat-team) | Amazon | Bengaluru, KA, IND | **88/100** | • 8+ Yrs Analytics Leadership<br>• A/B Test, Causal Inference<br>• SQL, Python, Automation<br>• Bengaluru Location Match | • Specific WFM domain |
+
+---
 ## 📅 Scan Run: 2026-08-26 01:15:14
 - **Total New Jobs Scraped**: 4
 - **High-Match Roles (Score &ge; 70)**: 0
