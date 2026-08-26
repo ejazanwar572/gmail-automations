@@ -1,5 +1,14 @@
 # Automated Job Matcher Run History
 
+## 📅 Scan Run: 2026-08-26 09:44:35
+- **Total New Jobs Scraped**: 25
+- **High-Match Roles (Score &ge; 70)**: 1
+
+| Job Title | Company | Location | Match Score | Key Matches | Gaps |
+| :--- | :--- | :--- | :-: | :--- | :--- |
+| [Capacity Analyst, Content Operations](https://www.amazon.jobs/en/jobs/10515280/capacity-analyst-content-operations) | Amazon | Chennai, TN, IND | **83/100** | • 8+ Yrs Analytics Experience<br>• SQL, Python, Tableau/PowerBI<br>• A/B Test, Causal Methods<br>• Stakeholder Mgmt, Operations | • Direct WFM experience<br>• Chennai vs Bangalore |
+
+---
 ## 📅 Scan Run: 2026-08-26 06:49:10
 - **Total New Jobs Scraped**: 5
 - **High-Match Roles (Score &ge; 70)**: 0
