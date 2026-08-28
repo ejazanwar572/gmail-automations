@@ -1,5 +1,17 @@
 # Automated Job Matcher Run History
 
+## 📅 Scan Run: 2026-08-28 15:02:42
+- **Total New Jobs Scraped**: 58
+- **High-Match Roles (Score &ge; 70)**: 4
+
+| Job Title | Company | Location | Match Score | Key Matches | Gaps |
+| :--- | :--- | :--- | :-: | :--- | :--- |
+| [Senior Manager - Product Analytics](https://job-boards.greenhouse.io/inmobi/jobs/6896559) | InMobi | Bangalore | **88/100** | • 8+ Yrs Product Analytics<br>• A/B Testing, Causal Methods<br>• Advanced SQL & Python<br>• Mentorship & Leadership<br>• Bangalore Location | • 4+ Yrs Direct Management<br>• Prod ML Model Operations |
+| [Business Analyst, OHL](https://www.amazon.jobs/en/jobs/10488945/business-analyst-ohl) | Amazon | Bengaluru, KA, IND | **88/100** | • 8+ Yrs Analytics Experience<br>• SQL, Python, A/B Testing<br>• AI/ML, LLM Workflows<br>• Bangalore Location Fit | • Role Seniority Mismatch |
+| [ROC WFM Senior Program Manager, Relay Operations Centre](https://www.amazon.jobs/en/jobs/10485691/roc-wfm-senior-program-manager-relay-operations-centre) | Amazon | Hyderabad, TS, IND | **88/100** | • 8+ Yrs Analytics<br>• A/B Test, Causal Infer.<br>• SQL, Python, Automation<br>• LLM/AI Workflows<br>• Stakeholder Mgmt. | • Specific WFM Operations<br>• RTM Leadership Experience |
+| [Sr Systems Analyst - Reporting & Analytics](https://visa.wd5.myworkdayjobs.com/visa/visa/job/IN---Bengaluru-India/Sr-Systems-Analyst---Reporting---Analytics_REF087838W) | Visa | IN - Bengaluru, India | **80/100** | • 8+ Yrs Analytics Experience<br>• Strong SQL, Python, PowerBI<br>• AI, LLM Workflow Development<br>• Bangalore Location Match | • Limited Finance Domain<br>• EPM Platform Experience |
+
+---
 ## 📅 Scan Run: 2026-08-28 00:17:36
 - **Total New Jobs Scraped**: 14
 - **High-Match Roles (Score &ge; 70)**: 0
