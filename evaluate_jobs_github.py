@@ -333,6 +333,7 @@ Determine:
      - "Bangalore Location Fit"
    - Do NOT write long sentences, paragraphs, or explanations. Keep them as punchy bullet tags.
 3. Gaps: 1 to 2 ultra-concise bullet tags detailing any key missing requirements (2 to 5 words max).
+4. Mismatch Check: If the job description body text explicitly names a different role title than the header title (e.g., header title is 'Senior Manager - Product Analytics' but body intro says 'Operational Data Scientist'), include a bullet tag in key_matches flagging this (e.g., "Note: Body specifies Data Scientist").
 
 You MUST output your response in JSON format. Do not include markdown code block formatting. Just the raw JSON object.
 Output structure:
