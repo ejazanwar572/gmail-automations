@@ -325,11 +325,13 @@ Determine:
    - For a perfect/excellent fit, score should be >= 85.
    - Roles that are pre-sales, sales ops, or require MBAs/marketing PM should be scored < 60.
    - Lead/Manager roles requiring 8+ years experience fit well.
-2. Key Matches: 3 to 4 ultra-concise bullet points summarizing key skill/experience alignments.
-   - CRITICAL REQUIREMENT: Keep each bullet point extremely short (2 to 5 words max). For example:
-     - "8+ Yrs Analytics Experience"
-     - "A/B Testing & Causal Inference"
+2. Key Matches: 3 to 4 ultra-concise bullet points summarizing key skills & requirements EXPLICITLY requested in the Job Description.
+   - CRITICAL REQUIREMENT: Every bullet point MUST accurately reflect the actual Job Description. 
+   - YEARS OF EXPERIENCE RULE: State the exact experience requirement from the JD (e.g. "1+ Yrs Exp Required" if JD says 1+ years; "8+ Yrs Exp Required" ONLY if the JD explicitly asks for 8+ years). NEVER claim 8+ years if the JD asks for less.
+   - Keep each bullet point extremely short (2 to 5 words max). For example:
      - "SQL, Python & PySpark"
+     - "A/B Testing & Causal Inference"
+     - "AI/ML & LLM Workflows"
      - "Bangalore Location Fit"
    - Do NOT write long sentences, paragraphs, or explanations. Keep them as punchy bullet tags.
 3. Gaps: 1 to 2 ultra-concise bullet tags detailing any key missing requirements (2 to 5 words max).
