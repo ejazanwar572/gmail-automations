@@ -1,5 +1,14 @@
 # Automated Job Matcher Run History
 
+## 📅 Scan Run: 2026-08-29 12:21:41
+- **Total New Jobs Scraped**: 2
+- **High-Match Roles (Score &ge; 70)**: 1
+
+| Job Title | Company | Location | Match Score | Key Matches | Gaps |
+| :--- | :--- | :--- | :-: | :--- | :--- |
+| [Sr Central Process Lead, INFC - Central Process Team](https://www.amazon.jobs/en/jobs/10484209/sr-central-process-lead-infc-central-process-team) | Amazon | Bangalore, KA, IND | **70/100** | • Bangalore Location Fit<br>• Bachelor's Degree Met<br>• 1+ Yrs Manufacturing Exp<br>• Diving deep into data | • No explicit MS Office |
+
+---
 ## 📅 Scan Run: 2026-08-28 23:55:01
 - **Total New Jobs Scraped**: 12
 - **High-Match Roles (Score &ge; 70)**: 0
