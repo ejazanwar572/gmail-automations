@@ -11,6 +11,17 @@
 | [Data Scientist II, EU Prime and Marketing Analytics & Science (PRIMAS)](https://www.amazon.jobs/en/jobs/10521286/data-scientist-ii-eu-prime-and-marketing-analytics-science-primas) | Amazon | Bengaluru, KA, IND | **85/100** | • 4+ Yrs DS Experience<br>• SQL, Python & ML/Stats<br>• 1+ Yrs AI Systems Experience<br>• A/B Testing & Causal Models<br>• ETL & Dashboards<br>• Bengaluru Location Fit | • Explicit Power Analysis/MDE<br>• Master's Degree (Preferred) |
 
 ---
+## 📅 Scan Run: 2026-08-30 20:39:15
+- **Total New Jobs Scraped**: 5
+- **High-Match Roles (Score &ge; 70)**: 3
+
+| Job Title | Company | Location | Match Score | Key Matches | Gaps |
+| :--- | :--- | :--- | :-: | :--- | :--- |
+| [Data Scientist II, EU Prime and Marketing Analytics & Science (PRIMAS)](https://www.amazon.jobs/en/jobs/10521287/data-scientist-ii-eu-prime-and-marketing-analytics-science-primas) | Amazon | Bengaluru, KA, IND | **92/100** | • 4+ years Data Scientist Exp<br>• 4+ years ML/Stats/Analytics<br>• 4+ years SQL/Python<br>• 1+ years AI Systems Exp<br>• A/B Testing & Causal Inference<br>• Bangalore Location Fit | • Master's Degree Preferred<br>• GenAI model benchmarking |
+| [Data Scientist, EU Prime and Marketing Analytics & Science (PRIMAS), EU Prime and Marketing Analytics & Science (PRIMAS)](https://www.amazon.jobs/en/jobs/10521285/data-scientist-eu-prime-and-marketing-analytics-science-primas-eu-prime-and-marketing-analytics-science-primas) | Amazon | Bengaluru, KA, IND | **92/100** | • 4+ Yrs Data Scientist Exp<br>• A/B Testing & Causal Models<br>• 1+ Yrs AI Systems Exp<br>• Bengaluru Location Fit | • Marketing Channel Specificity<br>• Master's Degree (Preferred) |
+| [Data Scientist II, EU Prime and Marketing Analytics & Science (PRIMAS)](https://www.amazon.jobs/en/jobs/10521286/data-scientist-ii-eu-prime-and-marketing-analytics-science-primas) | Amazon | Bengaluru, KA, IND | **85/100** | • 4+ Yrs DS Experience<br>• SQL, Python & ML/Stats<br>• 1+ Yrs AI Systems Experience<br>• A/B Testing & Causal Models<br>• ETL & Dashboards<br>• Bengaluru Location Fit | • Explicit Power Analysis/MDE<br>• Master's Degree (Preferred) |
+
+---
 ## 📅 Scan Run: 2026-08-30 16:07:08
 - **Total New Jobs Scraped**: 1
 - **High-Match Roles (Score &ge; 70)**: 0
