@@ -1,5 +1,15 @@
 # Automated Job Matcher Run History
 
+## 📅 Scan Run: 2026-08-31 12:57:36
+- **Total New Jobs Scraped**: 67
+- **High-Match Roles (Score &ge; 70)**: 2
+
+| Job Title | Company | Location | Match Score | Key Matches | Gaps |
+| :--- | :--- | :--- | :-: | :--- | :--- |
+| [Business Analyst - II, ISFX](https://www.amazon.jobs/en/jobs/10445571/business-analyst-ii-isfx) | Amazon | Hyderabad, TS, IND | **92/100** | • 4+ Yrs Exp Business Analyst<br>• Complex SQL Queries<br>• SQL, Python, Excel<br>• Tableau, Power BI<br>• Data-driven Insights<br>• Mentor Junior Analysts<br>• Hyderabad Location Fit | • AWS Services Experience<br>• R Language Exposure |
+| [Transformation Analyst](https://globalcareers-pepsico.icims.com/jobs/471175/login) | PepsiCo | Hyderabad, India | **78/100** | • SQL, Python, Power BI<br>• Data Analysis & Insights<br>• Stakeholder Mgt & Storytelling<br>• Operational Excellence, Reporting | • Program Governance, Planning<br>• Knowledge Content Management |
+
+---
 ## 📅 Scan Run: 2026-08-31 03:52:04
 - **Total New Jobs Scraped**: 6
 - **High-Match Roles (Score &ge; 70)**: 0
