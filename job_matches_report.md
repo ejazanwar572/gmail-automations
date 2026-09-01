@@ -1,5 +1,15 @@
 # Automated Job Matcher Run History
 
+## 📅 Scan Run: 2026-09-01 14:04:53
+- **Total New Jobs Scraped**: 27
+- **High-Match Roles (Score &ge; 70)**: 2
+
+| Job Title | Company | Location | Match Score | Key Matches | Gaps |
+| :--- | :--- | :--- | :-: | :--- | :--- |
+| [Data Science Engineer](https://careers.adobe.com/us/en/job/R171428/data-science-engineer) | Adobe | Bangalore, Karnātaka, India | **82/100** | • Note: Body specifies Data Science / Forecasting Analyst<br>• JD requires 2-5 years experience<br>• SQL, Python, A/B Testing, Forecasting<br>• LLM Apps & AI Agents<br>• Adobe Analytics, Databricks<br>• Bangalore Location Fit | • 8+ Years Exp (Overqualified)<br>• Regression/Clustering (Good to Have) |
+| [Lead Data Analyst](https://spgi.wd5.myworkdayjobs.com/en-us/SPGI_Careers/job/IN---HYDERABAD-SKYVIEW/Lead-Data-Analyst_330703-1/apply) | S&P Global | Hyderabad, India | **70/100** | • SQL, Python, AI/LLM Tools<br>• Lead, Mentor, Automate Process<br>• 2-5 Yrs Exp Required<br>• Hyderabad Location Fit | • Financial Domain Expertise<br>• Candidate Exp 8+ Yrs (JD 2-5) |
+
+---
 ## 📅 Scan Run: 2026-09-01 08:23:11
 - **Total New Jobs Scraped**: 15
 - **High-Match Roles (Score &ge; 70)**: 0
