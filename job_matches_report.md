@@ -1,5 +1,15 @@
 # Automated Job Matcher Run History
 
+## 📅 Scan Run: 2026-09-02 10:52:10
+- **Total New Jobs Scraped**: 62
+- **High-Match Roles (Score &ge; 70)**: 2
+
+| Job Title | Company | Location | Match Score | Key Matches | Gaps |
+| :--- | :--- | :--- | :-: | :--- | :--- |
+| [Sr. Data Analyst OR Data Analyst (Advanced Analytics/Basics of Data Science, Databricks, SQL, Advanced Excel)](https://jobs.gartner.com/jobs/job/112641-sr-data-analyst-or-data-analyst-advanced-analytics-basics-of-data-science-databricks-sql-advanced-excel/) | Gartner | Gurgaon, Haryāna | **78/100** | • SQL, Python, Databricks<br>• Statistics, Data Science basics<br>• Advanced Analytics & AI<br>• Problem Solving, Collaboration<br>• 3-5 Yrs Exp Sr. Data Analyst | • Gurgaon Location<br>• Experience Overqualification |
+| [Sr. Program Manager, Pricing - Amazon Business ](https://www.amazon.jobs/en/jobs/10492474/sr-program-manager-pricing-amazon-business) | Amazon | Hyderabad, TS, IND | **70/100** | • 5+ years program/project management<br>• Data/metrics drive improvements<br>• Own program strategy, delivery<br>• Communicate results to leadership<br>• Knowledge of general AI tools | • Direct pricing domain experience<br>• Specific program management focus |
+
+---
 ## 📅 Scan Run: 2026-09-02 03:04:09
 - **Total New Jobs Scraped**: 2
 - **High-Match Roles (Score &ge; 70)**: 0
