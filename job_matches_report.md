@@ -1,5 +1,15 @@
 # Automated Job Matcher Run History
 
+## 📅 Scan Run: 2026-09-03 10:53:15
+- **Total New Jobs Scraped**: 35
+- **High-Match Roles (Score &ge; 70)**: 2
+
+| Job Title | Company | Location | Match Score | Key Matches | Gaps |
+| :--- | :--- | :--- | :-: | :--- | :--- |
+| [Associate Manager – BI & Reporting and Product Management](https://globalcareers-pepsico.icims.com/jobs/473217/login) | PepsiCo | Hyderabad, India | **75/100** | • 6+ Yrs Exp Required<br>• SQL for data analysis<br>• Power BI development<br>• Stakeholder engagement skills | • Microsoft Fabric, SAP BW/HANA<br>• Strong Power BI DAX/semantic models<br>• Medallion Architecture ETL |
+| [Consultant, People Analytics (Power BI/DAX/SQL)](https://visa.wd5.myworkdayjobs.com/visa/visa/job/IN---Bengaluru-India/Consultant--People-Analytics--Power-BI-DAX-SQL-_REF087980W) | Visa | IN - Bengaluru, India | **72/100** | • 8+ Years Experience<br>• Bengaluru Location Fit<br>• Power BI, SQL & Python<br>• AI/LLM & Automation<br>• Stakeholder Management | • Power Platform Tools (DAX, Automate/Apps)<br>• HR Domain Knowledge (People Analytics, HRIS) |
+
+---
 ## 📅 Scan Run: 2026-09-03 03:06:27
 - **Total New Jobs Scraped**: 24
 - **High-Match Roles (Score &ge; 70)**: 0
