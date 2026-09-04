@@ -1,5 +1,16 @@
 # Automated Job Matcher Run History
 
+## 📅 Scan Run: 2026-09-04 10:45:55
+- **Total New Jobs Scraped**: 21
+- **High-Match Roles (Score &ge; 70)**: 3
+
+| Job Title | Company | Location | Match Score | Key Matches | Gaps |
+| :--- | :--- | :--- | :-: | :--- | :--- |
+| [Manager, Data Science (Analytics) L25](https://jobs.ebayinc.com/us/en/job/R0076633/manager-data-science-analytics-l25) | eBay | Bengaluru, India | **95/100** | • 7-11 years experience<br>• SQL & Python proficiency<br>• Product analytics & A/B testing<br>• Causal inference & ML<br>• Mentorship & Stakeholder influence<br>• Bengaluru Location Fit<br>• Note: Body specifies Senior IC | • Segmentation/Recommendation systems |
+| [Data Scientist (Analytics) - L24](https://jobs.ebayinc.com/us/en/job/R0076632/data-scientist-analytics-l24) | eBay | Bengaluru, India | **95/100** | • 4–8 years experience required<br>• Bengaluru, India location<br>• SQL & Python proficiency<br>• Product analytics & A/B testing<br>• Causal inference & experimentation<br>• E-commerce/Marketplace experience | None |
+| [Product Manager II](https://job-boards.greenhouse.io/razorpaysoftwareprivatelimited/jobs/4729519005) | Razorpay | Bengaluru | **82/100** | • 4-7 Yrs PM Exp Required<br>• Strong Analytical Thinking<br>• Experimentation Mindset<br>• Bengaluru Location Fit | • Direct PM Experience |
+
+---
 ## 📅 Scan Run: 2026-09-04 03:07:01
 - **Total New Jobs Scraped**: 4
 - **High-Match Roles (Score &ge; 70)**: 1
