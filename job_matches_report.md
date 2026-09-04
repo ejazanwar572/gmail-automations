@@ -1,5 +1,14 @@
 # Automated Job Matcher Run History
 
+## 📅 Scan Run: 2026-09-04 03:07:01
+- **Total New Jobs Scraped**: 4
+- **High-Match Roles (Score &ge; 70)**: 1
+
+| Job Title | Company | Location | Match Score | Key Matches | Gaps |
+| :--- | :--- | :--- | :-: | :--- | :--- |
+| [BIE II, ShipTech Analytics, ShipTech Analytics](https://www.amazon.jobs/en/jobs/10432902/bie-ii-shiptech-analytics-shiptech-analytics) | Amazon | Hyderabad, TS, IND | **90/100** | • 3+ Yrs Data Analysis<br>• SQL & Python Scripting<br>• ETL & Data Modeling<br>• Dashboards, Metrics, KPIs<br>• AI-powered Solutions | • Explicit AWS services expertise |
+
+---
 ## 📅 Scan Run: 2026-09-03 23:00:21
 - **Total New Jobs Scraped**: 6
 - **High-Match Roles (Score &ge; 70)**: 0
