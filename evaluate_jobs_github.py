@@ -256,11 +256,11 @@ def main():
                 company = "Media.net"
             elif "inmobi" in combined_ref:
                 company = "InMobi"
-            elif "swiggy" in combined_ref:
+            elif "swiggy" in combined_ref or "mynexthire" in combined_ref:
                 company = "Swiggy"
             elif "zomato" in combined_ref:
                 company = "Zomato"
-            elif "flipkart" in combined_ref:
+            elif "flipkart" in combined_ref or "turbohire" in combined_ref:
                 company = "Flipkart"
             elif "target" in combined_ref:
                 company = "Target"

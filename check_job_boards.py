@@ -1081,125 +1081,317 @@ def scrape_amazon_board(url):
             
     return all_parsed_jobs
 
+# ==================== SWIGGY MYNEXTHIRE BOARD SCRAPER ====================
+def scrape_swiggy_board(url):
+    all_parsed_jobs = []
+    reqlist_url = "https://swiggy.mynexthire.com/employer/careers/reqlist/get"
+    swiggy_headers = {
+        'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36',
+        'Content-Type': 'application/json',
+        'Accept': 'application/json, text/plain, */*',
+        'Origin': 'https://swiggy.mynexthire.com',
+        'Referer': 'https://swiggy.mynexthire.com/employer/jobs/careers'
+    }
+    payload = {"source": "careers"}
+    try:
+        data = json.dumps(payload).encode('utf-8')
+        req = urllib.request.Request(reqlist_url, data=data, headers=swiggy_headers, method='POST')
+        with urllib.request.urlopen(req, timeout=15) as res:
+            resp_data = json.loads(res.read().decode('utf-8'))
+    except Exception as e:
+        print(f"Error fetching Swiggy job list: {e}", file=sys.stderr)
+        return all_parsed_jobs
+
+    postings = resp_data.get("reqDetailsBOList", [])
+    print(f"Swiggy API returned {len(postings)} total postings.", file=sys.stderr)
+    for post in postings:
+        req_id = post.get("reqId")
+        if not req_id:
+            continue
+        job_id = f"swiggy_{req_id}"
+        if job_id in existing_jobs:
+            continue
+
+        title = post.get("reqTitle") or post.get("designation") or "Unknown Title"
+        location = post.get("location") or post.get("locationAddress") or "India"
+        jd_display = post.get("jdDisplay") or ""
+        
+        desc_html = jd_display.replace('\n', '<br/>')
+        desc_text = clean_html(jd_display) if '<' in jd_display else jd_display.strip()
+        
+        job_url = f"https://careers.swiggy.com/#/careers?src=careers&pageType=jd&reqId={req_id}"
+        
+        all_parsed_jobs.append({
+            'id': job_id,
+            'title': title,
+            'location': location,
+            'url': job_url,
+            'description_html': desc_html,
+            'description_text': desc_text,
+            'source_board': url
+        })
+
+    return all_parsed_jobs
+
+# ==================== FLIPKART TURBOHIRE BOARD SCRAPER ====================
+def scrape_flipkart_board(url):
+    all_parsed_jobs = []
+    token_url = "https://thapi.azurewebsites.net/api/token/noauth"
+    token_headers = {
+        'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+        'Origin': 'https://flipkart.turbohire.co',
+        'Referer': 'https://flipkart.turbohire.co/careerpage/4d757ba0-3d57-448a-b82c-238ed87ac90f',
+        'Accept': 'application/json, text/plain, */*'
+    }
+    
+    token = None
+    try:
+        req = urllib.request.Request(token_url, headers=token_headers)
+        with urllib.request.urlopen(req, timeout=30) as res:
+            token_resp = json.loads(res.read().decode('utf-8'))
+            token = token_resp.get("access_token")
+    except Exception as e:
+        print(f"Error fetching Flipkart TurboHire token: {e}", file=sys.stderr)
+        return all_parsed_jobs
+
+    if not token:
+        print("Failed to obtain Flipkart TurboHire token.", file=sys.stderr)
+        return all_parsed_jobs
+
+    org_id = "4d757ba0-3d57-448a-b82c-238ed87ac90f"
+    list_url = f"https://thapi.azurewebsites.net/api/careerpagev2/filteredjobs?orgId={org_id}&pageType=careerpage"
+    api_headers = token_headers.copy()
+    api_headers['Content-Type'] = 'application/json'
+    api_headers['Authorization'] = f"Bearer {token}"
+
+    skip = 0
+    take = 50
+    consecutive_existing = 0
+    relevant_keywords = ['analyst', 'analytics', 'data', 'product', 'scientist', 'science', 'bi', 'intelligence', 'insights']
+
+    while True:
+        payload = {'Department': [], 'Function': [], 'Location': [], 'Keywords': '', 'Skip': skip, 'Take': take}
+        try:
+            req = urllib.request.Request(list_url, data=json.dumps(payload).encode('utf-8'), headers=api_headers, method='POST')
+            with urllib.request.urlopen(req, timeout=30) as res:
+                resp = json.loads(res.read().decode('utf-8'))
+        except Exception as e:
+            print(f"Error fetching Flipkart jobs at skip {skip}: {e}", file=sys.stderr)
+            break
+
+        jobs_batch = resp.get("Result", [])
+        if not jobs_batch:
+            break
+
+        stop_pagination = False
+        for post in jobs_batch:
+            job_id_raw = post.get("JobId")
+            if not job_id_raw:
+                continue
+            job_id = f"flipkart_{job_id_raw}"
+            if job_id in existing_jobs:
+                consecutive_existing += 1
+                if consecutive_existing >= 5:
+                    stop_pagination = True
+                    break
+                continue
+            else:
+                consecutive_existing = 0
+
+            job_title = post.get("JobTitle") or "Unknown Title"
+            job_obf = post.get("JobIdObfuscated") or job_id_raw
+            job_url = f"https://flipkart.turbohire.co/job/publicjobs/{job_obf}"
+
+            desc_html = ""
+            desc_text = ""
+            location = "India"
+            location_raw = post.get("Location")
+            if location_raw:
+                if isinstance(location_raw, list) and location_raw:
+                    entry = location_raw[0]
+                    location = entry.get("Address") if isinstance(entry, dict) else str(entry)
+                elif isinstance(location_raw, str):
+                    try:
+                        parsed_loc = json.loads(location_raw)
+                        if isinstance(parsed_loc, list) and parsed_loc:
+                            location = parsed_loc[0].get("Address", location_raw)
+                        elif isinstance(parsed_loc, dict):
+                            location = parsed_loc.get("Address", location_raw)
+                        else:
+                            location = location_raw
+                    except Exception:
+                        location = location_raw
+            
+            # Fetch full description if title matches target profile keywords
+            title_lower = job_title.lower()
+            if any(k in title_lower for k in relevant_keywords):
+                detail_url = f"https://thapi.azurewebsites.net/api/publicjobs/{urllib.parse.quote(job_id_raw, safe='')}"
+                try:
+                    dreq = urllib.request.Request(detail_url, headers=api_headers)
+                    with urllib.request.urlopen(dreq, timeout=20) as dres:
+                        ddata = json.loads(dres.read().decode('utf-8'))
+                        desc_html = ddata.get("JobDescription") or ddata.get("JobDescriptionV2") or ""
+                        desc_text = clean_html(desc_html)
+                        loc_list = ddata.get("Location") or []
+                        if isinstance(loc_list, list) and loc_list:
+                            loc_entry = loc_list[0]
+                            if isinstance(loc_entry, dict):
+                                location = loc_entry.get("Address") or "India"
+                            elif isinstance(loc_entry, str):
+                                location = loc_entry
+                        elif isinstance(loc_list, str):
+                            location = loc_list
+                except Exception as e:
+                    print(f"Error fetching Flipkart job details for {job_id_raw}: {e}", file=sys.stderr)
+
+            all_parsed_jobs.append({
+                'id': job_id,
+                'title': job_title,
+                'location': location,
+                'url': job_url,
+                'description_html': desc_html,
+                'description_text': desc_text,
+                'source_board': url
+            })
+
+        if stop_pagination or len(jobs_batch) < take:
+            break
+
+        skip += take
+
+    print(f"Flipkart scraper extracted {len(all_parsed_jobs)} new jobs.", file=sys.stderr)
+    return all_parsed_jobs
+
 # ==================== MAIN LOOP ====================
 target_locations = ["india", "bangalore", "bengaluru", "gurgaon", "gurugram", "hyderabad", "noida", "pune", "mumbai", "chennai", "delhi", "ncr", "remote", "anywhere"]
 
-for board_url in target_urls:
-    print(f"Processing board: {board_url}", file=sys.stderr)
-    scraped_posts = []
-    
-    if "greenhouse.io" in board_url or "boards.greenhouse.io" in board_url:
-        posts = scrape_greenhouse_board(board_url)
-        has_india_jobs = any(
-            post.get('location') and any(loc in str(post.get('location')).lower() for loc in target_locations)
-            for post in posts
-        )
-        for post in posts:
-            job_id = str(post.get('id'))
-            if not job_id or job_id in existing_jobs:
-                continue
-                
-            title = post.get('title')
-            location = post.get('location')
-            absolute_url = post.get('absolute_url')
-            if not absolute_url:
-                continue
-                
-            if has_india_jobs and location:
-                if not any(loc in str(location).lower() for loc in target_locations):
+def main():
+    global new_jobs, updated_jobs_list, existing_jobs
+    for board_url in target_urls:
+        print(f"Processing board: {board_url}", file=sys.stderr)
+        scraped_posts = []
+        
+        if "greenhouse.io" in board_url or "boards.greenhouse.io" in board_url:
+            posts = scrape_greenhouse_board(board_url)
+            has_india_jobs = any(
+                post.get('location') and any(loc in str(post.get('location')).lower() for loc in target_locations)
+                for post in posts
+            )
+            for post in posts:
+                job_id = str(post.get('id'))
+                if not job_id or job_id in existing_jobs:
                     continue
                     
-            print(f"New Greenhouse job: {title} - {location}", file=sys.stderr)
-            details = scrape_greenhouse_job_details(absolute_url)
-            if details:
-                full_html, plain_text = details
-                scraped_posts.append({
-                    'id': job_id,
-                    'title': title,
-                    'location': location,
-                    'url': absolute_url,
-                    'description_html': full_html,
-                    'description_text': plain_text,
-                    'source_board': board_url
-                })
-                
-    elif "gartner.com" in board_url or "careers.adobe.com" in board_url or "salesforce.com" in board_url or "nutanix.com" in board_url or "jobs.ebayinc.com" in board_url or "phenompeople" in board_url:
-        posts = scrape_phenom_board(board_url)
-        has_india_jobs = any(
-            post.get('location') and any(loc in str(post.get('location')).lower() for loc in target_locations)
-            for post in posts
-        )
-        for post in posts:
-            job_id = str(post['id'])
-            if job_id in existing_jobs:
+                title = post.get('title')
+                location = post.get('location')
+                absolute_url = post.get('absolute_url')
+                if not absolute_url:
+                    continue
+                    
+                if has_india_jobs and location:
+                    if not any(loc in str(location).lower() for loc in target_locations):
+                        continue
+                        
+                print(f"New Greenhouse job: {title} - {location}", file=sys.stderr)
+                details = scrape_greenhouse_job_details(absolute_url)
+                if details:
+                    full_html, plain_text = details
+                    scraped_posts.append({
+                        'id': job_id,
+                        'title': title,
+                        'location': location,
+                        'url': absolute_url,
+                        'description_html': full_html,
+                        'description_text': plain_text,
+                        'source_board': board_url
+                    })
+                    
+        elif "gartner.com" in board_url or "careers.adobe.com" in board_url or "salesforce.com" in board_url or "nutanix.com" in board_url or "jobs.ebayinc.com" in board_url or "phenompeople" in board_url:
+            posts = scrape_phenom_board(board_url)
+            has_india_jobs = any(
+                post.get('location') and any(loc in str(post.get('location')).lower() for loc in target_locations)
+                for post in posts
+            )
+            for post in posts:
+                job_id = str(post['id'])
+                if job_id in existing_jobs:
+                    continue
+                    
+                location = post.get('location')
+                if has_india_jobs and location:
+                    if not any(loc in str(location).lower() for loc in target_locations):
+                        continue
+                        
+                print(f"New Phenom job: {post['title']} - {location}", file=sys.stderr)
+                details = scrape_phenom_job_details(post['url'])
+                if details:
+                    full_html, plain_text = details
+                    scraped_posts.append({
+                        'id': job_id,
+                        'title': post['title'],
+                        'location': location,
+                        'url': post['url'],
+                        'description_html': full_html,
+                        'description_text': plain_text,
+                        'source_board': board_url
+                    })
+                    
+        elif "pepsicojobs.com" in board_url or "careers.spglobal.com" in board_url:
+            scraped_posts = scrape_jibe_board(board_url)
+            
+        elif "api.smartrecruiters.com" in board_url:
+            scraped_posts = scrape_smartrecruiters_board(board_url)
+            
+        elif "myworkdayjobs.com" in board_url:
+            scraped_posts = scrape_workday_board(board_url)
+            
+        elif "amazon.jobs" in board_url:
+            scraped_posts = scrape_amazon_board(board_url)
+            
+        elif "careers.expediagroup.com" in board_url:
+            scraped_posts = scrape_expedia_wordpress_board(board_url)
+            
+        elif "apply.careers.microsoft.com" in board_url or "careers.microsoft.com" in board_url:
+            scraped_posts = scrape_microsoft_board(board_url)
+            
+        elif "careers.media.net" in board_url:
+            scraped_posts = scrape_medianet_board(board_url)
+            
+        elif "jobs.uber.com" in board_url:
+            scraped_posts = scrape_uber_board(board_url)
+            
+        elif "lever.co" in board_url or "jobs.lever.co" in board_url:
+            scraped_posts = scrape_lever_board(board_url)
+            
+        elif "swiggy" in board_url:
+            scraped_posts = scrape_swiggy_board(board_url)
+            
+        elif "flipkart" in board_url or "turbohire.co" in board_url:
+            scraped_posts = scrape_flipkart_board(board_url)
+            
+        # Apply global location filter and deduplication to updates
+        board_new_count = 0
+        for post in scraped_posts:
+            jid = str(post['id'])
+            if jid in existing_jobs:
                 continue
                 
             location = post.get('location')
-            if has_india_jobs and location:
-                if not any(loc in str(location).lower() for loc in target_locations):
-                    continue
-                    
-            print(f"New Phenom job: {post['title']} - {location}", file=sys.stderr)
-            details = scrape_phenom_job_details(post['url'])
-            if details:
-                full_html, plain_text = details
-                scraped_posts.append({
-                    'id': job_id,
-                    'title': post['title'],
-                    'location': location,
-                    'url': post['url'],
-                    'description_html': full_html,
-                    'description_text': plain_text,
-                    'source_board': board_url
-                })
+            if location and not any(loc in str(location).lower() for loc in target_locations):
+                continue
                 
-    elif "pepsicojobs.com" in board_url or "careers.spglobal.com" in board_url:
-        scraped_posts = scrape_jibe_board(board_url)
-        
-    elif "api.smartrecruiters.com" in board_url:
-        scraped_posts = scrape_smartrecruiters_board(board_url)
-        
-    elif "myworkdayjobs.com" in board_url:
-        scraped_posts = scrape_workday_board(board_url)
-        
-    elif "amazon.jobs" in board_url:
-        scraped_posts = scrape_amazon_board(board_url)
-        
-    elif "careers.expediagroup.com" in board_url:
-        scraped_posts = scrape_expedia_wordpress_board(board_url)
-        
-    elif "apply.careers.microsoft.com" in board_url or "careers.microsoft.com" in board_url:
-        scraped_posts = scrape_microsoft_board(board_url)
-        
-    elif "careers.media.net" in board_url:
-        scraped_posts = scrape_medianet_board(board_url)
-        
-    elif "jobs.uber.com" in board_url:
-        scraped_posts = scrape_uber_board(board_url)
-        
-    elif "lever.co" in board_url or "jobs.lever.co" in board_url:
-        scraped_posts = scrape_lever_board(board_url)
-        
-    # Apply global location filter and deduplication to updates
-    board_new_count = 0
-    for post in scraped_posts:
-        jid = str(post['id'])
-        if jid in existing_jobs:
-            continue
-            
-        location = post.get('location')
-        if location and not any(loc in str(location).lower() for loc in target_locations):
-            continue
-            
-        new_jobs.append(post)
-        updated_jobs_list.append(post)
-        existing_jobs[jid] = post
-        board_new_count += 1
+            new_jobs.append(post)
+            updated_jobs_list.append(post)
+            existing_jobs[jid] = post
+            board_new_count += 1
 
-    # Incremental write to prevent losing progress if subsequent scrapers hang/crash
-    if board_new_count > 0:
-        with open(db_path, 'w', encoding='utf-8') as f:
-            json.dump(updated_jobs_list, f, indent=4, ensure_ascii=False)
+        # Incremental write to prevent losing progress if subsequent scrapers hang/crash
+        if board_new_count > 0:
+            with open(db_path, 'w', encoding='utf-8') as f:
+                json.dump(updated_jobs_list, f, indent=4, ensure_ascii=False)
 
-# Print results to stdout
-print(json.dumps({"new_jobs": new_jobs}, indent=4))
+    # Print results to stdout
+    print(json.dumps({"new_jobs": new_jobs}, indent=4))
+
+if __name__ == '__main__':
+    main()
