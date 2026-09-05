@@ -1,5 +1,14 @@
 # Automated Job Matcher Run History
 
+## 📅 Scan Run: 2026-09-05 04:36:15
+- **Total New Jobs Scraped**: 332
+- **High-Match Roles (Score &ge; 70)**: 1
+
+| Job Title | Company | Location | Match Score | Key Matches | Gaps |
+| :--- | :--- | :--- | :-: | :--- | :--- |
+| [Sr Data Scientist- Space Presentation](https://target.wd5.myworkdayjobs.com/target/targetcareers/job/BangaloreIndia/Sr-Data-Scientist--Space-Presentation_R0000451877) | Target | Bangalore,India | **75/100** | • Bangalore, India Location<br>• 4+ Yrs Exp Required<br>• Python, SQL, PySpark<br>• ML, Stats, Predictive Modelling<br>• A/B Testing, Experiment Design<br>• LLM/Agent Workflows, RAG<br>• Stakeholder Mgmt, Data Storytelling | • Advanced Optimization Models<br>• Elasticity Modeling Experience<br>• Retail Space/Planogram Domain |
+
+---
 ## 📅 Scan Run: 2026-09-05 03:06:14
 - **Total New Jobs Scraped**: 1
 - **High-Match Roles (Score &ge; 70)**: 0
