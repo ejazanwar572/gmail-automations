@@ -272,6 +272,22 @@ def main():
                 company = "Google"
             elif "meta" in combined_ref or "facebook" in combined_ref:
                 company = "Meta"
+            elif "coinbase" in combined_ref:
+                company = "Coinbase"
+            elif "datadog" in combined_ref:
+                company = "Datadog"
+            elif "figma" in combined_ref:
+                company = "Figma"
+            elif "robinhood" in combined_ref:
+                company = "Robinhood"
+            elif "servicenow" in combined_ref:
+                company = "ServiceNow"
+            elif "twilio" in combined_ref:
+                company = "Twilio"
+            elif "reddit" in combined_ref:
+                company = "Reddit"
+            elif "brex" in combined_ref:
+                company = "Brex"
             else:
                 # Dynamic fallback: extract primary brand name from URL domain
                 import urllib.parse

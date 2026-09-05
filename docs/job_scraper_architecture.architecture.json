@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "diagram_type": "architecture",
+  "meta": {
+    "title": "Job Board Scraper & Automated Matcher Architecture",
+    "output": "docs/job_scraper_architecture.html",
+    "quality_profile": "showcase",
+    "views": [
+      { "id": "ingest-pipeline", "label": "Scraping & Ingest", "focus": ["portals", "cron", "scraper", "raw_db"], "note": "Automated crawling of 32+ corporate career portals every 3 hours." },
+      { "id": "ai-matching", "label": "Filter & AI Matching", "focus": ["raw_db", "filter", "gemini"], "note": "Deduplication against 44MB JSON DB, title relevance filtering, and Gemini LLM scoring." },
+      { "id": "notifications", "label": "Reporting & Notifications", "focus": ["gemini", "report", "email"], "note": "Git-committed run history and 1-click SMTP email card notifications." }
+    ]
+  },
+  "components": [
+    { "id": "portals", "type": "external", "label": "32+ Career Portals", "sublabel": "Amazon, Greenhouse, Workday", "pos": [40, 260], "size": [150, 64], "tag": "Target Sources" },
+    { "id": "cron", "type": "cloud", "label": "GitHub Actions Cron", "sublabel": "0 */3 * * *", "pos": [270, 110], "size": [160, 64], "tag": "Cloud Trigger" },
+    { "id": "scraper", "type": "backend", "label": "check_job_boards.py", "sublabel": "HTTP Crawlers & Parsers", "pos": [270, 260], "size": [160, 64] },
+    { "id": "raw_db", "type": "database", "label": "scraped_jobs.json", "sublabel": "44MB Persistent JSON Store", "pos": [500, 110], "size": [160, 64], "tag": "Deduplication DB" },
+    { "id": "filter", "type": "backend", "label": "Title Keyword Filter", "sublabel": "Analyst / Data / Science / Lead", "pos": [500, 260], "size": [160, 64] },
+    { "id": "gemini", "type": "cloud", "label": "Google Gemini API", "sublabel": "Match Scoring (0-100) & Tags", "pos": [730, 260], "size": [160, 64], "tag": "Gemini 1.5 Flash" },
+    { "id": "report", "type": "database", "label": "job_matches_report.md", "sublabel": "Git-Committed Run History", "pos": [960, 110], "size": [170, 64] },
+    { "id": "email", "type": "backend", "label": "SMTP Email Notifier", "sublabel": "1-Click Apply Cards", "pos": [960, 260], "size": [170, 64], "tag": "User Inbox" }
+  ],
+  "boundaries": [
+    { "kind": "region", "label": "GitHub Cloud Runner", "wraps": ["cron", "scraper", "filter"] },
+    { "kind": "security-group", "label": "AI & Delivery APIs", "wraps": ["gemini", "email"] }
+  ],
+  "connections": [
+    { "id": "c1", "from": "cron", "to": "scraper", "label": "triggers run", "variant": "emphasis", "fromSide": "bottom", "toSide": "top", "labelAt": [343, 195] },
+    { "id": "c2", "from": "portals", "to": "scraper", "label": "HTML / JSON", "fromSide": "right", "toSide": "left" },
+    { "id": "c3", "from": "scraper", "to": "raw_db", "label": "save new jobs", "variant": "security", "fromSide": "top", "toSide": "bottom" },
+    { "id": "c4", "from": "scraper", "to": "filter", "label": "new jobs", "variant": "emphasis", "fromSide": "right", "toSide": "left" },
+    { "id": "c5", "from": "filter", "to": "gemini", "label": "eval prompt", "variant": "emphasis", "fromSide": "right", "toSide": "left" },
+    { "id": "c6", "from": "gemini", "to": "report", "label": "log matches", "fromSide": "top", "toSide": "left" },
+    { "id": "c7", "from": "gemini", "to": "email", "label": "email brief", "variant": "emphasis", "fromSide": "right", "toSide": "left" }
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "What is Scraping?",
+      "items": [
+        "Scraping is the automated extraction of raw job data from 32+ corporate career boards (Amazon, Greenhouse, Workday, Phenom, SmartRecruiters)",
+        "Transforms unstructured webpage HTML and JSON API payloads into standardized job records (Title, Company, Location, Job URL, Description)",
+        "Runs on an automated schedule (every 3 hours) in GitHub Actions without manual intervention"
+      ]
+    },
+    {
+      "dot": "emerald",
+      "title": "Deduplication & Keyword Guard",
+      "items": [
+        "Deduplication: Compares newly scraped job IDs against scraped_jobs.json (44MB local database) so previously seen jobs are ignored",
+        "Keyword Filtering: Filters titles (Analyst, Data, Science, Product, Lead) before calling Gemini API to conserve API quota"
+      ]
+    },
+    {
+      "dot": "violet",
+      "title": "AI Evaluation & Card Delivery",
+      "items": [
+        "Gemini LLM scores each job description against candidate resume parameters (0-100 score + 2-5 word requirement tags)",
+        "High-scoring opportunities (Score >= 70) trigger SMTP delivery of formatted vertical card emails with 1-click apply buttons"
+      ]
+    }
+  ]
+}

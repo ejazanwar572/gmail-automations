@@ -1,0 +1,70 @@
+{
+  "schema_version": 1,
+  "diagram_type": "dataflow",
+  "meta": {
+    "title": "Job Board Scraper & Automated Matcher Pipeline",
+    "output": "docs/job_scraper_architecture.html",
+    "viewBox": [1120, 780],
+    "animation": "trace",
+    "quality_profile": "showcase",
+    "views": [
+      { "id": "scraping-ingest", "label": "Scraping & Ingest", "focus": ["boards", "cron", "scraper"], "note": "Automated crawling of 32+ corporate career portals every 3 hours." },
+      { "id": "filtering-ai", "label": "Filter & AI Evaluation", "focus": ["db", "filter", "gemini"], "note": "Deduplication against local JSON DB, title relevance filtering, and Gemini LLM scoring." },
+      { "id": "reporting-email", "label": "Reporting & Email Briefing", "focus": ["gemini", "report", "email"], "note": "Git-committed run history and 1-click SMTP email card notifications." }
+    ]
+  },
+  "stages": [
+    { "label": "Target Career Boards" },
+    { "label": "Cron & Ingest Engine" },
+    { "label": "Filter & Deduplicate" },
+    { "label": "AI Matching Engine" },
+    { "label": "Persist & Notify" }
+  ],
+  "nodes": [
+    { "id": "boards", "type": "external", "label": "32+ Career Portals", "sublabel": "Amazon, Greenhouse, Workday", "stage": 0, "row": 1, "tag": "HTTP endpoints" },
+    { "id": "cron", "type": "cloud", "brand": "github-actions", "label": "GitHub Actions Cron", "sublabel": "runs every 3 hours", "stage": 1, "row": 0, "tag": "0 */3 * * *" },
+    { "id": "scraper", "type": "backend", "label": "check_job_boards.py", "sublabel": "HTTP client & DOM/JSON parsers", "stage": 1, "row": 2, "tag": "crawler" },
+    { "id": "db", "type": "database", "label": "scraped_jobs.json", "sublabel": "44MB+ persistent JSON DB", "stage": 2, "row": 0, "tag": "id dedup" },
+    { "id": "filter", "type": "backend", "label": "Title Keyword Filter", "sublabel": "Analyst / Data / Lead", "stage": 2, "row": 2, "tag": "quota saver" },
+    { "id": "gemini", "type": "cloud", "brand": "google-gemini", "label": "Google Gemini API", "sublabel": "candidate match & tags", "stage": 3, "row": 2, "tag": "score 0-100" },
+    { "id": "report", "type": "database", "label": "job_matches_report.md", "sublabel": "Git-committed log", "stage": 4, "row": 1, "tag": "markdown" },
+    { "id": "email", "type": "backend", "label": "SMTP Email Notifier", "sublabel": "Stacked card HTML brief", "stage": 4, "row": 3, "tag": "1-click apply" }
+  ],
+  "flows": [
+    { "id": "cron-trigger", "from": "cron", "to": "scraper", "label": "schedule trigger", "classification": "cron event", "variant": "emphasis", "fromSide": "bottom", "toSide": "top" },
+    { "id": "fetch-boards", "from": "boards", "to": "scraper", "label": "fetch HTML / JSON", "classification": "HTTP GET", "variant": "default", "fromSide": "right", "toSide": "left" },
+    { "id": "dedup-check", "from": "scraper", "to": "db", "label": "check & insert job ID", "classification": "read/write", "variant": "security", "fromSide": "top", "toSide": "bottom" },
+    { "id": "new-jobs-stream", "from": "scraper", "to": "filter", "label": "pass new job dicts", "classification": "in-memory stream", "variant": "emphasis", "fromSide": "right", "toSide": "left" },
+    { "id": "gemini-eval", "from": "filter", "to": "gemini", "label": "prompt: resume + JD", "classification": "Gemini API call", "variant": "emphasis", "fromSide": "right", "toSide": "left" },
+    { "id": "log-markdown", "from": "gemini", "to": "report", "label": "log matches >= 70", "classification": "markdown write", "variant": "default", "fromSide": "right", "toSide": "left" },
+    { "id": "send-briefing", "from": "gemini", "to": "email", "label": "dispatch score >= 70", "classification": "SMTP TLS", "variant": "emphasis", "fromSide": "right", "toSide": "left" }
+  ],
+  "cards": [
+    {
+      "dot": "cyan",
+      "title": "What is Scraping?",
+      "items": [
+        "Automated fetching of open job listings directly from 32+ corporate career portals (Amazon, Greenhouse, Workday, Phenom, SmartRecruiters)",
+        "Parses HTML pages and REST API endpoints into structured job objects (Title, Company, Location, Job URL, Full Description)",
+        "Runs autonomously every 3 hours via GitHub Actions cloud runners"
+      ]
+    },
+    {
+      "dot": "emerald",
+      "title": "Deduplication & Filtering",
+      "items": [
+        "Compares newly scraped job IDs against scraped_jobs.json (44MB database) to prevent re-processing past postings",
+        "Applies strict title keyword matching (Analyst, Data, Science, Product, Lead) before calling Gemini API to conserve API quota"
+      ]
+    },
+    {
+      "dot": "violet",
+      "title": "AI Evaluation & Email Briefing",
+      "items": [
+        "Evaluates full job descriptions against candidate resume & target parameters using Google Gemini API",
+        "Scores match quality (0-100) and extracts 2-5 word concise requirement tags",
+        "Dispatches responsive vertical card HTML emails with 1-click 'Apply on [Company]' buttons"
+      ]
+    }
+  ]
+}
