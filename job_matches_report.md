@@ -1,5 +1,15 @@
 # Automated Job Matcher Run History
 
+## 📅 Scan Run: 2026-09-05 07:55:22
+- **Total New Jobs Scraped**: 130
+- **High-Match Roles (Score &ge; 70)**: 2
+
+| Job Title | Company | Location | Match Score | Key Matches | Gaps |
+| :--- | :--- | :--- | :-: | :--- | :--- |
+| [Senior Data Scientist](https://spgi.wd5.myworkdayjobs.com/en-us/SPGI_Careers/job/Gurugram-Haryana/Senior-Data-Scientist_326310/apply) | S&P Global | Gurgaon, India | **87/100** | • 8+ Yrs Exp, Lead Role<br>• LLM/GenAI Workflows<br>• Python, SQL, Statistics<br>• Stakeholder Mgmt, Mentoring | • Deep DL Architectures<br>• Specific MLOps Practices |
+| [Senior Product Manager, Ads -  Shopping Catalogs](https://job-boards.greenhouse.io/reddit/jobs/8120503) | Reddit | Remote - United States | **72/100** | • 3+ Yrs E-commerce/Shopping<br>• AI fluency<br>• ML fluency (Nice to Have)<br>• Cross-functional leadership<br>• LLM-driven content understanding | • 5+ Yrs Product Management<br>• Remote - United States<br>• Product Catalog/PKG Ownership |
+
+---
 ## 📅 Scan Run: 2026-09-05 04:36:15
 - **Total New Jobs Scraped**: 332
 - **High-Match Roles (Score &ge; 70)**: 1
