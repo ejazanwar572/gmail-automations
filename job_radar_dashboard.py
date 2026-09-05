@@ -2,6 +2,7 @@ import os
 import re
 import json
 import time
+import subprocess
 from datetime import datetime, timezone
 import urllib.parse
 import urllib.request
@@ -82,7 +83,7 @@ header[data-testid="stHeader"] {
     border: 1px solid #1f2937;
     border-radius: 12px;
     padding: 18px 22px;
-    margin-bottom: 14px;
+    margin-bottom: 8px;
     transition: transform 0.15s ease, border-color 0.15s ease;
 }
 .job-card:hover {
@@ -121,25 +122,27 @@ header[data-testid="stHeader"] {
 }
 .tag-chip {
     display: inline-block;
-    background-color: #1e293b;
-    color: #cbd5e1;
+    background-color: #064e3b22;
+    color: #34d399;
     font-size: 0.78rem;
-    padding: 3px 8px;
-    border-radius: 6px;
+    font-weight: 500;
+    padding: 4px 10px;
+    border-radius: 9999px;
     margin-right: 6px;
-    margin-bottom: 4px;
-    border: 1px solid #334155;
+    margin-bottom: 6px;
+    border: 1px solid #05966944;
 }
 .tag-gap {
     display: inline-block;
-    background-color: #311313;
+    background-color: #7f1d1d22;
     color: #fca5a5;
     font-size: 0.78rem;
-    padding: 3px 8px;
-    border-radius: 6px;
+    font-weight: 500;
+    padding: 4px 10px;
+    border-radius: 9999px;
     margin-right: 6px;
-    margin-bottom: 4px;
-    border: 1px solid #7f1d1d;
+    margin-bottom: 6px;
+    border: 1px solid #b91c1c44;
 }
 .apply-btn {
     display: inline-block;
@@ -151,10 +154,36 @@ header[data-testid="stHeader"] {
     border-radius: 8px;
     text-decoration: none;
     transition: background 0.15s ease;
-    margin-top: 8px;
 }
 .apply-btn:hover {
     background: linear-gradient(135deg, #1d4ed8 0%, #1e40af 100%);
+}
+.status-badge-applied {
+    display: inline-block;
+    background-color: #0284c7;
+    color: white;
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 6px;
+    margin-left: 8px;
+}
+.status-badge-saved {
+    display: inline-block;
+    background-color: #eab308;
+    color: #0f172a;
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 6px;
+    margin-left: 8px;
+}
+.highlight-term {
+    background-color: #854d0e;
+    color: #fef08a;
+    padding: 2px 5px;
+    border-radius: 4px;
+    font-weight: 600;
 }
 </style>
 """)
@@ -164,6 +193,24 @@ BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 BOARDS_FILE = os.path.join(BASE_DIR, "job_boards.json")
 JOBS_FILE = os.path.join(BASE_DIR, "scraped_jobs.json")
 REPORT_FILE = os.path.join(BASE_DIR, "job_matches_report.md")
+TRACKER_FILE = os.path.join(BASE_DIR, "job_applications.json")
+
+# ─── Application Status Tracking Helpers ─────────────────────────────────────
+def load_application_tracker():
+    if os.path.exists(TRACKER_FILE):
+        try:
+            with open(TRACKER_FILE, 'r', encoding='utf-8') as f:
+                return json.load(f)
+        except Exception:
+            return {}
+    return {}
+
+def save_application_tracker(data):
+    try:
+        with open(TRACKER_FILE, 'w', encoding='utf-8') as f:
+            json.dump(data, f, indent=2)
+    except Exception as e:
+        st.error(f"Failed to save application status: {e}")
 
 # ─── Data Extraction & Helpers ──────────────────────────────────────────────
 COMPANY_KEYWORDS = [
@@ -211,6 +258,20 @@ def identify_platform(url):
     if 'expediagroup' in u: return 'WordPress'
     if 'media.net' in u: return 'Media.net API'
     return 'Custom Portal'
+
+def highlight_keywords(text):
+    if not text:
+        return ""
+    keywords = [
+        r'\b8\+?\s*years?\b', r'\b10\+?\s*years?\b', r'\b7\+?\s*years?\b', r'\b5\+?\s*years?\b',
+        r'\bSQL\b', r'\bPython\b', r'\bPowerBI\b', r'\bPower\s*BI\b', r'\bTableau\b',
+        r'\bA/B\s*test(?:ing)?\b', r'\bCausal(?:\s*inference)?\b', r'\bMachine\s*Learning\b',
+        r'\bLLMs?\b', r'\bGenerative\s*AI\b', r'\bAnalytics\s*Lead(?:ership)?\b', r'\bBangalore\b', r'\bBengaluru\b'
+    ]
+    highlighted = text
+    for kw in keywords:
+        highlighted = re.sub(kw, lambda m: f'<span class="highlight-term">{m.group(0)}</span>', highlighted, flags=re.IGNORECASE)
+    return highlighted.replace('\n', '<br>')
 
 @st.cache_data(ttl=60)
 def load_data():
@@ -300,6 +361,7 @@ def load_data():
     return boards, jobs, high_matches, df_boards, df_runs
 
 boards, jobs, high_matches, df_boards, df_runs = load_data()
+app_tracker = load_application_tracker()
 
 # ─── Top Header & Pulse Metrics ────────────────────────────────────────────
 st.markdown("## 🎯 Corporate Job Radar & Intelligence Hub")
@@ -322,7 +384,11 @@ if not df_runs.empty and 'timestamp_str' in df_runs.columns:
     except Exception:
         hours_ago_str = latest_scan_str
 
-col1, col2, col3, col4, col5 = st.columns(5)
+# Count applied and saved
+applied_count = sum(1 for v in app_tracker.values() if v.get('status') == 'Applied')
+saved_count = sum(1 for v in app_tracker.values() if v.get('status') == 'Saved')
+
+col1, col2, col3, col4, col5, col6 = st.columns(6)
 with col1:
     st.markdown(f"""
     <div class="metric-box">
@@ -353,13 +419,22 @@ with col3:
 with col4:
     st.markdown(f"""
     <div class="metric-box">
+        <div class="metric-label">Applied / Saved</div>
+        <div class="metric-value">{applied_count} <span style="font-size:1.1rem; color:#94a3b8;">/ {saved_count}</span></div>
+        <div class="metric-sub">In application tracker</div>
+    </div>
+    """, unsafe_allow_html=True)
+
+with col5:
+    st.markdown(f"""
+    <div class="metric-box">
         <div class="metric-label">Scraper Freshness</div>
         <div class="metric-value">{hours_ago_str}</div>
         <div class="metric-sub">{latest_scan_str}</div>
     </div>
     """, unsafe_allow_html=True)
 
-with col5:
+with col6:
     st.markdown(f"""
     <div class="metric-box">
         <div class="metric-label">Scan Schedule</div>
@@ -437,41 +512,68 @@ with tab_radar:
 with tab_matches:
     st.subheader("Curated High-Match Pipeline (Score ≥ 70%)")
     
-    m_col1, m_col2, m_col3 = st.columns([1.5, 1.5, 1])
+    m_col1, m_col2, m_col3, m_col4 = st.columns([1.2, 1.2, 1.2, 1.2])
     with m_col1:
         min_score = st.slider("Minimum Match Score", min_value=70, max_value=100, value=75, step=5)
     with m_col2:
         all_companies = ["All Companies"] + sorted(list(set(m['company'] for m in high_matches)))
         sel_comp = st.selectbox("Company", all_companies)
     with m_col3:
+        status_filter = st.selectbox("Application Status", ["All Roles", "Active Pipeline", "Applied", "Saved", "Hidden"])
+    with m_col4:
         search_kw = st.text_input("Role Keyword", placeholder="e.g. Lead, Science, Product")
 
-    filtered_matches = [
-        m for m in high_matches
-        if m['score'] >= min_score
-        and (sel_comp == "All Companies" or m['company'].lower() == sel_comp.lower())
-        and (not search_kw or search_kw.lower() in m['title'].lower())
-    ]
+    filtered_matches = []
+    for m in high_matches:
+        if m['score'] < min_score:
+            continue
+        if sel_comp != "All Companies" and m['company'].lower() != sel_comp.lower():
+            continue
+        if search_kw and search_kw.lower() not in m['title'].lower():
+            continue
+        
+        job_status = app_tracker.get(m['url'], {}).get('status', 'Unapplied')
+        if status_filter == "Applied" and job_status != "Applied":
+            continue
+        if status_filter == "Saved" and job_status != "Saved":
+            continue
+        if status_filter == "Hidden" and job_status != "Hidden":
+            continue
+        if status_filter == "Active Pipeline" and job_status in ("Hidden", "Applied"):
+            continue
+
+        m_copy = dict(m)
+        m_copy['status'] = job_status
+        filtered_matches.append(m_copy)
 
     st.markdown(f"**Showing {len(filtered_matches)} opportunities matching your criteria:**")
 
     if not filtered_matches:
-        st.info("No roles match the selected filter criteria. Try lowering the score threshold.")
+        st.info("No roles match the selected filter criteria. Try lowering the score threshold or adjusting status filters.")
     else:
-        for job in filtered_matches[:25]:
+        for idx, job in enumerate(filtered_matches[:30]):
             score = job['score']
             badge_class = "badge-score-high" if score >= 85 else ("badge-score-mid" if score >= 75 else "badge-score-good")
             
-            key_tags_html = "".join([f'<span class="tag-chip">• {t}</span>' for t in job.get('key_matches', [])])
+            key_tags_html = "".join([f'<span class="tag-chip">✓ {t}</span>' for t in job.get('key_matches', [])])
             gap_tags_html = "".join([f'<span class="tag-gap">⚠ {g}</span>' for g in job.get('gaps', [])])
             if not gap_tags_html:
                 gap_tags_html = '<span class="tag-chip" style="color: #4ade80;">✓ No major gaps identified</span>'
+
+            curr_status = job.get('status', 'Unapplied')
+            status_indicator = ""
+            if curr_status == 'Applied':
+                status_indicator = '<span class="status-badge-applied">✓ APPLIED</span>'
+            elif curr_status == 'Saved':
+                status_indicator = '<span class="status-badge-saved">★ SAVED</span>'
 
             st.markdown(f"""
             <div class="job-card">
                 <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px;">
                     <div>
-                        <h4 style="margin: 0; font-size: 1.15rem; color: #f8fafc;">{job['title']}</h4>
+                        <h4 style="margin: 0; font-size: 1.15rem; color: #f8fafc;">
+                            {job['title']} {status_indicator}
+                        </h4>
                         <div style="margin-top: 4px; color: #94a3b8; font-size: 0.9rem;">
                             🏢 <strong style="color: #e2e8f0;">{job['company']}</strong> &nbsp;|&nbsp; 📍 {job['location']}
                         </div>
@@ -480,34 +582,59 @@ with tab_matches:
                         <span class="{badge_class}">{score}/100 Match</span>
                     </div>
                 </div>
-                <div style="margin-top: 10px;">
-                    <div style="font-size: 0.8rem; font-weight: 600; color: #64748b; margin-bottom: 4px;">KEY REQUIREMENTS & ALIGNMENTS</div>
+                <div style="margin-top: 8px;">
+                    <div style="font-size: 0.78rem; font-weight: 600; color: #64748b; margin-bottom: 4px;">KEY REQUIREMENTS & ALIGNMENTS</div>
                     <div>{key_tags_html}</div>
                 </div>
-                <div style="margin-top: 8px;">
-                    <div style="font-size: 0.8rem; font-weight: 600; color: #64748b; margin-bottom: 4px;">GAPS / CONSIDERATIONS</div>
+                <div style="margin-top: 6px;">
+                    <div style="font-size: 0.78rem; font-weight: 600; color: #64748b; margin-bottom: 4px;">GAPS / CONSIDERATIONS</div>
                     <div>{gap_tags_html}</div>
-                </div>
-                <div style="margin-top: 14px;">
-                    <a href="{job['url']}" target="_blank" class="apply-btn">Apply on {job['company']} ↗</a>
                 </div>
             </div>
             """, unsafe_allow_html=True)
 
-        if len(filtered_matches) > 25:
-            st.caption(f"Displaying top 25 of {len(filtered_matches)} matching roles. Use filters to narrow down.")
+            # Action bar: Apply link + Status Select
+            act_col1, act_col2 = st.columns([2, 1])
+            with act_col1:
+                st.markdown(f'<a href="{job["url"]}" target="_blank" class="apply-btn">Apply on {job["company"]} ↗</a>', unsafe_allow_html=True)
+            with act_col2:
+                status_options = ["Unapplied", "Applied", "Saved", "Hidden"]
+                curr_idx = status_options.index(curr_status) if curr_status in status_options else 0
+                new_status = st.selectbox(
+                    "Track Status",
+                    status_options,
+                    index=curr_idx,
+                    key=f"status_sel_{idx}_{hash(job['url'])}",
+                    label_visibility="collapsed"
+                )
+                if new_status != curr_status:
+                    app_tracker[job['url']] = {
+                        'title': job['title'],
+                        'company': job['company'],
+                        'status': new_status,
+                        'updated_at': datetime.now().isoformat()
+                    }
+                    save_application_tracker(app_tracker)
+                    st.rerun()
+
+            st.markdown("<div style='height: 10px;'></div>", unsafe_allow_html=True)
+
+        if len(filtered_matches) > 30:
+            st.caption(f"Displaying top 30 of {len(filtered_matches)} matching roles. Use filters to narrow down.")
 
 # ─── TAB 3: FULL JOB EXPLORER ───────────────────────────────────────────────
 with tab_explorer:
-    st.subheader("Database Job Explorer")
-    st.caption("Search across all 4,511+ raw scraped job postings across every tracked company.")
+    st.subheader("Database Job Explorer & Deep JD Inspector")
+    st.caption("Search across all 4,511+ raw scraped job postings across every tracked company with automatic skill & experience highlighting.")
 
-    e_col1, e_col2, e_col3 = st.columns([2, 1.5, 1])
+    e_col1, e_col2, e_col3, e_col4 = st.columns([2, 1.2, 1.2, 1])
     with e_col1:
         query = st.text_input("Search Title or Description Keywords", placeholder="e.g. PySpark, A/B testing, Causal, Machine Learning")
     with e_col2:
         exp_firm = st.selectbox("Firm Filter", ["All Firms"] + sorted(df_boards['Firm'].unique().tolist()) if not df_boards.empty else ["All Firms"])
     with e_col3:
+        exp_level = st.selectbox("Seniority / Experience", ["All Levels", "8+ Years / Lead / Staff", "5+ Years / Senior", "Management / Director"])
+    with e_col4:
         exp_limit = st.selectbox("Results Limit", [20, 50, 100], index=0)
 
     filtered_jobs = []
@@ -518,10 +645,22 @@ with tab_explorer:
         if exp_firm != "All Firms" and firm_name.lower() != exp_firm.lower():
             continue
             
+        title_text = j.get('title', '').lower()
+        desc_text = j.get('description_text', '').lower()
+        loc_text = j.get('location', '').lower()
+        full_content = f"{title_text} {desc_text}"
+
+        if exp_level == "8+ Years / Lead / Staff":
+            if not any(k in full_content for k in ['8+ year', '8 years', '10+ year', '10 years', 'lead', 'staff', 'principal', 'head of', 'director']):
+                continue
+        elif exp_level == "5+ Years / Senior":
+            if not any(k in full_content for k in ['5+ year', '5 years', '6+ year', '7+ year', 'senior', 'sr.']):
+                continue
+        elif exp_level == "Management / Director":
+            if not any(k in full_content for k in ['manager', 'director', 'head of', 'vp', 'lead']):
+                continue
+
         if q_lower:
-            title_text = j.get('title', '').lower()
-            desc_text = j.get('description_text', '').lower()
-            loc_text = j.get('location', '').lower()
             if q_lower not in title_text and q_lower not in desc_text and q_lower not in loc_text:
                 continue
                 
@@ -541,8 +680,13 @@ with tab_explorer:
             
             st.divider()
             desc = j.get('description_text') or j.get('description_html') or "No description preview available."
-            st.markdown("#### Job Description")
-            st.text_area("Description Text", desc[:3000] + ("..." if len(desc) > 3000 else ""), height=250, key=f"desc_{i}")
+            st.markdown("#### Job Description (Key Keywords Highlighted)")
+            highlighted_desc = highlight_keywords(desc[:3500] + ("..." if len(desc) > 3500 else ""))
+            st.markdown(f"""
+            <div style="background-color: #0f172a; padding: 16px; border-radius: 8px; border: 1px solid #1e293b; max-height: 400px; overflow-y: auto; font-size: 0.9rem; line-height: 1.6;">
+                {highlighted_desc}
+            </div>
+            """, unsafe_allow_html=True)
 
 # ─── TAB 4: SCRAPER OPERATIONS & BOARD MANAGER ──────────────────────────────
 with tab_ops:
@@ -645,3 +789,19 @@ with tab_ops:
                     st.rerun()
                 except Exception as e:
                     st.error(f"Failed to update job_boards.json: {e}")
+
+    st.divider()
+    st.markdown("#### 🔄 Trigger Full Radar Scan")
+    st.caption("Manually trigger a full crawling scan across all 44 job boards via check_job_boards.py in the background.")
+    if st.button("▶ Start Full Scan Now"):
+        with st.spinner("Initiating full crawler job in background..."):
+            try:
+                proc = subprocess.Popen(
+                    ["python3", "check_job_boards.py"],
+                    cwd=BASE_DIR,
+                    stdout=subprocess.DEVNULL,
+                    stderr=subprocess.DEVNULL
+                )
+                st.success(f"Full scraper initiated in background (PID: {proc.pid})! New roles will populate upon completion.")
+            except Exception as e:
+                st.error(f"Failed to launch scraper: {e}")
