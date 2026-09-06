@@ -18,6 +18,15 @@
 | [Business Analyst II, Business assessment and reinforcement (BAR)](https://www.amazon.jobs/en/jobs/10530751/business-analyst-ii-business-assessment-and-reinforcement-bar) | Amazon | Bengaluru, KA, IND | **85/100** | • LLMs & Agent experience critical<br>• SQL, Python, Tableau/PowerBI<br>• A/B testing, Causal Inference<br>• Stakeholder management<br>• Bengaluru, KA, IND location | • 5+ years advanced Excel<br>• Tax/Finance field experience |
 
 ---
+## 📅 Scan Run: 2026-09-06 15:00:56
+- **Total New Jobs Scraped**: 7
+- **High-Match Roles (Score &ge; 70)**: 1
+
+| Job Title | Company | Location | Match Score | Key Matches | Gaps |
+| :--- | :--- | :--- | :-: | :--- | :--- |
+| [Business Analyst II, Business assessment and reinforcement (BAR)](https://www.amazon.jobs/en/jobs/10530751/business-analyst-ii-business-assessment-and-reinforcement-bar) | Amazon | Bengaluru, KA, IND | **85/100** | • LLMs & Agent experience critical<br>• SQL, Python, Tableau/PowerBI<br>• A/B testing, Causal Inference<br>• Stakeholder management<br>• Bengaluru, KA, IND location | • 5+ years advanced Excel<br>• Tax/Finance field experience |
+
+---
 ## 📅 Scan Run: 2026-09-06 10:20:13
 - **Total New Jobs Scraped**: 2
 - **High-Match Roles (Score &ge; 70)**: 0
