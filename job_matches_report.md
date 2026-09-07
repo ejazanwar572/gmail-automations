@@ -1,5 +1,14 @@
 # Automated Job Matcher Run History
 
+## 📅 Scan Run: 2026-09-07 17:20:38
+- **Total New Jobs Scraped**: 22
+- **High-Match Roles (Score &ge; 70)**: 1
+
+| Job Title | Company | Location | Match Score | Key Matches | Gaps |
+| :--- | :--- | :--- | :-: | :--- | :--- |
+| [Data Analyst](https://jobs.ebayinc.com/us/en/job/R0076479/data-analyst) | eBay | Bengaluru, India | **88/100** | • 3+ Yrs Exp Required<br>• SQL, Python, Excel<br>• Power BI, Tableau<br>• AI & Automation<br>• Statistical Analysis<br>• Stakeholder Management<br>• Bengaluru Location Fit | • Ethics/Compliance Domain |
+
+---
 ## 📅 Scan Run: 2026-09-07 12:03:14
 - **Total New Jobs Scraped**: 28
 - **High-Match Roles (Score &ge; 70)**: 0
