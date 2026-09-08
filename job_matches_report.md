@@ -1,5 +1,15 @@
 # Automated Job Matcher Run History
 
+## 📅 Scan Run: 2026-09-08 20:52:18
+- **Total New Jobs Scraped**: 20
+- **High-Match Roles (Score &ge; 70)**: 2
+
+| Job Title | Company | Location | Match Score | Key Matches | Gaps |
+| :--- | :--- | :--- | :-: | :--- | :--- |
+| [Senior Applied Scientist , Buyer Risk Prevention (BRP)](https://www.amazon.jobs/en/jobs/10531907/senior-applied-scientist-buyer-risk-prevention-brp) | Amazon | Bengaluru, KA, IND | **87/100** | • 3+ Yrs ML Models Exp<br>• Python Programming<br>• GenAI/LLM Technologies<br>• Experimentation Best Practices<br>• Stakeholder Mgmt, Mentoring<br>• Bengaluru Location Fit | • PhD/Master's Degree<br>• Production ML Systems Dev |
+| [Sr. Program Manager, WW FBA](https://www.amazon.jobs/en/jobs/10532098/sr-program-manager-ww-fba) | Amazon | Bengaluru, KA, IND | **83/100** | • SQL proficiency<br>• Design structured experiments<br>• Apply AI/automation<br>• Own business metrics end-to-end<br>• Bengaluru, KA, IND location | • Large-scale inventory planning<br>• Supply chain operations program |
+
+---
 ## 📅 Scan Run: 2026-09-08 16:06:39
 - **Total New Jobs Scraped**: 25
 - **High-Match Roles (Score &ge; 70)**: 1
