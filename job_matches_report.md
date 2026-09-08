@@ -1,5 +1,14 @@
 # Automated Job Matcher Run History
 
+## 📅 Scan Run: 2026-09-08 16:06:39
+- **Total New Jobs Scraped**: 25
+- **High-Match Roles (Score &ge; 70)**: 1
+
+| Job Title | Company | Location | Match Score | Key Matches | Gaps |
+| :--- | :--- | :--- | :-: | :--- | :--- |
+| [Senior Data Science & Insights Engineer](https://careers.adobe.com/us/en/job/R171688/senior-data-science-insights-engineer) | Adobe | Noida, Uttar Pradesh, India | **92/100** | • 7+ Yrs Exp Required<br>• A/B Testing, Experimentation<br>• Python, SQL, LLM/AI Agents<br>• Mentoring, Stakeholder Mgmt<br>• Noida Location (India) | • No specific GenAI tools named<br>• Unstructured data types less explicit |
+
+---
 ## 📅 Scan Run: 2026-09-08 10:45:18
 - **Total New Jobs Scraped**: 23
 - **High-Match Roles (Score &ge; 70)**: 3
