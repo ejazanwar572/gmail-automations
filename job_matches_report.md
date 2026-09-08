@@ -1,5 +1,14 @@
 # Automated Job Matcher Run History
 
+## 📅 Scan Run: 2026-09-08 23:16:02
+- **Total New Jobs Scraped**: 4
+- **High-Match Roles (Score &ge; 70)**: 1
+
+| Job Title | Company | Location | Match Score | Key Matches | Gaps |
+| :--- | :--- | :--- | :-: | :--- | :--- |
+| [Production Planning Analyst, Supply Chain](https://www.amazon.jobs/en/jobs/10532829/production-planning-analyst-supply-chain) | Amazon | Bengaluru, KA, IND | **72/100** | • Bengaluru Location Fit<br>• Strong Analytical Abilities<br>• SQL & Statistical Modeling<br>• Operations Planning Experience | • Advanced Excel specific skills<br>• Dedicated Supply Chain domain |
+
+---
 ## 📅 Scan Run: 2026-09-08 20:52:18
 - **Total New Jobs Scraped**: 20
 - **High-Match Roles (Score &ge; 70)**: 2
