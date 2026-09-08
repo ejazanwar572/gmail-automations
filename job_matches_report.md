@@ -1,5 +1,16 @@
 # Automated Job Matcher Run History
 
+## 📅 Scan Run: 2026-09-08 10:45:18
+- **Total New Jobs Scraped**: 23
+- **High-Match Roles (Score &ge; 70)**: 3
+
+| Job Title | Company | Location | Match Score | Key Matches | Gaps |
+| :--- | :--- | :--- | :-: | :--- | :--- |
+| [Sr Operations Research Scientist](https://target.wd5.myworkdayjobs.com/target/targetcareers/job/Tower-02-Manyata-Embassy-Business-Park-Racenahali--Nagawara-Villages-Outer-Ring-Rd-Bangalore-540065/Sr-Operations-Research-Scientist_R0000452402) | Target | Tower 02, Manyata Embassy Business Park, Racenahali & Nagawara Villages. Outer Ring Rd, Bangalore 540065 | **90/100** | • 6+ Yrs Exp; 4+ Yrs Python<br>• 4+ Yrs Adv DS, AI, OR<br>• SQL, A/B Testing, Causal Inf.<br>• Bangalore Location Fit | • Specific OR Techniques (MILP, DES) |
+| [Lead Operations Research Scientist](https://target.wd5.myworkdayjobs.com/target/targetcareers/job/BangaloreIndia/Lead-Operations-Research-Scientist_R0000445474) | Target | Bangalore,India | **85/100** | • Bangalore Location Fit<br>• 6+ Yrs Industry Exp<br>• 2+ Yrs Retail SC Exp<br>• Python, A/B Test, Stats, ML | • Explicit Ops Research<br>• Algorithms/Complexity |
+| [Data Analyst](https://spgi.wd5.myworkdayjobs.com/en-us/SPGI_Careers/job/Hyderabad-Telangana/Data-Analyst_330680-1/apply) | S&P Global | Hyderabad, India | **70/100** | • Data Analyst Role<br>• Hyderabad Location<br>• Building workflow solutions<br>• Generating Insights | • Role Seniority Mismatch |
+
+---
 ## 📅 Scan Run: 2026-09-08 03:18:50
 - **Total New Jobs Scraped**: 4
 - **High-Match Roles (Score &ge; 70)**: 0
