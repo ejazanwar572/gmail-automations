@@ -1,5 +1,14 @@
 # Automated Job Matcher Run History
 
+## 📅 Scan Run: 2026-09-09 22:59:57
+- **Total New Jobs Scraped**: 6
+- **High-Match Roles (Score &ge; 70)**: 1
+
+| Job Title | Company | Location | Match Score | Key Matches | Gaps |
+| :--- | :--- | :--- | :-: | :--- | :--- |
+| [Data Scientist, Digital Acceleration](https://www.amazon.jobs/en/jobs/3205211/data-scientist-digital-acceleration) | Amazon | Chennai, TN, IND | **90/100** | • 2+ Yrs Data Scientist Exp<br>• 3+ Yrs SQL & Python Exp<br>• 3+ Yrs ML/Statistical Modeling<br>• Generative AI Solutions Exp<br>• Develop Experimental Plans | • Chennai not Bangalore |
+
+---
 ## 📅 Scan Run: 2026-09-09 20:31:53
 - **Total New Jobs Scraped**: 19
 - **High-Match Roles (Score &ge; 70)**: 0
