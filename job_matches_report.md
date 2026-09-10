@@ -1,5 +1,19 @@
 # Automated Job Matcher Run History
 
+## 📅 Scan Run: 2026-09-10 10:52:35
+- **Total New Jobs Scraped**: 42
+- **High-Match Roles (Score &ge; 70)**: 6
+
+| Job Title | Company | Location | Match Score | Key Matches | Gaps |
+| :--- | :--- | :--- | :-: | :--- | :--- |
+| [Data Science Scientist](https://globalcareers-pepsico.icims.com/jobs/454137/login) | PepsiCo | Hyderabad, India | **85/100** | • SQL & Python skills<br>• Tableau/Power BI skills<br>• Advanced Analytics, AI/ML<br>• Statistical Modeling (Forecasting)<br>• Clean/Prepare Data<br>• High Communication Skills | • Master's Degree required<br>• Deep Learning experience |
+| [Program Manager II, Easy Ship](https://www.amazon.jobs/en/jobs/10530806/program-manager-ii-easy-ship) | Amazon | Bengaluru, KA, IND | **82/100** | • Bengaluru location<br>• SQL & Excel knowledge<br>• 3+ Yrs Exp defining process improvements<br>• Stakeholder management | • Explicit Program Management Experience |
+| [Data Scientist (Classical ML/NLP + LLM)](https://jobs.gartner.com/jobs/job/113081-data-scientist-classical-ml-nlp-llm/) | Gartner | Gurgaon, Haryāna | **80/100** | • 3-6 Yrs Applied ML/AI<br>• Expert Python, PySpark<br>• LLMs, Agentic Systems, RAG<br>• Stakeholder Partnering | • Cloud Model Deployment<br>• Deep Learning / NLP Methods |
+| [Lead - Data Scientist](https://careers.smartrecruiters.com/freshworks/744000148710569) | Smartrecruiters | Bengaluru, in | **78/100** | • 7+ Yrs Exp Required<br>• Bengaluru Location Fit<br>• Lead AI Analyst Exp<br>• LLM/Agent Workflows, RAG<br>• SQL, Python & PySpark<br>• A/B Testing, Causal Inference<br>• Stakeholder Management | • ML Production Deployment<br>• Advanced ML Math Foundations |
+| [Lead - Business Systems Services](https://careers.smartrecruiters.com/freshworks/744000148730803) | Smartrecruiters | Chennai, in | **72/100** | • 5+ Yrs Exp Required<br>• Strong AI/GenAI Fundamentals<br>• Basic Python & SQL<br>• Stakeholder Management | • ITSM/ESM Processes<br>• Customer-Facing Solutions |
+| [Data Scientist, Traffic Quality](https://www.amazon.jobs/en/jobs/10535807/data-scientist-traffic-quality) | Amazon | Bengaluru, KA, IND | **70/100** | • 1+ Yrs Exp SQL/Python<br>• 2+ Yrs Exp Data Scientist<br>• Apply ML approaches<br>• Mentor junior scientists<br>• Bengaluru Location Fit | • 1+ Yrs Exp Research Papers<br>• Not Lead/Manager Role |
+
+---
 ## 📅 Scan Run: 2026-09-10 03:17:28
 - **Total New Jobs Scraped**: 5
 - **High-Match Roles (Score &ge; 70)**: 0
