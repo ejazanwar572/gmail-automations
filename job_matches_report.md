@@ -1,5 +1,15 @@
 # Automated Job Matcher Run History
 
+## 📅 Scan Run: 2026-09-11 16:00:02
+- **Total New Jobs Scraped**: 35
+- **High-Match Roles (Score &ge; 70)**: 2
+
+| Job Title | Company | Location | Match Score | Key Matches | Gaps |
+| :--- | :--- | :--- | :-: | :--- | :--- |
+| [Senior Data Scientist](https://spgi.wd5.myworkdayjobs.com/en-us/SPGI_Careers/job/Gurugram-Haryana/Senior-Data-Scientist_331730-1/apply) | S&P Global | Gurgaon, India; Bangalore, India | **90/100** | • SQL, Python, PySpark<br>• Generative AI & LLMs<br>• A/B Testing & Causal<br>• Bangalore Location Fit<br>• 3-6 Yrs Exp Required | • AWS, Docker, Terraform<br>• Maritime Domain Expertise |
+| [Consumer & Shop Insights Assoc Manager](https://globalcareers-pepsico.icims.com/jobs/473983/login) | PepsiCo | New Cairo, Egypt; Hyderabad, India | **82/100** | • Stakeholder coordination<br>• Data storytelling<br>• Consumer behavior analysis<br>• Manage analysts (1+)<br>• Hyderabad location | • Arabic language required<br>• CPG/F&B domain experience<br>• Social listening tools |
+
+---
 ## 📅 Scan Run: 2026-09-11 10:46:34
 - **Total New Jobs Scraped**: 38
 - **High-Match Roles (Score &ge; 70)**: 2
