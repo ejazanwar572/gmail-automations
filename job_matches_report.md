@@ -1,5 +1,15 @@
 # Automated Job Matcher Run History
 
+## 📅 Scan Run: 2026-09-11 10:46:34
+- **Total New Jobs Scraped**: 38
+- **High-Match Roles (Score &ge; 70)**: 2
+
+| Job Title | Company | Location | Match Score | Key Matches | Gaps |
+| :--- | :--- | :--- | :-: | :--- | :--- |
+| [Sr Data Analyst (Advanced Analytics/Predictive Modelling/ML/Basics of DS + LLM + Problem Solving)](https://jobs.gartner.com/jobs/job/113569-sr-data-analyst-advanced-analytics-predictive-modelling-ml-basics-of-ds-llm-problem-solving/) | Gartner | Gurgaon, Haryāna | **90/100** | • 3-5 Yrs Data Analytics Exp<br>• SQL, Python, Statistical analysis<br>• Predictive Modelling, LLM<br>• Problem Solving, Stakeholder Influence | • Location: Gurgaon vs Bangalore |
+| [Team Manager, Rufus and Alexa Shopping](https://www.amazon.jobs/en/jobs/10495522/team-manager-rufus-and-alexa-shopping) | Amazon | Bengaluru, KA, IND | **70/100** | • AI, LLM, RLHF Focus<br>• Analytical Skills, Detail<br>• Leading Cross-functional teams<br>• Bengaluru, KA, IND | • 2+ Yrs People Management<br>• Data Annotation Operations<br>• Six Sigma Black Belt (Preferred)<br>• Master's Degree (Preferred) |
+
+---
 ## 📅 Scan Run: 2026-09-11 03:13:38
 - **Total New Jobs Scraped**: 4
 - **High-Match Roles (Score &ge; 70)**: 0
