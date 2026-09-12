@@ -14,12 +14,15 @@ sys.path.insert(0, str(ROOT_DIR))
 import dcbm_engine
 
 # ─── Page Configuration ────────────────────────────────────────────────────────
-st.set_page_config(
-    page_title="HDFC Diners Black Metal | Control Center",
-    page_icon="💳",
-    layout="wide",
-    initial_sidebar_state="collapsed",
-)
+try:
+    st.set_page_config(
+        page_title="HDFC Diners Black Metal | Control Center",
+        page_icon="💳",
+        layout="wide",
+        initial_sidebar_state="collapsed",
+    )
+except Exception:
+    pass
 
 # ─── Theme Configuration (Dark / Haute Metal Light) ──────────────────────────
 if "theme_mode" not in st.session_state:
@@ -384,6 +387,13 @@ st.markdown(
         border: 1px solid {T["border"]} !important;
     }}
 
+    /* Selectbox for Card Switcher */
+    div[data-testid="stSelectbox"] div[data-baseweb="select"] {{
+        border-radius: 10px !important;
+        font-weight: 800 !important;
+        font-size: 18px !important;
+    }}
+
     /* ─── Mobile Responsive Enhancements ─── */
     @media (max-width: 768px) {{
         [data-testid="stAppViewBlockContainer"] {{
@@ -519,25 +529,52 @@ data = load_data()
 col_head_left, col_head_right = st.columns([2.6, 1.4], vertical_alignment="center")
 
 with col_head_left:
-    st.markdown(
-        f"""
-        <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 4px;">
-            <span style="font-size: 34px;">💳</span>
-            <div>
-                <div class="mobile-header-title" style="font-size: 24px; font-weight: 800; letter-spacing: -0.02em; color: {T['text_main']};">
-                    HDFC Diners Club Black Metal
-                    <span class="mobile-card-badge" style="font-size: 15px; font-weight: 600; color: {T['card_number_badge_color']}; background: {T['card_number_badge_bg']}; padding: 3px 10px; border-radius: 8px; margin-left: 10px; border: 1px solid {T['card_number_badge_border']};">
+    sub_c1, sub_c2 = st.columns([0.08, 0.92], vertical_alignment="center")
+    with sub_c1:
+        st.markdown(
+            f"""
+            <div style="width: 38px; height: 38px; background: {'#faf8f4' if is_light else '#1e293b'}; color: {T['accent_gold']}; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 20px; font-weight: 900; border: 1px solid {T['border']};">
+                💳
+            </div>
+            """,
+            unsafe_allow_html=True,
+        )
+    with sub_c2:
+        card_col, badge_col = st.columns([1.5, 1.2], vertical_alignment="center")
+        with card_col:
+            card_options = ["HDFC Diners Club Black Metal", "HSBC Live+ Credit Card"]
+            selected_card_title = st.selectbox(
+                "Credit Card",
+                options=card_options,
+                index=0,
+                key="hdfc_header_card_switcher",
+                label_visibility="collapsed",
+            )
+            if selected_card_title != "HDFC Diners Club Black Metal":
+                st.session_state["selected_card"] = selected_card_title
+                st.rerun()
+        with badge_col:
+            st.markdown(
+                f"""
+                <div style="display: flex; align-items: center; gap: 8px;">
+                    <span class="mobile-card-badge" style="font-size: 13.5px; font-weight: 700; color: {T['card_number_badge_color']}; background: {T['card_number_badge_bg']}; padding: 3px 10px; border-radius: 8px; border: 1px solid {T['card_number_badge_border']};">
                         •••• 2360
                     </span>
+                    <span class="pill pill-blue" style="font-size: 11px;">
+                        Diners Club Metal
+                    </span>
                 </div>
-                <div class="mobile-header-sub" style="font-size: 13px; color: {T['text_sub']}; font-weight: 500;">
-                    Automated Real-Time Rewards & Spend Tracker from Gmail InstaAlerts
-                </div>
+                """,
+                unsafe_allow_html=True,
+            )
+        st.markdown(
+            f"""
+            <div class="mobile-header-sub" style="font-size: 13px; color: {T['text_sub']}; font-weight: 500; margin-top: 2px;">
+                Automated Real-Time Rewards & Spend Tracker from Gmail InstaAlerts
             </div>
-        </div>
-        """,
-        unsafe_allow_html=True,
-    )
+            """,
+            unsafe_allow_html=True,
+        )
 
 with col_head_right:
     btn_col1, btn_col2, btn_col3 = st.columns([1.25, 1.05, 0.9], vertical_alignment="center")
