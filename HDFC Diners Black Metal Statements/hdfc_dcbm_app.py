@@ -311,15 +311,15 @@ st.markdown(
     }}
 
     /* Streamlit Segmented Control (Theme Toggle) & Header Buttons */
-    div[data-testid="stHorizontalBlock"]:has(.mobile-sync-btn) {
+    div[data-testid="stHorizontalBlock"]:has(.mobile-sync-btn) {{
         align-items: center !important;
-    }
-    div[data-testid="stHorizontalBlock"]:has(.mobile-sync-btn) div[data-testid="stVerticalBlock"] {
+    }}
+    div[data-testid="stHorizontalBlock"]:has(.mobile-sync-btn) div[data-testid="stVerticalBlock"] {{
         gap: 0 !important;
         justify-content: center !important;
         align-items: center !important;
-    }
-    div[data-testid="stHorizontalBlock"]:has(.mobile-sync-btn) div[data-testid="stButtonGroup"] button {
+    }}
+    div[data-testid="stHorizontalBlock"]:has(.mobile-sync-btn) div[data-testid="stButtonGroup"] button {{
         height: 36px !important;
         min-height: 36px !important;
         max-height: 36px !important;
@@ -332,8 +332,8 @@ st.markdown(
         box-sizing: border-box !important;
         font-weight: 600 !important;
         white-space: nowrap !important;
-    }
-    div[data-testid="stHorizontalBlock"]:has(.mobile-sync-btn) div.stButton > button {
+    }}
+    div[data-testid="stHorizontalBlock"]:has(.mobile-sync-btn) div.stButton > button {{
         height: 36px !important;
         min-height: 36px !important;
         max-height: 36px !important;
@@ -345,8 +345,8 @@ st.markdown(
         justify-content: center !important;
         box-sizing: border-box !important;
         border-radius: 8px !important;
-    }
-    div[data-testid="stHorizontalBlock"]:has(.mobile-sync-btn) .pill {
+    }}
+    div[data-testid="stHorizontalBlock"]:has(.mobile-sync-btn) .pill {{
         height: 36px !important;
         min-height: 36px !important;
         line-height: 36px !important;
@@ -356,15 +356,15 @@ st.markdown(
         justify-content: center !important;
         border-radius: 8px !important;
         box-sizing: border-box !important;
-    }
-    div[data-testid="stHorizontalBlock"]:has(.mobile-sync-btn) .stMarkdown {
+    }}
+    div[data-testid="stHorizontalBlock"]:has(.mobile-sync-btn) .stMarkdown {{
         margin: 0 !important;
         padding: 0 !important;
-    }
-    div[data-testid="stHorizontalBlock"]:has(.mobile-sync-btn) div[data-testid="stMarkdownContainer"] {
+    }}
+    div[data-testid="stHorizontalBlock"]:has(.mobile-sync-btn) div[data-testid="stMarkdownContainer"] {{
         margin: 0 !important;
         padding: 0 !important;
-    }
+    }}
 
     /* Tabs Styling */
     button[data-baseweb="tab"] {{
