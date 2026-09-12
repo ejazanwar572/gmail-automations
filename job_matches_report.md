@@ -10,6 +10,16 @@
 | [Product Manager-Tech III, Finance Automation](https://www.amazon.jobs/en/jobs/10538234/product-manager-tech-iii-finance-automation) | Amazon | Bengaluru, KA, IND | **85/100** | • 7+ Yrs Exp Required<br>• Bengaluru Location Fit<br>• Statistical Analysis & SQL<br>• Technical Product Experience<br>• Stakeholder Management | • Full Product Roadmap Ownership<br>• User Research & Interviews |
 
 ---
+## 📅 Scan Run: 2026-09-12 20:14:48
+- **Total New Jobs Scraped**: 2
+- **High-Match Roles (Score &ge; 70)**: 2
+
+| Job Title | Company | Location | Match Score | Key Matches | Gaps |
+| :--- | :--- | :--- | :-: | :--- | :--- |
+| [Business Intelligence Engineer, eCS Data Engineering and Analytics](https://www.amazon.jobs/en/jobs/10538235/business-intelligence-engineer-ecs-data-engineering-and-analytics) | Amazon | Bengaluru, KA, IND | **92/100** | • 2+ Yrs Exp analyzing data<br>• Tableau, PowerBI, SQL<br>• Python, Stats, A/B Testing<br>• Bengaluru, KA, IND Location | • Redshift/Oracle/NoSQL Exp |
+| [Product Manager-Tech III, Finance Automation](https://www.amazon.jobs/en/jobs/10538234/product-manager-tech-iii-finance-automation) | Amazon | Bengaluru, KA, IND | **85/100** | • 7+ Yrs Exp Required<br>• Bengaluru Location Fit<br>• Statistical Analysis & SQL<br>• Technical Product Experience<br>• Stakeholder Management | • Full Product Roadmap Ownership<br>• User Research & Interviews |
+
+---
 ## 📅 Scan Run: 2026-09-12 15:03:58
 - **Total New Jobs Scraped**: 3
 - **High-Match Roles (Score &ge; 70)**: 0
