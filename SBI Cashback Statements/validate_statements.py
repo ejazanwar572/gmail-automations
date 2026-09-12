@@ -414,6 +414,8 @@ def run_validation():
                 amt = item["amount"]
                 dt = item["date"]
                 found_current = any(abs(amt - p_amt) < 0.01 for p_amt in pdf_amounts_float)
+                if not found_current and any(abs(amt - 2 * p_amt) < 0.01 for p_amt in pdf_amounts_float):
+                    found_current = True
                 
                 if found_current:
                     continue

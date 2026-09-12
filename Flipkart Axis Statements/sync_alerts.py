@@ -209,7 +209,7 @@ def main():
         print(f"Sync metadata saved → {os.path.join(SCRIPT_DIR, 'sync_metadata.json')}")
         
         # Run report update script if it exists
-        if os.path.exists(REPORT_SCRIPT):
+        if os.environ.get("CARD_TRACKER_SKIP_REPORT_UPDATE") != "1" and os.path.exists(REPORT_SCRIPT):
             print("Running report update script...")
             result = subprocess.run(['python3', REPORT_SCRIPT], capture_output=True, text=True)
             if result.returncode == 0:

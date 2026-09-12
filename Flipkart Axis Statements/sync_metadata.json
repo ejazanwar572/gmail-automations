@@ -1,10 +1,16 @@
 {
-  "alert_count": 96,
-  "cached_total": 209345.87,
+  "alert_count": 100,
+  "cached_total": 215533.0,
   "card_ending": "6969",
   "card_name": "Flipkart Axis Credit Card",
-  "latest_alert_date": "2026-08-05",
+  "latest_alert_date": "2026-09-12",
   "message_ids_seen": [
+    "1a09462d6c61a177",
+    "1a08e75737e75c56",
+    "1a071fe52369dbc0",
+    "1a041760851efd32",
+    "1a039cec7e5bac4e",
+    "1a039c9cbbcea093",
     "19fd1320ed9e99e1",
     "19fbd55a9f91e20e",
     "19fa9cd2d10c2214",
@@ -98,16 +104,14 @@
     "19b2354cc0521db5",
     "19b17a5c7898d221",
     "19b02e5825ec9d28",
-    "19b01264a56da605",
-    "19ae976575466d7c",
-    "19ae5a3cd7edced1"
+    "19b01264a56da605"
   ],
   "new_count": 0,
-  "previous_count": 96,
+  "previous_count": 100,
   "query": "from:alerts@axis.bank.in spent on credit card no. XX6969",
   "skipped_duplicate_count": 1,
   "source": "gmail-api",
-  "synced_at": "2026-08-14T18:00:34Z",
-  "unique_alert_count": 95,
+  "synced_at": "2026-09-12T13:23:22Z",
+  "unique_alert_count": 99,
   "warnings": []
 }

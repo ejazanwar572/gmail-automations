@@ -1,12 +1,12 @@
 {
-  "alert_count": 96,
+  "alert_count": 156,
   "annual_fee": {
-    "eligible_spend": 10809.99,
+    "eligible_spend": 19434.19,
     "evidence_source": "https://www.phonepe.com/credit-cards/phonepe-sbi-card-select-black-credit-card/",
     "evidence_state": "verified",
     "period_end": "2027-06-28",
     "period_start": "2026-06-29",
-    "remaining_spend_for_waiver": 289190.01,
+    "remaining_spend_for_waiver": 280565.81,
     "status": "In progress",
     "waiver_spend": 300000
   },
@@ -14,8 +14,8 @@
     "deadline": "2027-06-28",
     "evidence_source": "https://www.phonepe.com/credit-cards/phonepe-sbi-card-select-black-credit-card/",
     "evidence_state": "verified",
-    "progress": 10809.99,
-    "remaining": 489190.01,
+    "progress": 19434.19,
+    "remaining": 480565.81,
     "reward": "\u20b95,000 travel voucher",
     "status": "In progress",
     "target": 500000
@@ -23,11 +23,11 @@
   "benefits": [
     {
       "cap": 1500,
-      "earned": 0.0,
+      "earned": 100.76,
       "name": "PhonePe non-insurance",
       "rate": 0.1,
-      "remaining": 1500.0,
-      "spend": 0
+      "remaining": 1399.24,
+      "spend": 1007.58
     },
     {
       "cap": 500,
@@ -47,11 +47,11 @@
     },
     {
       "cap": 2000,
-      "earned": 23.7,
+      "earned": 10.0,
       "name": "Other eligible spends",
       "rate": 0.01,
-      "remaining": 1976.3,
-      "spend": 2369.86
+      "remaining": 1990.0,
+      "spend": 1000.0
     }
   ],
   "card": {
@@ -59,11 +59,11 @@
     "name": "PhonePe SBI Card SELECT BLACK"
   },
   "cycle": {
-    "end": "2026-08-23",
+    "end": "2026-09-23",
     "evidence_status": "confirmed",
     "source": "PhonePe SBI statement PDF for 24 May 2026 to 23 July 2026.",
-    "spend": 5794.49,
-    "start": "2026-07-24",
+    "spend": 5629.46,
+    "start": "2026-08-24",
     "statement_date": "2026-07-23"
   },
   "evergreen_benefits": [
@@ -75,18 +75,18 @@
     "official_terms": "https://www.sbicard.com/sbi-card-en/assets/docs/pdf/ekit-tncs/PhonePe-select-ekit.pdf",
     "variant_status": "confirmed"
   },
-  "generated_at": "2026-08-14T23:33:36.784311+05:30",
+  "generated_at": "2026-09-12T18:40:15.929879+05:30",
   "reward_points": {
-    "estimated": 23.7,
+    "estimated": 110.76,
     "posted": 0.0,
     "reconciled": false,
-    "value": 23.7
+    "value": 110.76
   },
   "reward_window": {
-    "end": "2026-08-31",
-    "start": "2026-08-01"
+    "end": "2026-09-30",
+    "start": "2026-09-01"
   },
-  "run_id": "0ce16e27-c247-4477-83ac-7b938c4a28f9",
+  "run_id": "208f17ab-bd54-4ca8-aa7c-e827a9f2ce2a",
   "schema_version": 1,
   "welcome": {
     "deadline": "2026-08-13",

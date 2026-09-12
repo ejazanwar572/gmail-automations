@@ -1,94 +1,129 @@
-# Gmail Automations, Job Matcher & Instamart Price Suite
+# Gmail Automations & Credit Card Reward Suites
 
-A comprehensive personal utility suite that automates finance tracking (credit card statement validations, cashbacks, and expenses), runs an AI career portal scraper, and features an automated Swiggy Instamart live price tracker with mobile HTML email alerts.
+A high-performance personal automation and intelligence suite featuring real-time credit card rewards tracking, milestone engines, Gmail alert sync, and luxury Streamlit dashboards.
 
 ---
 
-## Repository Overview
+## 🌟 Flagship Feature: HDFC Diners Club Black Metal (DCBM) Dashboard
 
-This repository contains several automated pipelines organized into modular scripts:
+A production-grade, bespoke rewards tracking system and interactive UI tailored specifically for the **HDFC Diners Club Black Metal** credit card rules and SmartBuy multipliers.
 
-### 1. 🛒 Swiggy Instamart Live Price Tracker & Scraper (`Instamart Alerts/`)
-* **Dedicated Subfolder**: [`Instamart Alerts/`](file:///Users/ejazanwar/Documents/Gmail%20Automations/Instamart%20Alerts) (Contains its own standalone [`Instamart Alerts/README.md`](file:///Users/ejazanwar/Documents/Gmail%20Automations/Instamart%20Alerts/README.md)).
-* **Automated Scraper (`Instamart Alerts/instamart_scraper.py`)**: Headless Chrome scraper using Selenium Stealth & BeautifulSoup. It sets delivery locations, searches Swiggy Instamart, and executes `scrollIntoView()` infinite scrolling to load full product catalogs (up to 140+ items per category).
-* **Location & Watchlist**:
-  * **Default Location**: `HSR Layout Bangalore` (Override via `--location "Neighborhood City"`).
-  * **Watchlist Keywords (`TRACKED_KEYWORDS`)**: Configurable python list (`milk`, `mustard oil`, `eggs`, `oil`, `soap`, `shampoo`).
-* **SQLite Price Database (`Instamart Alerts/instamart_prices.db`)**: Stores historical timestamped price snapshots with composite primary key `(product_id, location, scraped_at)`.
-* **Mobile HTML Email Alerts**: Delivers mobile-responsive HTML cards with green savings badges and direct purchase buttons to `anwar.ejaz181@gmail.com` via Gmail SMTP (**only** when price drops exist).
-* **Hourly Cloud Automation (`.github/workflows/instamart_scraper.yml`)**: Automated hourly GitHub Actions cron (`0 * * * *`) running on $0 free tier, auto-committing updated `Instamart Alerts/instamart_prices.db` snapshots back to git.
+### Key Capabilities
 
-#### Instamart Scraper CLI Commands:
+1. **Automated Real-Time Gmail Sync**:
+   - Directly connects to Gmail API to fetch HDFC InstaAlert transaction emails.
+   - Automatically detects SmartBuy bookings (Flights 5X, Hotels 10X) and regular spends.
+   - Automatically parses flight and hotel points redemption confirmations, deducting burned points from gross balances in real-time.
+
+2. **Policy-Accurate Cap & Reset Tracking**:
+   - **Strict Calendar Month Accelerated Cap**: Tracks the 10,000 accelerated RP limit strictly from the 1st to the last day of each calendar month.
+   - **Reset Countdown**: Prominent header badge indicating exact days until monthly reset (`⏳ Resets in 18 days`).
+   - **Daily Guard**: Monitors the 2,500 RP per day accelerated cap limit.
+   - **Remaining Headroom**: Live rupee spend buffers before hitting the 10k cap for SmartBuy Flights (5X) and Hotels (10X).
+
+3. **Consolidated Reward Points Portfolio**:
+   - **Lifetime Reward Points**: Total points earned across all card spends to date.
+   - **Current Available Balance**: Net balance remaining after deducting burned points (valued at 1 RP = ₹1.00 on SmartBuy).
+   - **Net Reward Rate**: Cumulative percentage return on card spend (e.g., 8.61%).
+
+4. **Spend Milestones & Fee Waiver Engine**:
+   - **Welcome Milestone**: ₹1.5 Lakhs in 90 days for Club Marriott, Amazon Prime, and Swiggy One memberships.
+   - **Quarterly Bonus Milestone**: ₹4 Lakhs quarterly spend for 10,000 Bonus RP with dynamic daily run-rate targets.
+   - **Annual Fee Waiver**: ₹8 Lakhs annual spend to waive the ₹10,000 annual membership fee.
+
+5. **Design System & UX**:
+   - **Haute Metal Light Theme**: Bespoke Champagne gold, warm ivory, and bronze metallic aesthetics.
+   - **Obsidian Dark Theme**: High-contrast dark luxury metallic theme.
+   - **What-If Spend Simulator**: Calculate base points, accelerated points, daily cap status, and milestone progression before making any transaction.
+   - **Transaction & Redemption Ledgers**: Searchable, filterable tables with direct CSV export.
+
+---
+
+## 🚀 Quick Start: Running the DCBM Dashboard
+
+### Prerequisites
+- Python 3.10+
+- Chrome / Chromium (if capturing headless browser previews)
+
+### 1. Install Dependencies
 ```bash
-cd "Instamart Alerts"
-
-# Live scrape all watchlist items & send HTML email on > 20% price drops
-python3 instamart_scraper.py
-
-# Instant offline database price drop comparison
-python3 instamart_scraper.py --compare
+pip install streamlit pandas requests google-auth google-auth-oauthlib google-api-python-client
 ```
 
+### 2. Launch the Dashboard
+Using the convenient launch script:
+```bash
+./run_dcbm_dashboard.sh
+```
+Or directly with Streamlit:
+```bash
+streamlit run "HDFC Diners Black Metal Statements/hdfc_dcbm_app.py" --server.port 8502
+```
+Access the application at `http://localhost:8502`.
+
+### 3. Sync Alerts from Gmail
+Click the **Sync** button directly inside the dashboard UI, or run the standalone sync script:
+```bash
+python3 "HDFC Diners Black Metal Statements/sync_alerts.py"
+```
+
+### 4. Run Unit Tests
+Run the comprehensive test suite (33+ unit tests):
+```bash
+python3 -m unittest discover "HDFC Diners Black Metal Statements/tests"
+```
 
 ---
 
-### 2. 💼 Job Matcher & Scraper
-* **Scraper (`check_job_boards.py`)**: Crawls career portals across Greenhouse, Phenom, Jibe, Workday, SmartRecruiters, WordPress, and custom HTML platforms with location pre-filtering (prioritizing Bangalore first, then India/Remote).
-* **AI Matcher (`evaluate_jobs_github.py`)**: Executes scraper, scores listings (0-100) against resume using Gemini API, logs history to `job_matches_report.md`, and emails HTML briefs for high-matching roles (&ge; 70%).
-* **Automation (`.github/workflows/job_matcher.yml`)**: GitHub Actions workflow running automatically every 2 hours.
+## 🔒 Security & Credential Hygiene
+
+This repository strictly enforces confidentiality and credential segregation:
+
+| File Pattern | Description | Git Status |
+| :--- | :--- | :--- |
+| `credentials*.json` | Google Cloud OAuth client secrets | **Ignored** (`.gitignore`) |
+| `token*.json` | OAuth user access and refresh tokens | **Ignored** (`.gitignore`) |
+| `.env`, `.env.*` | Local environment variables & passwords | **Ignored** (`.gitignore`) |
+| `*.pdf` | Credit card statement PDFs | **Ignored** (`.gitignore`) |
+| `*cache.json` | Local alert and redemption caches | **Ignored** (`.gitignore`) |
+
+No API keys, OAuth tokens, personal statement PDFs, or client secrets are ever checked into source control.
 
 ---
 
-### 3. 💳 Credit Card Bill & Cashback Trackers
-* **Axis Airtel & Flipkart CC (`Airtel Axis Statements/` & `Flipkart Axis Statements/`)**: Syncs transaction alerts from Gmail, downloads billing statements, validates transactions against PDF line-items, and generates cashback cap progress reports.
-* **SBI Cashback CC (`SBI Cashback Statements/`)**: Validates and maps cashback alerts against downloaded statement PDFs to track spend caps.
-* **Cashback Workflow (`combined_cashback_workflow.py`)**: Unifies the execution of multiple cashback validations.
+## 📁 Repository Structure
+
+```
+.
+├── HDFC Diners Black Metal Statements/
+│   ├── hdfc_dcbm_app.py           # Streamlit luxury dashboard UI
+│   ├── dcbm_engine.py             # Core points, cap, milestone & redemption engine
+│   ├── sync_alerts.py             # Gmail API alert & redemption parser
+│   ├── tests/
+│   │   ├── test_dcbm_engine.py    # Engine unit tests
+│   │   └── test_sync_alerts.py    # Alert parser unit tests
+│   └── card_config.json           # Card parameters, milestones & rates
+├── Airtel Axis Statements/         # Airtel Axis cashback tracker & statement validator
+├── Flipkart Axis Statements/       # Flipkart Axis cashback tracker & validator
+├── HSBC Live Plus Statements/      # HSBC Live Plus dining/grocery cashback tracker
+├── SBI Cashback Statements/        # SBI Cashback 5% online spend validator
+├── Instamart_Alerts/              # Swiggy Instamart live price scraper & drop alert system
+├── run_dcbm_dashboard.sh          # One-click launcher for the DCBM dashboard
+├── .gitignore                     # Rigorous credential & data ignore rules
+└── README.md                      # Repository documentation
+```
 
 ---
 
-### 4. 📊 Expense Tracker & Dashboard
-* **Expense Ledger (`ai_expense_tracker.py` & `local_expense_tracker.py`)**: Programmatically parses UPI debit and payment emails to maintain a local SQLite expense database.
-* **Visual Dashboard (`dashboard.py`)**: Web-based analytical dashboard displaying card spends, categories, remaining cap limits, and matching job listings.
+## 🛠️ Other Credit Card Trackers
+
+In addition to DCBM, this repository contains automated cashback tracking for:
+- **HSBC Live Plus**: 10% cashback on dining, food delivery, and groceries (₹1,000 monthly cap).
+- **Airtel Axis**: 25% on Airtel recharge, 10% on utilities & Swiggy/Zomato/BigBasket.
+- **Flipkart Axis**: 5% unlimited cashback on Flipkart & Myntra.
+- **SBI Cashback**: 5% online shopping cashback tracking (₹5,000 monthly cap).
 
 ---
 
-## Local Setup
-
-1. **Clone the repository**:
-   ```bash
-   git clone https://github.com/ejazanwar572/gmail-automations.git
-   cd gmail-automations
-   ```
-
-2. **Configure Environment Variables (`.env`)**:
-   Create a local `.env` file (ignored by `.gitignore`):
-   ```bash
-   SENDER_EMAIL=anwar.ejaz181@gmail.com
-   SENDER_PASSWORD=your-16-char-gmail-app-password
-   RECIPIENT_EMAIL=anwar.ejaz181@gmail.com
-   GEMINI_API_KEY=your-gemini-api-key
-   ```
-
-3. **Install Dependencies**:
-   ```bash
-   pip install selenium beautifulsoup4 google-generativeai
-   ```
-
-4. **Run Trackers**:
-   ```bash
-   # Run Instamart Tracker
-   python3 instamart_scraper.py
-
-   # Run Job Matcher
-   python3 evaluate_jobs_github.py
-   ```
-
----
-
-## GitHub Actions Secrets Setup
-
-Configure Encrypted Secrets in GitHub Repository Settings (**Settings** &rarr; **Secrets and variables** &rarr; **Actions**):
-* `SENDER_EMAIL`: Gmail sender address (`anwar.ejaz181@gmail.com`).
-* `SENDER_PASSWORD`: 16-character Gmail App Password.
-* `RECIPIENT_EMAIL`: Recipient email (`anwar.ejaz181@gmail.com`).
-* `GEMINI_API_KEY`: Google Gemini API Key for Job Matcher.
+## 📜 License
+Private personal project. Built for automated financial intelligence and real-time rewards optimization.

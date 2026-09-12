@@ -2,7 +2,7 @@
 
 **Account Holder:** Md Ejaz Anwar  
 **Credit Card ending in:** XX3164  
-**Report Generation Date:** August 14, 2026  
+**Report Generation Date:** September 12, 2026  
 **Current Statement Period (Ongoing):** August 13, 2026 – September 12, 2026  
 
 ---
@@ -45,27 +45,27 @@ Axis lists the annual fee waiver condition as annual spends over ₹2,00,000, ex
 
 ### Current Waiver Year
 
-`███░░░░░░░░░░░░░░░░░ 14.2%`
+`███░░░░░░░░░░░░░░░░░ 14.6%`
 
 - Period: March 1, 2026 - February 28, 2027
 
-- Days left: 198
+- Days left: 169
 
-- Progress: ₹28,389.71 of ₹200,000
-- Remaining: ₹171,610.29
+- Progress: ₹29,288.71 of ₹200,000
+- Remaining: ₹170,711.29
 - Status: In progress
 - Source: Gmail alerts
 
 | Waiver Year | Source | Eligible Spend | Target | Progress | Remaining / Surplus | Status |
 | :--- | :--- | ---: | ---: | ---: | ---: | :--- |
 | March 1, 2025 - February 28, 2026 | posted statements | **₹309,935.52** | ₹200,000 | 100.0% | +₹109,935.52 | Met |
-| March 1, 2026 - February 28, 2027 | Gmail alerts | **₹28,389.71** | ₹200,000 | 14.2% | ₹171,610.29 left | In progress |
+| March 1, 2026 - February 28, 2027 | Gmail alerts | **₹29,288.71** | ₹200,000 | 14.6% | ₹170,711.29 left | In progress |
 
 ---
 
 ## 4. Current Cycle Progress
 **Cycle:** August 13, 2026 – September 12, 2026  
-**Tracking window used from Gmail alerts:** August 13, 2026 – September 12, 2026
+**Tracking window used from Gmail alerts:** August 16, 2026 – August 16, 2026
 
 ### 25% Airtel Cashback Cap
 
@@ -73,7 +73,7 @@ Axis lists the annual fee waiver condition as annual spends over ₹2,00,000, ex
 
 - Period: August 13, 2026 – September 12, 2026
 
-- Days left: 29
+- Days left: 0
 
 - Progress: ₹0 of ₹250
 - Remaining: ₹250
@@ -86,7 +86,7 @@ Axis lists the annual fee waiver condition as annual spends over ₹2,00,000, ex
 
 - Period: August 13, 2026 – September 12, 2026
 
-- Days left: 29
+- Days left: 0
 
 - Progress: ₹0 of ₹250
 - Remaining: ₹250
@@ -99,7 +99,7 @@ Axis lists the annual fee waiver condition as annual spends over ₹2,00,000, ex
 
 - Period: August 13, 2026 – September 12, 2026
 
-- Days left: 29
+- Days left: 0
 
 - Progress: ₹0 of ₹500
 - Remaining: ₹500
@@ -117,7 +117,7 @@ Axis lists the annual fee waiver condition as annual spends over ₹2,00,000, ex
 ---
 
 ## 5. September 2026 Spends & Cap Progress (Ongoing Cycle)
-This table summarizes transactions tracked via Gmail alerts (August 13, 2026 – September 12, 2026) alongside their category caps, spends, and remaining room. Individual transactions are listed in the next section.
+This table summarizes transactions tracked via Gmail alerts (August 16, 2026 – August 16, 2026) alongside their category caps, spends, and remaining room. Individual transactions are listed in the next section.
 
 | Category (Rate) | Max Cap | Tracked Transactions | Total Spend | Cashback Earned | Remaining Cap Room | Status / Spend Action |
 | :--- | :---: | :---: | :---: | :---: | :---: | :--- |
@@ -125,15 +125,15 @@ This table summarizes transactions tracked via Gmail alerts (August 13, 2026 –
 | **10% Utilities** | **₹250.00** | 0 transactions | **₹0.00** | **₹0.00** | **₹250.00** | **Room Available.** Cashback room equals about ₹2,500.00 of eligible utility spend before September 12, 2026. |
 | **10% Merchants** | **₹500.00** | 0 transactions | **₹0.00** | **₹0.00** | **₹500.00** | **Room Available.** Cashback room equals about ₹5,000.00 of eligible Zomato, Swiggy, or BigBasket spend before September 12, 2026. |
 | **1% General** | **No Cap** | 0 transactions | **₹0.00** | **₹0.00** | **Unlimited** | **Active.** Flat 1% cashback on other card spends. |
-| **Unclassified Airtel Payments** | **Pending** | 0 transactions | **₹0.00** | **₹0.00** | **Pending** | Requires Airtel/SMS biller evidence before cashback is estimated. |
-| **Total** | **₹1,000.00** | - | **₹0.00** | **₹0.00** | **₹1,000.00** | **Active.** Tracked cashback progress. |
+| **Unclassified Airtel Payments** | **Pending** | 1 transaction | **₹899.00** | **₹0.00** | **Pending** | Requires Airtel/SMS biller evidence before cashback is estimated. |
+| **Total** | **₹1,000.00** | - | **₹899.00** | **₹0.00** | **₹1,000.00** | **Active.** Tracked cashback progress. |
 
 ---
 
 ## 6. September 2026 Transaction Details
 | Date | Category | Amount | Merchant |
 | :--- | :--- | ---: | :--- |
-| - | - | - | No tracked transactions in this statement cycle. |
+| Aug 16 | Needs classification | ₹899 | Airtel |
 
 ---
 
@@ -141,4 +141,4 @@ This table summarizes transactions tracked via Gmail alerts (August 13, 2026 –
 *   **Use remaining merchant room only for planned spends**: Zomato, Swiggy, or BigBasket purchases still have about ₹5,000.00 of eligible spend room before the 10% merchant cap fills on September 12, 2026.
 *   **Airtel room available**: Eligible Airtel spend room is about ₹1,000.00 before September 12, 2026.
 *   **Prepay Utilities**: If you have a utility bill due soon, paying it before September 12, 2026 via the Airtel Thanks App can use the remaining ₹250.00 of utility cashback.
-*   **Annual fee waiver**: Current tracked eligible spend is ₹28,389.71 against the ₹200,000 waiver target, leaving ₹171,610.29. Keep rent and wallet reloads out of this count.
+*   **Annual fee waiver**: Current tracked eligible spend is ₹29,288.71 against the ₹200,000 waiver target, leaving ₹170,711.29. Keep rent and wallet reloads out of this count.

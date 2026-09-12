@@ -1,10 +1,11 @@
 {
-  "alert_count": 42,
-  "cached_total": 31427.26,
+  "alert_count": 43,
+  "cached_total": 32326.26,
   "card_ending": "3164",
   "card_name": "Airtel Axis Credit Card",
-  "latest_alert_date": "2026-08-07",
+  "latest_alert_date": "2026-08-16",
   "message_ids_seen": [
+    "1a008b6f92c8b29e",
     "19fdd773f57d580b",
     "19f73cd2a272494d",
     "19f65716e8262a5a",
@@ -49,11 +50,11 @@
     "19af70d72dea4dc6"
   ],
   "new_count": 0,
-  "previous_count": 42,
+  "previous_count": 43,
   "query": "from:alerts@axis.bank.in spent on credit card no. XX3164",
   "skipped_duplicate_count": 0,
   "source": "gmail-api",
-  "synced_at": "2026-08-14T18:01:03Z",
-  "unique_alert_count": 42,
+  "synced_at": "2026-09-12T13:23:13Z",
+  "unique_alert_count": 43,
   "warnings": []
 }

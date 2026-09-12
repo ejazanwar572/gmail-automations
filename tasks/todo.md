@@ -1,17 +1,10 @@
-# Amazon Price Tracker Implementation Checklist
-
-- [x] Create `amazon_products.json` containing the 23 active tracked products with ASINs, clean titles, categories, baseline prices, and target price thresholds
-- [x] Implement `amazon_price_tracker.py` with:
-  - Standard-library resilient HTTP fetcher (custom browser user-agent, retry backoff)
-  - Price, availability, and title parsers for Amazon product pages
-  - SQLite database `amazon_prices.db` for timestamped historical price snapshots
-  - Price drop detection engine (comparing against baseline and previous checks)
-  - Markdown and console reporting formatters
-- [x] Implement standalone test suite `tests/test_amazon_tracker.py` to verify:
-  - Product loading and normalization
-  - SQLite schema creation and price history recording
-  - Price drop calculation and alerting logic
-- [x] Run end-to-end check on tracked products and verify database logging
-- [x] Document usage instructions and scheduled automation options in walkthrough
-
-
+- [x] Design comprehensive implementation plan and solicit user feedback <!-- id: 0 -->
+- [x] Build `dcbm_engine.py`: Core logic for auto-tracking, automatic SmartBuy detection, cycle vs calendar month cap tracking, milestone calculations, and live Gmail sync <!-- id: 1 -->
+- [x] Build `hdfc_dcbm_app.py`: Streamlit-based web UI with dark metallic theme, hero cap monitor, milestone progress cards, interactive ledger, what-if simulator, and one-click Gmail sync button <!-- id: 2 -->
+- [x] Create convenience launch script `run_dcbm_dashboard.sh` <!-- id: 3 -->
+- [x] Implement unit tests in `HDFC Diners Black Metal Statements/tests/test_dcbm_engine.py` <!-- id: 4 -->
+- [x] Test end-to-end sync, cap calculation, and Streamlit execution <!-- id: 5 -->
+- [x] Add "Resets in X days" badge to Hero Tile 1 (Accelerated Reward Points Limit) <!-- id: 6 -->
+- [x] Replace Hero Tile 3 with 3 Reward Points KPI sections (Lifetime RP, Current Available, Net Reward Rate) <!-- id: 7 -->
+- [x] Clean up redundant cards in the bottom Reward Redemptions tab if desired <!-- id: 8 -->
+- [x] Verify 240px card alignment, visual symmetry, and test in both Light & Dark modes <!-- id: 9 -->

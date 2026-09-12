@@ -1,10 +1,14 @@
 {
   "alert_count": 100,
-  "cached_total": 241641.1,
+  "cached_total": 260455.9,
   "card_ending": "0846",
   "card_name": "SBI Cashback Credit Card",
-  "latest_alert_date": "2026-08-14",
+  "latest_alert_date": "2026-09-09",
   "message_ids_seen": [
+    "1a08506c08d28185",
+    "1a0726c0acfbddec",
+    "1a067fa9e7ba21f9",
+    "1a050e1b326b2948",
     "1a0010b5cba75bfa",
     "1a000650bab1e7b2",
     "19ffe6101f3c37f9",
@@ -100,18 +104,14 @@
     "19ca84f64f5f078f",
     "19c98f7ea0eb7abc",
     "19c98ec66c891f74",
-    "19c9658da3bafb3a",
-    "19c9655f37c2da80",
-    "19c8fa025c7de1da",
-    "19c72221585a146a",
-    "19c6a8378f6892cb"
+    "19c9658da3bafb3a"
   ],
   "new_count": 0,
   "previous_count": 100,
   "query": "from:onlinesbicard@sbicard.com subject:\"Transaction Alert from CASHBACK SBI Card\" \"ending 0846\"",
-  "skipped_duplicate_count": 2,
+  "skipped_duplicate_count": 1,
   "source": "gmail-api",
-  "synced_at": "2026-08-14T18:01:56Z",
-  "unique_alert_count": 98,
+  "synced_at": "2026-09-12T13:08:54Z",
+  "unique_alert_count": 99,
   "warnings": []
 }

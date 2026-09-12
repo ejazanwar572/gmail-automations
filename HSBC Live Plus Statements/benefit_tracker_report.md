@@ -3,18 +3,18 @@
 ## 1. Executive Summary
 - Card ending: 8690
 - Current cycle: 2026-08-14 to 2026-09-13
-- Current cycle tracked spend: INR 0.00
-- Data freshness: Verified from gmail-api at 2026-08-14T17:30:46.112747+00:00; 15 unique alerts; cached total INR 22,288.82.
+- Current cycle tracked spend: INR 458.00
+- Data freshness: Verified from gmail-api at 2026-09-12T13:23:30.774179+00:00; 16 unique alerts; cached total INR 22,746.82.
 
 ## 2. Fee and Waiver Tracker
-`██░░░░░░░░░░░░░░░░░░ 11.1%`
+`██░░░░░░░░░░░░░░░░░░ 11.4%`
 
 - Period: 2026-06-29 to 2027-06-28
 
-- Days left: 318
+- Days left: 289
 
-- Progress: INR 22,288.82 of INR 200,000.00
-- Remaining: INR 177,711.18
+- Progress: INR 22,746.82 of INR 200,000.00
+- Remaining: INR 177,253.18
 - Status: In progress
 - Evidence: Provisional
 - Annual/joining fee tracked: INR 999.00
@@ -38,15 +38,15 @@
 ## 4. Current Cycle Transaction Table
 | Date | Merchant | Amount | Benefit Bucket |
 | :--- | :--- | ---: | :--- |
-| - | No tracked transactions yet | INR 0.00 | - |
+| 2026-08-15 | ALIGARH HOUSE FOODS A | INR 458.00 | Dining and food delivery |
 
 ## 5. Benefit Utilization and Recommendation
-- Shared 10% cashback cap: INR 0.00 of INR 1,200.00; INR 1,200.00 remaining
+- Shared 10% cashback cap: INR 45.80 of INR 1,200.00; INR 1,154.20 remaining
 - Policy version: 2026-07-26 (effective 2026-07-26; reviewed 2026-07-29)
 
 | Benefit | Spend | Earned/Value | Cap/Target | Remaining | Transactions |
 | :--- | ---: | ---: | :--- | :--- | :---: |
-| Dining and food delivery | INR 0.00 | INR 0.00 | Shared INR 1,200.00 | See shared cap | 0 |
+| Dining and food delivery | INR 458.00 | INR 45.80 | Shared INR 1,200.00 | See shared cap | 1 |
 | Grocery | INR 0.00 | INR 0.00 | Shared INR 1,200.00 | See shared cap | 0 |
 | Shopping | INR 0.00 | INR 0.00 | Shared INR 1,200.00 | See shared cap | 0 |
 | Utilities | INR 0.00 | INR 0.00 | Shared INR 1,200.00 | See shared cap | 0 |
@@ -61,7 +61,7 @@ Keep using this card for categories where the tracked benefit rate is strongest.
 
 - Period: 2026-07-26 to 2026-09-30
 
-- Days left: 47
+- Days left: 18
 
 - Progress: INR 0.00 of INR 10,000.00
 - Remaining: INR 10,000.00
@@ -73,7 +73,7 @@ Keep using this card for categories where the tracked benefit rate is strongest.
 ### Lounge entitlements
 - Domestic lounge · Jan–Jun: 1 visit; Usage not confirmed; not currently available; 2026-01-01 to 2026-06-30
 - Domestic lounge · Jul–Dec: 1 visit; Usage not confirmed; available; 2026-07-01 to 2026-12-31
-- International lounge: 1 visit; Usage not confirmed; not currently available; 2026-09-01 to 2026-12-31
+- International lounge: 1 visit; Usage not confirmed; available; 2026-09-01 to 2026-12-31
 
 ### Visa Infinite and Live+ perks
 - [Live+ Reserve dining](https://www.hsbc.co.in/credit-cards/products/live-plus/): Curated dining and lifestyle privileges from 1 August 2026.

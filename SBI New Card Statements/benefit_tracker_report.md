@@ -2,22 +2,22 @@
 
 - Card ending: 3366
 - Variant status: confirmed
-- Active cycle: 2026-07-24 to 2026-08-23
+- Active cycle: 2026-08-24 to 2026-09-23
 
 ## Monthly Reward Progress
 
 | Category | Spend | Reward points | Cap | Remaining |
 |---|---:|---:|---:|---:|
-| PhonePe non-insurance | INR 0.00 | 0 RP | 1,500 RP | 1,500 RP |
+| PhonePe non-insurance | INR 1,007.58 | 101 RP | 1,500 RP | 1,399 RP |
 | PhonePe insurance | INR 0.00 | 0 RP | 500 RP | 500 RP |
 | Eligible online spends | INR 0.00 | 0 RP | 1,000 RP | 1,000 RP |
-| Other eligible spends | INR 2,369.86 | 24 RP | 2,000 RP | 1,976 RP |
+| Other eligible spends | INR 1,000.00 | 10 RP | 2,000 RP | 1,990 RP |
 
 ## Milestones
 
 - Welcome voucher: In progress - INR 1,500 PhonePe voucher
-- Annual fee waiver: INR 10,809.99 of INR 300,000.00
-- Travel voucher: INR 10,809.99 of INR 500,000.00
+- Annual fee waiver: INR 19,434.19 of INR 300,000.00
+- Travel voucher: INR 19,434.19 of INR 500,000.00
 
 ## Sources
 

@@ -1,21 +1,33 @@
-# Ignore credit card statement PDFs
+# OS & Editor
+.DS_Store
+.vscode/
+.idea/
+
+# Ignore credit card statement PDFs & raw extracts
 *.pdf
 *_raw.txt
 *pdftotext*.txt
 *pypdf*.txt
 
-# Ignore credentials and OAuth tokens
-credentials.json
-token.json
+# Ignore credentials, OAuth tokens, and secrets
+credentials*.json
+token*.json
+client_secrets*.json
 
 # Ignore local environment configs containing passwords
 .env
+.env.*
 
-# Ignore parsed alert data, data summaries, and reports
+# Ignore parsed alert data, data summaries, and redemptions cache
 gmail_alerts.json
+redemptions_cache.json
+alerts_cache.json
 validation_report.json
 validation_report_combined.json
 statements_data.json
+*_backup.db
+*_full.db
+*.log
 
 # Python caches
 __pycache__/
