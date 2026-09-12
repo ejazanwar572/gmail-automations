@@ -335,6 +335,120 @@ st.markdown(
         overflow: hidden !important;
         border: 1px solid {T["border"]} !important;
     }}
+
+    /* ─── Mobile Responsive Enhancements ─── */
+    @media (max-width: 768px) {{
+        [data-testid="stAppViewBlockContainer"] {{
+            padding-left: 0.8rem !important;
+            padding-right: 0.8rem !important;
+            padding-top: 0.6rem !important;
+        }}
+
+        .hero-card, .metal-card {{
+            height: auto !important;
+            min-height: 0 !important;
+            padding: 16px !important;
+            margin-bottom: 14px !important;
+            border-radius: 14px !important;
+        }}
+
+        .hero-number {{
+            font-size: 32px !important;
+        }}
+
+        .mobile-header-title {{
+            font-size: 18px !important;
+            line-height: 1.3 !important;
+            display: flex !important;
+            flex-wrap: wrap !important;
+            align-items: center !important;
+            gap: 6px !important;
+        }}
+
+        .mobile-card-badge {{
+            font-size: 12px !important;
+            margin-left: 0 !important;
+            padding: 2px 7px !important;
+            display: inline-block !important;
+        }}
+
+        .mobile-header-sub {{
+            font-size: 11.5px !important;
+            margin-top: 3px !important;
+            line-height: 1.3 !important;
+        }}
+
+        /* Make tab list scrollable smoothly on narrow screens */
+        div[data-baseweb="tab-list"] {{
+            overflow-x: auto !important;
+            white-space: nowrap !important;
+            scrollbar-width: none !important;
+            -webkit-overflow-scrolling: touch !important;
+            display: flex !important;
+            flex-wrap: nowrap !important;
+            gap: 4px !important;
+            padding-bottom: 4px !important;
+        }}
+        div[data-baseweb="tab-list"]::-webkit-scrollbar {{
+            display: none !important;
+        }}
+        button[data-baseweb="tab"] {{
+            flex-shrink: 0 !important;
+            font-size: 13px !important;
+            padding: 8px 12px !important;
+        }}
+
+        /* Buttons & controls mobile touch friendliness */
+        div.stButton > button, div[data-testid="stDownloadButton"] > button {{
+            padding: 7px 14px !important;
+            font-size: 13px !important;
+        }}
+
+        /* Mobile header: stack title on top, controls in a clean row below */
+        div[data-testid="stHorizontalBlock"]:has(.mobile-card-badge) {{
+            display: flex !important;
+            flex-direction: column !important;
+            flex-wrap: wrap !important;
+            gap: 12px !important;
+            width: 100% !important;
+        }}
+        div[data-testid="stHorizontalBlock"]:has(.mobile-card-badge) > div[data-testid="stColumn"] {{
+            width: 100% !important;
+            min-width: 100% !important;
+            max-width: 100% !important;
+            flex: 1 1 100% !important;
+            margin: 0 !important;
+            left: 0 !important;
+            right: 0 !important;
+        }}
+
+        /* Keep the 3 header controls (Theme, Sync, Timestamp) nicely side-by-side in their inner row */
+        div[data-testid="stHorizontalBlock"]:has(.mobile-sync-btn):not(:has(.mobile-card-badge)) {{
+            display: flex !important;
+            flex-direction: row !important;
+            flex-wrap: nowrap !important;
+            align-items: center !important;
+            justify-content: space-between !important;
+            gap: 8px !important;
+            width: 100% !important;
+        }}
+        div[data-testid="stHorizontalBlock"]:has(.mobile-sync-btn):not(:has(.mobile-card-badge)) > div[data-testid="stColumn"] {{
+            min-width: 0 !important;
+            max-width: none !important;
+            width: auto !important;
+            flex: 1 1 auto !important;
+        }}
+        div[data-testid="stHorizontalBlock"]:has(.mobile-sync-btn):not(:has(.mobile-card-badge)) > div[data-testid="stColumn"]:first-child {{
+            flex: 0 0 auto !important;
+            min-width: 110px !important;
+        }}
+        div[data-testid="stHorizontalBlock"]:has(.mobile-sync-btn):not(:has(.mobile-card-badge)) > div[data-testid="stColumn"]:nth-child(2) {{
+            flex: 1 1 auto !important;
+        }}
+        div[data-testid="stHorizontalBlock"]:has(.mobile-sync-btn):not(:has(.mobile-card-badge)) > div[data-testid="stColumn"]:last-child {{
+            flex: 0 0 auto !important;
+        }}
+    }}
     </style>
     """,
     unsafe_allow_html=True,
@@ -362,13 +476,13 @@ with col_head_left:
         <div style="display: flex; align-items: center; gap: 14px; margin-bottom: 4px;">
             <span style="font-size: 34px;">💳</span>
             <div>
-                <div style="font-size: 24px; font-weight: 800; letter-spacing: -0.02em; color: {T['text_main']};">
+                <div class="mobile-header-title" style="font-size: 24px; font-weight: 800; letter-spacing: -0.02em; color: {T['text_main']};">
                     HDFC Diners Club Black Metal
-                    <span style="font-size: 15px; font-weight: 600; color: {T['card_number_badge_color']}; background: {T['card_number_badge_bg']}; padding: 3px 10px; border-radius: 8px; margin-left: 10px; border: 1px solid {T['card_number_badge_border']};">
+                    <span class="mobile-card-badge" style="font-size: 15px; font-weight: 600; color: {T['card_number_badge_color']}; background: {T['card_number_badge_bg']}; padding: 3px 10px; border-radius: 8px; margin-left: 10px; border: 1px solid {T['card_number_badge_border']};">
                         •••• 2360
                     </span>
                 </div>
-                <div style="font-size: 13px; color: {T['text_sub']}; font-weight: 500;">
+                <div class="mobile-header-sub" style="font-size: 13px; color: {T['text_sub']}; font-weight: 500;">
                     Automated Real-Time Rewards & Spend Tracker from Gmail InstaAlerts
                 </div>
             </div>
@@ -390,6 +504,7 @@ with col_head_right:
             st.session_state["theme_mode"] = selected_theme
             st.rerun()
     with btn_col2:
+        st.markdown("<div class='mobile-sync-btn' style='display:none;'></div>", unsafe_allow_html=True)
         if st.button("🔄 Sync", use_container_width=True):
             with st.spinner("Fetching latest alerts from Gmail..."):
                 try:
@@ -688,9 +803,9 @@ with m_col3:
 
 # ─── SECTION 3: INTERACTIVE TABS (HISTORY, LEDGER & REDEMPTIONS) ──────────────
 tab_history, tab_ledger, tab_redemptions = st.tabs([
-    "📊 Monthly Points History & Cap Utilization",
-    "📋 Live Transaction Ledger",
-    "🎟️ SmartBuy Points Redemptions",
+    "📊 Monthly History & Caps",
+    "📋 Live Transactions",
+    "🎟️ Points Redemptions",
 ])
 
 with tab_history:
@@ -772,12 +887,15 @@ with tab_ledger:
     # Available categories
     all_categories = sorted(list({t["category"] for t in data["transactions"]}))
 
-    filter_col1, filter_col2, filter_col3, filter_col4 = st.columns([1.6, 1.4, 1.4, 0.8], vertical_alignment="bottom")
-    with filter_col1:
+    # Filter controls row
+    f_row1, f_row2 = st.columns([1.2, 1.2])
+    with f_row1:
         tx_filter = st.selectbox("Cycle / Period Filter", filter_options)
-    with filter_col2:
+    with f_row2:
         selected_cats = st.multiselect("Filter Category", all_categories, default=[], placeholder="All categories")
-    with filter_col3:
+
+    f_s1, f_s2 = st.columns([2.2, 0.8], vertical_alignment="bottom")
+    with f_s1:
         search_query = st.text_input("Search merchant...", placeholder="e.g. Flight, Titan, Manyavar")
 
     tx_list = data["transactions"]
@@ -851,7 +969,7 @@ with tab_ledger:
         ]
         df = pd.DataFrame(ledger_data)
         
-        with filter_col4:
+        with f_s2:
             csv_data = df.to_csv(index=False).encode('utf-8')
             st.download_button(
                 label="📥 Export",
