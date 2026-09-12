@@ -343,6 +343,12 @@ st.markdown(
 # ─── Load Data ────────────────────────────────────────────────────────────────
 @st.cache_data(ttl=60)
 def load_data():
+    alerts_file = CARD_DIR / "gmail_alerts.json"
+    if not alerts_file.exists():
+        try:
+            dcbm_engine.trigger_live_sync(CARD_DIR)
+        except Exception:
+            pass
     return dcbm_engine.compute_all_dashboard_data(CARD_DIR)
 
 data = load_data()

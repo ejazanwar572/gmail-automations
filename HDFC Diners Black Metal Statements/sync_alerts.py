@@ -175,8 +175,45 @@ def load_credentials(root: Path, credentials_class,
     local = root / "token.json"
     if local.exists():
         return credentials_class.from_authorized_user_file(str(local), SCOPES)
+
+    # Check Streamlit Cloud secrets or environment variables
+    secrets_data = None
+    try:
+        import streamlit as st
+        if hasattr(st, "secrets"):
+            if "gmail_credentials" in st.secrets:
+                raw = st.secrets["gmail_credentials"]
+                secrets_data = dict(raw) if hasattr(raw, "items") else json.loads(str(raw))
+            elif "GMAIL_CREDENTIALS" in st.secrets:
+                raw = st.secrets["GMAIL_CREDENTIALS"]
+                secrets_data = dict(raw) if hasattr(raw, "items") else json.loads(str(raw))
+    except Exception:
+        secrets_data = None
+
+    if not secrets_data and "GMAIL_CREDENTIALS" in os.environ:
+        try:
+            secrets_data = json.loads(os.environ["GMAIL_CREDENTIALS"])
+        except Exception:
+            pass
+
+    if secrets_data:
+        try:
+            if hasattr(credentials_class, "from_authorized_user_info"):
+                return credentials_class.from_authorized_user_info(secrets_data, SCOPES)
+            token = secrets_data.get("token") or secrets_data.get("access_token")
+            return credentials_class(
+                token=token,
+                refresh_token=secrets_data.get("refresh_token"),
+                token_uri=secrets_data.get("token_uri", "https://oauth2.googleapis.com/token"),
+                client_id=secrets_data.get("client_id"),
+                client_secret=secrets_data.get("client_secret"),
+                scopes=SCOPES,
+            )
+        except Exception as exc:
+            raise SyncError(f"Failed to load Gmail credentials from secrets: {exc}") from exc
+
     if not shared_token.exists() or not shared_keys.exists():
-        raise SyncError("shared Gmail token or OAuth keys not found")
+        raise SyncError("shared Gmail token or OAuth keys not found (set [gmail_credentials] in Streamlit Cloud secrets)")
     try:
         token_data = json.loads(shared_token.read_text())
         key_data = json.loads(shared_keys.read_text())["installed"]
