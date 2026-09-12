@@ -1,129 +1,91 @@
-# Gmail Automations & Credit Card Reward Suites
+# Gmail Automations, Job Matcher & Personal Intelligence Suite
 
-A high-performance personal automation and intelligence suite featuring real-time credit card rewards tracking, milestone engines, Gmail alert sync, and luxury Streamlit dashboards.
-
----
-
-## 🌟 Flagship Feature: HDFC Diners Club Black Metal (DCBM) Dashboard
-
-A production-grade, bespoke rewards tracking system and interactive UI tailored specifically for the **HDFC Diners Club Black Metal** credit card rules and SmartBuy multipliers.
-
-### Key Capabilities
-
-1. **Automated Real-Time Gmail Sync**:
-   - Directly connects to Gmail API to fetch HDFC InstaAlert transaction emails.
-   - Automatically detects SmartBuy bookings (Flights 5X, Hotels 10X) and regular spends.
-   - Automatically parses flight and hotel points redemption confirmations, deducting burned points from gross balances in real-time.
-
-2. **Policy-Accurate Cap & Reset Tracking**:
-   - **Strict Calendar Month Accelerated Cap**: Tracks the 10,000 accelerated RP limit strictly from the 1st to the last day of each calendar month.
-   - **Reset Countdown**: Prominent header badge indicating exact days until monthly reset (`⏳ Resets in 18 days`).
-   - **Daily Guard**: Monitors the 2,500 RP per day accelerated cap limit.
-   - **Remaining Headroom**: Live rupee spend buffers before hitting the 10k cap for SmartBuy Flights (5X) and Hotels (10X).
-
-3. **Consolidated Reward Points Portfolio**:
-   - **Lifetime Reward Points**: Total points earned across all card spends to date.
-   - **Current Available Balance**: Net balance remaining after deducting burned points (valued at 1 RP = ₹1.00 on SmartBuy).
-   - **Net Reward Rate**: Cumulative percentage return on card spend (e.g., 8.61%).
-
-4. **Spend Milestones & Fee Waiver Engine**:
-   - **Welcome Milestone**: ₹1.5 Lakhs in 90 days for Club Marriott, Amazon Prime, and Swiggy One memberships.
-   - **Quarterly Bonus Milestone**: ₹4 Lakhs quarterly spend for 10,000 Bonus RP with dynamic daily run-rate targets.
-   - **Annual Fee Waiver**: ₹8 Lakhs annual spend to waive the ₹10,000 annual membership fee.
-
-5. **Design System & UX**:
-   - **Haute Metal Light Theme**: Bespoke Champagne gold, warm ivory, and bronze metallic aesthetics.
-   - **Obsidian Dark Theme**: High-contrast dark luxury metallic theme.
-   - **What-If Spend Simulator**: Calculate base points, accelerated points, daily cap status, and milestone progression before making any transaction.
-   - **Transaction & Redemption Ledgers**: Searchable, filterable tables with direct CSV export.
+A comprehensive personal utility and intelligence suite that automates finance tracking (credit card reward engines, cashback cap validations, and expenses), runs an AI career portal scraper, and features an automated Swiggy Instamart live price tracker with mobile HTML alerts.
 
 ---
 
-## 🚀 Quick Start: Running the DCBM Dashboard
+## 📂 Repository Overview & Modules
 
-### Prerequisites
-- Python 3.10+
-- Chrome / Chromium (if capturing headless browser previews)
+This repository contains several automated pipelines organized into dedicated folders:
 
-### 1. Install Dependencies
-```bash
-pip install streamlit pandas requests google-auth google-auth-oauthlib google-api-python-client
-```
+### 1. 💳 Credit Card Rewards & Cashback Trackers
 
-### 2. Launch the Dashboard
-Using the convenient launch script:
-```bash
-./run_dcbm_dashboard.sh
-```
-Or directly with Streamlit:
-```bash
-streamlit run "HDFC Diners Black Metal Statements/hdfc_dcbm_app.py" --server.port 8502
-```
-Access the application at `http://localhost:8502`.
+* **🌟 HDFC Diners Club Black Metal (`HDFC Diners Black Metal Statements/`)**:
+  * **Dedicated Documentation**: See [`HDFC Diners Black Metal Statements/README.md`](HDFC%20Diners%20Black%20Metal%20Statements/README.md).
+  * **Interactive Streamlit Dashboard**: Luxury Haute Metal (Light) and Obsidian (Dark) interface.
+  * **Core Engine**: Real-time Gmail InstaAlert sync, SmartBuy 5X/10X multiplier detection, calendar month 10,000 accelerated cap tracker with countdown (`⏳ Resets in 18 days`), 2,500 daily cap guard, milestone progress (Welcome, Quarterly 10k Bonus, Annual Fee Waiver), and automated SmartBuy flight/hotel redemption tracking.
+  * **Launch**:
+    ```bash
+    cd "HDFC Diners Black Metal Statements"
+    ./run_dashboard.sh
+    ```
+* **HSBC Live Plus CC (`HSBC Live Plus Statements/`)**: 10% cashback tracking on dining, food delivery, and groceries (₹1,000 monthly cap).
+* **Axis Airtel & Flipkart CC (`Airtel Axis Statements/` & `Flipkart Axis Statements/`)**: Syncs transaction alerts from Gmail, validates statements against PDF line-items, and generates cashback cap progress reports.
+* **SBI Cashback CC (`SBI Cashback Statements/`)**: Validates and maps cashback alerts against statements to track 5% online spend caps.
+* **Combined Cashback Workflow (`combined_cashback_workflow.py`)**: Unifies the execution of multiple cashback validations.
 
-### 3. Sync Alerts from Gmail
-Click the **Sync** button directly inside the dashboard UI, or run the standalone sync script:
-```bash
-python3 "HDFC Diners Black Metal Statements/sync_alerts.py"
-```
+---
 
-### 4. Run Unit Tests
-Run the comprehensive test suite (33+ unit tests):
-```bash
-python3 -m unittest discover "HDFC Diners Black Metal Statements/tests"
-```
+### 2. 🛒 Swiggy Instamart Live Price Tracker & Scraper (`Instamart_Alerts/`)
+* **Dedicated Subfolder**: [`Instamart_Alerts/`](Instamart_Alerts/) (Contains its own standalone [`Instamart_Alerts/README.md`](Instamart_Alerts/README.md)).
+* **Automated Scraper (`Instamart_Alerts/instamart_scraper.py`)**: Headless Chrome scraper using Selenium Stealth & BeautifulSoup. Sets delivery locations, searches Swiggy Instamart, and executes infinite scrolling to load full product catalogs.
+* **Location & Watchlist**:
+  * **Default Location**: `HSR Layout Bangalore` (Override via `--location "Neighborhood City"`).
+  * **Watchlist Keywords**: Configurable list (`milk`, `mustard oil`, `eggs`, `oil`, `soap`, `shampoo`, etc.).
+* **SQLite Price Database**: Stores historical timestamped price snapshots with composite primary key `(product_id, location, scraped_at)`.
+* **Mobile HTML Email Alerts**: Delivers mobile-responsive HTML cards with green savings badges and direct purchase buttons via Gmail SMTP (only when price drops exist).
+* **Cloud Automation (`.github/workflows/instamart_scraper.yml`)**: GitHub Actions workflow running on schedule.
+
+---
+
+### 3. 💼 Job Matcher & Career Scraper
+* **Scraper (`check_job_boards.py`)**: Crawls career portals across Greenhouse, Phenom, Jibe, Workday, SmartRecruiters, WordPress, and custom platforms with location pre-filtering (prioritizing Bangalore first, then India/Remote).
+* **AI Matcher (`evaluate_jobs_github.py`)**: Executes scraper, scores listings (0-100) against resume using Gemini API, logs history to `job_matches_report.md`, and emails HTML briefs for high-matching roles (&ge; 70%).
+* **Radar Dashboard (`job_radar_dashboard.py`)**: Interactive Streamlit dashboard for filtering, reviewing, and tracking scraped job applications.
+* **Automation (`.github/workflows/job_matcher.yml`)**: GitHub Actions workflow running automatically on schedule.
+
+---
+
+### 4. 📊 Expense Tracker & Ledger
+* **Expense Ledger (`ai_expense_tracker.py` & `local_expense_tracker.py`)**: Programmatically parses UPI debit and payment emails to maintain a local SQLite expense database.
+* **Visual Dashboard (`dashboard.py`)**: Web-based analytical dashboard displaying card spends, categories, remaining cap limits, and matching job listings.
 
 ---
 
 ## 🔒 Security & Credential Hygiene
 
-This repository strictly enforces confidentiality and credential segregation:
-
-| File Pattern | Description | Git Status |
-| :--- | :--- | :--- |
-| `credentials*.json` | Google Cloud OAuth client secrets | **Ignored** (`.gitignore`) |
-| `token*.json` | OAuth user access and refresh tokens | **Ignored** (`.gitignore`) |
-| `.env`, `.env.*` | Local environment variables & passwords | **Ignored** (`.gitignore`) |
-| `*.pdf` | Credit card statement PDFs | **Ignored** (`.gitignore`) |
-| `*cache.json` | Local alert and redemption caches | **Ignored** (`.gitignore`) |
-
-No API keys, OAuth tokens, personal statement PDFs, or client secrets are ever checked into source control.
+This repository strictly enforces confidentiality and credential segregation via `.gitignore`:
+- `credentials*.json`: Google Cloud OAuth client secrets (strictly ignored).
+- `token*.json`: OAuth user access and refresh tokens (strictly ignored).
+- `.env`, `.env.*`: Local environment variables and passwords (strictly ignored).
+- `*.pdf`: Credit card statement PDFs (strictly ignored).
+- `*cache.json`: Local alert and redemption caches (strictly ignored).
 
 ---
 
-## 📁 Repository Structure
+## 🚀 Local Setup
 
-```
-.
-├── HDFC Diners Black Metal Statements/
-│   ├── hdfc_dcbm_app.py           # Streamlit luxury dashboard UI
-│   ├── dcbm_engine.py             # Core points, cap, milestone & redemption engine
-│   ├── sync_alerts.py             # Gmail API alert & redemption parser
-│   ├── tests/
-│   │   ├── test_dcbm_engine.py    # Engine unit tests
-│   │   └── test_sync_alerts.py    # Alert parser unit tests
-│   └── card_config.json           # Card parameters, milestones & rates
-├── Airtel Axis Statements/         # Airtel Axis cashback tracker & statement validator
-├── Flipkart Axis Statements/       # Flipkart Axis cashback tracker & validator
-├── HSBC Live Plus Statements/      # HSBC Live Plus dining/grocery cashback tracker
-├── SBI Cashback Statements/        # SBI Cashback 5% online spend validator
-├── Instamart_Alerts/              # Swiggy Instamart live price scraper & drop alert system
-├── run_dcbm_dashboard.sh          # One-click launcher for the DCBM dashboard
-├── .gitignore                     # Rigorous credential & data ignore rules
-└── README.md                      # Repository documentation
-```
+1. **Clone the repository**:
+   ```bash
+   git clone https://github.com/ejazanwar572/gmail-automations.git
+   cd gmail-automations
+   ```
 
----
+2. **Configure Environment Variables (`.env`)**:
+   Create a local `.env` file (ignored by git):
+   ```bash
+   SENDER_EMAIL=anwar.ejaz181@gmail.com
+   SENDER_PASSWORD=your-16-char-gmail-app-password
+   RECIPIENT_EMAIL=anwar.ejaz181@gmail.com
+   GEMINI_API_KEY=your-gemini-api-key
+   ```
 
-## 🛠️ Other Credit Card Trackers
-
-In addition to DCBM, this repository contains automated cashback tracking for:
-- **HSBC Live Plus**: 10% cashback on dining, food delivery, and groceries (₹1,000 monthly cap).
-- **Airtel Axis**: 25% on Airtel recharge, 10% on utilities & Swiggy/Zomato/BigBasket.
-- **Flipkart Axis**: 5% unlimited cashback on Flipkart & Myntra.
-- **SBI Cashback**: 5% online shopping cashback tracking (₹5,000 monthly cap).
+3. **Install Dependencies**:
+   ```bash
+   pip install streamlit pandas requests selenium beautifulsoup4 google-auth google-auth-oauthlib google-api-python-client google-generativeai
+   ```
 
 ---
 
 ## 📜 License
-Private personal project. Built for automated financial intelligence and real-time rewards optimization.
+Private personal project. Built for personal automated financial intelligence, price alerts, and career scanning.
