@@ -310,13 +310,61 @@ st.markdown(
         background: {T["card_bg"]} !important;
     }}
 
-    /* Streamlit Segmented Control (Theme Toggle) */
-    div[data-testid="stSegmentedControl"] button {{
-        font-size: 12px !important;
+    /* Streamlit Segmented Control (Theme Toggle) & Header Buttons */
+    div[data-testid="stHorizontalBlock"]:has(.mobile-sync-btn) {
+        align-items: center !important;
+    }
+    div[data-testid="stHorizontalBlock"]:has(.mobile-sync-btn) div[data-testid="stVerticalBlock"] {
+        gap: 0 !important;
+        justify-content: center !important;
+        align-items: center !important;
+    }
+    div[data-testid="stHorizontalBlock"]:has(.mobile-sync-btn) div[data-testid="stButtonGroup"] button {
+        height: 36px !important;
+        min-height: 36px !important;
+        max-height: 36px !important;
+        padding: 0 10px !important;
+        font-size: 12.5px !important;
+        line-height: 36px !important;
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        box-sizing: border-box !important;
         font-weight: 600 !important;
+        white-space: nowrap !important;
+    }
+    div[data-testid="stHorizontalBlock"]:has(.mobile-sync-btn) div.stButton > button {
+        height: 36px !important;
+        min-height: 36px !important;
+        max-height: 36px !important;
+        padding: 0 14px !important;
+        font-size: 13px !important;
+        line-height: 36px !important;
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        box-sizing: border-box !important;
         border-radius: 8px !important;
-        padding: 4px 10px !important;
-    }}
+    }
+    div[data-testid="stHorizontalBlock"]:has(.mobile-sync-btn) .pill {
+        height: 36px !important;
+        min-height: 36px !important;
+        line-height: 36px !important;
+        padding: 0 10px !important;
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        border-radius: 8px !important;
+        box-sizing: border-box !important;
+    }
+    div[data-testid="stHorizontalBlock"]:has(.mobile-sync-btn) .stMarkdown {
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+    div[data-testid="stHorizontalBlock"]:has(.mobile-sync-btn) div[data-testid="stMarkdownContainer"] {
+        margin: 0 !important;
+        padding: 0 !important;
+    }
 
     /* Tabs Styling */
     button[data-baseweb="tab"] {{
@@ -422,7 +470,7 @@ st.markdown(
             right: 0 !important;
         }}
 
-        /* Keep the 3 header controls (Theme, Sync, Timestamp) nicely side-by-side in their inner row */
+        /* Keep the 3 header controls (Theme, Sync, Timestamp) nicely side-by-side in their inner row on mobile */
         div[data-testid="stHorizontalBlock"]:has(.mobile-sync-btn):not(:has(.mobile-card-badge)) {{
             display: flex !important;
             flex-direction: row !important;
@@ -492,7 +540,7 @@ with col_head_left:
     )
 
 with col_head_right:
-    btn_col1, btn_col2, btn_col3 = st.columns([1.1, 1.1, 1], vertical_alignment="center")
+    btn_col1, btn_col2, btn_col3 = st.columns([1.25, 1.05, 0.9], vertical_alignment="center")
     with btn_col1:
         selected_theme = st.segmented_control(
             "Theme",
