@@ -1,0 +1,134 @@
+{
+  "merchants": {
+    "BLINK COMMERCE": {
+      "mcc": "5411",
+      "category": "Grocery",
+      "eligible_10_percent": true,
+      "source": "TechnoFino Community & Statement Audit"
+    },
+    "BLINKIT": {
+      "mcc": "5411",
+      "category": "Grocery",
+      "eligible_10_percent": true,
+      "source": "TechnoFino Community & Statement Audit"
+    },
+    "ZEPTO": {
+      "mcc": "5411",
+      "category": "Grocery",
+      "eligible_10_percent": true,
+      "source": "TechnoFino Community & Statement Audit"
+    },
+    "ZEPTO MARKETPLACE": {
+      "mcc": "5411",
+      "category": "Grocery",
+      "eligible_10_percent": true,
+      "source": "TechnoFino Community & Statement Audit"
+    },
+    "BIGBASKET": {
+      "mcc": "5411",
+      "category": "Grocery",
+      "eligible_10_percent": true,
+      "source": "TechnoFino Community & Statement Audit"
+    },
+    "AVENUE SUPERMARTS": {
+      "mcc": "5411",
+      "category": "Grocery",
+      "eligible_10_percent": true,
+      "source": "DMart POS Terminal Audit"
+    },
+    "AVENUE E COMMERCE": {
+      "mcc": "5411",
+      "category": "Grocery",
+      "eligible_10_percent": true,
+      "source": "DMart Ready App Gateway"
+    },
+    "ROYAL MART": {
+      "mcc": "5411",
+      "category": "Grocery",
+      "eligible_10_percent": true,
+      "source": "Local Supermarket POS Terminal"
+    },
+    "RAZ*SWIGGY": {
+      "mcc": "5812",
+      "category": "Dining and food delivery",
+      "eligible_10_percent": true,
+      "source": "Razorpay PG / Swiggy Food"
+    },
+    "SWIGGY E COM": {
+      "mcc": "5812",
+      "category": "Dining and food delivery",
+      "eligible_10_percent": true,
+      "source": "Swiggy Food Orders"
+    },
+    "SWIGGY INSTAMART": {
+      "mcc": "5411",
+      "category": "Grocery",
+      "eligible_10_percent": true,
+      "source": "Swiggy Instamart Gateway"
+    },
+    "RAZ*ZOMATO": {
+      "mcc": "5812",
+      "category": "Dining and food delivery",
+      "eligible_10_percent": true,
+      "source": "Razorpay PG / Zomato Order"
+    },
+    "ZOMATO ONLINE ORDER": {
+      "mcc": "5812",
+      "category": "Dining and food delivery",
+      "eligible_10_percent": true,
+      "source": "Zomato Food Delivery"
+    },
+    "MC DONALDS": {
+      "mcc": "5814",
+      "category": "Dining and food delivery",
+      "eligible_10_percent": true,
+      "source": "Fast Food Restaurant POS"
+    },
+    "ALIGARH HOUSE FOODS": {
+      "mcc": "5812",
+      "category": "Dining and food delivery",
+      "eligible_10_percent": true,
+      "source": "Restaurant POS / Food Delivery (Estimated)"
+    },
+    "AMAZON": {
+      "mcc": "5311",
+      "category": "Shopping",
+      "eligible_10_percent": false,
+      "note": "HSBC explicit policy override: 1.5% base cashback",
+      "source": "HSBC Live+ Official Terms"
+    },
+    "FLIPKART": {
+      "mcc": "5311",
+      "category": "Shopping",
+      "eligible_10_percent": false,
+      "note": "HSBC explicit policy override: 1.5% base cashback",
+      "source": "HSBC Live+ Official Terms"
+    },
+    "MYNTRA": {
+      "mcc": "5651",
+      "category": "Shopping",
+      "eligible_10_percent": true,
+      "through": "2026-10-31",
+      "note": "Temporary promotional launch offer at 10% until 31 Oct 2026",
+      "source": "HSBC Official Launch Offer"
+    },
+    "PNB*IRCTC": {
+      "mcc": "4112",
+      "category": "Travel",
+      "eligible_10_percent": false,
+      "source": "IRCTC Gateway (1.5% Base)"
+    },
+    "BLR DOM 1": {
+      "mcc": "4511",
+      "category": "Lounge",
+      "eligible_10_percent": false,
+      "source": "Bangalore Airport Lounge Auth (₹2 Token)"
+    },
+    "WWW LOUNGEONE AI": {
+      "mcc": "4511",
+      "category": "Lounge",
+      "eligible_10_percent": false,
+      "source": "Lounge Access Verification Token (₹2)"
+    }
+  }
+}
