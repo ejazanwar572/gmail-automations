@@ -26,6 +26,30 @@ st.set_page_config(
 if "theme_mode" not in st.session_state:
     st.session_state["theme_mode"] = "Light"
 
+# Optional Cloud Authentication gate (set DASHBOARD_PASSWORD in Streamlit secrets for cloud deploy)
+cloud_password = None
+try:
+    if hasattr(st, "secrets") and "DASHBOARD_PASSWORD" in st.secrets:
+        cloud_password = st.secrets["DASHBOARD_PASSWORD"]
+except Exception:
+    cloud_password = None
+
+if cloud_password:
+    if "authenticated" not in st.session_state:
+        st.session_state["authenticated"] = False
+    if not st.session_state["authenticated"]:
+        _, auth_col, _ = st.columns([1, 1.2, 1])
+        with auth_col:
+            st.markdown("<div style='text-align: center; margin-top: 100px;'><span style='font-size: 48px;'>💳</span><h2>HDFC DCBM Control Center</h2><p style='color: #8c8379;'>Enter PIN to unlock your personal rewards dashboard</p></div>", unsafe_allow_html=True)
+            entered_pin = st.text_input("Access PIN", type="password", key="cloud_pin_input")
+            if entered_pin:
+                if entered_pin == str(cloud_password):
+                    st.session_state["authenticated"] = True
+                    st.rerun()
+                else:
+                    st.error("Incorrect PIN.")
+        st.stop()
+
 is_light = st.session_state["theme_mode"] == "Light"
 
 # Theme Palettes: Metallic Dark vs Haute Metal (Bespoke Champagne & Onyx)

@@ -379,6 +379,18 @@ def compute_all_dashboard_data(
     cycle_ev = load_json_file(card_dir / "cycle_evidence.json") or {}
     redemptions = load_json_file(card_dir / "redemptions_cache.json") or []
 
+    # Streamlit Cloud secrets fallback if alerts files not present on server disk
+    if not raw_alerts:
+        try:
+            import streamlit as _st
+            if hasattr(_st, "secrets"):
+                if "GMAIL_ALERTS_JSON" in _st.secrets:
+                    raw_alerts = json.loads(_st.secrets["GMAIL_ALERTS_JSON"])
+                if "REDEMPTIONS_JSON" in _st.secrets:
+                    redemptions = json.loads(_st.secrets["REDEMPTIONS_JSON"])
+        except Exception:
+            pass
+
     custom_classifications = config.get("reward_model", {}).get("smartbuy_classifications", {})
     transactions = process_transactions(raw_alerts, custom_classifications)
 
