@@ -44,6 +44,14 @@ def render_app():
     if "theme_mode" not in st.session_state:
         st.session_state["theme_mode"] = "Light"
 
+    # ─── Multi-Card Router Gate ───────────────────────────────────────────────────
+    if "selected_card" in st.session_state and "HDFC" in str(st.session_state["selected_card"]):
+        hdfc_app_path = ROOT_DIR / "HDFC Diners Black Metal Statements" / "hdfc_dcbm_app.py"
+        if hdfc_app_path.exists():
+            import runpy
+            runpy.run_path(str(hdfc_app_path), run_name="__main__")
+            st.stop()
+
     is_light = st.session_state["theme_mode"] == "Light"
 
     # Theme Palettes
@@ -447,17 +455,22 @@ def render_app():
         with sub_c2:
             card_col, badge_col = st.columns([1.5, 1.2], vertical_alignment="center")
             with card_col:
-                card_options = ["HSBC Live+ Credit Card", "HDFC Diners Club Black Metal"]
-                selected_card_title = st.selectbox(
+                card_options = ["HDFC Diners Club Black Metal", "HSBC Live+ Credit Card"]
+                current_card = st.session_state.get("selected_card", "HSBC Live+ Credit Card")
+                if current_card not in card_options:
+                    current_card = "HSBC Live+ Credit Card"
+
+                def on_hsbc_card_change():
+                    st.session_state["selected_card"] = st.session_state["active_card_switcher"]
+
+                st.selectbox(
                     "Credit Card",
                     options=card_options,
-                    index=0,
-                    key="hsbc_header_card_switcher",
+                    index=card_options.index(current_card),
+                    key="active_card_switcher",
+                    on_change=on_hsbc_card_change,
                     label_visibility="collapsed",
                 )
-                if selected_card_title != "HSBC Live+ Credit Card":
-                    st.session_state["selected_card"] = selected_card_title
-                    st.rerun()
             with badge_col:
                 st.markdown(
                     clean_html(f"""

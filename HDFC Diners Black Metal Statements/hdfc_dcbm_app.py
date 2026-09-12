@@ -52,6 +52,14 @@ if cloud_password:
                     st.error("Incorrect PIN.")
         st.stop()
 
+# ─── Multi-Card Router Gate ───────────────────────────────────────────────────
+if "selected_card" in st.session_state and "HSBC" in str(st.session_state["selected_card"]):
+    hsbc_app_path = ROOT_DIR / "HSBC Live Plus Statements" / "hsbc_live_plus_app.py"
+    if hsbc_app_path.exists():
+        import runpy
+        runpy.run_path(str(hsbc_app_path), run_name="__main__")
+        st.stop()
+
 is_light = st.session_state["theme_mode"] == "Light"
 
 # Theme Palettes: Metallic Dark vs Haute Metal (Bespoke Champagne & Onyx)
@@ -543,16 +551,21 @@ with col_head_left:
         card_col, badge_col = st.columns([1.5, 1.2], vertical_alignment="center")
         with card_col:
             card_options = ["HDFC Diners Club Black Metal", "HSBC Live+ Credit Card"]
-            selected_card_title = st.selectbox(
+            current_card = st.session_state.get("selected_card", "HDFC Diners Club Black Metal")
+            if current_card not in card_options:
+                current_card = "HDFC Diners Club Black Metal"
+
+            def on_hdfc_card_change():
+                st.session_state["selected_card"] = st.session_state["active_card_switcher"]
+
+            st.selectbox(
                 "Credit Card",
                 options=card_options,
-                index=0,
-                key="hdfc_header_card_switcher",
+                index=card_options.index(current_card),
+                key="active_card_switcher",
+                on_change=on_hdfc_card_change,
                 label_visibility="collapsed",
             )
-            if selected_card_title != "HDFC Diners Club Black Metal":
-                st.session_state["selected_card"] = selected_card_title
-                st.rerun()
         with badge_col:
             st.markdown(
                 f"""
