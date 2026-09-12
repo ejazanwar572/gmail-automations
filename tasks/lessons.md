@@ -103,3 +103,13 @@ Never declare a UI task complete based on code alone.
 1. When citing external discussions or community posts in briefings and summaries, **NEVER** fabricate placeholder URLs or hypothetical permalink slugs.
 2. If exact post permalinks cannot be verified, always construct functional, live targeted search URLs (e.g. `https://www.reddit.com/r/<subreddit>/search/?q=<query>&restrict_sr=1&sort=relevance`) or direct subreddit feeds.
 3. Validate link structure before reporting completion.
+
+---
+
+## L-014 · Guard Against Sub-File Entrypoints & Handle Selectbox Routing via Callbacks
+**Trigger**: When clicking the card switcher dropdown on Streamlit Cloud, the page did not change because Streamlit Cloud was configured to execute `HDFC Diners Black Metal Statements/hdfc_dcbm_app.py` directly rather than root `app.py`. Furthermore, relying on procedural `if selected != current:` checks without top-level routing gates failed on reruns.
+
+**Rule**:
+1. When supporting multi-dashboard / multi-card switching where sub-files might be invoked directly as entrypoints, **place top-level router gates in EVERY sub-file script**, not just in the root `app.py`. If `st.session_state["selected_card"]` indicates another view, immediately delegate via `runpy.run_path()` and `st.stop()`.
+2. Use shared widget keys with native `on_change` callbacks (e.g. `key="active_card_switcher", on_change=on_card_change`) and dynamic `index=options.index(...)` rather than separate keys and procedural re-rerun blocks, ensuring state synchronizes instantaneously upon click.
+
