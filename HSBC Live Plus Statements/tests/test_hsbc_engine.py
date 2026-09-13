@@ -22,6 +22,19 @@ class TestHSBCEngine(unittest.TestCase):
         self.assertEqual(end, date(2026, 9, 13))
         self.assertEqual(days, 1)
 
+    def test_billing_cycle_end_day(self):
+        # 13 Sep 2026 -> last day of cycle (cycle_day=13)
+        # Should be cycle: 14 Aug 2026 to 13 Sep 2026, 0 days remaining -> "Resets Today"
+        ref = date(2026, 9, 13)
+        start, end, days = hsbc_engine.get_billing_cycle(ref, cycle_day=13)
+        self.assertEqual(start, date(2026, 8, 14))
+        self.assertEqual(end, date(2026, 9, 13))
+        self.assertEqual(days, 0)
+
+        data = hsbc_engine.compute_hsbc_dashboard_data(self.card_dir, today=ref)
+        self.assertEqual(data["cycle"]["days_remaining"], 0)
+        self.assertEqual(data["cycle"]["reset_str"], "Resets Today")
+
     def test_billing_cycle_post_cycle(self):
         # 14 Sep 2026 -> reference day > 13
         # Should be cycle: 14 Sep 2026 to 13 Oct 2026

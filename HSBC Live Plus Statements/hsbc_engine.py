@@ -277,7 +277,7 @@ def compute_hsbc_dashboard_data(card_dir: Path, today: Optional[date] = None) ->
             "end": cycle_end.isoformat(),
             "label": f"Current Cycle ({cycle_start.strftime('%d %b')} – {cycle_end.strftime('%d %b')})",
             "days_remaining": days_remaining,
-            "reset_str": "Resets Tomorrow" if days_remaining == 1 else f"Resets in {days_remaining} days",
+            "reset_str": "Resets Today" if days_remaining == 0 else ("Resets Tomorrow" if days_remaining == 1 else f"Resets in {days_remaining} days"),
         },
         "cashback_cap": {
             "cap_limit": monthly_cap_amount,

@@ -668,7 +668,7 @@ with hero_col1:
                         </div>
                     </div>
                     <span class="pill pill-blue" style="font-size: 11px; padding: 4px 10px; white-space: nowrap;">
-                        ⏳ Resets in {active_cap['days_remaining']} days
+                        ⏳ {'Resets Today' if active_cap['days_remaining'] == 0 else ('Resets Tomorrow' if active_cap['days_remaining'] == 1 else f"Resets in {active_cap['days_remaining']} days")}
                     </span>
                 </div>
                 <div style="display: flex; align-items: baseline; gap: 8px;">
