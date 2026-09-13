@@ -113,3 +113,13 @@ Never declare a UI task complete based on code alone.
 1. When supporting multi-dashboard / multi-card switching where sub-files might be invoked directly as entrypoints, **place top-level router gates in EVERY sub-file script**, not just in the root `app.py`. If `st.session_state["selected_card"]` indicates another view, immediately delegate via `runpy.run_path()` and `st.stop()`.
 2. Use shared widget keys with native `on_change` callbacks (e.g. `key="active_card_switcher", on_change=on_card_change`) and dynamic `index=options.index(...)` rather than separate keys and procedural re-rerun blocks, ensuring state synchronizes instantaneously upon click.
 
+---
+
+## L-015 · Target BaseWeb Inner Child Divs & Always Inject Raw CSS with `st.html()`
+**Trigger**: Custom CSS on `div[data-testid="stSelectbox"] div[data-baseweb="select"]` failed to remove Streamlit's default pale-blue fill (`#f0f2f6`), and segmented control active states failed to display in production because CSS comments were passed inside `st.markdown(..., unsafe_allow_html=True)`.
+
+**Rule**:
+1. Always use `st.html(f"""<style>...</style>""")` for CSS/HTML injection in Streamlit ≥ 1.40. `st.markdown` will parse CSS as markdown text and strip or corrupt style tags.
+2. In BaseWeb inputs and selectboxes, always target the inner child div: `div[data-baseweb="select"] > div` to override Streamlit's hardcoded background color.
+
+
