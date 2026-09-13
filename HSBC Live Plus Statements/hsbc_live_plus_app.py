@@ -123,7 +123,7 @@ def render_app():
         }
 
     # Inject Custom CSS matching V5 Prototype
-    st.markdown(
+    st.html(
         clean_html(f"""
         <style>
         .stApp {{
@@ -393,7 +393,8 @@ def render_app():
             margin-bottom: 0px !important;
         }}
         div[data-testid="stSelectbox"] div[data-baseweb="select"] {{
-            background: {T["card_bg"]} !important;
+            background: {'#ffffff' if is_light else '#1e293b'} !important;
+            background-color: {'#ffffff' if is_light else '#1e293b'} !important;
             border: 1px solid {T["border"]} !important;
             border-radius: 10px !important;
             font-weight: 700 !important;
@@ -404,8 +405,18 @@ def render_app():
             min-height: 38px !important;
             transition: border-color 0.2s ease, box-shadow 0.2s ease !important;
         }}
+        div[data-testid="stSelectbox"] div[data-baseweb="select"] > div {{
+            background: {'#ffffff' if is_light else '#1e293b'} !important;
+            background-color: {'#ffffff' if is_light else '#1e293b'} !important;
+            border: none !important;
+            border-radius: 10px !important;
+            height: 36px !important;
+            min-height: 36px !important;
+        }}
         div[data-testid="stSelectbox"] div[data-baseweb="select"]:hover,
-        div[data-testid="stSelectbox"] div[data-baseweb="select"]:focus-within {{
+        div[data-testid="stSelectbox"] div[data-baseweb="select"]:focus-within,
+        div[data-testid="stSelectbox"] div[data-baseweb="select"] > div:hover,
+        div[data-testid="stSelectbox"] div[data-baseweb="select"] > div:focus-within {{
             border-color: {T["accent_red"]} !important;
             box-shadow: 0 2px 8px rgba(219, 0, 17, 0.15) !important;
         }}
@@ -513,9 +524,7 @@ def render_app():
             }}
         }}
         </style>
-        """),
-        unsafe_allow_html=True,
-    )
+        """))
 
     # ─── Load Data ─────────────────────────────────────────────────────────────
     @st.cache_data(ttl=60)
@@ -547,6 +556,14 @@ def render_app():
         with sub_c2:
             card_col, badge_col = st.columns([1.5, 1.2], vertical_alignment="center")
             with card_col:
+                st.markdown(
+                    clean_html(f"""
+                    <div style="font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: {T['accent_red']}; margin-bottom: 2px;">
+                        Selected Card Account
+                    </div>
+                    """),
+                    unsafe_allow_html=True,
+                )
                 card_options = ["HDFC Diners Club Black Metal", "HSBC Live+ Credit Card"]
                 current_card = st.session_state.get("selected_card", "HSBC Live+ Credit Card")
                 if current_card not in card_options:
@@ -566,8 +583,8 @@ def render_app():
             with badge_col:
                 st.markdown(
                     clean_html(f"""
-                    <div style="display: flex; align-items: center; gap: 8px;">
-                        <span class="mobile-card-badge" style="font-size: 13.5px; font-weight: 700; color: {T['text_main']}; background: {T['subcard_bg']}; padding: 3px 10px; border-radius: 8px; border: 1px solid {T['border']};">
+                    <div style="margin-top: 15px; display: flex; align-items: center; gap: 8px;">
+                        <span class="mobile-card-badge" style="font-size: 13px; font-weight: 700; color: {T['text_main']}; background: {T['subcard_bg']}; padding: 3px 10px; border-radius: 8px; border: 1px solid {T['border']};">
                             •••• {data['card_ending']}
                         </span>
                         <span class="hsbc-pill hsbc-pill-gold" style="font-size: 11px;">

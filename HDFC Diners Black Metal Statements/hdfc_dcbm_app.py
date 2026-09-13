@@ -144,7 +144,7 @@ else:
         "accent_amber": "#f59e0b",
     }
 
-st.markdown(
+st.html(
     f"""
     <style>
     @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap');
@@ -448,7 +448,8 @@ st.markdown(
         margin-bottom: 0px !important;
     }}
     div[data-testid="stSelectbox"] div[data-baseweb="select"] {{
-        background: {T["card_bg"]} !important;
+        background: {'#ffffff' if is_light else '#131b2e'} !important;
+        background-color: {'#ffffff' if is_light else '#131b2e'} !important;
         border: 1px solid {T["border"]} !important;
         border-radius: 10px !important;
         font-weight: 700 !important;
@@ -459,8 +460,18 @@ st.markdown(
         min-height: 38px !important;
         transition: border-color 0.2s ease, box-shadow 0.2s ease !important;
     }}
+    div[data-testid="stSelectbox"] div[data-baseweb="select"] > div {{
+        background: {'#ffffff' if is_light else '#131b2e'} !important;
+        background-color: {'#ffffff' if is_light else '#131b2e'} !important;
+        border: none !important;
+        border-radius: 10px !important;
+        height: 36px !important;
+        min-height: 36px !important;
+    }}
     div[data-testid="stSelectbox"] div[data-baseweb="select"]:hover,
-    div[data-testid="stSelectbox"] div[data-baseweb="select"]:focus-within {{
+    div[data-testid="stSelectbox"] div[data-baseweb="select"]:focus-within,
+    div[data-testid="stSelectbox"] div[data-baseweb="select"] > div:hover,
+    div[data-testid="stSelectbox"] div[data-baseweb="select"] > div:focus-within {{
         border-color: {T["accent_gold"]} !important;
         box-shadow: 0 2px 8px rgba(154, 96, 20, 0.15) !important;
     }}
@@ -611,8 +622,7 @@ st.markdown(
         }}
     }}
     </style>
-    """,
-    unsafe_allow_html=True,
+    """
 )
 
 # ─── Load Data ────────────────────────────────────────────────────────────────
@@ -645,6 +655,14 @@ with col_head_left:
     with sub_c2:
         card_col, badge_col = st.columns([1.5, 1.2], vertical_alignment="center")
         with card_col:
+            st.markdown(
+                f"""
+                <div style="font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: {'#9a6014' if is_light else '#fbbf24'}; margin-bottom: 2px;">
+                    Selected Card Account
+                </div>
+                """,
+                unsafe_allow_html=True,
+            )
             card_options = ["HDFC Diners Club Black Metal", "HSBC Live+ Credit Card"]
             current_card = st.session_state.get("selected_card", "HDFC Diners Club Black Metal")
             if current_card not in card_options:
@@ -664,8 +682,8 @@ with col_head_left:
         with badge_col:
             st.markdown(
                 f"""
-                <div style="display: flex; align-items: center; gap: 8px;">
-                    <span class="mobile-card-badge" style="font-size: 13.5px; font-weight: 700; color: {T['card_number_badge_color']}; background: {T['card_number_badge_bg']}; padding: 3px 10px; border-radius: 8px; border: 1px solid {T['card_number_badge_border']};">
+                <div style="margin-top: 15px; display: flex; align-items: center; gap: 8px;">
+                    <span class="mobile-card-badge" style="font-size: 13px; font-weight: 700; color: {T['card_number_badge_color']}; background: {T['card_number_badge_bg']}; padding: 3px 10px; border-radius: 8px; border: 1px solid {T['card_number_badge_border']};">
                         •••• 2360
                     </span>
                     <span class="pill pill-blue" style="font-size: 11px;">
