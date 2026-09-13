@@ -351,10 +351,13 @@ def render_app():
             padding: 2px !important;
             box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05) !important;
         }}
-        div[data-testid="stButtonGroup"] [data-baseweb="button-group"] {{
+        div[data-testid="stButtonGroup"] [data-baseweb="button-group"],
+        div[data-testid="stButtonGroup"] [role="radiogroup"] {{
             gap: 2px !important;
+            background: transparent !important;
         }}
         div[data-testid="stButtonGroup"] button,
+        div[data-testid="stButtonGroup"] button[role="radio"],
         button[data-testid="stBaseButton-segmented_control"] {{
             border-radius: 8px !important;
             border: none !important;
@@ -366,32 +369,40 @@ def render_app():
             transition: all 0.15s ease !important;
         }}
         div[data-testid="stButtonGroup"] button:hover,
+        div[data-testid="stButtonGroup"] button[role="radio"]:hover,
         button[data-testid="stBaseButton-segmented_control"]:hover {{
             color: {T["text_main"]} !important;
             background: {'rgba(0,0,0,0.04)' if is_light else 'rgba(255,255,255,0.06)'} !important;
         }}
-        /* Active Selection in Theme Switcher (High Contrast Solid Fill) */
+        /* Active Selection in Theme Switcher (Both React-Aria & BaseWeb) */
+        div[data-testid="stButtonGroup"] button[data-selected="true"],
+        div[data-testid="stButtonGroup"] button[aria-checked="true"],
         div[data-testid="stButtonGroup"] button[kind="segmented_controlActive"],
         div[data-testid="stButtonGroup"] button[data-testid="stBaseButton-segmented_controlActive"],
         button[data-testid="stBaseButton-segmented_controlActive"] {{
             background: {'#1e293b' if is_light else '#f8fafc'} !important;
+            background-color: {'#1e293b' if is_light else '#f8fafc'} !important;
             color: {'#ffffff' if is_light else '#0f172a'} !important;
             font-weight: 700 !important;
             border: 1px solid {'#0f172a' if is_light else '#e2e8f0'} !important;
             box-shadow: 0 2px 6px rgba(0, 0, 0, 0.14) !important;
         }}
+        div[data-testid="stButtonGroup"] button[data-selected="true"] *,
+        div[data-testid="stButtonGroup"] button[aria-checked="true"] *,
         button[data-testid="stBaseButton-segmented_controlActive"] * {{
             color: {'#ffffff' if is_light else '#0f172a'} !important;
             font-weight: 700 !important;
         }}
-        button[data-testid="stBaseButton-segmented_control"] * {{
+        div[data-testid="stButtonGroup"] button:not([data-selected="true"]):not([aria-checked="true"]) * {{
             color: {T["text_muted"]} !important;
         }}
 
-        /* ─── Selectbox for Card Switcher - Executive Variant 2 ─── */
+        /* ─── Selectbox for Card Switcher - Executive Variant 2 (Both React-Aria & BaseWeb) ─── */
         div[data-testid="stSelectbox"] {{
             margin-bottom: 0px !important;
         }}
+        div[data-testid="stSelectbox"] .react-aria-ComboBox,
+        div[data-testid="stSelectbox"] div[data-rac=""][role="group"],
         div[data-testid="stSelectbox"] div[data-baseweb="select"] {{
             background: {'#ffffff' if is_light else '#1e293b'} !important;
             background-color: {'#ffffff' if is_light else '#1e293b'} !important;
@@ -413,14 +424,21 @@ def render_app():
             height: 36px !important;
             min-height: 36px !important;
         }}
+        div[data-testid="stSelectbox"] div[data-rac=""][role="group"]:hover,
+        div[data-testid="stSelectbox"] div[data-rac=""][role="group"]:focus-within,
         div[data-testid="stSelectbox"] div[data-baseweb="select"]:hover,
-        div[data-testid="stSelectbox"] div[data-baseweb="select"]:focus-within,
-        div[data-testid="stSelectbox"] div[data-baseweb="select"] > div:hover,
-        div[data-testid="stSelectbox"] div[data-baseweb="select"] > div:focus-within {{
+        div[data-testid="stSelectbox"] div[data-baseweb="select"]:focus-within {{
             border-color: {T["accent_red"]} !important;
             box-shadow: 0 2px 8px rgba(219, 0, 17, 0.15) !important;
         }}
-        div[data-testid="stSelectbox"] div[data-baseweb="select"] * {{
+        div[data-testid="stSelectbox"] input {{
+            color: {T["text_main"]} !important;
+            font-weight: 700 !important;
+            font-size: 14.5px !important;
+            font-family: 'Outfit', sans-serif !important;
+            background: transparent !important;
+        }}
+        div[data-testid="stSelectbox"] * {{
             color: {T["text_main"]} !important;
             font-family: 'Outfit', sans-serif !important;
         }}
