@@ -1,5 +1,14 @@
 # Automated Job Matcher Run History
 
+## 📅 Scan Run: 2026-09-13 15:41:47
+- **Total New Jobs Scraped**: 2
+- **High-Match Roles (Score &ge; 70)**: 1
+
+| Job Title | Company | Location | Match Score | Key Matches | Gaps |
+| :--- | :--- | :--- | :-: | :--- | :--- |
+| [Product Manager (Growth - B2B Enterprise)](https://careers.adobe.com/us/en/job/R171407/product-manager-growth-b2b-enterprise) | Adobe | Bangalore, Karnātaka, India | **90/100** | • 3–5+ years experience<br>• A/B tests, funnel data<br>• Natural inclination toward data<br>• Experience with AI<br>• Bangalore location | • Direct PM title |
+
+---
 ## 📅 Scan Run: 2026-09-13 11:11:14
 - **Total New Jobs Scraped**: 3
 - **High-Match Roles (Score &ge; 70)**: 0
