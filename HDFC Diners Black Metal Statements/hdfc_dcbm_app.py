@@ -139,6 +139,9 @@ else:
         "footer_text": "#475569",
         "val_hl_bg": "linear-gradient(145deg, #132238 0%, #0d1627 100%)",
         "val_hl_border": "#3b82f6",
+        "accent_gold": "#d97706",
+        "accent_green": "#22c55e",
+        "accent_amber": "#f59e0b",
     }
 
 st.markdown(
@@ -395,11 +398,103 @@ st.markdown(
         border: 1px solid {T["border"]} !important;
     }}
 
-    /* Selectbox for Card Switcher */
-    div[data-testid="stSelectbox"] div[data-baseweb="select"] {{
+    /* ─── Executive Theme Switcher & Segmented Control (Variant 2) ─── */
+    div[data-testid="stButtonGroup"] {{
+        background: {T["subcard_bg"]} !important;
+        border: 1px solid {T["border"]} !important;
         border-radius: 10px !important;
-        font-weight: 800 !important;
-        font-size: 18px !important;
+        padding: 2px !important;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05) !important;
+    }}
+    div[data-testid="stButtonGroup"] [data-baseweb="button-group"] {{
+        gap: 2px !important;
+    }}
+    div[data-testid="stButtonGroup"] button,
+    button[data-testid="stBaseButton-segmented_control"] {{
+        border-radius: 8px !important;
+        border: none !important;
+        font-size: 12.5px !important;
+        font-weight: 600 !important;
+        padding: 0 12px !important;
+        color: {T["text_muted"]} !important;
+        background: transparent !important;
+        transition: all 0.15s ease !important;
+    }}
+    div[data-testid="stButtonGroup"] button:hover,
+    button[data-testid="stBaseButton-segmented_control"]:hover {{
+        color: {T["text_main"]} !important;
+        background: {'rgba(0,0,0,0.04)' if is_light else 'rgba(255,255,255,0.06)'} !important;
+    }}
+    /* Active Selection in Theme Switcher (High Contrast Solid Fill) */
+    div[data-testid="stButtonGroup"] button[kind="segmented_controlActive"],
+    div[data-testid="stButtonGroup"] button[data-testid="stBaseButton-segmented_controlActive"],
+    button[data-testid="stBaseButton-segmented_controlActive"] {{
+        background: {'#1e293b' if is_light else '#f8fafc'} !important;
+        color: {'#ffffff' if is_light else '#0f172a'} !important;
+        font-weight: 700 !important;
+        border: 1px solid {'#0f172a' if is_light else '#e2e8f0'} !important;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.14) !important;
+    }}
+    button[data-testid="stBaseButton-segmented_controlActive"] * {{
+        color: {'#ffffff' if is_light else '#0f172a'} !important;
+        font-weight: 700 !important;
+    }}
+    button[data-testid="stBaseButton-segmented_control"] * {{
+        color: {T["text_muted"]} !important;
+    }}
+
+    /* ─── Selectbox for Card Switcher - Executive Variant 2 ─── */
+    div[data-testid="stSelectbox"] {{
+        margin-bottom: 0px !important;
+    }}
+    div[data-testid="stSelectbox"] div[data-baseweb="select"] {{
+        background: {T["card_bg"]} !important;
+        border: 1px solid {T["border"]} !important;
+        border-radius: 10px !important;
+        font-weight: 700 !important;
+        font-size: 14.5px !important;
+        color: {T["text_main"]} !important;
+        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05) !important;
+        height: 38px !important;
+        min-height: 38px !important;
+        transition: border-color 0.2s ease, box-shadow 0.2s ease !important;
+    }}
+    div[data-testid="stSelectbox"] div[data-baseweb="select"]:hover,
+    div[data-testid="stSelectbox"] div[data-baseweb="select"]:focus-within {{
+        border-color: {T["accent_gold"]} !important;
+        box-shadow: 0 2px 8px rgba(154, 96, 20, 0.15) !important;
+    }}
+    div[data-testid="stSelectbox"] div[data-baseweb="select"] * {{
+        color: {T["text_main"]} !important;
+        font-family: 'Outfit', sans-serif !important;
+    }}
+    div[data-baseweb="popover"] {{
+        border-radius: 12px !important;
+        overflow: hidden !important;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25) !important;
+    }}
+    div[data-baseweb="menu"] {{
+        background: {T["card_bg"]} !important;
+        border: 1px solid {T["border"]} !important;
+        border-radius: 12px !important;
+        padding: 6px !important;
+    }}
+    li[data-baseweb="menu-item"] {{
+        border-radius: 8px !important;
+        font-size: 13.5px !important;
+        font-weight: 600 !important;
+        color: {T["text_main"]} !important;
+        padding: 8px 12px !important;
+        margin-bottom: 2px !important;
+    }}
+    li[data-baseweb="menu-item"]:hover {{
+        background-color: {T["subcard_bg"]} !important;
+        color: {T["accent_gold"]} !important;
+    }}
+    li[data-baseweb="menu-item"][aria-selected="true"] {{
+        background-color: {'rgba(154, 96, 20, 0.12)' if is_light else 'rgba(154, 96, 20, 0.25)'} !important;
+        color: {T["accent_gold"]} !important;
+        font-weight: 700 !important;
     }}
 
     /* ─── Mobile Responsive Enhancements ─── */
