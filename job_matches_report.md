@@ -1,5 +1,15 @@
 # Automated Job Matcher Run History
 
+## 📅 Scan Run: 2026-09-15 11:16:41
+- **Total New Jobs Scraped**: 30
+- **High-Match Roles (Score &ge; 70)**: 2
+
+| Job Title | Company | Location | Match Score | Key Matches | Gaps |
+| :--- | :--- | :--- | :-: | :--- | :--- |
+| [Applied Scientist III](https://job-boards.greenhouse.io/inmobi/jobs/8156285) | InMobi | Bangalore | **72/100** | • Bangalore Location<br>• 4-7 Yrs Exp (Flexible)<br>• SQL, Python, PySpark<br>• A/B Testing, Causal Inference<br>• LLM/Agent Workflows | • PhD/Research Depth/Pubs<br>• Adv ML (RL, Game Theory) |
+| [Sr Data Engineer (Python, SQL, AI Solutions)](https://jobs.gartner.com/jobs/job/113584-sr-data-engineer-python-sql-ai-solutions/) | Gartner | Gurgaon, Haryāna | **70/100** | • 8+ Yrs Exp (4-6 Req)<br>• Python & SQL Proficiency<br>• LLM/Agent Workflows<br>• RAG Concepts<br>• Cross-functional Collaboration | • LangChain/Vector DBs<br>• AWS Deployment/DevOps<br>• FastAPI/Async Python |
+
+---
 ## 📅 Scan Run: 2026-09-15 03:36:30
 - **Total New Jobs Scraped**: 8
 - **High-Match Roles (Score &ge; 70)**: 0
