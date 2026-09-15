@@ -1,5 +1,14 @@
 # Automated Job Matcher Run History
 
+## 📅 Scan Run: 2026-09-15 23:26:24
+- **Total New Jobs Scraped**: 3
+- **High-Match Roles (Score &ge; 70)**: 1
+
+| Job Title | Company | Location | Match Score | Key Matches | Gaps |
+| :--- | :--- | :--- | :-: | :--- | :--- |
+| [Program Manager, Routing Insights and Analytics](https://www.amazon.jobs/en/jobs/10544032/program-manager-routing-insights-and-analytics) | Amazon | Bengaluru, KA, IND | **90/100** | • 2+ Yrs Program Mgmt Exp<br>• SQL for Analyses<br>• Data-Driven Decisions & A/B Testing<br>• Bengaluru Location Fit | • Lean/DMAIC Knowledge<br>• MS Access Experience |
+
+---
 ## 📅 Scan Run: 2026-09-15 20:59:05
 - **Total New Jobs Scraped**: 34
 - **High-Match Roles (Score &ge; 70)**: 0
