@@ -13,5 +13,5 @@
 - [x] Update unit tests in `HSBC Live Plus Statements/tests/test_sync_alerts.py` to test both email formats <!-- id: 12 -->
 - [x] Run `sync_alerts.py` to fetch all 28 transactions into `HSBC Live Plus Statements/gmail_alerts.json` <!-- id: 13 -->
 - [x] Verify `compute_hsbc_dashboard_data` and test dashboard calculation with new transactions <!-- id: 14 -->
-- [ ] Commit and push changes to `main` (and `feature/hsbc-live-plus`) so Streamlit Cloud updates <!-- id: 15 -->
-- [ ] Verify live Streamlit app displays the latest HSBC transactions <!-- id: 16 -->
+- [x] Commit and push changes to `main` (and `feature/hsbc-live-plus`) so Streamlit Cloud updates <!-- id: 15 -->
+- [x] Verify live Streamlit app displays the latest HSBC transactions <!-- id: 16 -->
