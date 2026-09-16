@@ -1,5 +1,14 @@
 # Automated Job Matcher Run History
 
+## 📅 Scan Run: 2026-09-16 20:58:58
+- **Total New Jobs Scraped**: 12
+- **High-Match Roles (Score &ge; 70)**: 1
+
+| Job Title | Company | Location | Match Score | Key Matches | Gaps |
+| :--- | :--- | :--- | :-: | :--- | :--- |
+| [Staff Scientist, Tech](https://jobs.uber.com/en/jobs/302589/) | Uber | Bengaluru, IndiaScience | **88/100** | • 8+ years industry experience<br>• Statistical inference & A/B testing<br>• SQL & Python proficiency<br>• Bengaluru, India location | • Lead algorithm architecture<br>• Org-wide science strategy |
+
+---
 ## 📅 Scan Run: 2026-09-16 16:15:30
 - **Total New Jobs Scraped**: 15
 - **High-Match Roles (Score &ge; 70)**: 0
