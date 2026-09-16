@@ -1,5 +1,14 @@
 # Automated Job Matcher Run History
 
+## 📅 Scan Run: 2026-09-16 11:02:09
+- **Total New Jobs Scraped**: 71
+- **High-Match Roles (Score &ge; 70)**: 1
+
+| Job Title | Company | Location | Match Score | Key Matches | Gaps |
+| :--- | :--- | :--- | :-: | :--- | :--- |
+| [Data Scientist](https://jobs.ebayinc.com/us/en/job/R0076350/data-scientist) | eBay | Bengaluru, India | **92/100** | • 2+ Yrs Relevant Experience<br>• SQL & Python Proficiency<br>• Analytical Insights Generation<br>• Bengaluru, India Location | None |
+
+---
 ## 📅 Scan Run: 2026-09-16 03:32:37
 - **Total New Jobs Scraped**: 2
 - **High-Match Roles (Score &ge; 70)**: 0
