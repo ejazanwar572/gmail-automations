@@ -122,4 +122,13 @@ Never declare a UI task complete based on code alone.
 1. Always use `st.html(f"""<style>...</style>""")` for CSS/HTML injection in Streamlit ≥ 1.40. `st.markdown` will parse CSS as markdown text and strip or corrupt style tags.
 2. In BaseWeb inputs and selectboxes, always target the inner child div: `div[data-baseweb="select"] > div` to override Streamlit's hardcoded background color.
 
+---
+
+## L-016 · Support Multi-Format Email Drift & In-Process Sync for Cloud Secrets
+**Trigger**: HSBC changed transaction alert subject line from `"You have used your HSBC Credit Card ending with 8690 for a purchase transaction"` to generic `"Credit Card Transaction Alert"` and body text format from `"Credit card no ending with 8690... on 15 Aug 2026"` to `"HSBC Credit Card xx8690 was used for a transaction of INR... on 16/09/26"`. The sync script missed all alerts sent after 15 August 2026. Furthermore, running `sync_alerts.py` in a separate subprocess under Streamlit Cloud broke access to `st.secrets["gmail_credentials"]`.
+
+**Rule**:
+1. When scraping/syncing bank alerts, never assume email subject or body templates remain static forever. Support multiple subject variations in Gmail queries and build multi-format parser branches (supporting `%d %b %Y`, `%d/%m/%Y`, `%d/%m/%y`).
+2. When executing live sync in cloud environments (like Streamlit Cloud), execute sync routines **in-process** (`import sync_alerts; sync_alerts.run(...)`) rather than invoking `subprocess.run([sys.executable, ...])` so that `st.secrets` remains directly available to the credential loader.
+
 
