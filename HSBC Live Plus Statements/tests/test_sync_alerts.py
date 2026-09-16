@@ -101,6 +101,39 @@ class SyncAlertsTests(unittest.TestCase):
         self.assertFalse(sync.is_hard_filtered_candidate(other))
         self.assertFalse(sync.is_hard_filtered_candidate(non_transaction))
 
+    def test_parses_new_format_alert(self):
+        text = "Dear Customer, We’re writing to confirm that your HSBC Credit Card xx8690 was used for a transaction of INR 92.00 at ROYAL MART on 16/09/26. Available limit: INR 551716.54"
+        parsed = sync.parse_transaction(text)
+        self.assertEqual(parsed, {"date": "2026-09-16", "merchant": "ROYAL MART", "amount": 92.00})
+
+    def test_parses_new_format_with_4digit_year(self):
+        text = "HSBC Credit Card xx8690 was used for a transaction of INR 1,234.50 at AMAZON INDIA on 05/10/2026."
+        parsed = sync.parse_transaction(text)
+        self.assertEqual(parsed, {"date": "2026-10-05", "merchant": "AMAZON INDIA", "amount": 1234.50})
+
+    def test_hard_filter_new_format(self):
+        valid = "We confirm that your HSBC Credit Card xx8690 was used for a transaction of INR 500.00 at CAFE on 01/09/26"
+        other = "We confirm that your HSBC Credit Card xx1234 was used for a transaction of INR 500.00 at CAFE on 01/09/26"
+        self.assertTrue(sync.is_hard_filtered_candidate(valid))
+        self.assertFalse(sync.is_hard_filtered_candidate(other))
+
+    def test_generic_subject_other_card_rejected(self):
+        body_other = "Dear Customer, We confirm HSBC Credit Card xx9999 was used for a transaction of INR 100.00 at STORE on 10/09/26"
+        body_valid = "Dear Customer, We confirm HSBC Credit Card xx8690 was used for a transaction of INR 92.00 at ROYAL MART on 16/09/26."
+        msgs = {
+            "m1": message("m1", body_other, subject="Credit Card Transaction Alert"),
+            "m2": message("m2", body_valid, subject="Credit Card Transaction Alert"),
+        }
+        api = FakeMessages({None: {"messages": [{"id": "m1"}, {"id": "m2"}]}}, msgs)
+        with tempfile.TemporaryDirectory() as td:
+            res = sync.sync(FakeService(api), Path(td), run_id="run-new-fmt")
+            self.assertEqual(res["matched_count"], 1)
+            self.assertEqual(res["parsed_count"], 1)
+            self.assertEqual(res["rejected_count"], 1)
+            alerts = json.loads((Path(td) / "gmail_alerts.json").read_text())
+            self.assertEqual(len(alerts), 1)
+            self.assertEqual(alerts[0]["merchant"], "ROYAL MART")
+
     def test_paginated_sync_dedupes_sorts_and_writes_metadata(self):
         body = (FIXTURES / "transaction-alert-plain.txt").read_text()
         msgs = {"b": message("b", body), "a": message("a", body),

@@ -326,15 +326,26 @@ def compute_hsbc_dashboard_data(card_dir: Path, today: Optional[date] = None) ->
 
 
 def trigger_live_sync(card_dir: Path) -> dict:
-    """Executes sync_alerts.py to fetch new Gmail alerts."""
-    import subprocess
+    """Executes sync_alerts to fetch new Gmail alerts in-process with secrets support, fallback to subprocess."""
     import sys
-    sync_script = card_dir / "sync_alerts.py"
-    if sync_script.exists():
-        proc = subprocess.run([sys.executable, str(sync_script)], cwd=str(card_dir), capture_output=True, text=True)
-        if proc.returncode == 0:
-            alerts_file = card_dir / "gmail_alerts.json"
-            count = len(json.loads(alerts_file.read_text())) if alerts_file.exists() else 0
-            return {"status": "ok", "alert_count": count}
-        return {"status": "error", "message": proc.stderr}
-    return {"status": "error", "message": "sync script not found"}
+    try:
+        card_dir_str = str(card_dir)
+        if card_dir_str not in sys.path:
+            sys.path.insert(0, card_dir_str)
+        import sync_alerts
+        result = sync_alerts.run(card_dir)
+        alerts_file = card_dir / "gmail_alerts.json"
+        count = len(json.loads(alerts_file.read_text())) if alerts_file.exists() else 0
+        return {"status": "ok", "alert_count": count, "metadata": result}
+    except Exception as exc:
+        import subprocess
+        sync_script = card_dir / "sync_alerts.py"
+        if sync_script.exists():
+            proc = subprocess.run([sys.executable, str(sync_script)], cwd=str(card_dir), capture_output=True, text=True)
+            if proc.returncode == 0:
+                alerts_file = card_dir / "gmail_alerts.json"
+                count = len(json.loads(alerts_file.read_text())) if alerts_file.exists() else 0
+                return {"status": "ok", "alert_count": count}
+            return {"status": "error", "message": proc.stderr or str(exc)}
+        return {"status": "error", "message": str(exc)}
+

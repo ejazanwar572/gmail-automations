@@ -2,19 +2,19 @@
 
 ## 1. Executive Summary
 - Card ending: 8690
-- Current cycle: 2026-08-14 to 2026-09-13
-- Current cycle tracked spend: INR 458.00
-- Data freshness: Verified from gmail-api at 2026-09-12T13:23:30.774179+00:00; 16 unique alerts; cached total INR 22,746.82.
+- Current cycle: 2026-09-14 to 2026-10-13
+- Current cycle tracked spend: INR 92.00
+- Data freshness: Verified from gmail-api at 2026-09-16T19:51:43.058712+00:00; 28 unique alerts; cached total INR 25,503.80.
 
 ## 2. Fee and Waiver Tracker
-`██░░░░░░░░░░░░░░░░░░ 11.4%`
+`███░░░░░░░░░░░░░░░░░ 12.8%`
 
 - Period: 2026-06-29 to 2027-06-28
 
-- Days left: 289
+- Days left: 284
 
-- Progress: INR 22,746.82 of INR 200,000.00
-- Remaining: INR 177,253.18
+- Progress: INR 25,503.80 of INR 200,000.00
+- Remaining: INR 174,496.20
 - Status: In progress
 - Evidence: Provisional
 - Annual/joining fee tracked: INR 999.00
@@ -38,15 +38,15 @@
 ## 4. Current Cycle Transaction Table
 | Date | Merchant | Amount | Benefit Bucket |
 | :--- | :--- | ---: | :--- |
-| 2026-08-15 | ALIGARH HOUSE FOODS A | INR 458.00 | Dining and food delivery |
+| 2026-09-16 | ROYAL MART | INR 92.00 | Unclassified |
 
 ## 5. Benefit Utilization and Recommendation
-- Shared 10% cashback cap: INR 45.80 of INR 1,200.00; INR 1,154.20 remaining
+- Shared 10% cashback cap: INR 0.00 of INR 1,200.00; INR 1,200.00 remaining
 - Policy version: 2026-07-26 (effective 2026-07-26; reviewed 2026-07-29)
 
 | Benefit | Spend | Earned/Value | Cap/Target | Remaining | Transactions |
 | :--- | ---: | ---: | :--- | :--- | :---: |
-| Dining and food delivery | INR 458.00 | INR 45.80 | Shared INR 1,200.00 | See shared cap | 1 |
+| Dining and food delivery | INR 0.00 | INR 0.00 | Shared INR 1,200.00 | See shared cap | 0 |
 | Grocery | INR 0.00 | INR 0.00 | Shared INR 1,200.00 | See shared cap | 0 |
 | Shopping | INR 0.00 | INR 0.00 | Shared INR 1,200.00 | See shared cap | 0 |
 | Utilities | INR 0.00 | INR 0.00 | Shared INR 1,200.00 | See shared cap | 0 |
@@ -54,14 +54,14 @@
 
 Keep using this card for categories where the tracked benefit rate is strongest.
 
-- Needs MCC evidence: INR 0.00 across 0 transactions
+- Needs MCC evidence: INR 92.00 across 1 transaction
 
 ### Contactless fuel offer
 `░░░░░░░░░░░░░░░░░░░░ 0.0%`
 
 - Period: 2026-07-26 to 2026-09-30
 
-- Days left: 18
+- Days left: 13
 
 - Progress: INR 0.00 of INR 10,000.00
 - Remaining: INR 10,000.00

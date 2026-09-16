@@ -18,7 +18,9 @@ import uuid
 
 SCOPES = ["https://www.googleapis.com/auth/gmail.readonly"]
 TRANSACTION_SUBJECT = "You have used your HSBC Credit Card ending with 8690 for a purchase transaction"
-QUERY = f'subject:"{TRANSACTION_SUBJECT}" -in:spam -in:trash'
+TRANSACTION_SUBJECT_NEW = "Credit Card Transaction Alert"
+TRANSACTION_SUBJECTS = {TRANSACTION_SUBJECT, TRANSACTION_SUBJECT_NEW}
+QUERY = f'(subject:"{TRANSACTION_SUBJECT_NEW}" OR subject:"{TRANSACTION_SUBJECT}") -in:spam -in:trash'
 SHARED_TOKEN = Path("/Users/ejazanwar/.gmail-mcp/credentials.json")
 SHARED_KEYS = Path("/Users/ejazanwar/.gmail-mcp/gcp-oauth.keys.json")
 
@@ -56,36 +58,60 @@ def decode_message_body(payload: dict) -> str:
 
 def is_hard_filtered_candidate(text: str) -> bool:
     normalized = " ".join(text.split())
-    return bool(re.search(
-        r"Credit card no ending with 8690\s*,?\s*has been used for INR\s+",
-        normalized, re.IGNORECASE,
-    ))
+    if re.search(r"Credit card no ending with 8690\s*,?\s*has been used for INR\s+", normalized, re.IGNORECASE):
+        return True
+    if re.search(r"HSBC Credit Card xx8690 was used for a transaction of INR\s+", normalized, re.IGNORECASE):
+        return True
+    return False
 
 
 def is_transaction_subject(subject: str) -> bool:
-    """Identify only the exact HSBC purchase-alert subject for card 8690."""
-    return subject.strip() == TRANSACTION_SUBJECT
+    """Identify the HSBC purchase-alert subjects for card 8690."""
+    return subject.strip() in TRANSACTION_SUBJECTS
 
 
 def parse_transaction(text: str) -> dict[str, str | float]:
     normalized = " ".join(text.split())
+    # Format 1: classic format
     match = re.search(
         r"Credit card no ending with 8690\s*,?\s*has been used for INR\s+"
         r"(?P<amount>\d[\d,]*\.\d{2})\s+for payment to\s+"
         r"(?P<merchant>.+?)\s+on\s+(?P<date>\d{1,2}\s+[A-Za-z]{3}\s+\d{4})\s+at\s+\d{1,2}:\d{2}",
         normalized, re.IGNORECASE,
     )
-    if not match:
-        raise SyncError("hard-filtered HSBC transaction alert could not be parsed")
-    try:
-        date = datetime.strptime(match.group("date"), "%d %b %Y").date().isoformat()
-    except ValueError as exc:
-        raise SyncError("HSBC transaction date could not be parsed") from exc
-    return {
-        "date": date,
-        "merchant": match.group("merchant").strip(),
-        "amount": float(match.group("amount").replace(",", "")),
-    }
+    if match:
+        try:
+            date_str = datetime.strptime(match.group("date"), "%d %b %Y").date().isoformat()
+        except ValueError as exc:
+            raise SyncError("HSBC transaction date could not be parsed") from exc
+        return {
+            "date": date_str,
+            "merchant": match.group("merchant").strip(),
+            "amount": float(match.group("amount").replace(",", "")),
+        }
+
+    # Format 2: new format (starting August 2026)
+    match_new = re.search(
+        r"HSBC Credit Card xx8690 was used for a transaction of INR\s+"
+        r"(?P<amount>\d[\d,]*\.\d{2})\s+at\s+"
+        r"(?P<merchant>.+?)\s+on\s+(?P<date>\d{1,2}/\d{1,2}/\d{2,4})",
+        normalized, re.IGNORECASE,
+    )
+    if match_new:
+        raw_date = match_new.group("date")
+        try:
+            parts = raw_date.split("/")
+            fmt = "%d/%m/%Y" if len(parts[-1]) == 4 else "%d/%m/%y"
+            date_str = datetime.strptime(raw_date, fmt).date().isoformat()
+        except ValueError as exc:
+            raise SyncError("HSBC transaction date could not be parsed") from exc
+        return {
+            "date": date_str,
+            "merchant": match_new.group("merchant").strip(),
+            "amount": float(match_new.group("amount").replace(",", "")),
+        }
+
+    raise SyncError("hard-filtered HSBC transaction alert could not be parsed")
 
 
 def _header(message: dict, name: str) -> str:
@@ -115,12 +141,49 @@ def credential_paths(root: Path, shared_token: Path = SHARED_TOKEN,
 def load_credentials(root: Path, credentials_class,
                      shared_token: Path = SHARED_TOKEN,
                      shared_keys: Path = SHARED_KEYS):
-    """Load local authorized-user JSON or translate Gmail MCP credential JSON."""
+    """Load local authorized-user JSON, Streamlit Cloud secrets, or translate Gmail MCP credential JSON."""
     local = root / "token.json"
     if local.exists():
         return credentials_class.from_authorized_user_file(str(local), SCOPES)
+
+    # Check Streamlit Cloud secrets or environment variables
+    secrets_data = None
+    try:
+        import streamlit as st
+        if hasattr(st, "secrets"):
+            if "gmail_credentials" in st.secrets:
+                raw = st.secrets["gmail_credentials"]
+                secrets_data = dict(raw) if hasattr(raw, "items") else json.loads(str(raw))
+            elif "GMAIL_CREDENTIALS" in st.secrets:
+                raw = st.secrets["GMAIL_CREDENTIALS"]
+                secrets_data = dict(raw) if hasattr(raw, "items") else json.loads(str(raw))
+    except Exception:
+        secrets_data = None
+
+    if not secrets_data and "GMAIL_CREDENTIALS" in os.environ:
+        try:
+            secrets_data = json.loads(os.environ["GMAIL_CREDENTIALS"])
+        except Exception:
+            pass
+
+    if secrets_data:
+        try:
+            if hasattr(credentials_class, "from_authorized_user_info"):
+                return credentials_class.from_authorized_user_info(secrets_data, SCOPES)
+            token = secrets_data.get("token") or secrets_data.get("access_token")
+            return credentials_class(
+                token=token,
+                refresh_token=secrets_data.get("refresh_token"),
+                token_uri=secrets_data.get("token_uri", "https://oauth2.googleapis.com/token"),
+                client_id=secrets_data.get("client_id"),
+                client_secret=secrets_data.get("client_secret"),
+                scopes=SCOPES,
+            )
+        except Exception as exc:
+            raise SyncError(f"Failed to load Gmail credentials from secrets: {exc}") from exc
+
     if not shared_token.exists() or not shared_keys.exists():
-        raise SyncError("shared Gmail token or OAuth keys not found")
+        raise SyncError("shared Gmail token or OAuth keys not found (set [gmail_credentials] in Streamlit Cloud secrets)")
     try:
         token_data = json.loads(shared_token.read_text())
         key_data = json.loads(shared_keys.read_text())["installed"]
@@ -217,6 +280,9 @@ def sync(service, root: Path, *, run_id: str | None = None) -> dict:
             rejected += 1
             continue
         body = decode_message_body(message.get("payload", {}))
+        if subject == TRANSACTION_SUBJECT_NEW and "8690" not in body:
+            rejected += 1
+            continue
         matched += 1
         parsed = parse_transaction(body)
         message_id = message["id"]
