@@ -1,5 +1,14 @@
 # Automated Job Matcher Run History
 
+## 📅 Scan Run: 2026-09-17 16:22:56
+- **Total New Jobs Scraped**: 8
+- **High-Match Roles (Score &ge; 70)**: 1
+
+| Job Title | Company | Location | Match Score | Key Matches | Gaps |
+| :--- | :--- | :--- | :-: | :--- | :--- |
+| [Senior Manager - RGM](https://globalcareers-pepsico.icims.com/jobs/474621/login) | PepsiCo | Hyderabad, India | **72/100** | • Python, Tableau & Power BI<br>• Advanced Analytics skills<br>• Stakeholder Management | • 7+ yrs CPG RGM domain exp<br>• Alteryx/KNIME experience |
+
+---
 ## 📅 Scan Run: 2026-09-17 11:09:11
 - **Total New Jobs Scraped**: 42
 - **High-Match Roles (Score &ge; 70)**: 3
