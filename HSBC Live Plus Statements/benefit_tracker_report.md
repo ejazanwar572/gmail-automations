@@ -3,18 +3,18 @@
 ## 1. Executive Summary
 - Card ending: 8690
 - Current cycle: 2026-09-14 to 2026-10-13
-- Current cycle tracked spend: INR 92.00
-- Data freshness: Verified from gmail-api at 2026-09-16T19:51:43.058712+00:00; 28 unique alerts; cached total INR 25,503.80.
+- Current cycle tracked spend: INR 308.00
+- Data freshness: Verified from gmail-api at 2026-09-17T19:13:18.696579+00:00; 30 unique alerts; cached total INR 25,719.80.
 
 ## 2. Fee and Waiver Tracker
-`███░░░░░░░░░░░░░░░░░ 12.8%`
+`███░░░░░░░░░░░░░░░░░ 12.9%`
 
 - Period: 2026-06-29 to 2027-06-28
 
-- Days left: 284
+- Days left: 283
 
-- Progress: INR 25,503.80 of INR 200,000.00
-- Remaining: INR 174,496.20
+- Progress: INR 25,719.80 of INR 200,000.00
+- Remaining: INR 174,280.20
 - Status: In progress
 - Evidence: Provisional
 - Annual/joining fee tracked: INR 999.00
@@ -39,14 +39,16 @@
 | Date | Merchant | Amount | Benefit Bucket |
 | :--- | :--- | ---: | :--- |
 | 2026-09-16 | ROYAL MART | INR 92.00 | Unclassified |
+| 2026-09-17 | SWIGGY FOOD | INR 108.00 | Dining and food delivery |
+| 2026-09-17 | SWIGGY FOOD | INR 108.00 | Dining and food delivery |
 
 ## 5. Benefit Utilization and Recommendation
-- Shared 10% cashback cap: INR 0.00 of INR 1,200.00; INR 1,200.00 remaining
+- Shared 10% cashback cap: INR 21.60 of INR 1,200.00; INR 1,178.40 remaining
 - Policy version: 2026-07-26 (effective 2026-07-26; reviewed 2026-07-29)
 
 | Benefit | Spend | Earned/Value | Cap/Target | Remaining | Transactions |
 | :--- | ---: | ---: | :--- | :--- | :---: |
-| Dining and food delivery | INR 0.00 | INR 0.00 | Shared INR 1,200.00 | See shared cap | 0 |
+| Dining and food delivery | INR 216.00 | INR 21.60 | Shared INR 1,200.00 | See shared cap | 2 |
 | Grocery | INR 0.00 | INR 0.00 | Shared INR 1,200.00 | See shared cap | 0 |
 | Shopping | INR 0.00 | INR 0.00 | Shared INR 1,200.00 | See shared cap | 0 |
 | Utilities | INR 0.00 | INR 0.00 | Shared INR 1,200.00 | See shared cap | 0 |
@@ -61,7 +63,7 @@ Keep using this card for categories where the tracked benefit rate is strongest.
 
 - Period: 2026-07-26 to 2026-09-30
 
-- Days left: 13
+- Days left: 12
 
 - Progress: INR 0.00 of INR 10,000.00
 - Remaining: INR 10,000.00

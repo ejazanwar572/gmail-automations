@@ -676,8 +676,15 @@ def simulate_spend(
 
 
 def trigger_live_sync(card_dir: Path = CARD_DIR) -> Dict[str, Any]:
-    """Execute live Gmail synchronization via sync_alerts."""
-    import sys
-    sys.path.insert(0, str(card_dir))
-    import sync_alerts
-    return sync_alerts.run(card_dir)
+    """Execute live Gmail synchronization via sync_alerts with isolated module loading."""
+    import importlib.util
+    sync_script = card_dir / "sync_alerts.py"
+    if not sync_script.exists():
+        raise FileNotFoundError(f"sync script not found at {sync_script}")
+    module_name = "dcbm_sync_alerts"
+    spec = importlib.util.spec_from_file_location(module_name, sync_script)
+    if spec and spec.loader:
+        module = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(module)
+        return module.run(card_dir)
+    raise RuntimeError(f"could not load sync script at {sync_script}")

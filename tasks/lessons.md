@@ -131,4 +131,13 @@ Never declare a UI task complete based on code alone.
 1. When scraping/syncing bank alerts, never assume email subject or body templates remain static forever. Support multiple subject variations in Gmail queries and build multi-format parser branches (supporting `%d %b %Y`, `%d/%m/%Y`, `%d/%m/%y`).
 2. When executing live sync in cloud environments (like Streamlit Cloud), execute sync routines **in-process** (`import sync_alerts; sync_alerts.run(...)`) rather than invoking `subprocess.run([sys.executable, ...])` so that `st.secrets` remains directly available to the credential loader.
 
+---
+
+## L-017 · Use Isolated `spec_from_file_location` When Dynamically Loading Homonymous Modules
+**Trigger**: In a multi-dashboard application where both cards have a local file named `sync_alerts.py`, calling `import sync_alerts` dynamically after modifying `sys.path` returned the cached `sys.modules["sync_alerts"]` from the first card (HDFC), causing HSBC's sync routine to run HDFC's query and write HDFC transactions into HSBC's ledger.
+
+**Rule**:
+Never rely on `sys.path.insert(0, ...)` + `import <common_name>` to load card-specific or directory-specific scripts that share the same filename. Always use `importlib.util.spec_from_file_location(unique_module_name, script_path)` and execute with `spec.loader.exec_module(module)` to ensure strict namespace isolation.
+
+
 

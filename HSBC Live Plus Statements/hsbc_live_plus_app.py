@@ -548,7 +548,16 @@ def render_app():
     @st.cache_data(ttl=60)
     def load_data():
         alerts_file = CARD_DIR / "gmail_alerts.json"
-        if not alerts_file.exists():
+        meta_file = CARD_DIR / "sync_metadata.json"
+        needs_sync = not alerts_file.exists()
+        if not needs_sync and meta_file.exists():
+            try:
+                meta = json.loads(meta_file.read_text())
+                if meta.get("card_ending") != "8690":
+                    needs_sync = True
+            except Exception:
+                needs_sync = True
+        if needs_sync:
             try:
                 hsbc_engine.trigger_live_sync(CARD_DIR)
             except Exception:
@@ -639,9 +648,12 @@ def render_app():
                 with st.spinner("Fetching latest alerts from Gmail..."):
                     try:
                         sync_res = hsbc_engine.trigger_live_sync(CARD_DIR)
-                        st.cache_data.clear()
-                        st.toast(f"✅ Synced {sync_res.get('alert_count', 0)} alerts!", icon="📬")
-                        st.rerun()
+                        if sync_res.get("status") == "error":
+                            st.error(f"Sync error: {sync_res.get('message')}")
+                        else:
+                            st.cache_data.clear()
+                            st.toast(f"✅ Synced {sync_res.get('alert_count', 0)} alerts!", icon="📬")
+                            st.rerun()
                     except Exception as exc:
                         st.error(f"Sync error: {exc}")
         with btn_col3:
