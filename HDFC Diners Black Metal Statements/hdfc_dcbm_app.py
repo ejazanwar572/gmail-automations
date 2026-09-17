@@ -24,34 +24,6 @@ try:
 except Exception:
     pass
 
-# ─── Theme Configuration (Dark / Haute Metal Light) ──────────────────────────
-if "theme_mode" not in st.session_state:
-    st.session_state["theme_mode"] = "Light"
-
-# Optional Cloud Authentication gate (set DASHBOARD_PASSWORD in Streamlit secrets for cloud deploy)
-cloud_password = None
-try:
-    if hasattr(st, "secrets") and "DASHBOARD_PASSWORD" in st.secrets:
-        cloud_password = st.secrets["DASHBOARD_PASSWORD"]
-except Exception:
-    cloud_password = None
-
-if cloud_password:
-    if "authenticated" not in st.session_state:
-        st.session_state["authenticated"] = False
-    if not st.session_state["authenticated"]:
-        _, auth_col, _ = st.columns([1, 1.2, 1])
-        with auth_col:
-            st.markdown("<div style='text-align: center; margin-top: 100px;'><span style='font-size: 48px;'>💳</span><h2>HDFC DCBM Control Center</h2><p style='color: #8c8379;'>Enter PIN to unlock your personal rewards dashboard</p></div>", unsafe_allow_html=True)
-            entered_pin = st.text_input("Access PIN", type="password", key="cloud_pin_input")
-            if entered_pin:
-                if entered_pin == str(cloud_password):
-                    st.session_state["authenticated"] = True
-                    st.rerun()
-                else:
-                    st.error("Incorrect PIN.")
-        st.stop()
-
 # ─── Multi-Card Router Gate ───────────────────────────────────────────────────
 if "selected_card" in st.session_state and "HSBC" in str(st.session_state["selected_card"]):
     hsbc_app_path = ROOT_DIR / "HSBC Live Plus Statements" / "hsbc_live_plus_app.py"
@@ -60,89 +32,46 @@ if "selected_card" in st.session_state and "HSBC" in str(st.session_state["selec
         runpy.run_path(str(hsbc_app_path), run_name="__main__")
         st.stop()
 
-is_light = st.session_state["theme_mode"] == "Light"
-
-# Theme Palettes: Metallic Dark vs Haute Metal (Bespoke Champagne & Onyx)
-if is_light:
-    T = {
-        "app_bg": "#f7f4ee",
-        "text_main": "#1a1613",
-        "text_muted": "#6e675f",
-        "text_sub": "#8c8379",
-        "border": "#dfd5c6",
-        "border_sub": "#efeae0",
-        "card_bg": "#ffffff",
-        "card_border": "#dfd5c6",
-        "card_shadow": "0 4px 16px rgba(60, 50, 40, 0.05)",
-        "hero_bg": "#ffffff",
-        "hero_border": "#d8cbba",
-        "hero_shadow": "0 10px 28px rgba(154, 96, 20, 0.08), 0 2px 6px rgba(0, 0, 0, 0.03)",
-        "subcard_bg": "#faf8f4",
-        "subcard_border": "#dfd5c6",
-        "input_bg": "#faf8f4",
-        "input_border": "#cec2b0",
-        "input_text": "#1a1613",
-        "input_focus_border": "#9a6014",
-        "input_focus_shadow": "rgba(154, 96, 20, 0.2)",
-        "btn_bg": "linear-gradient(135deg, #9a6014 0%, #784708 100%)",
-        "btn_hover": "linear-gradient(135deg, #b47820 0%, #9a6014 100%)",
-        "btn_border": "#b47820",
-        "btn_shadow": "0 4px 14px rgba(154, 96, 20, 0.25)",
-        "progress_bg": "#ede7dc",
-        "progress_fill": "linear-gradient(90deg, #9a6014 0%, #c48e38 100%)",
-        "chip_bg": "#ffffff",
-        "chip_border": "#dfd5c6",
-        "card_number_badge_bg": "#ede7dc",
-        "card_number_badge_border": "#cec2b0",
-        "card_number_badge_color": "#38322b",
-        "footer_border": "#dfd5c6",
-        "footer_text": "#8c8379",
-        "val_hl_bg": "#faf7f2",
-        "val_hl_border": "#cec2b0",
-        "accent_gold": "#9a6014",
-        "accent_green": "#15803d",
-        "accent_amber": "#b45309",
-    }
-else:
-    T = {
-        "app_bg": "#0b0f19",
-        "text_main": "#f1f5f9",
-        "text_muted": "#94a3b8",
-        "text_sub": "#64748b",
-        "border": "#1e293b",
-        "border_sub": "#334155",
-        "card_bg": "linear-gradient(145deg, #131b2e 0%, #0d1322 100%)",
-        "card_border": "#1e293b",
-        "card_shadow": "0 4px 20px -2px rgba(0, 0, 0, 0.4)",
-        "hero_bg": "linear-gradient(135deg, #101c38 0%, #0b1224 100%)",
-        "hero_border": "#2563eb",
-        "hero_shadow": "0 8px 30px rgba(37, 99, 235, 0.15)",
-        "subcard_bg": "#0f172a",
-        "subcard_border": "#1e293b",
-        "input_bg": "#1a233a",
-        "input_border": "#334155",
-        "input_text": "#ffffff",
-        "input_focus_border": "#3b82f6",
-        "input_focus_shadow": "rgba(59, 130, 246, 0.25)",
-        "btn_bg": "linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%)",
-        "btn_hover": "linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%)",
-        "btn_border": "#3b82f6",
-        "btn_shadow": "0 4px 14px rgba(37, 99, 235, 0.25)",
-        "progress_bg": "#1e293b",
-        "progress_fill": "linear-gradient(90deg, #3b82f6 0%, #10b981 100%)",
-        "chip_bg": "#101a2f",
-        "chip_border": "#1e293b",
-        "card_number_badge_bg": "#1e293b",
-        "card_number_badge_border": "#334155",
-        "card_number_badge_color": "#94a3b8",
-        "footer_border": "#1e293b",
-        "footer_text": "#475569",
-        "val_hl_bg": "linear-gradient(145deg, #132238 0%, #0d1627 100%)",
-        "val_hl_border": "#3b82f6",
-        "accent_gold": "#d97706",
-        "accent_green": "#22c55e",
-        "accent_amber": "#f59e0b",
-    }
+# Theme Palette: Haute Metal Light (Bespoke Champagne & Onyx)
+T = {
+    "app_bg": "#f7f4ee",
+    "text_main": "#1a1613",
+    "text_muted": "#6e675f",
+    "text_sub": "#8c8379",
+    "border": "#dfd5c6",
+    "border_sub": "#efeae0",
+    "card_bg": "#ffffff",
+    "card_border": "#dfd5c6",
+    "card_shadow": "0 4px 16px rgba(60, 50, 40, 0.05)",
+    "hero_bg": "#ffffff",
+    "hero_border": "#d8cbba",
+    "hero_shadow": "0 10px 28px rgba(154, 96, 20, 0.08), 0 2px 6px rgba(0, 0, 0, 0.03)",
+    "subcard_bg": "#faf8f4",
+    "subcard_border": "#dfd5c6",
+    "input_bg": "#faf8f4",
+    "input_border": "#cec2b0",
+    "input_text": "#1a1613",
+    "input_focus_border": "#9a6014",
+    "input_focus_shadow": "rgba(154, 96, 20, 0.2)",
+    "btn_bg": "linear-gradient(135deg, #9a6014 0%, #784708 100%)",
+    "btn_hover": "linear-gradient(135deg, #b47820 0%, #9a6014 100%)",
+    "btn_border": "#b47820",
+    "btn_shadow": "0 4px 14px rgba(154, 96, 20, 0.25)",
+    "progress_bg": "#ede7dc",
+    "progress_fill": "linear-gradient(90deg, #9a6014 0%, #c48e38 100%)",
+    "chip_bg": "#ffffff",
+    "chip_border": "#dfd5c6",
+    "card_number_badge_bg": "#ede7dc",
+    "card_number_badge_border": "#cec2b0",
+    "card_number_badge_color": "#38322b",
+    "footer_border": "#dfd5c6",
+    "footer_text": "#8c8379",
+    "val_hl_bg": "#faf7f2",
+    "val_hl_border": "#cec2b0",
+    "accent_gold": "#9a6014",
+    "accent_green": "#15803d",
+    "accent_amber": "#b45309",
+}
 
 st.html(
     f"""
@@ -226,22 +155,22 @@ st.html(
     }}
     .pill-green {{
         background: rgba(21, 128, 61, 0.12);
-        color: {'#15803d' if is_light else '#34d399'};
+        color: #15803d;
         border: 1px solid rgba(21, 128, 61, 0.3);
     }}
     .pill-orange {{
         background: rgba(180, 83, 9, 0.12);
-        color: {'#b45309' if is_light else '#fbbf24'};
+        color: #b45309;
         border: 1px solid rgba(180, 83, 9, 0.3);
     }}
     .pill-red {{
         background: rgba(220, 38, 38, 0.12);
-        color: {'#dc2626' if is_light else '#f87171'};
+        color: #dc2626;
         border: 1px solid rgba(220, 38, 38, 0.3);
     }}
     .pill-blue {{
         background: rgba(154, 96, 20, 0.1);
-        color: {'#9a6014' if is_light else '#60a5fa'};
+        color: #9a6014;
         border: 1px solid rgba(154, 96, 20, 0.28);
     }}
 
@@ -274,7 +203,7 @@ st.html(
     }}
     div.stButton > button:hover, div[data-testid="stDownloadButton"] > button:hover {{
         background: {T["btn_hover"]} !important;
-        border-color: {'#d97706' if is_light else '#818cf8'} !important;
+        border-color: #d97706 !important;
         color: #ffffff !important;
         transform: translateY(-1px) !important;
     }}
@@ -302,8 +231,8 @@ st.html(
         color: {T["input_text"]} !important;
     }}
     span[data-baseweb="tag"] {{
-        background-color: {'#9a6014' if is_light else '#2563eb'} !important;
-        border: 1px solid {'#b47820' if is_light else '#3b82f6'} !important;
+        background-color: #9a6014 !important;
+        border: 1px solid #b47820 !important;
         border-radius: 6px !important;
         color: #ffffff !important;
     }}
@@ -387,8 +316,8 @@ st.html(
         color: {T["text_muted"]} !important;
     }}
     button[data-baseweb="tab"][aria-selected="true"] {{
-        color: {'#9a6014' if is_light else '#60a5fa'} !important;
-        border-bottom-color: {'#9a6014' if is_light else '#60a5fa'} !important;
+        color: #9a6014 !important;
+        border-bottom-color: #9a6014 !important;
     }}
 
     /* Streamlit Dataframe */
@@ -398,60 +327,6 @@ st.html(
         border: 1px solid {T["border"]} !important;
     }}
 
-    /* ─── Executive Theme Switcher & Segmented Control (Variant 2) ─── */
-    div[data-testid="stButtonGroup"] {{
-        background: {T["subcard_bg"]} !important;
-        border: 1px solid {T["border"]} !important;
-        border-radius: 10px !important;
-        padding: 2px !important;
-        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05) !important;
-    }}
-    div[data-testid="stButtonGroup"] [data-baseweb="button-group"],
-    div[data-testid="stButtonGroup"] [role="radiogroup"] {{
-        gap: 2px !important;
-        background: transparent !important;
-    }}
-    div[data-testid="stButtonGroup"] button,
-    div[data-testid="stButtonGroup"] button[role="radio"],
-    button[data-testid="stBaseButton-segmented_control"] {{
-        border-radius: 8px !important;
-        border: none !important;
-        font-size: 12.5px !important;
-        font-weight: 600 !important;
-        padding: 0 12px !important;
-        color: {T["text_muted"]} !important;
-        background: transparent !important;
-        transition: all 0.15s ease !important;
-    }}
-    div[data-testid="stButtonGroup"] button:hover,
-    div[data-testid="stButtonGroup"] button[role="radio"]:hover,
-    button[data-testid="stBaseButton-segmented_control"]:hover {{
-        color: {T["text_main"]} !important;
-        background: {'rgba(0,0,0,0.04)' if is_light else 'rgba(255,255,255,0.06)'} !important;
-    }}
-    /* Active Selection in Theme Switcher (Both React-Aria & BaseWeb) */
-    div[data-testid="stButtonGroup"] button[data-selected="true"],
-    div[data-testid="stButtonGroup"] button[aria-checked="true"],
-    div[data-testid="stButtonGroup"] button[kind="segmented_controlActive"],
-    div[data-testid="stButtonGroup"] button[data-testid="stBaseButton-segmented_controlActive"],
-    button[data-testid="stBaseButton-segmented_controlActive"] {{
-        background: {'#1e293b' if is_light else '#f8fafc'} !important;
-        background-color: {'#1e293b' if is_light else '#f8fafc'} !important;
-        color: {'#ffffff' if is_light else '#0f172a'} !important;
-        font-weight: 700 !important;
-        border: 1px solid {'#0f172a' if is_light else '#e2e8f0'} !important;
-        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.14) !important;
-    }}
-    div[data-testid="stButtonGroup"] button[data-selected="true"] *,
-    div[data-testid="stButtonGroup"] button[aria-checked="true"] *,
-    button[data-testid="stBaseButton-segmented_controlActive"] * {{
-        color: {'#ffffff' if is_light else '#0f172a'} !important;
-        font-weight: 700 !important;
-    }}
-    div[data-testid="stButtonGroup"] button:not([data-selected="true"]):not([aria-checked="true"]) * {{
-        color: {T["text_muted"]} !important;
-    }}
-
     /* ─── Selectbox for Card Switcher - Executive Variant 2 (Both React-Aria & BaseWeb) ─── */
     div[data-testid="stSelectbox"] {{
         margin-bottom: 0px !important;
@@ -459,8 +334,8 @@ st.html(
     div[data-testid="stSelectbox"] .react-aria-ComboBox,
     div[data-testid="stSelectbox"] div[data-rac=""][role="group"],
     div[data-testid="stSelectbox"] div[data-baseweb="select"] {{
-        background: {'#ffffff' if is_light else '#131b2e'} !important;
-        background-color: {'#ffffff' if is_light else '#131b2e'} !important;
+        background: #ffffff !important;
+        background-color: #ffffff !important;
         border: 1px solid {T["border"]} !important;
         border-radius: 10px !important;
         font-weight: 700 !important;
@@ -472,8 +347,8 @@ st.html(
         transition: border-color 0.2s ease, box-shadow 0.2s ease !important;
     }}
     div[data-testid="stSelectbox"] div[data-baseweb="select"] > div {{
-        background: {'#ffffff' if is_light else '#131b2e'} !important;
-        background-color: {'#ffffff' if is_light else '#131b2e'} !important;
+        background: #ffffff !important;
+        background-color: #ffffff !important;
         border: none !important;
         border-radius: 10px !important;
         height: 36px !important;
@@ -521,7 +396,7 @@ st.html(
         color: {T["accent_gold"]} !important;
     }}
     li[data-baseweb="menu-item"][aria-selected="true"] {{
-        background-color: {'rgba(154, 96, 20, 0.12)' if is_light else 'rgba(154, 96, 20, 0.25)'} !important;
+        background-color: rgba(154, 96, 20, 0.12) !important;
         color: {T["accent_gold"]} !important;
         font-weight: 700 !important;
     }}
@@ -612,13 +487,13 @@ st.html(
             right: 0 !important;
         }}
 
-        /* Keep the 3 header controls (Theme, Sync, Timestamp) nicely side-by-side in their inner row on mobile */
+        /* Keep the header controls (Sync, Timestamp) nicely side-by-side in their inner row on mobile */
         div[data-testid="stHorizontalBlock"]:has(.mobile-sync-btn):not(:has(.mobile-card-badge)) {{
             display: flex !important;
             flex-direction: row !important;
             flex-wrap: nowrap !important;
             align-items: center !important;
-            justify-content: space-between !important;
+            justify-content: flex-end !important;
             gap: 8px !important;
             width: 100% !important;
         }}
@@ -629,10 +504,6 @@ st.html(
             flex: 1 1 auto !important;
         }}
         div[data-testid="stHorizontalBlock"]:has(.mobile-sync-btn):not(:has(.mobile-card-badge)) > div[data-testid="stColumn"]:first-child {{
-            flex: 0 0 auto !important;
-            min-width: 110px !important;
-        }}
-        div[data-testid="stHorizontalBlock"]:has(.mobile-sync-btn):not(:has(.mobile-card-badge)) > div[data-testid="stColumn"]:nth-child(2) {{
             flex: 1 1 auto !important;
         }}
         div[data-testid="stHorizontalBlock"]:has(.mobile-sync-btn):not(:has(.mobile-card-badge)) > div[data-testid="stColumn"]:last-child {{
@@ -657,14 +528,14 @@ def load_data():
 data = load_data()
 
 # ─── Top Header Bar ───────────────────────────────────────────────────────────
-col_head_left, col_head_right = st.columns([2.6, 1.4], vertical_alignment="center")
+col_head_left, col_head_right = st.columns([2.8, 1.2], vertical_alignment="center")
 
 with col_head_left:
     sub_c1, sub_c2 = st.columns([0.08, 0.92], vertical_alignment="center")
     with sub_c1:
         st.markdown(
             f"""
-            <div style="width: 38px; height: 38px; background: {'#faf8f4' if is_light else '#1e293b'}; color: {T['accent_gold']}; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 20px; font-weight: 900; border: 1px solid {T['border']};">
+            <div style="width: 38px; height: 38px; background: #faf8f4; color: {T['accent_gold']}; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 20px; font-weight: 900; border: 1px solid {T['border']};">
                 💳
             </div>
             """,
@@ -675,7 +546,7 @@ with col_head_left:
         with card_col:
             st.markdown(
                 f"""
-                <div style="font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: {'#9a6014' if is_light else '#fbbf24'}; margin-bottom: 2px;">
+                <div style="font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #9a6014; margin-bottom: 2px;">
                     Selected Card Account
                 </div>
                 """,
@@ -721,18 +592,8 @@ with col_head_left:
         )
 
 with col_head_right:
-    btn_col1, btn_col2, btn_col3 = st.columns([1.25, 1.05, 0.9], vertical_alignment="center")
-    with btn_col1:
-        selected_theme = st.segmented_control(
-            "Theme",
-            options=["Light", "Dark"],
-            default=st.session_state["theme_mode"],
-            label_visibility="collapsed",
-        )
-        if selected_theme and selected_theme != st.session_state["theme_mode"]:
-            st.session_state["theme_mode"] = selected_theme
-            st.rerun()
-    with btn_col2:
+    btn_sync, btn_time = st.columns([1.1, 1.0], vertical_alignment="center")
+    with btn_sync:
         st.markdown("<div class='mobile-sync-btn' style='display:none;'></div>", unsafe_allow_html=True)
         if st.button("🔄 Sync", use_container_width=True):
             with st.spinner("Fetching latest alerts from Gmail..."):
@@ -743,7 +604,7 @@ with col_head_right:
                     st.rerun()
                 except Exception as exc:
                     st.error(f"Sync error: {exc}")
-    with btn_col3:
+    with btn_time:
         sync_time_str = data["sync_metadata"]["last_synced"]
         try:
             dt = datetime.datetime.fromisoformat(sync_time_str)
@@ -791,7 +652,7 @@ with hero_col1:
             <div>
                 <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 10px;">
                     <div>
-                        <div style="font-size: 13px; font-weight: 700; color: {'#9a6014' if is_light else '#60a5fa'}; text-transform: uppercase; letter-spacing: 0.05em;">
+                        <div style="font-size: 13px; font-weight: 700; color: #9a6014; text-transform: uppercase; letter-spacing: 0.05em;">
                             Accelerated Reward Points Limit
                         </div>
                         <div style="font-size: 18px; font-weight: 700; color: {T['text_main']};">
@@ -838,14 +699,14 @@ with hero_col2:
                 <div style="background: {T['subcard_bg']}; padding: 10px 14px; border-radius: 12px; border: 1px solid {T['subcard_border']}; display: flex; justify-content: space-between; align-items: center;">
                     <div>
                         <div style="font-size: 12px; color: {T['text_muted']}; font-weight: 600;">✈️ SmartBuy Flights (5X)</div>
-                        <div style="font-size: 20px; font-weight: 800; color: {'#9a6014' if is_light else '#38bdf8'};">₹{active_cap["flight_spend_capacity"]:,}</div>
+                        <div style="font-size: 20px; font-weight: 800; color: #9a6014;">₹{active_cap["flight_spend_capacity"]:,}</div>
                     </div>
                     <span style="font-size: 12px; color: {T['text_sub']}; text-align: right;">4X bonus<br>(20 RP / ₹150)</span>
                 </div>
                 <div style="background: {T['subcard_bg']}; padding: 10px 14px; border-radius: 12px; border: 1px solid {T['subcard_border']}; display: flex; justify-content: space-between; align-items: center;">
                     <div>
                         <div style="font-size: 12px; color: {T['text_muted']}; font-weight: 600;">🏨 SmartBuy Hotels (10X)</div>
-                        <div style="font-size: 20px; font-weight: 800; color: {'#784708' if is_light else '#a78bfa'};">₹{active_cap["hotel_spend_capacity"]:,}</div>
+                        <div style="font-size: 20px; font-weight: 800; color: #784708;">₹{active_cap["hotel_spend_capacity"]:,}</div>
                     </div>
                     <span style="font-size: 12px; color: {T['text_sub']}; text-align: right;">9X bonus<br>(45 RP / ₹150)</span>
                 </div>
@@ -879,7 +740,7 @@ with hero_col3:
                         <div style="font-size: 10.5px; color: {T['text_sub']}; line-height: 1.1;">Total points earned to date</div>
                     </div>
                     <div style="text-align: right;">
-                        <span style="font-size: 17px; font-weight: 800; color: {'#b45309' if is_light else '#fbbf24'}; letter-spacing: -0.01em;">{lifetime_earned:,}</span>
+                        <span style="font-size: 17px; font-weight: 800; color: #b45309; letter-spacing: -0.01em;">{lifetime_earned:,}</span>
                         <span style="font-size: 11px; font-weight: 600; color: {T['text_muted']};"> RP</span>
                     </div>
                 </div>
@@ -889,7 +750,7 @@ with hero_col3:
                         <div style="font-size: 10.5px; color: {T['text_sub']}; line-height: 1.1;">Worth <b>₹{current_available:,}</b> on SmartBuy</div>
                     </div>
                     <div style="text-align: right;">
-                        <span style="font-size: 17px; font-weight: 800; color: {'#9a6014' if is_light else '#38bdf8'}; letter-spacing: -0.01em;">{current_available:,}</span>
+                        <span style="font-size: 17px; font-weight: 800; color: #9a6014; letter-spacing: -0.01em;">{current_available:,}</span>
                         <span style="font-size: 11px; font-weight: 600; color: {T['text_muted']};"> RP</span>
                     </div>
                 </div>
@@ -899,7 +760,7 @@ with hero_col3:
                         <div style="font-size: 10.5px; color: {T['text_sub']}; line-height: 1.1;">{lifetime_earned:,} RP / ₹{total_spend_all:,.0f} spend</div>
                     </div>
                     <div style="text-align: right;">
-                        <span style="font-size: 17px; font-weight: 800; color: {'#15803d' if is_light else '#34d399'}; letter-spacing: -0.01em;">{lifetime_reward_rate:.2f}%</span>
+                        <span style="font-size: 17px; font-weight: 800; color: #15803d; letter-spacing: -0.01em;">{lifetime_reward_rate:.2f}%</span>
                     </div>
                 </div>
             </div>
@@ -929,18 +790,18 @@ with m_col1:
                     </div>
                     <span class="pill {tag_class}">{status_tag}</span>
                 </div>
-                <div style="font-size: 26px; font-weight: 800; color: {'#15803d' if is_light else '#10b981'}; margin: 6px 0;">
+                <div style="font-size: 26px; font-weight: 800; color: #15803d; margin: 6px 0;">
                     ₹{welcome["spend"]:,.0f} <span style="font-size: 14px; font-weight: 500; color: {T['text_sub']};">/ ₹{welcome["target"]:,.0f}</span>
-                    <span style="font-size: 13px; font-weight: 700; color: {'#15803d' if is_light else '#34d399'}; margin-left: 6px;">({welcome['progress']}%)</span>
+                    <span style="font-size: 13px; font-weight: 700; color: #15803d; margin-left: 6px;">({welcome['progress']}%)</span>
                 </div>
                 <div style="background: {T['progress_bg']}; border-radius: 999px; height: 8px; margin: 8px 0; overflow: hidden;">
-                    <div style="background: {'#15803d' if is_light else '#10b981'}; width: {welcome['progress']}%; height: 100%;"></div>
+                    <div style="background: #15803d; width: {welcome['progress']}%; height: 100%;"></div>
                 </div>
             </div>
             <div style="background: {T['subcard_bg']}; border: 1px solid {T['subcard_border']}; border-radius: 10px; padding: 9px 12px; display: flex; justify-content: space-between; align-items: center; margin-top: 10px;">
                 <div>
                     <div style="font-size: 10px; font-weight: 700; color: {T['text_sub']}; text-transform: uppercase; letter-spacing: 0.05em;">Perks Status</div>
-                    <div style="font-size: 13px; font-weight: 800; color: {'#15803d' if is_light else '#34d399'};">Unlocked & Claimed</div>
+                    <div style="font-size: 13px; font-weight: 800; color: #15803d;">Unlocked & Claimed</div>
                 </div>
                 <div style="text-align: right;">
                     <div style="font-size: 10px; font-weight: 700; color: {T['text_sub']}; text-transform: uppercase; letter-spacing: 0.05em;">Memberships</div>
@@ -968,18 +829,18 @@ with m_col2:
                     </div>
                     <span class="pill {q_class}">{q_tag}</span>
                 </div>
-                <div style="font-size: 26px; font-weight: 800; color: {'#b45309' if is_light else '#f59e0b'}; margin: 6px 0;">
+                <div style="font-size: 26px; font-weight: 800; color: #b45309; margin: 6px 0;">
                     ₹{q_bonus["spend"]:,.0f} <span style="font-size: 14px; font-weight: 500; color: {T['text_sub']};">/ ₹{q_bonus["target"]:,.0f}</span>
-                    <span style="font-size: 13px; font-weight: 700; color: {'#b45309' if is_light else '#fbbf24'}; margin-left: 6px;">({q_bonus['progress']}%)</span>
+                    <span style="font-size: 13px; font-weight: 700; color: #b45309; margin-left: 6px;">({q_bonus['progress']}%)</span>
                 </div>
                 <div style="background: {T['progress_bg']}; border-radius: 999px; height: 8px; margin: 8px 0; overflow: hidden;">
-                    <div style="background: {'#b45309' if is_light else '#f59e0b'}; width: {q_bonus['progress']}%; height: 100%;"></div>
+                    <div style="background: #b45309; width: {q_bonus['progress']}%; height: 100%;"></div>
                 </div>
             </div>
             <div style="background: {T['subcard_bg']}; border: 1px solid {T['subcard_border']}; border-radius: 10px; padding: 9px 12px; display: flex; justify-content: space-between; align-items: center; margin-top: 10px;">
                 <div>
                     <div style="font-size: 10px; font-weight: 700; color: {T['text_sub']}; text-transform: uppercase; letter-spacing: 0.05em;">Remaining Needed</div>
-                    <div style="font-size: 15px; font-weight: 800; color: {'#b45309' if is_light else '#fbbf24'}; letter-spacing: -0.01em;">₹{q_bonus['remaining']:,.0f}</div>
+                    <div style="font-size: 15px; font-weight: 800; color: #b45309; letter-spacing: -0.01em;">₹{q_bonus['remaining']:,.0f}</div>
                 </div>
                 <div style="text-align: right;">
                     <div style="font-size: 10px; font-weight: 700; color: {T['text_sub']}; text-transform: uppercase; letter-spacing: 0.05em;">Run-Rate Needed</div>
@@ -1007,18 +868,18 @@ with m_col3:
                     </div>
                     <span class="pill {ann_class}">{ann_tag}</span>
                 </div>
-                <div style="font-size: 26px; font-weight: 800; color: {'#9a6014' if is_light else '#38bdf8'}; margin: 6px 0;">
+                <div style="font-size: 26px; font-weight: 800; color: #9a6014; margin: 6px 0;">
                     ₹{annual["spend"]:,.0f} <span style="font-size: 14px; font-weight: 500; color: {T['text_sub']};">/ ₹{annual["target"]:,.0f}</span>
-                    <span style="font-size: 13px; font-weight: 700; color: {'#9a6014' if is_light else '#38bdf8'}; margin-left: 6px;">({annual['progress']}%)</span>
+                    <span style="font-size: 13px; font-weight: 700; color: #9a6014; margin-left: 6px;">({annual['progress']}%)</span>
                 </div>
                 <div style="background: {T['progress_bg']}; border-radius: 999px; height: 8px; margin: 8px 0; overflow: hidden;">
-                    <div style="background: {'#9a6014' if is_light else '#38bdf8'}; width: {annual['progress']}%; height: 100%;"></div>
+                    <div style="background: #9a6014; width: {annual['progress']}%; height: 100%;"></div>
                 </div>
             </div>
             <div style="background: {T['subcard_bg']}; border: 1px solid {T['subcard_border']}; border-radius: 10px; padding: 9px 12px; display: flex; justify-content: space-between; align-items: center; margin-top: 10px;">
                 <div>
                     <div style="font-size: 10px; font-weight: 700; color: {T['text_sub']}; text-transform: uppercase; letter-spacing: 0.05em;">Remaining to Waive</div>
-                    <div style="font-size: 15px; font-weight: 800; color: {'#9a6014' if is_light else '#38bdf8'}; letter-spacing: -0.01em;">₹{annual['remaining']:,.0f}</div>
+                    <div style="font-size: 15px; font-weight: 800; color: #9a6014; letter-spacing: -0.01em;">₹{annual['remaining']:,.0f}</div>
                 </div>
                 <div style="text-align: right;">
                     <div style="font-size: 10px; font-weight: 700; color: {T['text_sub']}; text-transform: uppercase; letter-spacing: 0.05em;">Deadline</div>
@@ -1164,19 +1025,19 @@ with tab_ledger:
                 </div>
                 <div style="background: {T['chip_bg']}; border: 1px solid {T['chip_border']}; padding: 8px 14px; border-radius: 10px;">
                     <span style="font-size: 11px; color: {T['text_muted']}; font-weight: 600;">FILTERED SPEND:</span>
-                    <span style="font-size: 14px; font-weight: 800; color: {'#9a6014' if is_light else '#38bdf8'}; margin-left: 6px;">₹{total_filtered_spend:,.2f}</span>
+                    <span style="font-size: 14px; font-weight: 800; color: #9a6014; margin-left: 6px;">₹{total_filtered_spend:,.2f}</span>
                 </div>
                 <div style="background: {T['chip_bg']}; border: 1px solid {T['chip_border']}; padding: 8px 14px; border-radius: 10px;">
                     <span style="font-size: 11px; color: {T['text_muted']}; font-weight: 600;">BASE RP:</span>
-                    <span style="font-size: 14px; font-weight: 800; color: {'#784708' if is_light else '#93c5fd'}; margin-left: 6px;">{total_filtered_base:,} RP</span>
+                    <span style="font-size: 14px; font-weight: 800; color: #784708; margin-left: 6px;">{total_filtered_base:,} RP</span>
                 </div>
                 <div style="background: {T['chip_bg']}; border: 1px solid {T['chip_border']}; padding: 8px 14px; border-radius: 10px;">
                     <span style="font-size: 11px; color: {T['text_muted']}; font-weight: 600;">ACCELERATED RP:</span>
-                    <span style="font-size: 14px; font-weight: 800; color: {'#b45309' if is_light else '#a78bfa'}; margin-left: 6px;">{total_filtered_acc:,} RP</span>
+                    <span style="font-size: 14px; font-weight: 800; color: #b45309; margin-left: 6px;">{total_filtered_acc:,} RP</span>
                 </div>
                 <div style="background: {T['chip_bg']}; border: 1px solid {T['chip_border']}; padding: 8px 14px; border-radius: 10px;">
                     <span style="font-size: 11px; color: {T['text_muted']}; font-weight: 600;">TOTAL RP:</span>
-                    <span style="font-size: 14px; font-weight: 800; color: {'#15803d' if is_light else '#10b981'}; margin-left: 6px;">{total_filtered_rp:,} RP</span>
+                    <span style="font-size: 14px; font-weight: 800; color: #15803d; margin-left: 6px;">{total_filtered_rp:,} RP</span>
                 </div>
             </div>
             """,
@@ -1238,11 +1099,11 @@ with tab_redemptions:
         <div style="background: {T['subcard_bg']}; border: 1px solid {T['subcard_border']}; border-radius: 12px; padding: 14px 20px; margin-bottom: 16px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;">
             <div>
                 <span style="font-size: 11px; color: {T['text_muted']}; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em;">Points Burned:</span>
-                <span style="font-size: 16px; font-weight: 800; color: {'#b45309' if is_light else '#fbbf24'}; margin-left: 6px;">{total_pts_burned:,} RP</span>
+                <span style="font-size: 16px; font-weight: 800; color: #b45309; margin-left: 6px;">{total_pts_burned:,} RP</span>
             </div>
             <div>
                 <span style="font-size: 11px; color: {T['text_muted']}; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em;">Direct Savings:</span>
-                <span style="font-size: 16px; font-weight: 800; color: {'#15803d' if is_light else '#34d399'}; margin-left: 6px;">₹{total_saved:,.0f}</span>
+                <span style="font-size: 16px; font-weight: 800; color: #15803d; margin-left: 6px;">₹{total_saved:,.0f}</span>
             </div>
             <div>
                 <span style="font-size: 11px; color: {T['text_muted']}; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em;">Total Booking Value:</span>
@@ -1250,7 +1111,7 @@ with tab_redemptions:
             </div>
             <div>
                 <span style="font-size: 11px; color: {T['text_muted']}; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em;">Cash Paid (DCBM):</span>
-                <span style="font-size: 16px; font-weight: 800; color: {'#9a6014' if is_light else '#38bdf8'}; margin-left: 6px;">₹{total_cash:,.0f}</span>
+                <span style="font-size: 16px; font-weight: 800; color: #9a6014; margin-left: 6px;">₹{total_cash:,.0f}</span>
             </div>
         </div>
         """,

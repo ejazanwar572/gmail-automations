@@ -40,10 +40,6 @@ def render_app():
     except Exception:
         pass
 
-    # Theme Configuration
-    if "theme_mode" not in st.session_state:
-        st.session_state["theme_mode"] = "Light"
-
     # ─── Multi-Card Router Gate ───────────────────────────────────────────────────
     if "selected_card" in st.session_state and "HDFC" in str(st.session_state["selected_card"]):
         hdfc_app_path = ROOT_DIR / "HDFC Diners Black Metal Statements" / "hdfc_dcbm_app.py"
@@ -52,75 +48,39 @@ def render_app():
             runpy.run_path(str(hdfc_app_path), run_name="__main__")
             st.stop()
 
-    is_light = st.session_state["theme_mode"] == "Light"
-
-    # Theme Palettes
-    if is_light:
-        T = {
-            "app_bg": "#fbf9f4",
-            "text_main": "#18181b",
-            "text_muted": "#71717a",
-            "text_sub": "#8c8379",
-            "border": "#e2ded5",
-            "border_sub": "#ece8e1",
-            "card_bg": "#ffffff",
-            "card_border": "#e2ded5",
-            "card_shadow": "0 4px 16px rgba(40, 30, 20, 0.05)",
-            "hero_bg": "#ffffff",
-            "hero_border": "#e2ded5",
-            "subcard_bg": "#f5f3ed",
-            "subcard_border": "#e2ded5",
-            "accent_red": "#db0011",
-            "accent_red_bg": "rgba(219, 0, 17, 0.08)",
-            "accent_red_border": "rgba(219, 0, 17, 0.25)",
-            "accent_green": "#15803d",
-            "accent_green_bg": "rgba(21, 128, 61, 0.1)",
-            "accent_green_border": "rgba(21, 128, 61, 0.25)",
-            "accent_gold": "#9a6014",
-            "accent_gold_bg": "rgba(154, 96, 20, 0.1)",
-            "accent_gold_border": "rgba(154, 96, 20, 0.25)",
-            "progress_bg": "#ede7dc",
-            "sync_bg": "linear-gradient(135deg, #9a6014 0%, #784708 100%)",
-            "sync_hover": "linear-gradient(135deg, #b47820 0%, #9a6014 100%)",
-            "sync_border": "#b47820",
-            "sync_shadow": "0 4px 14px rgba(154, 96, 20, 0.25)",
-            "pill_time_bg": "rgba(154, 96, 20, 0.1)",
-            "pill_time_color": "#9a6014",
-            "pill_time_border": "rgba(154, 96, 20, 0.25)",
-        }
-    else:
-        T = {
-            "app_bg": "#0f172a",
-            "text_main": "#f8fafc",
-            "text_muted": "#94a3b8",
-            "text_sub": "#64748b",
-            "border": "#334155",
-            "border_sub": "#1e293b",
-            "card_bg": "#1e293b",
-            "card_border": "#334155",
-            "card_shadow": "0 4px 20px rgba(0, 0, 0, 0.35)",
-            "hero_bg": "#1e293b",
-            "hero_border": "#334155",
-            "subcard_bg": "#0f172a",
-            "subcard_border": "#334155",
-            "accent_red": "#ef4444",
-            "accent_red_bg": "rgba(239, 68, 68, 0.12)",
-            "accent_red_border": "rgba(239, 68, 68, 0.3)",
-            "accent_green": "#22c55e",
-            "accent_green_bg": "rgba(34, 197, 94, 0.12)",
-            "accent_green_border": "rgba(34, 197, 94, 0.3)",
-            "accent_gold": "#fbbf24",
-            "accent_gold_bg": "rgba(251, 191, 36, 0.12)",
-            "accent_gold_border": "rgba(251, 191, 36, 0.3)",
-            "progress_bg": "#334155",
-            "sync_bg": "linear-gradient(135deg, #9a6014 0%, #784708 100%)",
-            "sync_hover": "linear-gradient(135deg, #b47820 0%, #9a6014 100%)",
-            "sync_border": "#b47820",
-            "sync_shadow": "0 4px 14px rgba(154, 96, 20, 0.3)",
-            "pill_time_bg": "rgba(59, 130, 246, 0.1)",
-            "pill_time_color": "#60a5fa",
-            "pill_time_border": "rgba(59, 130, 246, 0.25)",
-        }
+    # Theme Palette (Light Theme)
+    T = {
+        "app_bg": "#fbf9f4",
+        "text_main": "#18181b",
+        "text_muted": "#71717a",
+        "text_sub": "#8c8379",
+        "border": "#e2ded5",
+        "border_sub": "#ece8e1",
+        "card_bg": "#ffffff",
+        "card_border": "#e2ded5",
+        "card_shadow": "0 4px 16px rgba(40, 30, 20, 0.05)",
+        "hero_bg": "#ffffff",
+        "hero_border": "#e2ded5",
+        "subcard_bg": "#f5f3ed",
+        "subcard_border": "#e2ded5",
+        "accent_red": "#db0011",
+        "accent_red_bg": "rgba(219, 0, 17, 0.08)",
+        "accent_red_border": "rgba(219, 0, 17, 0.25)",
+        "accent_green": "#15803d",
+        "accent_green_bg": "rgba(21, 128, 61, 0.1)",
+        "accent_green_border": "rgba(21, 128, 61, 0.25)",
+        "accent_gold": "#9a6014",
+        "accent_gold_bg": "rgba(154, 96, 20, 0.1)",
+        "accent_gold_border": "rgba(154, 96, 20, 0.25)",
+        "progress_bg": "#ede7dc",
+        "sync_bg": "linear-gradient(135deg, #9a6014 0%, #784708 100%)",
+        "sync_hover": "linear-gradient(135deg, #b47820 0%, #9a6014 100%)",
+        "sync_border": "#b47820",
+        "sync_shadow": "0 4px 14px rgba(154, 96, 20, 0.25)",
+        "pill_time_bg": "rgba(154, 96, 20, 0.1)",
+        "pill_time_color": "#9a6014",
+        "pill_time_border": "rgba(154, 96, 20, 0.25)",
+    }
 
     # Inject Custom CSS matching V5 Prototype
     st.html(
@@ -343,60 +303,6 @@ def render_app():
             background: {T["sync_hover"]} !important;
         }}
 
-        /* ─── Executive Theme Switcher & Segmented Control (Variant 2) ─── */
-        div[data-testid="stButtonGroup"] {{
-            background: {T["subcard_bg"]} !important;
-            border: 1px solid {T["border"]} !important;
-            border-radius: 10px !important;
-            padding: 2px !important;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05) !important;
-        }}
-        div[data-testid="stButtonGroup"] [data-baseweb="button-group"],
-        div[data-testid="stButtonGroup"] [role="radiogroup"] {{
-            gap: 2px !important;
-            background: transparent !important;
-        }}
-        div[data-testid="stButtonGroup"] button,
-        div[data-testid="stButtonGroup"] button[role="radio"],
-        button[data-testid="stBaseButton-segmented_control"] {{
-            border-radius: 8px !important;
-            border: none !important;
-            font-size: 12.5px !important;
-            font-weight: 600 !important;
-            padding: 0 12px !important;
-            color: {T["text_muted"]} !important;
-            background: transparent !important;
-            transition: all 0.15s ease !important;
-        }}
-        div[data-testid="stButtonGroup"] button:hover,
-        div[data-testid="stButtonGroup"] button[role="radio"]:hover,
-        button[data-testid="stBaseButton-segmented_control"]:hover {{
-            color: {T["text_main"]} !important;
-            background: {'rgba(0,0,0,0.04)' if is_light else 'rgba(255,255,255,0.06)'} !important;
-        }}
-        /* Active Selection in Theme Switcher (Both React-Aria & BaseWeb) */
-        div[data-testid="stButtonGroup"] button[data-selected="true"],
-        div[data-testid="stButtonGroup"] button[aria-checked="true"],
-        div[data-testid="stButtonGroup"] button[kind="segmented_controlActive"],
-        div[data-testid="stButtonGroup"] button[data-testid="stBaseButton-segmented_controlActive"],
-        button[data-testid="stBaseButton-segmented_controlActive"] {{
-            background: {'#1e293b' if is_light else '#f8fafc'} !important;
-            background-color: {'#1e293b' if is_light else '#f8fafc'} !important;
-            color: {'#ffffff' if is_light else '#0f172a'} !important;
-            font-weight: 700 !important;
-            border: 1px solid {'#0f172a' if is_light else '#e2e8f0'} !important;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.14) !important;
-        }}
-        div[data-testid="stButtonGroup"] button[data-selected="true"] *,
-        div[data-testid="stButtonGroup"] button[aria-checked="true"] *,
-        button[data-testid="stBaseButton-segmented_controlActive"] * {{
-            color: {'#ffffff' if is_light else '#0f172a'} !important;
-            font-weight: 700 !important;
-        }}
-        div[data-testid="stButtonGroup"] button:not([data-selected="true"]):not([aria-checked="true"]) * {{
-            color: {T["text_muted"]} !important;
-        }}
-
         /* ─── Selectbox for Card Switcher - Executive Variant 2 (Both React-Aria & BaseWeb) ─── */
         div[data-testid="stSelectbox"] {{
             margin-bottom: 0px !important;
@@ -404,8 +310,8 @@ def render_app():
         div[data-testid="stSelectbox"] .react-aria-ComboBox,
         div[data-testid="stSelectbox"] div[data-rac=""][role="group"],
         div[data-testid="stSelectbox"] div[data-baseweb="select"] {{
-            background: {'#ffffff' if is_light else '#1e293b'} !important;
-            background-color: {'#ffffff' if is_light else '#1e293b'} !important;
+            background: #ffffff !important;
+            background-color: #ffffff !important;
             border: 1px solid {T["border"]} !important;
             border-radius: 10px !important;
             font-weight: 700 !important;
@@ -417,8 +323,8 @@ def render_app():
             transition: border-color 0.2s ease, box-shadow 0.2s ease !important;
         }}
         div[data-testid="stSelectbox"] div[data-baseweb="select"] > div {{
-            background: {'#ffffff' if is_light else '#1e293b'} !important;
-            background-color: {'#ffffff' if is_light else '#1e293b'} !important;
+            background: #ffffff !important;
+            background-color: #ffffff !important;
             border: none !important;
             border-radius: 10px !important;
             height: 36px !important;
@@ -466,7 +372,7 @@ def render_app():
             color: {T["accent_red"]} !important;
         }}
         li[data-baseweb="menu-item"][aria-selected="true"] {{
-            background-color: {'rgba(219, 0, 17, 0.12)' if is_light else 'rgba(219, 0, 17, 0.25)'} !important;
+            background-color: rgba(219, 0, 17, 0.12) !important;
             color: {T["accent_red"]} !important;
             font-weight: 700 !important;
         }}
@@ -514,13 +420,13 @@ def render_app():
                 max-width: 100% !important;
                 flex: 1 1 100% !important;
             }}
-            /* Controls row on mobile: Theme, Sync, Time side-by-side */
+            /* Controls row on mobile: Sync, Time side-by-side */
             div[data-testid="stHorizontalBlock"]:has(.mobile-sync-btn):not(:has(.mobile-card-badge)) {{
                 display: flex !important;
                 flex-direction: row !important;
                 flex-wrap: nowrap !important;
                 align-items: center !important;
-                justify-content: space-between !important;
+                justify-content: flex-end !important;
                 gap: 8px !important;
                 width: 100% !important;
             }}
@@ -531,10 +437,6 @@ def render_app():
                 flex: 1 1 auto !important;
             }}
             div[data-testid="stHorizontalBlock"]:has(.mobile-sync-btn):not(:has(.mobile-card-badge)) > div[data-testid="stColumn"]:first-child {{
-                flex: 0 0 auto !important;
-                min-width: 110px !important;
-            }}
-            div[data-testid="stHorizontalBlock"]:has(.mobile-sync-btn):not(:has(.mobile-card-badge)) > div[data-testid="stColumn"]:nth-child(2) {{
                 flex: 1 1 auto !important;
             }}
             div[data-testid="stHorizontalBlock"]:has(.mobile-sync-btn):not(:has(.mobile-card-badge)) > div[data-testid="stColumn"]:last-child {{
@@ -567,7 +469,7 @@ def render_app():
     data = load_data()
 
     # ─── Top Header Bar ────────────────────────────────────────────────────────
-    col_head_left, col_head_right = st.columns([2.6, 1.4], vertical_alignment="center")
+    col_head_left, col_head_right = st.columns([2.8, 1.2], vertical_alignment="center")
 
     with col_head_left:
         sub_c1, sub_c2 = st.columns([0.08, 0.92], vertical_alignment="center")
@@ -631,18 +533,8 @@ def render_app():
             )
 
     with col_head_right:
-        btn_col1, btn_col2, btn_col3 = st.columns([1.25, 1.05, 0.9], vertical_alignment="center")
-        with btn_col1:
-            selected_theme = st.segmented_control(
-                "Theme",
-                options=["Light", "Dark"],
-                default=st.session_state["theme_mode"],
-                label_visibility="collapsed",
-            )
-            if selected_theme and selected_theme != st.session_state["theme_mode"]:
-                st.session_state["theme_mode"] = selected_theme
-                st.rerun()
-        with btn_col2:
+        btn_sync, btn_time = st.columns([1.1, 1.0], vertical_alignment="center")
+        with btn_sync:
             st.markdown("<div class='mobile-sync-btn' style='display:none;'></div>", unsafe_allow_html=True)
             if st.button("🔄 Sync", use_container_width=True):
                 with st.spinner("Fetching latest alerts from Gmail..."):
@@ -656,7 +548,7 @@ def render_app():
                             st.rerun()
                     except Exception as exc:
                         st.error(f"Sync error: {exc}")
-        with btn_col3:
+        with btn_time:
             sync_time_str = data["sync_metadata"]["last_synced"]
             try:
                 dt = datetime.datetime.fromisoformat(sync_time_str)

@@ -15,3 +15,8 @@
 - [x] Verify `compute_hsbc_dashboard_data` and test dashboard calculation with new transactions <!-- id: 14 -->
 - [x] Commit and push changes to `main` (and `feature/hsbc-live-plus`) so Streamlit Cloud updates <!-- id: 15 -->
 - [x] Verify live Streamlit app displays the latest HSBC transactions <!-- id: 16 -->
+- [x] Remove theme toggle and dark mode backend in `HSBC Live Plus Statements/hsbc_live_plus_app.py` <!-- id: 17 -->
+- [x] Remove theme toggle and dark mode backend in `HDFC Diners Black Metal Statements/hdfc_dcbm_app.py` <!-- id: 18 -->
+- [x] Create `.streamlit/config.toml` enforcing `base = "light"` <!-- id: 19 -->
+- [x] Run test suites and verify UI execution <!-- id: 20 -->
+- [x] Push to `origin/main` and verify live deployment <!-- id: 21 -->
