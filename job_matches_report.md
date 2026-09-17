@@ -1,5 +1,16 @@
 # Automated Job Matcher Run History
 
+## 📅 Scan Run: 2026-09-17 11:09:11
+- **Total New Jobs Scraped**: 42
+- **High-Match Roles (Score &ge; 70)**: 3
+
+| Job Title | Company | Location | Match Score | Key Matches | Gaps |
+| :--- | :--- | :--- | :-: | :--- | :--- |
+| [Insights Program Manager, Audit and Insights ](https://www.amazon.jobs/en/jobs/10551685/insights-program-manager-audit-and-insights) | Amazon | Hyderabad, TS, IND | **90/100** | • 3+ Yrs Program Management<br>• 3+ Yrs Process Improvement<br>• SQL, Excel, Data Analysis<br>• Stakeholder Management | • Hyderabad Location<br>• Audit Domain Experience |
+| [Digital Commerce - Commercial Senior Manager](https://globalcareers-pepsico.icims.com/jobs/474861/login) | PepsiCo | Hyderabad, India | **82/100** | • 7-8 years experience required<br>• SQL, Python, ML/Gen AI<br>• A/B Testing, Causal Methods<br>• Tableau, Power BI, Storytelling | • Digital Commerce Domain |
+| [Senior Product Manager](https://careers.smartrecruiters.com/freshworks/744000150062710) | Smartrecruiters | Bengaluru, in | **78/100** | • 8+ Yrs Exp Required<br>• Structured experimentation<br>• Leveraging AI solutions<br>• Bengaluru Location Fit | • Direct product ownership<br>• CX product building |
+
+---
 ## 📅 Scan Run: 2026-09-17 03:39:27
 - **Total New Jobs Scraped**: 8
 - **High-Match Roles (Score &ge; 70)**: 0
