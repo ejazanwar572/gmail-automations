@@ -1,5 +1,15 @@
 # Automated Job Matcher Run History
 
+## 📅 Scan Run: 2026-09-18 16:00:30
+- **Total New Jobs Scraped**: 25
+- **High-Match Roles (Score &ge; 70)**: 2
+
+| Job Title | Company | Location | Match Score | Key Matches | Gaps |
+| :--- | :--- | :--- | :-: | :--- | :--- |
+| [Business Analyst - AMZL S&OP, S&OP](https://www.amazon.jobs/en/jobs/10485771/business-analyst-amzl-s-op-s-op) | Amazon | Bengaluru, KA, IND | **82/100** | • 1+ Yrs Data Analytics Exp<br>• SQL & Python Expertise<br>• ETL & Data Pipelines<br>• Build Dashboards/Reports | • Advanced Excel Skills |
+| [Business Analyst II, ROC WFM (Workforce Management)](https://www.amazon.jobs/en/jobs/10553351/business-analyst-ii-roc-wfm-workforce-management) | Amazon | Hyderabad, TS, IND | **70/100** | • BA/Data Analyst 2+ Yrs Exp<br>• SQL experience<br>• Tableau experience 2+ Yrs<br>• Automation & AI solutions<br>• Stakeholder collaboration<br>• Hyderabad location | • WFM domain knowledge<br>• Excel VBA/Power Pivots<br>• Level mismatch (overqualified) |
+
+---
 ## 📅 Scan Run: 2026-09-18 10:42:55
 - **Total New Jobs Scraped**: 20
 - **High-Match Roles (Score &ge; 70)**: 1
