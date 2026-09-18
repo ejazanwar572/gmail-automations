@@ -1,5 +1,14 @@
 # Automated Job Matcher Run History
 
+## 📅 Scan Run: 2026-09-18 10:42:55
+- **Total New Jobs Scraped**: 20
+- **High-Match Roles (Score &ge; 70)**: 1
+
+| Job Title | Company | Location | Match Score | Key Matches | Gaps |
+| :--- | :--- | :--- | :-: | :--- | :--- |
+| [Data Scientist](https://jobs.ebayinc.com/us/en/job/R0076346/data-scientist) | eBay | Bengaluru, India | **90/100** | • 5+ Yrs Exp, Analytics/DS<br>• SQL, Python, Predictive Analytics<br>• A/B Testing, Causal Methods<br>• Stakeholder Mgmt, LLMs, Bengaluru | • Specific Trust/Risk Domain |
+
+---
 ## 📅 Scan Run: 2026-09-18 03:23:40
 - **Total New Jobs Scraped**: 4
 - **High-Match Roles (Score &ge; 70)**: 0
