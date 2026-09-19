@@ -20,7 +20,8 @@
         "BIGBASKET",
         "RESTAURANT",
         "DINING",
-        "FOOD"
+        "FOOD",
+        "ROYAL MART"
       ],
       "monthly_cap": 1200,
       "name": "10% Dining, Food Delivery and Grocery",
@@ -45,7 +46,7 @@
     "categories": {
       "Dining and food delivery": {
         "mccs": ["5811", "5812", "5813", "5814"],
-        "keywords": ["ZOMATO", "SWIGGY", "RESTAURANT", "DINING", "FOOD"]
+        "keywords": ["ZOMATO", "SWIGGY", "RESTAURANT", "DINING", "FOOD", "ROYAL MART"]
       },
       "Grocery": {
         "mccs": ["5411", "5422", "5441", "5451", "5462", "5499", "5921"],

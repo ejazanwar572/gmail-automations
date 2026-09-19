@@ -11,7 +11,7 @@
 
 - Period: 2026-06-29 to 2027-06-28
 
-- Days left: 283
+- Days left: 282
 
 - Progress: INR 25,719.80 of INR 200,000.00
 - Remaining: INR 174,280.20
@@ -38,17 +38,17 @@
 ## 4. Current Cycle Transaction Table
 | Date | Merchant | Amount | Benefit Bucket |
 | :--- | :--- | ---: | :--- |
-| 2026-09-16 | ROYAL MART | INR 92.00 | Unclassified |
+| 2026-09-16 | ROYAL MART | INR 92.00 | Dining and food delivery |
 | 2026-09-17 | SWIGGY FOOD | INR 108.00 | Dining and food delivery |
 | 2026-09-17 | SWIGGY FOOD | INR 108.00 | Dining and food delivery |
 
 ## 5. Benefit Utilization and Recommendation
-- Shared 10% cashback cap: INR 21.60 of INR 1,200.00; INR 1,178.40 remaining
+- Shared 10% cashback cap: INR 30.80 of INR 1,200.00; INR 1,169.20 remaining
 - Policy version: 2026-07-26 (effective 2026-07-26; reviewed 2026-07-29)
 
 | Benefit | Spend | Earned/Value | Cap/Target | Remaining | Transactions |
 | :--- | ---: | ---: | :--- | :--- | :---: |
-| Dining and food delivery | INR 216.00 | INR 21.60 | Shared INR 1,200.00 | See shared cap | 2 |
+| Dining and food delivery | INR 308.00 | INR 30.80 | Shared INR 1,200.00 | See shared cap | 3 |
 | Grocery | INR 0.00 | INR 0.00 | Shared INR 1,200.00 | See shared cap | 0 |
 | Shopping | INR 0.00 | INR 0.00 | Shared INR 1,200.00 | See shared cap | 0 |
 | Utilities | INR 0.00 | INR 0.00 | Shared INR 1,200.00 | See shared cap | 0 |
@@ -56,14 +56,14 @@
 
 Keep using this card for categories where the tracked benefit rate is strongest.
 
-- Needs MCC evidence: INR 92.00 across 1 transaction
+- Needs MCC evidence: INR 0.00 across 0 transactions
 
 ### Contactless fuel offer
 `░░░░░░░░░░░░░░░░░░░░ 0.0%`
 
 - Period: 2026-07-26 to 2026-09-30
 
-- Days left: 12
+- Days left: 11
 
 - Progress: INR 0.00 of INR 10,000.00
 - Remaining: INR 10,000.00

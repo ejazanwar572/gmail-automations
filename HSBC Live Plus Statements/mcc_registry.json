@@ -43,10 +43,10 @@
       "source": "DMart Ready App Gateway"
     },
     "ROYAL MART": {
-      "mcc": "5411",
-      "category": "Grocery",
+      "mcc": "5814",
+      "category": "Dining and food delivery",
       "eligible_10_percent": true,
-      "source": "Local Supermarket POS Terminal"
+      "source": "HSBC Support Verified (MCC 5814)"
     },
     "RAZ*SWIGGY": {
       "mcc": "5812",
