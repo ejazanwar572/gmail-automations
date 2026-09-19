@@ -1,5 +1,14 @@
 # Automated Job Matcher Run History
 
+## 📅 Scan Run: 2026-09-19 10:24:22
+- **Total New Jobs Scraped**: 3
+- **High-Match Roles (Score &ge; 70)**: 1
+
+| Job Title | Company | Location | Match Score | Key Matches | Gaps |
+| :--- | :--- | :--- | :-: | :--- | :--- |
+| [Sr. Data Scientist, Amazon Pay Data Products](https://www.amazon.jobs/en/jobs/10554136/sr-data-scientist-amazon-pay-data-products) | Amazon | Bengaluru, KA, IND | **85/100** | • SQL, Python (5+ Yrs Exp)<br>• 4+ Yrs Data Scientist<br>• LLM, Generative AI<br>• Bengaluru Location | • MLOps Tools (PyTorch, SageMaker)<br>• AWS ML Services |
+
+---
 ## 📅 Scan Run: 2026-09-19 03:18:14
 - **Total New Jobs Scraped**: 3
 - **High-Match Roles (Score &ge; 70)**: 0
