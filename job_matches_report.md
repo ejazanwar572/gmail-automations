@@ -1,5 +1,14 @@
 # Automated Job Matcher Run History
 
+## 📅 Scan Run: 2026-09-19 22:44:38
+- **Total New Jobs Scraped**: 10
+- **High-Match Roles (Score &ge; 70)**: 1
+
+| Job Title | Company | Location | Match Score | Key Matches | Gaps |
+| :--- | :--- | :--- | :-: | :--- | :--- |
+| [Applied Scientist, CMT](https://www.amazon.jobs/en/jobs/10530901/applied-scientist-cmt) | Amazon | Bengaluru, KA, IND | **85/100** | • SQL & Python programming<br>• ML models for business application<br>• LLM & Recommender systems<br>• Bengaluru, India Location | • Deep learning architecture design<br>• Java/C++ programming |
+
+---
 ## 📅 Scan Run: 2026-09-19 20:14:09
 - **Total New Jobs Scraped**: 22
 - **High-Match Roles (Score &ge; 70)**: 0
