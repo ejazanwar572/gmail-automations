@@ -1,5 +1,14 @@
 # Automated Job Matcher Run History
 
+## 📅 Scan Run: 2026-09-21 12:14:24
+- **Total New Jobs Scraped**: 68
+- **High-Match Roles (Score &ge; 70)**: 1
+
+| Job Title | Company | Location | Match Score | Key Matches | Gaps |
+| :--- | :--- | :--- | :-: | :--- | :--- |
+| [Associate Manager- Revenue Management](https://globalcareers-pepsico.icims.com/jobs/474402/login) | PepsiCo | Hyderabad, India | **70/100** | • Tableau/Power BI skills<br>• Predictive modeling experience<br>• Statistical data analysis<br>• Consumer behavior analysis | • No FMCG/CPG experience<br>• No Revenue Management domain |
+
+---
 ## 📅 Scan Run: 2026-09-21 03:29:40
 - **Total New Jobs Scraped**: 2
 - **High-Match Roles (Score &ge; 70)**: 0
