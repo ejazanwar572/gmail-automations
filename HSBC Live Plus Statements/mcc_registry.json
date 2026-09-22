@@ -54,6 +54,24 @@
       "eligible_10_percent": true,
       "source": "Razorpay PG / Swiggy Food"
     },
+    "CAS*SWIGGY": {
+      "mcc": "5812",
+      "category": "Dining and food delivery",
+      "eligible_10_percent": true,
+      "source": "Cashfree PG / Swiggy Food"
+    },
+    "SWIGGY FOOD": {
+      "mcc": "5812",
+      "category": "Dining and food delivery",
+      "eligible_10_percent": true,
+      "source": "Swiggy Food Orders (Direct PG)"
+    },
+    "SWIGGY PVT LTD": {
+      "mcc": "5812",
+      "category": "Dining and food delivery",
+      "eligible_10_percent": true,
+      "source": "Swiggy Food Orders (Direct PG)"
+    },
     "SWIGGY E COM": {
       "mcc": "5812",
       "category": "Dining and food delivery",
@@ -61,6 +79,12 @@
       "source": "Swiggy Food Orders"
     },
     "SWIGGY INSTAMART": {
+      "mcc": "5411",
+      "category": "Grocery",
+      "eligible_10_percent": true,
+      "source": "Swiggy Instamart Gateway"
+    },
+    "SWIGGY INSTA MART": {
       "mcc": "5411",
       "category": "Grocery",
       "eligible_10_percent": true,
