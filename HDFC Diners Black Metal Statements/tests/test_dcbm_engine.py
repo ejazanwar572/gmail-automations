@@ -42,6 +42,13 @@ class DcbmEngineTests(unittest.TestCase):
         self.assertEqual(645, base)
         self.assertEqual(2580, acc)
 
+        # SmartBuy Voucher: 3X (1X base + 2X accelerated) on DCBM
+        voucher = dcbm_engine.CATEGORIES["smartbuy_voucher"]
+        blocks, base, acc = dcbm_engine.calculate_points_for_amount(10000.0, voucher)
+        self.assertEqual(66, blocks)
+        self.assertEqual(330, base)
+        self.assertEqual(660, acc)
+
     def test_billing_cycle_dates(self):
         # Before 13th
         start, end = dcbm_engine.get_billing_cycle(date(2026, 9, 10), cycle_end_day=13)

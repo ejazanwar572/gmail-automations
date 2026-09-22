@@ -74,9 +74,9 @@ CATEGORIES = {
         name="SmartBuy Instant Vouchers",
         icon="🎟️",
         is_smartbuy=True,
-        accelerated_multiplier=4,
-        total_multiplier=5,
-        description="Up to 5X Total Points via Gyftr",
+        accelerated_multiplier=2,
+        total_multiplier=3,
+        description="3X Total Points via Gyftr (1X Base + 2X Accelerated)",
     ),
     "jewellery": TransactionCategory(
         name="Jewellery",
