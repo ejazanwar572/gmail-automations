@@ -89,6 +89,8 @@ class TestHSBCEngine(unittest.TestCase):
         data = hsbc_engine.compute_hsbc_dashboard_data(self.card_dir, today=date(2026, 9, 12))
         self.assertEqual(data["card_ending"], "8690")
         self.assertEqual(data["cashback_cap"]["cap_limit"], 1200.0)
+        self.assertIn("confirmed_cb", data["cashback_cap"])
+        self.assertIn("estimated_cb", data["cashback_cap"])
         self.assertIn("current_cycle", data["transactions"])
         self.assertIn("all", data["transactions"])
         self.assertGreater(len(data["transactions"]["all"]), 0)

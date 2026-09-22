@@ -186,6 +186,8 @@ def compute_hsbc_dashboard_data(card_dir: Path, today: Optional[date] = None) ->
     cycle_standard_spend = 0.0
     cycle_accelerated_cb = 0.0
     cycle_standard_cb = 0.0
+    cycle_confirmed_cb = 0.0
+    cycle_estimated_cb = 0.0
 
     lifetime_spend = 0.0
     lifetime_cb = 0.0
@@ -242,6 +244,10 @@ def compute_hsbc_dashboard_data(card_dir: Path, today: Optional[date] = None) ->
             if mcc_res["is_accelerated"]:
                 cycle_accelerated_spend += amt
                 cycle_accelerated_cb += earned_cb
+                if classified_entry["evidence"] == "confirmed":
+                    cycle_confirmed_cb += earned_cb
+                else:
+                    cycle_estimated_cb += earned_cb
             else:
                 cycle_standard_spend += amt
                 cycle_standard_cb += earned_cb
@@ -282,6 +288,8 @@ def compute_hsbc_dashboard_data(card_dir: Path, today: Optional[date] = None) ->
         "cashback_cap": {
             "cap_limit": monthly_cap_amount,
             "earned": capped_cycle_accelerated_cb,
+            "confirmed_cb": round(cycle_confirmed_cb, 2),
+            "estimated_cb": round(cycle_estimated_cb, 2),
             "total_cycle_cb": total_cycle_cb,
             "remaining_cb": remaining_cb,
             "percent_used": cap_percent_used,

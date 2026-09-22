@@ -592,7 +592,11 @@ def render_app():
                         <span class="hsbc-metric-large" style="color: {T['text_main']};">₹{cap_info['earned']:.2f}</span>
                         <span class="hsbc-metric-unit">/ ₹{cap_info['cap_limit']:,.0f} Cashback</span>
                     </div>
-                    <div class="hsbc-metric-sub">₹{cap_info['remaining_cb']:,.2f} remaining this cycle</div>
+                    <div class="hsbc-metric-sub">
+                        <span>₹{cap_info.get('confirmed_cb', cap_info['earned']):,.2f} confirmed + ₹{cap_info.get('estimated_cb', 0.0):,.2f} estimated</span>
+                        <span style="margin: 0 4px; opacity: 0.6;">•</span>
+                        <span>₹{cap_info['remaining_cb']:,.2f} remaining this cycle</span>
+                    </div>
                 </div>
 
                 <div style="margin-top: 16px;">
