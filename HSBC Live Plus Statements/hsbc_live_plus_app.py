@@ -20,7 +20,9 @@ ROOT_DIR = CARD_DIR.parent
 sys.path.insert(0, str(CARD_DIR))
 sys.path.insert(0, str(ROOT_DIR))
 
+import importlib
 import hsbc_engine
+importlib.reload(hsbc_engine)
 
 
 def clean_html(raw_html: str) -> str:
@@ -575,6 +577,13 @@ def render_app():
     cap_info = data["cashback_cap"]
     portfolio = data["portfolio"]
 
+    # Compute confirmed & estimated cashback directly from current cycle transactions
+    cycle_txns = data.get("transactions", {}).get("current_cycle", [])
+    calc_confirmed = sum(t["cashback_earned"] for t in cycle_txns if t.get("is_accelerated") and t.get("evidence") == "confirmed")
+    calc_estimated = sum(t["cashback_earned"] for t in cycle_txns if t.get("is_accelerated") and t.get("evidence") != "confirmed")
+    confirmed_cb = calc_confirmed if cycle_txns else cap_info.get("confirmed_cb", cap_info.get("earned", 0.0))
+    estimated_cb = calc_estimated if cycle_txns else cap_info.get("estimated_cb", 0.0)
+
     # Tile 1: 10% Cashback Tracker
     with h_col1:
         st.markdown(
@@ -593,7 +602,7 @@ def render_app():
                         <span class="hsbc-metric-unit">/ ₹{cap_info['cap_limit']:,.0f} Cashback</span>
                     </div>
                     <div class="hsbc-metric-sub">
-                        <span>₹{cap_info.get('confirmed_cb', cap_info['earned']):,.2f} confirmed + ₹{cap_info.get('estimated_cb', 0.0):,.2f} estimated</span>
+                        <span>₹{confirmed_cb:,.2f} confirmed + ₹{estimated_cb:,.2f} estimated</span>
                         <span style="margin: 0 4px; opacity: 0.6;">•</span>
                         <span>₹{cap_info['remaining_cb']:,.2f} remaining this cycle</span>
                     </div>
