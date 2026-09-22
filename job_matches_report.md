@@ -1,5 +1,14 @@
 # Automated Job Matcher Run History
 
+## 📅 Scan Run: 2026-09-22 11:07:08
+- **Total New Jobs Scraped**: 32
+- **High-Match Roles (Score &ge; 70)**: 1
+
+| Job Title | Company | Location | Match Score | Key Matches | Gaps |
+| :--- | :--- | :--- | :-: | :--- | :--- |
+| [Lead Data Analyst](https://spgi.wd5.myworkdayjobs.com/en-us/SPGI_Careers/job/IN---HYDERABAD-SKYVIEW/Lead-Data-Analyst_330704/apply) | S&P Global | Hyderabad, India | **88/100** | • SQL, Python & AI/LLM<br>• Advanced Analytical Workflows<br>• Lead, Mentor & Automate<br>• Tableau/Power BI & Vis<br>• 2-5 Years Exp Req<br>• Hyderabad Location | • Financial Domain Expertise<br>• Multi-Cloud Platform Exp |
+
+---
 ## 📅 Scan Run: 2026-09-22 03:32:20
 - **Total New Jobs Scraped**: 5
 - **High-Match Roles (Score &ge; 70)**: 0
