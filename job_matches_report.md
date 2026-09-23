@@ -1,5 +1,15 @@
 # Automated Job Matcher Run History
 
+## 📅 Scan Run: 2026-09-23 16:16:29
+- **Total New Jobs Scraped**: 71
+- **High-Match Roles (Score &ge; 70)**: 2
+
+| Job Title | Company | Location | Match Score | Key Matches | Gaps |
+| :--- | :--- | :--- | :-: | :--- | :--- |
+| [Business Analyst ](https://job-boards.greenhouse.io/razorpaysoftwareprivatelimited/jobs/4736955005) | Razorpay | Bengaluru | **82/100** | • SQL for data analysis<br>• BI Tools experience (Tableau/Looker)<br>• Manage large datasets<br>• Strong communication skills<br>• Bengaluru Location Fit | • 24/7 shifts ability<br>• Contract role type |
+| [BI & Reporting Associate Manager](https://globalcareers-pepsico.icims.com/jobs/471310/login) | PepsiCo | Hyderabad, India | **77/100** | • 5+ Yrs Exp Required<br>• Power BI hands-on<br>• SQL, Python skills<br>• Stakeholder Management<br>• Hyderabad Location Fit | • FMCG Exp Preferred<br>• Power BI specifics<br>• Product vs Commercial |
+
+---
 ## 📅 Scan Run: 2026-09-23 10:55:40
 - **Total New Jobs Scraped**: 41
 - **High-Match Roles (Score &ge; 70)**: 1
