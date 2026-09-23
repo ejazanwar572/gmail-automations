@@ -3,18 +3,18 @@
 ## 1. Executive Summary
 - Card ending: 8690
 - Current cycle: 2026-09-14 to 2026-10-13
-- Current cycle tracked spend: INR 308.00
-- Data freshness: Verified from gmail-api at 2026-09-17T19:13:18.696579+00:00; 30 unique alerts; cached total INR 25,719.80.
+- Current cycle tracked spend: INR 2,455.04
+- Data freshness: Verified from gmail-api at 2026-09-23T18:27:44.620666+00:00; 40 unique alerts; cached total INR 27,866.84.
 
 ## 2. Fee and Waiver Tracker
-`███░░░░░░░░░░░░░░░░░ 12.9%`
+`███░░░░░░░░░░░░░░░░░ 13.9%`
 
 - Period: 2026-06-29 to 2027-06-28
 
-- Days left: 282
+- Days left: 278
 
-- Progress: INR 25,719.80 of INR 200,000.00
-- Remaining: INR 174,280.20
+- Progress: INR 27,866.84 of INR 200,000.00
+- Remaining: INR 172,133.16
 - Status: In progress
 - Evidence: Provisional
 - Annual/joining fee tracked: INR 999.00
@@ -41,14 +41,24 @@
 | 2026-09-16 | ROYAL MART | INR 92.00 | Dining and food delivery |
 | 2026-09-17 | SWIGGY FOOD | INR 108.00 | Dining and food delivery |
 | 2026-09-17 | SWIGGY FOOD | INR 108.00 | Dining and food delivery |
+| 2026-09-18 | CAS*SWIGGY | INR 92.00 | Dining and food delivery |
+| 2026-09-18 | CAS*SWIGGY | INR 159.00 | Dining and food delivery |
+| 2026-09-20 | SWIGGY INSTA MART GR | INR 165.00 | Dining and food delivery |
+| 2026-09-22 | SWIGGY PVT LTD FOOD2 | INR 82.00 | Dining and food delivery |
+| 2026-09-22 | GANGA FOODS | INR 449.00 | Dining and food delivery |
+| 2026-09-22 | LULU INTERNATIONAL SHO | INR 193.04 | Unclassified |
+| 2026-09-23 | PVR LIMITED | INR 590.00 | Unclassified |
+| 2026-09-23 | SWIGGY FOOD | INR 165.00 | Dining and food delivery |
+| 2026-09-23 | SWIGGY PVT LTD FOOD1 | INR 102.00 | Dining and food delivery |
+| 2026-09-23 | SWIGGY FOOD | INR 150.00 | Dining and food delivery |
 
 ## 5. Benefit Utilization and Recommendation
-- Shared 10% cashback cap: INR 30.80 of INR 1,200.00; INR 1,169.20 remaining
+- Shared 10% cashback cap: INR 167.20 of INR 1,200.00; INR 1,032.80 remaining
 - Policy version: 2026-07-26 (effective 2026-07-26; reviewed 2026-07-29)
 
 | Benefit | Spend | Earned/Value | Cap/Target | Remaining | Transactions |
 | :--- | ---: | ---: | :--- | :--- | :---: |
-| Dining and food delivery | INR 308.00 | INR 30.80 | Shared INR 1,200.00 | See shared cap | 3 |
+| Dining and food delivery | INR 1,672.00 | INR 167.20 | Shared INR 1,200.00 | See shared cap | 11 |
 | Grocery | INR 0.00 | INR 0.00 | Shared INR 1,200.00 | See shared cap | 0 |
 | Shopping | INR 0.00 | INR 0.00 | Shared INR 1,200.00 | See shared cap | 0 |
 | Utilities | INR 0.00 | INR 0.00 | Shared INR 1,200.00 | See shared cap | 0 |
@@ -56,14 +66,14 @@
 
 Keep using this card for categories where the tracked benefit rate is strongest.
 
-- Needs MCC evidence: INR 0.00 across 0 transactions
+- Needs MCC evidence: INR 783.04 across 2 transactions
 
 ### Contactless fuel offer
 `░░░░░░░░░░░░░░░░░░░░ 0.0%`
 
 - Period: 2026-07-26 to 2026-09-30
 
-- Days left: 11
+- Days left: 7
 
 - Progress: INR 0.00 of INR 10,000.00
 - Remaining: INR 10,000.00
