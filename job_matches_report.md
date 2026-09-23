@@ -1,5 +1,14 @@
 # Automated Job Matcher Run History
 
+## 📅 Scan Run: 2026-09-23 10:55:40
+- **Total New Jobs Scraped**: 41
+- **High-Match Roles (Score &ge; 70)**: 1
+
+| Job Title | Company | Location | Match Score | Key Matches | Gaps |
+| :--- | :--- | :--- | :-: | :--- | :--- |
+| [Product Analyst](https://visa.wd5.myworkdayjobs.com/visa/visa/job/IN---Bengaluru-India/Product-Analyst_REF088644W) | Visa | IN - Bengaluru, India | **88/100** | • 2+ Yrs Product Experience<br>• AI/ML, GenAI Prototyping<br>• SQL, Python, Analytics<br>• Bangalore Location Fit<br>• Payments Domain Experience | • AI Platform build experience |
+
+---
 ## 📅 Scan Run: 2026-09-23 03:30:11
 - **Total New Jobs Scraped**: 3
 - **High-Match Roles (Score &ge; 70)**: 0
