@@ -3,18 +3,18 @@
 ## 1. Executive Summary
 - Card ending: 8690
 - Current cycle: 2026-09-14 to 2026-10-13
-- Current cycle tracked spend: INR 2,824.04
-- Data freshness: Verified from gmail-api at 2026-09-24T09:02:47.736336+00:00; 41 unique alerts; cached total INR 28,235.84.
+- Current cycle tracked spend: INR 3,765.04
+- Data freshness: Verified from gmail-api at 2026-09-24T10:03:25.559893+00:00; 42 unique alerts; cached total INR 29,176.84.
 
 ## 2. Fee and Waiver Tracker
-`███░░░░░░░░░░░░░░░░░ 14.1%`
+`███░░░░░░░░░░░░░░░░░ 14.6%`
 
 - Period: 2026-06-29 to 2027-06-28
 
 - Days left: 277
 
-- Progress: INR 28,235.84 of INR 200,000.00
-- Remaining: INR 171,764.16
+- Progress: INR 29,176.84 of INR 200,000.00
+- Remaining: INR 170,823.16
 - Status: In progress
 - Evidence: Provisional
 - Annual/joining fee tracked: INR 999.00
@@ -52,14 +52,15 @@
 | 2026-09-23 | SWIGGY PVT LTD FOOD1 | INR 102.00 | Dining and food delivery |
 | 2026-09-23 | SWIGGY FOOD | INR 150.00 | Dining and food delivery |
 | 2026-09-24 | SWIGGY E COM | INR 369.00 | Dining and food delivery |
+| 2026-09-24 | SWIGGY E COM | INR 941.00 | Dining and food delivery |
 
 ## 5. Benefit Utilization and Recommendation
-- Shared 10% cashback cap: INR 204.10 of INR 1,200.00; INR 995.90 remaining
+- Shared 10% cashback cap: INR 298.20 of INR 1,200.00; INR 901.80 remaining
 - Policy version: 2026-07-26 (effective 2026-07-26; reviewed 2026-07-29)
 
 | Benefit | Spend | Earned/Value | Cap/Target | Remaining | Transactions |
 | :--- | ---: | ---: | :--- | :--- | :---: |
-| Dining and food delivery | INR 2,041.00 | INR 204.10 | Shared INR 1,200.00 | See shared cap | 12 |
+| Dining and food delivery | INR 2,982.00 | INR 298.20 | Shared INR 1,200.00 | See shared cap | 13 |
 | Grocery | INR 0.00 | INR 0.00 | Shared INR 1,200.00 | See shared cap | 0 |
 | Shopping | INR 0.00 | INR 0.00 | Shared INR 1,200.00 | See shared cap | 0 |
 | Utilities | INR 0.00 | INR 0.00 | Shared INR 1,200.00 | See shared cap | 0 |
