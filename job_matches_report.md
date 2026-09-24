@@ -1,5 +1,14 @@
 # Automated Job Matcher Run History
 
+## 📅 Scan Run: 2026-09-24 11:17:31
+- **Total New Jobs Scraped**: 66
+- **High-Match Roles (Score &ge; 70)**: 1
+
+| Job Title | Company | Location | Match Score | Key Matches | Gaps |
+| :--- | :--- | :--- | :-: | :--- | :--- |
+| [Senior Business Analyst](https://job-boards.greenhouse.io/razorpaysoftwareprivatelimited/jobs/4736959005) | Razorpay | Bengaluru | **80/100** | • Bengaluru Location Fit<br>• SQL, BI Tools (Tableau, Looker)<br>• Data interpretation & analysis<br>• Strong communication skills | • Ability to work 24/7 shifts |
+
+---
 ## 📅 Scan Run: 2026-09-24 03:21:13
 - **Total New Jobs Scraped**: 5
 - **High-Match Roles (Score &ge; 70)**: 0
