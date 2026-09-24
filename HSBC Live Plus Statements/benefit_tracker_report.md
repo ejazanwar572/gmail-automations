@@ -4,14 +4,14 @@
 - Card ending: 8690
 - Current cycle: 2026-09-14 to 2026-10-13
 - Current cycle tracked spend: INR 3,911.04
-- Data freshness: Verified from gmail-api at 2026-09-24T18:09:02.311305+00:00; 43 unique alerts; cached total INR 29,322.84.
+- Data freshness: Verified from gmail-api at 2026-09-24T20:14:25.244135+00:00; 43 unique alerts; cached total INR 29,322.84.
 
 ## 2. Fee and Waiver Tracker
 `███░░░░░░░░░░░░░░░░░ 14.7%`
 
 - Period: 2026-06-29 to 2027-06-28
 
-- Days left: 277
+- Days left: 276
 
 - Progress: INR 29,322.84 of INR 200,000.00
 - Remaining: INR 170,677.16
@@ -76,7 +76,7 @@ Keep using this card for categories where the tracked benefit rate is strongest.
 
 - Period: 2026-07-26 to 2026-09-30
 
-- Days left: 6
+- Days left: 5
 
 - Progress: INR 0.00 of INR 10,000.00
 - Remaining: INR 10,000.00
