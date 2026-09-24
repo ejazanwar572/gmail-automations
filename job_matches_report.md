@@ -1,5 +1,14 @@
 # Automated Job Matcher Run History
 
+## 📅 Scan Run: 2026-09-24 16:37:05
+- **Total New Jobs Scraped**: 16
+- **High-Match Roles (Score &ge; 70)**: 1
+
+| Job Title | Company | Location | Match Score | Key Matches | Gaps |
+| :--- | :--- | :--- | :-: | :--- | :--- |
+| [Global Rules Analyst](https://jobs.ebayinc.com/us/en/job/R0076839/global-rules-analyst) | eBay | Bengaluru, India | **88/100** | • 3+ Yrs Exp Required<br>• SQL, Python, Tableau Skills<br>• A/B Testing & AI/LLM Focus<br>• Bengaluru Location Fit | • eBay Specific Systems<br>• Specific Policy Expertise |
+
+---
 ## 📅 Scan Run: 2026-09-24 11:17:31
 - **Total New Jobs Scraped**: 66
 - **High-Match Roles (Score &ge; 70)**: 1
