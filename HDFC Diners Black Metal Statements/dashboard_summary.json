@@ -1,13 +1,13 @@
 {
-  "alert_count": 35,
+  "alert_count": 36,
   "annual_fee": {
     "amount": 10000,
-    "eligible_spend": 393547.74,
+    "eligible_spend": 395442.5,
     "evidence_source": "HDFC approval email dated 25 June 2026 (application reference P26F18673727H0S2).",
     "evidence_state": "provisional",
     "period_end": "2027-06-24",
     "period_start": "2026-06-25",
-    "remaining_spend_for_waiver": 406452.26,
+    "remaining_spend_for_waiver": 404557.5,
     "status": "In progress",
     "waiver_spend": 800000
   },
@@ -18,7 +18,7 @@
       "name": "Eligible Reward Points Spend",
       "provisional": false,
       "remaining": null,
-      "spend": 47190.0
+      "spend": 49084.76
     }
   ],
   "card": {
@@ -29,7 +29,7 @@
     "end": "2026-10-13",
     "evidence_status": "confirmed",
     "source": "HDFC Diners Black statement PDF for 14 June 2026 to 13 July 2026.",
-    "spend": 47190.0,
+    "spend": 49084.76,
     "start": "2026-09-14",
     "statement_date": "2026-07-13"
   },
@@ -41,21 +41,21 @@
   "evidence": {
     "variant_status": "confirmed"
   },
-  "generated_at": "2026-09-25T23:58:50.597515+05:30",
+  "generated_at": "2026-09-26T00:59:35.194804+05:30",
   "provisional": false,
   "quarterly_bonus": {
     "bonus_points": 10000,
     "deadline": "2026-09-30",
     "period_start": "2026-07-01",
-    "remaining": 16770.26,
-    "spend": 383229.74,
+    "remaining": 14875.5,
+    "spend": 385124.5,
     "status": "In progress",
     "target": 400000.0
   },
   "rewards": {
     "accelerated_cap": {
       "cap": 10000,
-      "days_remaining": 5,
+      "days_remaining": 4,
       "earned": 0,
       "evidence_status": "unavailable",
       "month_end": "2026-09-30",
@@ -72,14 +72,14 @@
       "evidence_status": "mixed",
       "total": 12123
     },
-    "lifetime_spend": 393547.74,
+    "lifetime_spend": 395442.5,
     "post_statement_points": {
       "accelerated": 2620,
       "base": 655
     },
     "statement_through": "2026-07-13"
   },
-  "run_id": "636919bf-ebe6-49bb-9eeb-cfec5dcb25f6",
+  "run_id": "24f6b329-ff38-4b45-b9b4-a1f81dc94635",
   "schema_version": 1,
   "welcome": {
     "activation_date": "2026-06-30",
@@ -98,7 +98,7 @@
     ],
     "remaining": 0.0,
     "reward": null,
-    "spend": 393547.74,
+    "spend": 395442.5,
     "status": "Met",
     "target": 150000
   }

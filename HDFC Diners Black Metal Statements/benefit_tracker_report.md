@@ -4,19 +4,19 @@
 - Card ending: 2360
 - Variant status: confirmed
 - Current cycle: 2026-09-14 to 2026-10-13
-- Current cycle tracked spend: INR 47,190.00
-- Data freshness: Verified from gmail-api at 2026-09-25T18:28:50.444450+00:00; 35 unique alerts; cached total INR 393,547.74.
+- Current cycle tracked spend: INR 49,084.76
+- Data freshness: Verified from gmail-api at 2026-09-25T19:29:35.017989+00:00; 36 unique alerts; cached total INR 395,442.50.
 - Cycle source: HDFC Diners Black statement PDF for 14 June 2026 to 13 July 2026.
 
 ## 2. Fee and Waiver Tracker
-`██████████░░░░░░░░░░ 49.2%`
+`██████████░░░░░░░░░░ 49.4%`
 
 - Period: 2026-06-25 to 2027-06-24
 
-- Days left: 272
+- Days left: 271
 
-- Progress: INR 393,547.74 of INR 800,000.00
-- Remaining: INR 406,452.26
+- Progress: INR 395,442.50 of INR 800,000.00
+- Remaining: INR 404,557.50
 - Status: In progress
 - Evidence: Provisional
 - Annual/joining fee tracked: INR 10,000.00
@@ -29,23 +29,23 @@
 
 - Days left: Not applicable — milestone met
 
-- Progress: INR 393,547.74 of INR 150,000.00
+- Progress: INR 395,442.50 of INR 150,000.00
 - Remaining: INR 0.00
-- Exceeded by: INR 243,547.74
+- Exceeded by: INR 245,442.50
 - Status: Met
 - Evidence: Provisional
 - Activation proxy: HDFC MyCards control setting confirmation for xxxx2360 at 18:43 IST, followed by a successful card authorization at 18:47 IST.
 - Spend INR 1.5 lakh within first 90 days for the listed welcome memberships on the official HDFC page.
 
 ## 4. Quarterly Bonus Tracker
-`██░░░░░░░░░░░░░░░░░░ 11.8%`
+`██░░░░░░░░░░░░░░░░░░ 12.3%`
 
 - Period: 2026-07-01 to 2026-09-30
 
-- Days left: 5
+- Days left: 4
 
-- Progress: INR 47,190.00 of INR 400,000.00
-- Remaining: INR 352,810.00
+- Progress: INR 49,084.76 of INR 400,000.00
+- Remaining: INR 350,915.24
 - Status: In progress
 - Evidence: Provisional
 - Bonus on target: 10,000 reward points
@@ -56,6 +56,7 @@
 | 2026-09-25 | AMAZON | INR 663.00 | Eligible Reward Points Spend |
 | 2026-09-25 | AMAZON | INR 4,504.00 | Eligible Reward Points Spend |
 | 2026-09-25 | AMAZON | INR 334.00 | Eligible Reward Points Spend |
+| 2026-09-25 | AMAZON | INR 1,894.76 | Eligible Reward Points Spend |
 | 2026-09-24 | EMT FLIGHT VIA SMARTBU | INR 20,248.00 | Eligible Reward Points Spend |
 | 2026-09-22 | EMT FLIGHT VIA SMARTBU | INR 8,914.00 | Eligible Reward Points Spend |
 | 2026-09-22 | GYFTR VIA SMARTBUY | INR 10,000.00 | Eligible Reward Points Spend |
@@ -65,7 +66,7 @@
 ## 6. Benefit Utilization and Recommendation
 | Benefit | Spend | Earned/Value | Cap/Target | Remaining | Transactions |
 | :--- | ---: | ---: | :--- | :--- | :---: |
-| Eligible Reward Points Spend | INR 47,190.00 | INR 0.00 | Uncapped | - | 8 |
+| Eligible Reward Points Spend | INR 49,084.76 | INR 0.00 | Uncapped | - | 9 |
 
 Reward points summary:
 - Lifetime points: 12,123 (4,900 base + 7,220 accelerated + 3 bonus; mixed evidence)
