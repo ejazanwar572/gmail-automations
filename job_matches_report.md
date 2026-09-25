@@ -1,5 +1,18 @@
 # Automated Job Matcher Run History
 
+## 📅 Scan Run: 2026-09-25 11:22:05
+- **Total New Jobs Scraped**: 32
+- **High-Match Roles (Score &ge; 70)**: 5
+
+| Job Title | Company | Location | Match Score | Key Matches | Gaps |
+| :--- | :--- | :--- | :-: | :--- | :--- |
+| [Manager - Growth strategy](https://careers.swiggy.com/#/careers?src=careers&pageType=jd&reqId=25807) | S&P Global | Bengaluru | **95/100** | • Bengaluru Location Fit<br>• 2-3 Yrs Exp Required<br>• SQL, Analytics, AI Use<br>• Drive Growth, Cross-functional | • 2-3 Yrs Exp Only |
+| [Sr Scientist, Tech - Science](https://jobs.uber.com/en/jobs/302594/) | Uber | Bengaluru, IndiaScience | **90/100** | • 7+ Yrs Exp (Applied Scientist)<br>• Causal Inference & Experimentation<br>• SQL, Python, Statistics<br>• Bengaluru Location Match | • Preferred Master's/PhD<br>• Constrained Optimization |
+| [Business Intelligence Engineer, eCS Data Engineering and Analytics](https://www.amazon.jobs/en/jobs/10551574/business-intelligence-engineer-ecs-data-engineering-and-analytics) | Amazon | Bengaluru, KA, IND | **90/100** | • 5+ Yrs analyzing data<br>• SQL, Python, ETL & Data Viz<br>• A/B Testing & Causal Inference<br>• Bengaluru Location Fit<br>• Note: Body specifies Senior BIE | • Redshift/AWS platform exp |
+| [Lead Analyst - Programmatic Buying](https://job-boards.greenhouse.io/inmobi/jobs/8141436) | InMobi | Bangalore | **82/100** | • 5+ Yrs Exp Required<br>• Bangalore Location Fit<br>• Data Analysis & Insights<br>• Stakeholder Management | • Programmatic Ad Tech<br>• Client Revenue Ownership |
+| [Lead Data Scientist](https://jobs.gartner.com/jobs/job/114007-lead-data-scientist/) | Gartner | Gurgaon, Haryāna | **80/100** | • 8+ years data science experience<br>• Python, SQL, PySpark<br>• LLM/Agent workflows & RAG concepts<br>• Technical communication & Stakeholder management | • Deep production ML/NLP/DL models<br>• Specific GenAI tools (e.g. Langchain) |
+
+---
 ## 📅 Scan Run: 2026-09-25 03:39:23
 - **Total New Jobs Scraped**: 5
 - **High-Match Roles (Score &ge; 70)**: 0
