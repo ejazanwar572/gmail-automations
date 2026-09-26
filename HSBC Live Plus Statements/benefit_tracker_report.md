@@ -3,18 +3,18 @@
 ## 1. Executive Summary
 - Card ending: 8690
 - Current cycle: 2026-09-14 to 2026-10-13
-- Current cycle tracked spend: INR 4,408.04
-- Data freshness: Verified from gmail-api at 2026-09-26T07:20:52.151371+00:00; 44 unique alerts; cached total INR 29,819.84.
+- Current cycle tracked spend: INR 37,191.54
+- Data freshness: Verified from gmail-api at 2026-09-26T08:21:35.770249+00:00; 45 unique alerts; cached total INR 62,603.34.
 
 ## 2. Fee and Waiver Tracker
-`███░░░░░░░░░░░░░░░░░ 14.9%`
+`██████░░░░░░░░░░░░░░ 31.3%`
 
 - Period: 2026-06-29 to 2027-06-28
 
 - Days left: 275
 
-- Progress: INR 29,819.84 of INR 200,000.00
-- Remaining: INR 170,180.16
+- Progress: INR 62,603.34 of INR 200,000.00
+- Remaining: INR 137,396.66
 - Status: In progress
 - Evidence: Provisional
 - Annual/joining fee tracked: INR 999.00
@@ -55,6 +55,7 @@
 | 2026-09-24 | SWIGGY E COM | INR 941.00 | Dining and food delivery |
 | 2026-09-24 | SWIGGY FOOD | INR 146.00 | Dining and food delivery |
 | 2026-09-25 | KAPOORS CAFE | INR 497.00 | Unclassified |
+| 2026-09-26 | AIRBNB PAYMENTS IND | INR 32,783.50 | Unclassified |
 
 ## 5. Benefit Utilization and Recommendation
 - Shared 10% cashback cap: INR 312.80 of INR 1,200.00; INR 887.20 remaining
@@ -70,7 +71,7 @@
 
 Keep using this card for categories where the tracked benefit rate is strongest.
 
-- Needs MCC evidence: INR 1,280.04 across 3 transactions
+- Needs MCC evidence: INR 34,063.54 across 4 transactions
 
 ### Contactless fuel offer
 `░░░░░░░░░░░░░░░░░░░░ 0.0%`
