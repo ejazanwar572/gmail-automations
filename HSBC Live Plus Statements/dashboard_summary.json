@@ -1,13 +1,13 @@
 {
-  "alert_count": 46,
+  "alert_count": 47,
   "annual_fee": {
     "amount": 999,
-    "eligible_spend": 63042.34,
+    "eligible_spend": 63136.34,
     "evidence_source": "HSBC PIN-reset confirmation for card ending 8690 dated 29 June 2026; used as the closest issuance proxy.",
     "evidence_state": "provisional",
     "period_end": "2027-06-28",
     "period_start": "2026-06-29",
-    "remaining_spend_for_waiver": 136957.66,
+    "remaining_spend_for_waiver": 136863.66,
     "status": "In progress",
     "waiver_spend": 200000
   },
@@ -15,13 +15,13 @@
     {
       "cap": null,
       "cap_group_id": "accelerated-live-plus",
-      "earned": 356.7,
+      "earned": 366.1,
       "evidence_status": "estimated",
       "name": "Dining and food delivery",
       "provisional": true,
       "rate": 0.1,
       "remaining": null,
-      "spend": 3567.0
+      "spend": 3661.0
     },
     {
       "cap": null,
@@ -76,7 +76,7 @@
     "end": "2026-10-13",
     "evidence_status": "confirmed",
     "source": "HSBC monthly statement artifact 20260713.pdf delivered by HSBC India.",
-    "spend": 37630.54,
+    "spend": 37724.54,
     "start": "2026-09-14",
     "statement_date": "2026-07-13"
   },
@@ -121,7 +121,7 @@
   "evidence": {
     "variant_status": "confirmed"
   },
-  "generated_at": "2026-09-27T20:22:12.839184+05:30",
+  "generated_at": "2026-09-27T21:23:03.078861+05:30",
   "limited_offers": {
     "fuel": {
       "days_left": 3,
@@ -144,15 +144,15 @@
     "cashback": {
       "confirmed": 0.0,
       "confirmed_through": null,
-      "current_cycle": 356.7,
+      "current_cycle": 366.1,
       "evidence_status": "estimated",
-      "lifetime": 1628.15,
-      "pending": 1628.15
+      "lifetime": 1637.55,
+      "pending": 1637.55
     },
     "spend": {
-      "current_cycle": 37630.54,
+      "current_cycle": 37724.54,
       "evidence_status": "estimated",
-      "lifetime": 63042.34,
+      "lifetime": 63136.34,
       "lifetime_start": "2026-06-29",
       "tracked_through": "2026-09-27"
     }
@@ -196,7 +196,7 @@
   "provisional": true,
   "quarterly_bonus": null,
   "rewards": null,
-  "run_id": "347b647a-6f98-4ef2-9a31-01819e338605",
+  "run_id": "d0a61e06-0aaa-404c-92df-9c9195f6bc96",
   "schema_version": 2,
   "shared_cap": {
     "bucket_ids": [
@@ -206,13 +206,13 @@
       "Utilities"
     ],
     "cap": 1200.0,
-    "earned": 356.7,
+    "earned": 366.1,
     "evidence_status": "estimated",
     "id": "accelerated-live-plus",
     "label": "10% accelerated cashback",
     "period_end": "2026-10-13",
     "period_start": "2026-09-14",
-    "remaining": 843.3,
+    "remaining": 833.9,
     "reset_date": "2026-10-14"
   },
   "unclassified": {
