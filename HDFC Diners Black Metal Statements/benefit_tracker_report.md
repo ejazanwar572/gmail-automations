@@ -4,19 +4,19 @@
 - Card ending: 2360
 - Variant status: confirmed
 - Current cycle: 2026-09-14 to 2026-10-13
-- Current cycle tracked spend: INR 49,084.76
-- Data freshness: Verified from gmail-api at 2026-09-26T20:58:49.295918+00:00; 36 unique alerts; cached total INR 395,442.50.
+- Current cycle tracked spend: INR 50,037.76
+- Data freshness: Verified from gmail-api at 2026-09-27T05:45:23.771299+00:00; 37 unique alerts; cached total INR 396,395.50.
 - Cycle source: HDFC Diners Black statement PDF for 14 June 2026 to 13 July 2026.
 
 ## 2. Fee and Waiver Tracker
-`██████████░░░░░░░░░░ 49.4%`
+`██████████░░░░░░░░░░ 49.5%`
 
 - Period: 2026-06-25 to 2027-06-24
 
 - Days left: 270
 
-- Progress: INR 395,442.50 of INR 800,000.00
-- Remaining: INR 404,557.50
+- Progress: INR 396,395.50 of INR 800,000.00
+- Remaining: INR 403,604.50
 - Status: In progress
 - Evidence: Provisional
 - Annual/joining fee tracked: INR 10,000.00
@@ -29,23 +29,23 @@
 
 - Days left: Not applicable — milestone met
 
-- Progress: INR 395,442.50 of INR 150,000.00
+- Progress: INR 396,395.50 of INR 150,000.00
 - Remaining: INR 0.00
-- Exceeded by: INR 245,442.50
+- Exceeded by: INR 246,395.50
 - Status: Met
 - Evidence: Provisional
 - Activation proxy: HDFC MyCards control setting confirmation for xxxx2360 at 18:43 IST, followed by a successful card authorization at 18:47 IST.
 - Spend INR 1.5 lakh within first 90 days for the listed welcome memberships on the official HDFC page.
 
 ## 4. Quarterly Bonus Tracker
-`██░░░░░░░░░░░░░░░░░░ 12.3%`
+`███░░░░░░░░░░░░░░░░░ 12.5%`
 
 - Period: 2026-07-01 to 2026-09-30
 
 - Days left: 3
 
-- Progress: INR 49,084.76 of INR 400,000.00
-- Remaining: INR 350,915.24
+- Progress: INR 50,037.76 of INR 400,000.00
+- Remaining: INR 349,962.24
 - Status: In progress
 - Evidence: Provisional
 - Bonus on target: 10,000 reward points
@@ -53,6 +53,7 @@
 ## 5. Current Cycle Transaction Table
 | Date | Merchant | Amount | Benefit Bucket |
 | :--- | :--- | ---: | :--- |
+| 2026-09-26 | AMAZON | INR 953.00 | Eligible Reward Points Spend |
 | 2026-09-25 | AMAZON | INR 663.00 | Eligible Reward Points Spend |
 | 2026-09-25 | AMAZON | INR 4,504.00 | Eligible Reward Points Spend |
 | 2026-09-25 | AMAZON | INR 334.00 | Eligible Reward Points Spend |
@@ -66,7 +67,7 @@
 ## 6. Benefit Utilization and Recommendation
 | Benefit | Spend | Earned/Value | Cap/Target | Remaining | Transactions |
 | :--- | ---: | ---: | :--- | :--- | :---: |
-| Eligible Reward Points Spend | INR 49,084.76 | INR 0.00 | Uncapped | - | 9 |
+| Eligible Reward Points Spend | INR 50,037.76 | INR 0.00 | Uncapped | - | 10 |
 
 Reward points summary:
 - Lifetime points: 12,123 (4,900 base + 7,220 accelerated + 3 bonus; mixed evidence)
