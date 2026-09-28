@@ -3,18 +3,18 @@
 ## 1. Executive Summary
 - Card ending: 8690
 - Current cycle: 2026-09-14 to 2026-10-13
-- Current cycle tracked spend: INR 37,724.54
-- Data freshness: Verified from gmail-api at 2026-09-27T17:32:33.717910+00:00; 47 unique alerts; cached total INR 63,136.34.
+- Current cycle tracked spend: INR 38,369.54
+- Data freshness: Verified from gmail-api at 2026-09-28T18:30:13.952154+00:00; 48 unique alerts; cached total INR 63,781.34.
 
 ## 2. Fee and Waiver Tracker
-`██████░░░░░░░░░░░░░░ 31.6%`
+`██████░░░░░░░░░░░░░░ 31.9%`
 
 - Period: 2026-06-29 to 2027-06-28
 
-- Days left: 274
+- Days left: 272
 
-- Progress: INR 63,136.34 of INR 200,000.00
-- Remaining: INR 136,863.66
+- Progress: INR 63,781.34 of INR 200,000.00
+- Remaining: INR 136,218.66
 - Status: In progress
 - Evidence: Provisional
 - Annual/joining fee tracked: INR 999.00
@@ -58,15 +58,16 @@
 | 2026-09-26 | AIRBNB PAYMENTS IND | INR 32,783.50 | Unclassified |
 | 2026-09-27 | SWIGGY INSTAMART | INR 439.00 | Dining and food delivery |
 | 2026-09-27 | SWIGGY FOOD | INR 94.00 | Dining and food delivery |
+| 2026-09-28 | ZEPTO | INR 645.00 | Grocery |
 
 ## 5. Benefit Utilization and Recommendation
-- Shared 10% cashback cap: INR 366.10 of INR 1,200.00; INR 833.90 remaining
+- Shared 10% cashback cap: INR 430.60 of INR 1,200.00; INR 769.40 remaining
 - Policy version: 2026-07-26 (effective 2026-07-26; reviewed 2026-07-29)
 
 | Benefit | Spend | Earned/Value | Cap/Target | Remaining | Transactions |
 | :--- | ---: | ---: | :--- | :--- | :---: |
 | Dining and food delivery | INR 3,661.00 | INR 366.10 | Shared INR 1,200.00 | See shared cap | 16 |
-| Grocery | INR 0.00 | INR 0.00 | Shared INR 1,200.00 | See shared cap | 0 |
+| Grocery | INR 645.00 | INR 64.50 | Shared INR 1,200.00 | See shared cap | 1 |
 | Shopping | INR 0.00 | INR 0.00 | Shared INR 1,200.00 | See shared cap | 0 |
 | Utilities | INR 0.00 | INR 0.00 | Shared INR 1,200.00 | See shared cap | 0 |
 | 1.5% Other Eligible Spends | INR 0.00 | INR 0.00 | Uncapped | - | 0 |
@@ -80,7 +81,7 @@ Keep using this card for categories where the tracked benefit rate is strongest.
 
 - Period: 2026-07-26 to 2026-09-30
 
-- Days left: 3
+- Days left: 1
 
 - Progress: INR 0.00 of INR 10,000.00
 - Remaining: INR 10,000.00
