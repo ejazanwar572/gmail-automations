@@ -1,5 +1,15 @@
 # Automated Job Matcher Run History
 
+## 📅 Scan Run: 2026-09-28 13:10:34
+- **Total New Jobs Scraped**: 90
+- **High-Match Roles (Score &ge; 70)**: 2
+
+| Job Title | Company | Location | Match Score | Key Matches | Gaps |
+| :--- | :--- | :--- | :-: | :--- | :--- |
+| [Lead - Business Analyst](https://careers.smartrecruiters.com/freshworks/744000152125060) | Smartrecruiters | Chennai, in | **88/100** | • 6+ Yrs Exp Required<br>• SQL, Python, R skills<br>• Tableau, Power BI Exp<br>• Stakeholder Management | • US Shift Willingness |
+| [Analyst II, Network Strategy and Performance ](https://www.amazon.jobs/en/jobs/10561490/analyst-ii-network-strategy-and-performance) | Amazon | Hyderabad, TS, IND | **82/100** | • SQL, Python skills<br>• 3+ Yrs Process Improvement<br>• Apply AI tools<br>• Stakeholder management<br>• Note: Body specifies L5 Labor Business Analyst | • 2+ Yrs supply chain exp<br>• Network Strategy focus |
+
+---
 ## 📅 Scan Run: 2026-09-28 03:52:27
 - **Total New Jobs Scraped**: 3
 - **High-Match Roles (Score &ge; 70)**: 0
