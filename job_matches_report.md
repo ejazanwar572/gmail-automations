@@ -1,5 +1,15 @@
 # Automated Job Matcher Run History
 
+## 📅 Scan Run: 2026-09-29 12:21:40
+- **Total New Jobs Scraped**: 80
+- **High-Match Roles (Score &ge; 70)**: 2
+
+| Job Title | Company | Location | Match Score | Key Matches | Gaps |
+| :--- | :--- | :--- | :-: | :--- | :--- |
+| [Product Manager II](https://job-boards.greenhouse.io/razorpaysoftwareprivatelimited/jobs/4736965005) | Razorpay | Bengaluru | **82/100** | • 4-7 Yrs Exp Product Management<br>• Strong Analytical Thinking<br>• Experimentation Mindset<br>• Own Business Metrics/Outcomes<br>• Work across stakeholders<br>• Bengaluru Location Fit | • Product strategy definition<br>• Product specification writing |
+| [Program Manager, Selling Partner Identity Verification ](https://www.amazon.jobs/en/jobs/10563278/program-manager-selling-partner-identity-verification) | Amazon | Hyderabad, TS, IND | **80/100** | • 3+ Yrs Program Mgmt Exp<br>• 3+ Yrs Cross-functional Exp<br>• 3+ Yrs Process Improvement Exp<br>• Advanced SQL & Data Analysis<br>• Stakeholder Management<br>• Hyderabad Location Fit | • Explicit Program Manager Title<br>• Advanced Excel Skills |
+
+---
 ## 📅 Scan Run: 2026-09-29 04:28:02
 - **Total New Jobs Scraped**: 13
 - **High-Match Roles (Score &ge; 70)**: 0
