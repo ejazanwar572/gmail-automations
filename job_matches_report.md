@@ -1,5 +1,16 @@
 # Automated Job Matcher Run History
 
+## 📅 Scan Run: 2026-09-30 09:26:17
+- **Total New Jobs Scraped**: 24
+- **High-Match Roles (Score &ge; 70)**: 3
+
+| Job Title | Company | Location | Match Score | Key Matches | Gaps |
+| :--- | :--- | :--- | :-: | :--- | :--- |
+| [Manager - Card Portfolio Optimization Consulting](https://visa.wd5.myworkdayjobs.com/visa/visa/job/IN---Bengaluru-India/Manager---Card-Portfolio-Optimization-Consulting_REF088858W) | Visa | IN - Bengaluru, India | **85/100** | • 6-8 Yrs Exp (Consulting/Payments)<br>• Bengaluru, India Location<br>• A/B Testing & Causal Methods<br>• SQL, Python, Analytics<br>• GenAI / LLM Experience<br>• Stakeholder Management | • Credit Risk Fundamentals<br>• Direct Cards Portfolio Focus |
+| [Data Scientist](https://target.wd5.myworkdayjobs.com/target/targetcareers/job/BangaloreIndia/Data-Scientist_R0000450904) | Target | Bangalore,India | **85/100** | • Bangalore, India Location<br>• Python, SQL, ML Engineering<br>• GenAI, Deep Learning, Statistics<br>• A/B Testing, Causal Inference | • Hadoop/Hive, Scala/Java/R<br>• Explicit Computer Vision |
+| [Program Manager, Amazon Freight](https://www.amazon.jobs/en/jobs/10565300/program-manager-amazon-freight) | Amazon | Bengaluru, KA, IND | **75/100** | • Bengaluru Location Fit<br>• 3+ Yrs Program/Project Mgmt<br>• 3+ Yrs Cross-functional Exp<br>• SQL & Data-driven Improvements<br>• Stakeholder Management | • Logistics/Freight Domain<br>• Dedicated Program Focus |
+
+---
 ## 📅 Scan Run: 2026-09-30 00:08:27
 - **Total New Jobs Scraped**: 22
 - **High-Match Roles (Score &ge; 70)**: 0
