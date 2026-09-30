@@ -4,7 +4,7 @@
 - Card ending: 8690
 - Current cycle: 2026-09-14 to 2026-10-13
 - Current cycle tracked spend: INR 38,620.54
-- Data freshness: Verified from gmail-api at 2026-09-30T16:31:50.702501+00:00; 50 unique alerts; cached total INR 64,032.34.
+- Data freshness: Verified from gmail-api at 2026-09-30T17:32:36.810368+00:00; 50 unique alerts; cached total INR 64,032.34.
 
 ## 2. Fee and Waiver Tracker
 `██████░░░░░░░░░░░░░░ 32.0%`
