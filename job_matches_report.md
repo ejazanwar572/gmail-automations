@@ -1,5 +1,14 @@
 # Automated Job Matcher Run History
 
+## 📅 Scan Run: 2026-10-01 12:33:26
+- **Total New Jobs Scraped**: 23
+- **High-Match Roles (Score &ge; 70)**: 1
+
+| Job Title | Company | Location | Match Score | Key Matches | Gaps |
+| :--- | :--- | :--- | :-: | :--- | :--- |
+| [Business Analyst I, Amazon Pay](https://www.amazon.jobs/en/jobs/10566492/business-analyst-i-amazon-pay) | Amazon | Bengaluru, KA, IND | **72/100** | • SQL or ETL Exp.<br>• Data & Metrics Insights<br>• Cross-functional Teams<br>• Tableau Experience<br>• Bengaluru Location<br>• Note: Body specifies Senior Role<br>• 1+ Yrs Analytical Field | • 2+ Yrs Complex Excel VBA Macros |
+
+---
 ## 📅 Scan Run: 2026-09-30 21:58:50
 - **Total New Jobs Scraped**: 16
 - **High-Match Roles (Score &ge; 70)**: 0
