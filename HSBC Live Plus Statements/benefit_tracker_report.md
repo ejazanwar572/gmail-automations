@@ -3,18 +3,18 @@
 ## 1. Executive Summary
 - Card ending: 8690
 - Current cycle: 2026-09-14 to 2026-10-13
-- Current cycle tracked spend: INR 38,620.54
-- Data freshness: Verified from gmail-api at 2026-10-01T13:54:42.632909+00:00; 50 unique alerts; cached total INR 64,032.34.
+- Current cycle tracked spend: INR 39,224.49
+- Data freshness: Verified from gmail-api at 2026-10-01T14:55:34.049480+00:00; 52 unique alerts; cached total INR 64,636.29.
 
 ## 2. Fee and Waiver Tracker
-`██████░░░░░░░░░░░░░░ 32.0%`
+`██████░░░░░░░░░░░░░░ 32.3%`
 
 - Period: 2026-06-29 to 2027-06-28
 
 - Days left: 270
 
-- Progress: INR 64,032.34 of INR 200,000.00
-- Remaining: INR 135,967.66
+- Progress: INR 64,636.29 of INR 200,000.00
+- Remaining: INR 135,363.71
 - Status: In progress
 - Evidence: Provisional
 - Annual/joining fee tracked: INR 999.00
@@ -61,6 +61,8 @@
 | 2026-09-28 | ZEPTO | INR 645.00 | Grocery |
 | 2026-09-29 | LOUNGEONE AI | INR 2.00 | Unclassified |
 | 2026-09-30 | SWIGGY | INR 249.00 | Dining and food delivery |
+| 2026-10-01 | PURANI DEHLI | INR 290.00 | Unclassified |
+| 2026-10-01 | CHICKING | INR 313.95 | Unclassified |
 
 ## 5. Benefit Utilization and Recommendation
 - Shared 10% cashback cap: INR 455.50 of INR 1,200.00; INR 744.50 remaining
@@ -76,7 +78,7 @@
 
 Keep using this card for categories where the tracked benefit rate is strongest.
 
-- Needs MCC evidence: INR 34,065.54 across 5 transactions
+- Needs MCC evidence: INR 34,669.49 across 7 transactions
 
 ### Contactless fuel offer
 `░░░░░░░░░░░░░░░░░░░░ 0.0%`

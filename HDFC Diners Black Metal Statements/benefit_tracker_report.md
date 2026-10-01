@@ -4,19 +4,19 @@
 - Card ending: 2360
 - Variant status: confirmed
 - Current cycle: 2026-09-14 to 2026-10-13
-- Current cycle tracked spend: INR 64,252.76
-- Data freshness: Verified from gmail-api at 2026-10-01T13:55:02.777383+00:00; 39 unique alerts; cached total INR 410,610.50.
+- Current cycle tracked spend: INR 73,244.76
+- Data freshness: Verified from gmail-api at 2026-10-01T14:55:59.698451+00:00; 40 unique alerts; cached total INR 419,602.50.
 - Cycle source: HDFC Diners Black statement PDF for 14 June 2026 to 13 July 2026.
 
 ## 2. Fee and Waiver Tracker
-`██████████░░░░░░░░░░ 51.3%`
+`██████████░░░░░░░░░░ 52.5%`
 
 - Period: 2026-06-25 to 2027-06-24
 
 - Days left: 266
 
-- Progress: INR 410,610.50 of INR 800,000.00
-- Remaining: INR 389,389.50
+- Progress: INR 419,602.50 of INR 800,000.00
+- Remaining: INR 380,397.50
 - Status: In progress
 - Evidence: Provisional
 - Annual/joining fee tracked: INR 10,000.00
@@ -38,14 +38,14 @@
 - Spend INR 1.5 lakh within first 90 days for the listed welcome memberships on the official HDFC page.
 
 ## 4. Quarterly Bonus Tracker
-`░░░░░░░░░░░░░░░░░░░░ 0.0%`
+`░░░░░░░░░░░░░░░░░░░░ 2.2%`
 
 - Period: 2026-10-01 to 2026-12-31
 
 - Days left: 91
 
-- Progress: INR 0.00 of INR 400,000.00
-- Remaining: INR 400,000.00
+- Progress: INR 8,992.00 of INR 400,000.00
+- Remaining: INR 391,008.00
 - Status: In progress
 - Evidence: Provisional
 - Bonus on target: 10,000 reward points
@@ -53,6 +53,7 @@
 ## 5. Current Cycle Transaction Table
 | Date | Merchant | Amount | Benefit Bucket |
 | :--- | :--- | ---: | :--- |
+| 2026-10-01 | WESTSIDE A UNIT OF TRE | INR 8,992.00 | Eligible Reward Points Spend |
 | 2026-09-30 | GYFTR VIA SMARTBUY | INR 14,213.00 | Eligible Reward Points Spend |
 | 2026-09-29 | LOUNGEONE AI | INR 2.00 | Eligible Reward Points Spend |
 | 2026-09-26 | AMAZON | INR 953.00 | Eligible Reward Points Spend |
@@ -69,7 +70,7 @@
 ## 6. Benefit Utilization and Recommendation
 | Benefit | Spend | Earned/Value | Cap/Target | Remaining | Transactions |
 | :--- | ---: | ---: | :--- | :--- | :---: |
-| Eligible Reward Points Spend | INR 64,252.76 | INR 0.00 | Uncapped | - | 12 |
+| Eligible Reward Points Spend | INR 73,244.76 | INR 0.00 | Uncapped | - | 13 |
 
 Reward points summary:
 - Lifetime points: 12,123 (4,900 base + 7,220 accelerated + 3 bonus; mixed evidence)
