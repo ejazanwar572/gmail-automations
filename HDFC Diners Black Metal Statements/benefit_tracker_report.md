@@ -5,7 +5,7 @@
 - Variant status: confirmed
 - Current cycle: 2026-09-14 to 2026-10-13
 - Current cycle tracked spend: INR 179,121.76
-- Data freshness: Verified from gmail-api at 2026-10-02T18:58:29.340742+00:00; 44 unique alerts; cached total INR 525,479.50.
+- Data freshness: Verified from gmail-api at 2026-10-02T19:31:56.779791+00:00; 44 unique alerts; cached total INR 525,479.50.
 - Cycle source: HDFC Diners Black statement PDF for 14 June 2026 to 13 July 2026.
 
 ## 2. Fee and Waiver Tracker
@@ -77,7 +77,7 @@
 | Eligible Reward Points Spend | INR 179,121.76 | INR 0.00 | Uncapped | - | 17 |
 
 Reward points summary:
-- Lifetime points: 12,123 (4,900 base + 7,220 accelerated + 3 bonus; mixed evidence)
+- Lifetime points: 23,128 (9,505 base + 13,560 accelerated + 63 bonus; confirmed evidence)
 - Accelerated SmartBuy RP this month: 0 of 10,000; 10,000 remaining (100.0%), resets 2026-11-01
 
 Use this card where high-value travel or partner redemptions beat direct cashback alternatives.

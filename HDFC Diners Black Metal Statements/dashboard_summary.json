@@ -41,7 +41,7 @@
   "evidence": {
     "variant_status": "confirmed"
   },
-  "generated_at": "2026-10-03T00:28:29.525644+05:30",
+  "generated_at": "2026-10-03T01:01:57.147662+05:30",
   "provisional": false,
   "quarterly_bonus": {
     "bonus_points": 10000,
@@ -64,22 +64,22 @@
       "remaining_percent": 100.0,
       "reset_date": "2026-11-01"
     },
-    "base_points": 4900,
+    "base_points": 9505,
     "lifetime_points": {
-      "accelerated": 7220,
-      "base": 4900,
-      "bonus": 3,
-      "evidence_status": "mixed",
-      "total": 12123
+      "accelerated": 13560,
+      "base": 9505,
+      "bonus": 63,
+      "evidence_status": "confirmed",
+      "total": 23128
     },
     "lifetime_spend": 525479.5,
     "post_statement_points": {
-      "accelerated": 2620,
-      "base": 655
+      "accelerated": 0,
+      "base": 0
     },
-    "statement_through": "2026-07-13"
+    "statement_through": "2026-09-13"
   },
-  "run_id": "1cd333e7-fca2-43c3-ae2d-cfcf1a03f420",
+  "run_id": "78f484b9-4a17-4750-acb9-2bcce895f44d",
   "schema_version": 1,
   "welcome": {
     "activation_date": "2026-06-30",
