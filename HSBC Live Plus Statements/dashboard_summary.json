@@ -1,13 +1,13 @@
 {
-  "alert_count": 52,
+  "alert_count": 53,
   "annual_fee": {
     "amount": 999,
-    "eligible_spend": 64636.29,
+    "eligible_spend": 65349.29,
     "evidence_source": "HSBC PIN-reset confirmation for card ending 8690 dated 29 June 2026; used as the closest issuance proxy.",
     "evidence_state": "provisional",
     "period_end": "2027-06-28",
     "period_start": "2026-06-29",
-    "remaining_spend_for_waiver": 135363.71,
+    "remaining_spend_for_waiver": 134650.71,
     "status": "In progress",
     "waiver_spend": 200000
   },
@@ -76,7 +76,7 @@
     "end": "2026-10-13",
     "evidence_status": "confirmed",
     "source": "HSBC monthly statement artifact 20260713.pdf delivered by HSBC India.",
-    "spend": 39224.49,
+    "spend": 39937.49,
     "start": "2026-09-14",
     "statement_date": "2026-07-13"
   },
@@ -121,7 +121,7 @@
   "evidence": {
     "variant_status": "confirmed"
   },
-  "generated_at": "2026-10-02T20:24:29.625055+05:30",
+  "generated_at": "2026-10-02T21:25:20.362145+05:30",
   "limited_offers": {
     "fuel": {
       "days_left": 90,
@@ -150,11 +150,11 @@
       "pending": 1726.95
     },
     "spend": {
-      "current_cycle": 39224.49,
+      "current_cycle": 39937.49,
       "evidence_status": "estimated",
-      "lifetime": 64636.29,
+      "lifetime": 65349.29,
       "lifetime_start": "2026-06-29",
-      "tracked_through": "2026-10-01"
+      "tracked_through": "2026-10-02"
     }
   },
   "perks": [
@@ -196,7 +196,7 @@
   "provisional": true,
   "quarterly_bonus": null,
   "rewards": null,
-  "run_id": "f0903257-0d4b-4581-a5ff-6dbe05faddcc",
+  "run_id": "d134bd8d-f884-4bba-85e4-f8a5969ceb4e",
   "schema_version": 2,
   "shared_cap": {
     "bucket_ids": [
@@ -216,8 +216,8 @@
     "reset_date": "2026-10-14"
   },
   "unclassified": {
-    "spend": 34669.49,
-    "transactions": 7
+    "spend": 35382.49,
+    "transactions": 8
   },
   "welcome": {
     "activation_date": "2026-06-29",

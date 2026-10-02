@@ -1,13 +1,13 @@
 {
-  "alert_count": 43,
+  "alert_count": 44,
   "annual_fee": {
     "amount": 10000,
-    "eligible_spend": 454479.5,
+    "eligible_spend": 525479.5,
     "evidence_source": "HDFC approval email dated 25 June 2026 (application reference P26F18673727H0S2).",
     "evidence_state": "provisional",
     "period_end": "2027-06-24",
     "period_start": "2026-06-25",
-    "remaining_spend_for_waiver": 345520.5,
+    "remaining_spend_for_waiver": 274520.5,
     "status": "In progress",
     "waiver_spend": 800000
   },
@@ -18,7 +18,7 @@
       "name": "Eligible Reward Points Spend",
       "provisional": false,
       "remaining": null,
-      "spend": 108121.76
+      "spend": 179121.76
     }
   ],
   "card": {
@@ -29,7 +29,7 @@
     "end": "2026-10-13",
     "evidence_status": "confirmed",
     "source": "HDFC Diners Black statement PDF for 14 June 2026 to 13 July 2026.",
-    "spend": 108121.76,
+    "spend": 179121.76,
     "start": "2026-09-14",
     "statement_date": "2026-07-13"
   },
@@ -41,14 +41,14 @@
   "evidence": {
     "variant_status": "confirmed"
   },
-  "generated_at": "2026-10-02T20:24:53.264985+05:30",
+  "generated_at": "2026-10-02T21:25:57.418700+05:30",
   "provisional": false,
   "quarterly_bonus": {
     "bonus_points": 10000,
     "deadline": "2026-12-31",
     "period_start": "2026-10-01",
-    "remaining": 356131.0,
-    "spend": 43869.0,
+    "remaining": 285131.0,
+    "spend": 114869.0,
     "status": "In progress",
     "target": 400000.0
   },
@@ -72,14 +72,14 @@
       "evidence_status": "mixed",
       "total": 12123
     },
-    "lifetime_spend": 454479.5,
+    "lifetime_spend": 525479.5,
     "post_statement_points": {
       "accelerated": 2620,
       "base": 655
     },
     "statement_through": "2026-07-13"
   },
-  "run_id": "cae52984-6974-482e-bbd8-ff3e7f869b50",
+  "run_id": "bfa6eb84-32d4-4ded-b644-660b4ac5b21a",
   "schema_version": 1,
   "welcome": {
     "activation_date": "2026-06-30",

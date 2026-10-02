@@ -1,10 +1,10 @@
 {
-  "alert_count": 52,
-  "cached_total": 64636.29,
+  "alert_count": 53,
+  "cached_total": 65349.29,
   "card_ending": "8690",
   "card_name": "HSBC Live+ Credit Card",
-  "latest_alert_date": "2026-10-01",
-  "matched_count": 52,
+  "latest_alert_date": "2026-10-02",
+  "matched_count": 53,
   "message_ids_seen": [
     "19f16c090c94783b",
     "19f2384d42459ec4",
@@ -57,17 +57,18 @@
     "1a0ee2823fe431da",
     "1a0f24f1b93483df",
     "1a0f7d49f5c11de1",
-    "1a0f7e8a54175731"
+    "1a0f7e8a54175731",
+    "1a0fd3217723b5ff"
   ],
-  "new_count": 0,
-  "parsed_count": 52,
+  "new_count": 1,
+  "parsed_count": 53,
   "previous_count": 52,
   "query": "(subject:\"Credit Card Transaction Alert\" OR subject:\"You have used your HSBC Credit Card ending with 8690 for a purchase transaction\") -in:spam -in:trash",
   "rejected_count": 0,
-  "run_id": "f0903257-0d4b-4581-a5ff-6dbe05faddcc",
+  "run_id": "d134bd8d-f884-4bba-85e4-f8a5969ceb4e",
   "skipped_duplicate_count": 0,
   "source": "gmail-api",
-  "synced_at": "2026-10-02T14:54:29.452705+00:00",
-  "unique_alert_count": 52,
+  "synced_at": "2026-10-02T15:55:20.195551+00:00",
+  "unique_alert_count": 53,
   "warnings": []
 }
