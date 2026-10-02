@@ -4,7 +4,7 @@ import argparse
 import subprocess
 import sys
 
-TAIL = ["parse_statements.py", "validate_statements.py", "update_report.py"]
+TAIL = ["download_statements.py", "parse_statements.py", "validate_statements.py", "update_report.py"]
 SYNC_SCRIPTS = {"gmail-api": "sync_alerts.py", "mcp-step-logs": "sync_gmail_mcp.py"}
 
 
