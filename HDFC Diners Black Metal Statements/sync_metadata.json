@@ -1,6 +1,6 @@
 {
-  "alert_count": 41,
-  "cached_total": 435161.5,
+  "alert_count": 43,
+  "cached_total": 454479.5,
   "card_ending": "2360",
   "card_name": "HDFC Diners Black Metal Credit Card",
   "latest_alert_date": "2026-10-02",
@@ -45,9 +45,11 @@
     "1a0ee2f49ec5bb16",
     "1a0ee834947a84c4",
     "1a0f7cd0f84a9ab4",
-    "1a0fb3478a03eabc"
+    "1a0fb3478a03eabc",
+    "1a0fc08c3d8f175c",
+    "1a0fc09c9e681903"
   ],
-  "parsed_count": 41,
+  "parsed_count": 43,
   "queried_message_ids": [
     "19f18ae077518d99",
     "19f197a6dfbf8000",
@@ -89,14 +91,16 @@
     "1a0ee2f49ec5bb16",
     "1a0ee834947a84c4",
     "1a0f7cd0f84a9ab4",
-    "1a0fb3478a03eabc"
+    "1a0fb3478a03eabc",
+    "1a0fc08c3d8f175c",
+    "1a0fc09c9e681903"
   ],
   "query": "from:alerts@hdfcbank.bank.in subject:\"A payment was made using your Credit Card\" \"ending 2360\" -in:trash -in:spam",
   "redemption_count": 2,
-  "run_id": "db0183ec-5f62-4c31-987a-c528436d9938",
+  "run_id": "d5ac4d43-f916-4573-acfd-5f7cd66686ca",
   "skipped_duplicate_count": 0,
   "source": "gmail-api",
-  "synced_at": "2026-10-02T09:50:41.537359+00:00",
+  "synced_at": "2026-10-02T10:51:31.241130+00:00",
   "total_points_redeemed": 23128,
-  "unique_alert_count": 41
+  "unique_alert_count": 43
 }
