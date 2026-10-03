@@ -3,18 +3,18 @@
 ## 1. Executive Summary
 - Card ending: 8690
 - Current cycle: 2026-09-14 to 2026-10-13
-- Current cycle tracked spend: INR 39,937.49
-- Data freshness: Verified from gmail-api at 2026-10-03T03:05:42.710315+00:00; 53 unique alerts; cached total INR 65,349.29.
+- Current cycle tracked spend: INR 45,037.49
+- Data freshness: Verified from gmail-api at 2026-10-03T04:06:33.838100+00:00; 54 unique alerts; cached total INR 70,449.29.
 
 ## 2. Fee and Waiver Tracker
-`███████░░░░░░░░░░░░░ 32.7%`
+`███████░░░░░░░░░░░░░ 35.2%`
 
 - Period: 2026-06-29 to 2027-06-28
 
 - Days left: 268
 
-- Progress: INR 65,349.29 of INR 200,000.00
-- Remaining: INR 134,650.71
+- Progress: INR 70,449.29 of INR 200,000.00
+- Remaining: INR 129,550.71
 - Status: In progress
 - Evidence: Provisional
 - Annual/joining fee tracked: INR 999.00
@@ -64,15 +64,16 @@
 | 2026-10-01 | PURANI DEHLI | INR 290.00 | Unclassified |
 | 2026-10-01 | CHICKING | INR 313.95 | Unclassified |
 | 2026-10-02 | GOPIZZA | INR 713.00 | Unclassified |
+| 2026-10-03 | ZEPTO | INR 5,100.00 | Grocery |
 
 ## 5. Benefit Utilization and Recommendation
-- Shared 10% cashback cap: INR 455.50 of INR 1,200.00; INR 744.50 remaining
+- Shared 10% cashback cap: INR 965.50 of INR 1,200.00; INR 234.50 remaining
 - Policy version: 2026-07-26 (effective 2026-07-26; reviewed 2026-07-29)
 
 | Benefit | Spend | Earned/Value | Cap/Target | Remaining | Transactions |
 | :--- | ---: | ---: | :--- | :--- | :---: |
 | Dining and food delivery | INR 3,910.00 | INR 391.00 | Shared INR 1,200.00 | See shared cap | 17 |
-| Grocery | INR 645.00 | INR 64.50 | Shared INR 1,200.00 | See shared cap | 1 |
+| Grocery | INR 5,745.00 | INR 574.50 | Shared INR 1,200.00 | See shared cap | 2 |
 | Shopping | INR 0.00 | INR 0.00 | Shared INR 1,200.00 | See shared cap | 0 |
 | Utilities | INR 0.00 | INR 0.00 | Shared INR 1,200.00 | See shared cap | 0 |
 | 1.5% Other Eligible Spends | INR 0.00 | INR 0.00 | Uncapped | - | 0 |
