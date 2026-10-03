@@ -4,8 +4,8 @@
 - Card ending: 2360
 - Variant status: confirmed
 - Current cycle: 2026-09-14 to 2026-10-13
-- Current cycle tracked spend: INR 179,121.76
-- Data freshness: Verified from gmail-api at 2026-10-03T04:06:54.652562+00:00; 44 unique alerts; cached total INR 525,479.50.
+- Current cycle tracked spend: INR 179,123.76
+- Data freshness: Verified from gmail-api at 2026-10-03T08:10:02.403588+00:00; 45 unique alerts; cached total INR 525,481.50.
 - Cycle source: HDFC Diners Black statement PDF for 14 June 2026 to 13 July 2026.
 
 ## 2. Fee and Waiver Tracker
@@ -15,8 +15,8 @@
 
 - Days left: 264
 
-- Progress: INR 525,479.50 of INR 800,000.00
-- Remaining: INR 274,520.50
+- Progress: INR 525,481.50 of INR 800,000.00
+- Remaining: INR 274,518.50
 - Status: In progress
 - Evidence: Provisional
 - Annual/joining fee tracked: INR 10,000.00
@@ -44,8 +44,8 @@
 
 - Days left: 89
 
-- Progress: INR 114,869.00 of INR 400,000.00
-- Remaining: INR 285,131.00
+- Progress: INR 114,871.00 of INR 400,000.00
+- Remaining: INR 285,129.00
 - Status: In progress
 - Evidence: Provisional
 - Bonus on target: 10,000 reward points
@@ -53,6 +53,7 @@
 ## 5. Current Cycle Transaction Table
 | Date | Merchant | Amount | Benefit Bucket |
 | :--- | :--- | ---: | :--- |
+| 2026-10-03 | TFS YAMUNA AIRPORT SER | INR 2.00 | Eligible Reward Points Spend |
 | 2026-10-02 | EMT FLIGHT VIA SMARTBU | INR 15,559.00 | Eligible Reward Points Spend |
 | 2026-10-02 | AMAZON | INR 11,818.00 | Eligible Reward Points Spend |
 | 2026-10-02 | BHARGAVI ENTERPRISES | INR 7,500.00 | Eligible Reward Points Spend |
@@ -74,7 +75,7 @@
 ## 6. Benefit Utilization and Recommendation
 | Benefit | Spend | Earned/Value | Cap/Target | Remaining | Transactions |
 | :--- | ---: | ---: | :--- | :--- | :---: |
-| Eligible Reward Points Spend | INR 179,121.76 | INR 0.00 | Uncapped | - | 17 |
+| Eligible Reward Points Spend | INR 179,123.76 | INR 0.00 | Uncapped | - | 18 |
 
 Reward points summary:
 - Lifetime points: 23,128 (9,505 base + 13,560 accelerated + 63 bonus; confirmed evidence)
