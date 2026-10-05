@@ -1,5 +1,15 @@
 # Automated Job Matcher Run History
 
+## 📅 Scan Run: 2026-10-05 13:52:49
+- **Total New Jobs Scraped**: 67
+- **High-Match Roles (Score &ge; 70)**: 2
+
+| Job Title | Company | Location | Match Score | Key Matches | Gaps |
+| :--- | :--- | :--- | :-: | :--- | :--- |
+| [AI Analytics Diagnostics Lead](https://jobs.ebayinc.com/us/en/job/R0076642/ai-analytics-diagnostics-lead) | eBay | Bengaluru, India | **93/100** | • 8+ years advanced analytics<br>• AI analytics prototypes<br>• SQL, A/B testing, Cohort<br>• LLM/Agent workflows, RAG<br>• Bengaluru Location | • LLM prompt optimization |
+| [Program Manager I, IN Easy Ship](https://www.amazon.jobs/en/jobs/10551587/program-manager-i-in-easy-ship) | Amazon | Bengaluru, KA, IND | **70/100** | • Analytical & Problem-Solving<br>• AI-driven Solutions<br>• SQL & Root-Cause Analysis<br>• Stakeholder Management<br>• Bangalore Location | • Program Management Exp<br>• Lean/DMAIC Principles<br>• MS Access |
+
+---
 ## 📅 Scan Run: 2026-10-05 04:15:35
 - **Total New Jobs Scraped**: 2
 - **High-Match Roles (Score &ge; 70)**: 1
