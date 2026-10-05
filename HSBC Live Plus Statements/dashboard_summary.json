@@ -121,10 +121,10 @@
   "evidence": {
     "variant_status": "confirmed"
   },
-  "generated_at": "2026-10-04T13:27:42.289452+05:30",
+  "generated_at": "2026-10-05T08:00:27.749219+05:30",
   "limited_offers": {
     "fuel": {
-      "days_left": 88,
+      "days_left": 87,
       "deadline": "2026-12-31",
       "evidence_status": "unavailable",
       "id": "fuel-contactless",
@@ -196,7 +196,7 @@
   "provisional": true,
   "quarterly_bonus": null,
   "rewards": null,
-  "run_id": "0c2f8452-a58c-4901-ae07-805b4e990c6b",
+  "run_id": "8a820483-c7f1-442a-8ef7-5ce33df915ab",
   "schema_version": 2,
   "shared_cap": {
     "bucket_ids": [
