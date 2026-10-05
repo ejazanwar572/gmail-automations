@@ -1,5 +1,14 @@
 # Automated Job Matcher Run History
 
+## 📅 Scan Run: 2026-10-05 04:15:35
+- **Total New Jobs Scraped**: 2
+- **High-Match Roles (Score &ge; 70)**: 1
+
+| Job Title | Company | Location | Match Score | Key Matches | Gaps |
+| :--- | :--- | :--- | :-: | :--- | :--- |
+| [Principal Analyst, Global Upstream Transaction Research](https://spgi.wd5.myworkdayjobs.com/en-us/SPGI_Careers/job/Gurugram-Haryana/Principal-Analyst--Global-Upstream-Transaction-Research_331935-1/apply) | S&P Global | Gurgaon, India | **75/100** | • Principal Analyst role<br>• AI-enabled research workflows<br>• Data visualization tools<br>• Strong analytical skills<br>• Collaboration & client support | • Upstream Oil & Gas domain<br>• M&A Transaction research |
+
+---
 ## 📅 Scan Run: 2026-10-04 23:51:53
 - **Total New Jobs Scraped**: 2
 - **High-Match Roles (Score &ge; 70)**: 0
