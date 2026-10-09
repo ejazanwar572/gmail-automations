@@ -5,7 +5,7 @@
 - Variant status: confirmed
 - Current cycle: 2026-09-14 to 2026-10-13
 - Current cycle tracked spend: INR 179,123.76
-- Data freshness: Verified from gmail-api at 2026-10-09T13:50:12.748632+00:00; 45 unique alerts; cached total INR 525,481.50.
+- Data freshness: Verified from gmail-api at 2026-10-09T14:51:09.079152+00:00; 45 unique alerts; cached total INR 525,481.50.
 - Cycle source: HDFC Diners Black statement PDF for 14 June 2026 to 13 July 2026.
 
 ## 2. Fee and Waiver Tracker
