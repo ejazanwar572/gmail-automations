@@ -18,7 +18,7 @@
       "name": "Eligible Reward Points Spend",
       "provisional": false,
       "remaining": null,
-      "spend": 179123.76
+      "spend": 0.0
     }
   ],
   "card": {
@@ -26,11 +26,11 @@
     "name": "HDFC Diners Black Metal Credit Card"
   },
   "cycle": {
-    "end": "2026-10-13",
+    "end": "2026-11-13",
     "evidence_status": "confirmed",
     "source": "HDFC Diners Black statement PDF for 14 June 2026 to 13 July 2026.",
-    "spend": 179123.76,
-    "start": "2026-09-14",
+    "spend": 0,
+    "start": "2026-10-14",
     "statement_date": "2026-07-13"
   },
   "evergreen_benefits": [
@@ -41,7 +41,7 @@
   "evidence": {
     "variant_status": "confirmed"
   },
-  "generated_at": "2026-10-13T23:39:31.203755+05:30",
+  "generated_at": "2026-10-14T00:40:55.402833+05:30",
   "provisional": false,
   "quarterly_bonus": {
     "bonus_points": 10000,
@@ -55,7 +55,7 @@
   "rewards": {
     "accelerated_cap": {
       "cap": 10000,
-      "days_remaining": 18,
+      "days_remaining": 17,
       "earned": 0,
       "evidence_status": "unavailable",
       "month_end": "2026-10-31",
@@ -79,7 +79,7 @@
     },
     "statement_through": "2026-09-13"
   },
-  "run_id": "c3d33072-dc1e-453a-88db-4b542c8e273f",
+  "run_id": "697408d3-fbfd-4220-b21b-0abc8575ecaa",
   "schema_version": 1,
   "welcome": {
     "activation_date": "2026-06-30",

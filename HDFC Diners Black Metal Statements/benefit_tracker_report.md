@@ -3,9 +3,9 @@
 ## 1. Executive Summary
 - Card ending: 2360
 - Variant status: confirmed
-- Current cycle: 2026-09-14 to 2026-10-13
-- Current cycle tracked spend: INR 179,123.76
-- Data freshness: Verified from gmail-api at 2026-10-13T18:09:28.357389+00:00; 45 unique alerts; cached total INR 525,481.50.
+- Current cycle: 2026-10-14 to 2026-11-13
+- Current cycle tracked spend: INR 0.00
+- Data freshness: Verified from gmail-api at 2026-10-13T19:10:52.038263+00:00; 45 unique alerts; cached total INR 525,481.50.
 - Cycle source: HDFC Diners Black statement PDF for 14 June 2026 to 13 July 2026.
 
 ## 2. Fee and Waiver Tracker
@@ -13,7 +13,7 @@
 
 - Period: 2026-06-25 to 2027-06-24
 
-- Days left: 254
+- Days left: 253
 
 - Progress: INR 525,481.50 of INR 800,000.00
 - Remaining: INR 274,518.50
@@ -38,14 +38,14 @@
 - Spend INR 1.5 lakh within first 90 days for the listed welcome memberships on the official HDFC page.
 
 ## 4. Quarterly Bonus Tracker
-`██████░░░░░░░░░░░░░░ 28.7%`
+`░░░░░░░░░░░░░░░░░░░░ 0.0%`
 
 - Period: 2026-10-01 to 2026-12-31
 
-- Days left: 79
+- Days left: 78
 
-- Progress: INR 114,871.00 of INR 400,000.00
-- Remaining: INR 285,129.00
+- Progress: INR 0.00 of INR 400,000.00
+- Remaining: INR 400,000.00
 - Status: In progress
 - Evidence: Provisional
 - Bonus on target: 10,000 reward points
@@ -53,29 +53,12 @@
 ## 5. Current Cycle Transaction Table
 | Date | Merchant | Amount | Benefit Bucket |
 | :--- | :--- | ---: | :--- |
-| 2026-10-03 | TFS YAMUNA AIRPORT SER | INR 2.00 | Eligible Reward Points Spend |
-| 2026-10-02 | EMT FLIGHT VIA SMARTBU | INR 15,559.00 | Eligible Reward Points Spend |
-| 2026-10-02 | AMAZON | INR 11,818.00 | Eligible Reward Points Spend |
-| 2026-10-02 | BHARGAVI ENTERPRISES | INR 7,500.00 | Eligible Reward Points Spend |
-| 2026-10-02 | SRI GANESH DIAMONDS AN | INR 71,000.00 | Eligible Reward Points Spend |
-| 2026-10-01 | WESTSIDE A UNIT OF TRE | INR 8,992.00 | Eligible Reward Points Spend |
-| 2026-09-30 | GYFTR VIA SMARTBUY | INR 14,213.00 | Eligible Reward Points Spend |
-| 2026-09-29 | LOUNGEONE AI | INR 2.00 | Eligible Reward Points Spend |
-| 2026-09-26 | AMAZON | INR 953.00 | Eligible Reward Points Spend |
-| 2026-09-25 | AMAZON | INR 663.00 | Eligible Reward Points Spend |
-| 2026-09-25 | AMAZON | INR 4,504.00 | Eligible Reward Points Spend |
-| 2026-09-25 | AMAZON | INR 334.00 | Eligible Reward Points Spend |
-| 2026-09-25 | AMAZON | INR 1,894.76 | Eligible Reward Points Spend |
-| 2026-09-24 | EMT FLIGHT VIA SMARTBU | INR 20,248.00 | Eligible Reward Points Spend |
-| 2026-09-22 | EMT FLIGHT VIA SMARTBU | INR 8,914.00 | Eligible Reward Points Spend |
-| 2026-09-22 | GYFTR VIA SMARTBUY | INR 10,000.00 | Eligible Reward Points Spend |
-| 2026-09-20 | ALIGARH HOUSE FOODS A | INR 1,951.00 | Eligible Reward Points Spend |
-| 2026-09-19 | KAPOORS CAFE | INR 576.00 | Eligible Reward Points Spend |
+| - | No tracked transactions yet | INR 0.00 | - |
 
 ## 6. Benefit Utilization and Recommendation
 | Benefit | Spend | Earned/Value | Cap/Target | Remaining | Transactions |
 | :--- | ---: | ---: | :--- | :--- | :---: |
-| Eligible Reward Points Spend | INR 179,123.76 | INR 0.00 | Uncapped | - | 18 |
+| Variant-gated rewards | INR 0.00 | Pending | Pending | Pending | 0 |
 
 Reward points summary:
 - Lifetime points: 23,128 (9,505 base + 13,560 accelerated + 63 bonus; confirmed evidence)

@@ -66,10 +66,10 @@
   "previous_count": 54,
   "query": "(subject:\"Credit Card Transaction Alert\" OR subject:\"You have used your HSBC Credit Card ending with 8690 for a purchase transaction\") -in:spam -in:trash",
   "rejected_count": 0,
-  "run_id": "ece8ba13-bb09-4997-bfc0-71c1c6940270",
+  "run_id": "98349d3e-6204-47cc-bb29-e8e106ba6c62",
   "skipped_duplicate_count": 0,
   "source": "gmail-api",
-  "synced_at": "2026-10-13T18:09:03.279018+00:00",
+  "synced_at": "2026-10-13T19:10:14.244610+00:00",
   "unique_alert_count": 54,
   "warnings": []
 }
