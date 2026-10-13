@@ -41,7 +41,7 @@
   "evidence": {
     "variant_status": "confirmed"
   },
-  "generated_at": "2026-10-13T08:49:34.960582+05:30",
+  "generated_at": "2026-10-13T09:50:40.309574+05:30",
   "provisional": false,
   "quarterly_bonus": {
     "bonus_points": 10000,
@@ -79,7 +79,7 @@
     },
     "statement_through": "2026-09-13"
   },
-  "run_id": "6191f096-350f-44a0-a7d6-ffd2cb702210",
+  "run_id": "4978fe68-8613-401c-8a48-d461a2444a20",
   "schema_version": 1,
   "welcome": {
     "activation_date": "2026-06-30",
