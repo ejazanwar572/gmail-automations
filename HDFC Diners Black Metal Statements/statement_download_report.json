@@ -1,6 +1,8 @@
 {
-  "downloaded_count": 0,
-  "downloaded_files": [],
+  "downloaded_count": 1,
+  "downloaded_files": [
+    "statement_2026_10_13.pdf"
+  ],
   "ok": true,
-  "total_emails_found": 3
+  "total_emails_found": 4
 }

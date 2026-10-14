@@ -1,12 +1,12 @@
 {
-  "source": "HDFC cumulative statement history through September 2026",
+  "source": "HDFC cumulative statement history through October 2026",
   "scope": "lifetime",
-  "statement_start": "2026-08-17",
-  "statement_end": "2026-09-13",
-  "total_points": 23128,
-  "closing_points": 9121,
-  "redeemed_points": 14007,
-  "base_points": 9505,
-  "accelerated_points": 13560,
-  "bonus_points": 63
+  "statement_start": "2026-09-12",
+  "statement_end": "2026-10-13",
+  "total_points": 38026,
+  "closing_points": 14898,
+  "redeemed_points": 23128,
+  "base_points": 16800,
+  "accelerated_points": 21080,
+  "bonus_points": 146
 }

@@ -5,10 +5,10 @@
     "start_day": 14
   },
   "latest_statement": {
-    "period_start": "2026-09-13",
-    "period_end": "2026-09-13",
-    "statement_date": "2026-09-13",
-    "source_filename": "statement_2026_09_13.pdf"
+    "period_start": "2026-10-13",
+    "period_end": "2026-10-13",
+    "statement_date": "2026-10-13",
+    "source_filename": "statement_2026_10_13.pdf"
   },
   "schema_version": 1,
   "status": "confirmed"
