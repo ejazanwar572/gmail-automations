@@ -4,8 +4,8 @@
 - Card ending: 2360
 - Variant status: confirmed
 - Current cycle: 2026-10-14 to 2026-11-13
-- Current cycle tracked spend: INR 0.00
-- Data freshness: Verified from gmail-api at 2026-10-15T02:09:19.603313+00:00; 45 unique alerts; cached total INR 525,481.50.
+- Current cycle tracked spend: INR 2.00
+- Data freshness: Verified from gmail-api at 2026-10-15T03:10:22.595183+00:00; 46 unique alerts; cached total INR 525,483.50.
 - Cycle source: HDFC Diners Black statement PDF for 14 June 2026 to 13 July 2026.
 
 ## 2. Fee and Waiver Tracker
@@ -15,8 +15,8 @@
 
 - Days left: 252
 
-- Progress: INR 525,481.50 of INR 800,000.00
-- Remaining: INR 274,518.50
+- Progress: INR 525,483.50 of INR 800,000.00
+- Remaining: INR 274,516.50
 - Status: In progress
 - Evidence: Provisional
 - Annual/joining fee tracked: INR 10,000.00
@@ -44,8 +44,8 @@
 
 - Days left: 77
 
-- Progress: INR 0.00 of INR 400,000.00
-- Remaining: INR 400,000.00
+- Progress: INR 2.00 of INR 400,000.00
+- Remaining: INR 399,998.00
 - Status: In progress
 - Evidence: Provisional
 - Bonus on target: 10,000 reward points
@@ -53,12 +53,12 @@
 ## 5. Current Cycle Transaction Table
 | Date | Merchant | Amount | Benefit Bucket |
 | :--- | :--- | ---: | :--- |
-| - | No tracked transactions yet | INR 0.00 | - |
+| 2026-10-15 | ELITEASSIST TECHNOLOGY | INR 2.00 | Eligible Reward Points Spend |
 
 ## 6. Benefit Utilization and Recommendation
 | Benefit | Spend | Earned/Value | Cap/Target | Remaining | Transactions |
 | :--- | ---: | ---: | :--- | :--- | :---: |
-| Variant-gated rewards | INR 0.00 | Pending | Pending | Pending | 0 |
+| Eligible Reward Points Spend | INR 2.00 | INR 0.00 | Uncapped | - | 1 |
 
 Reward points summary:
 - Lifetime points: 38,026 (16,800 base + 21,080 accelerated + 146 bonus; confirmed evidence)
