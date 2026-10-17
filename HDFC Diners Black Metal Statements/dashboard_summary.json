@@ -41,7 +41,7 @@
   "evidence": {
     "variant_status": "confirmed"
   },
-  "generated_at": "2026-10-17T23:55:22.517203+05:30",
+  "generated_at": "2026-10-18T00:56:41.872884+05:30",
   "provisional": false,
   "quarterly_bonus": {
     "bonus_points": 10000,
@@ -55,7 +55,7 @@
   "rewards": {
     "accelerated_cap": {
       "cap": 10000,
-      "days_remaining": 14,
+      "days_remaining": 13,
       "earned": 0,
       "evidence_status": "unavailable",
       "month_end": "2026-10-31",
@@ -79,7 +79,7 @@
     },
     "statement_through": "2026-10-13"
   },
-  "run_id": "567f7f2a-6dd4-4966-9f7a-0a806bc011b2",
+  "run_id": "2f6e27a0-d5b0-480e-9e7c-387e5d6e3540",
   "schema_version": 1,
   "welcome": {
     "activation_date": "2026-06-30",
