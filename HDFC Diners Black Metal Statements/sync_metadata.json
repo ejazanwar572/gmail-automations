@@ -105,10 +105,10 @@
   ],
   "query": "from:alerts@hdfcbank.bank.in subject:\"A payment was made using your Credit Card\" \"ending 2360\" -in:trash -in:spam",
   "redemption_count": 2,
-  "run_id": "0d7c1eee-0fda-4b92-b8be-fa8fc3850b01",
+  "run_id": "62bcf864-7737-459e-8557-c0365dd7581d",
   "skipped_duplicate_count": 0,
   "source": "gmail-api",
-  "synced_at": "2026-10-18T04:38:20.848601+00:00",
+  "synced_at": "2026-10-18T05:39:27.415627+00:00",
   "total_points_redeemed": 23128,
   "unique_alert_count": 47
 }
