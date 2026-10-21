@@ -3,18 +3,18 @@
 ## 1. Executive Summary
 - Card ending: 8690
 - Current cycle: 2026-10-14 to 2026-11-13
-- Current cycle tracked spend: INR 0.00
-- Data freshness: Verified from gmail-api at 2026-10-19T04:19:25.080869+00:00; 54 unique alerts; cached total INR 70,449.29.
+- Current cycle tracked spend: INR 2,084.00
+- Data freshness: Verified from gmail-api at 2026-10-21T11:58:25.658032+00:00; 62 unique alerts; cached total INR 72,533.29.
 
 ## 2. Fee and Waiver Tracker
-`███████░░░░░░░░░░░░░ 35.2%`
+`███████░░░░░░░░░░░░░ 36.3%`
 
 - Period: 2026-06-29 to 2027-06-28
 
-- Days left: 252
+- Days left: 250
 
-- Progress: INR 70,449.29 of INR 200,000.00
-- Remaining: INR 129,550.71
+- Progress: INR 72,533.29 of INR 200,000.00
+- Remaining: INR 127,466.71
 - Status: In progress
 - Evidence: Provisional
 - Annual/joining fee tracked: INR 999.00
@@ -38,16 +38,23 @@
 ## 4. Current Cycle Transaction Table
 | Date | Merchant | Amount | Benefit Bucket |
 | :--- | :--- | ---: | :--- |
-| - | No tracked transactions yet | INR 0.00 | - |
+| 2026-10-20 | BLINKIT | INR 220.00 | Grocery |
+| 2026-10-20 | BLINKIT | INR 178.00 | Grocery |
+| 2026-10-20 | BLINKIT | INR 514.00 | Grocery |
+| 2026-10-20 | BLINKIT | INR 250.00 | Grocery |
+| 2026-10-21 | BLINK COMMERCE PVT LTD | INR 215.00 | Grocery |
+| 2026-10-21 | BLINK COMMERCE PVT LTD | INR 289.00 | Grocery |
+| 2026-10-21 | BLINK COMMERCE PVT LTD | INR 180.00 | Grocery |
+| 2026-10-21 | BLINK COMMERCE PVT LTD | INR 238.00 | Grocery |
 
 ## 5. Benefit Utilization and Recommendation
-- Shared 10% cashback cap: INR 0.00 of INR 1,200.00; INR 1,200.00 remaining
+- Shared 10% cashback cap: INR 208.40 of INR 1,200.00; INR 991.60 remaining
 - Policy version: 2026-07-26 (effective 2026-07-26; reviewed 2026-07-29)
 
 | Benefit | Spend | Earned/Value | Cap/Target | Remaining | Transactions |
 | :--- | ---: | ---: | :--- | :--- | :---: |
 | Dining and food delivery | INR 0.00 | INR 0.00 | Shared INR 1,200.00 | See shared cap | 0 |
-| Grocery | INR 0.00 | INR 0.00 | Shared INR 1,200.00 | See shared cap | 0 |
+| Grocery | INR 2,084.00 | INR 208.40 | Shared INR 1,200.00 | See shared cap | 8 |
 | Shopping | INR 0.00 | INR 0.00 | Shared INR 1,200.00 | See shared cap | 0 |
 | Utilities | INR 0.00 | INR 0.00 | Shared INR 1,200.00 | See shared cap | 0 |
 | 1.5% Other Eligible Spends | INR 0.00 | INR 0.00 | Uncapped | - | 0 |
@@ -61,7 +68,7 @@ Keep using this card for categories where the tracked benefit rate is strongest.
 
 - Period: 2026-10-01 to 2026-12-31
 
-- Days left: 73
+- Days left: 71
 
 - Progress: INR 0.00 of INR 10,000.00
 - Remaining: INR 10,000.00
