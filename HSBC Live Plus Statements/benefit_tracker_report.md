@@ -3,18 +3,18 @@
 ## 1. Executive Summary
 - Card ending: 8690
 - Current cycle: 2026-10-14 to 2026-11-13
-- Current cycle tracked spend: INR 2,084.00
-- Data freshness: Verified from gmail-api at 2026-10-21T15:02:12.557233+00:00; 62 unique alerts; cached total INR 72,533.29.
+- Current cycle tracked spend: INR 2,454.00
+- Data freshness: Verified from gmail-api at 2026-10-22T00:38:01.880145+00:00; 63 unique alerts; cached total INR 72,903.29.
 
 ## 2. Fee and Waiver Tracker
-`███████░░░░░░░░░░░░░ 36.3%`
+`███████░░░░░░░░░░░░░ 36.5%`
 
 - Period: 2026-06-29 to 2027-06-28
 
-- Days left: 250
+- Days left: 249
 
-- Progress: INR 72,533.29 of INR 200,000.00
-- Remaining: INR 127,466.71
+- Progress: INR 72,903.29 of INR 200,000.00
+- Remaining: INR 127,096.71
 - Status: In progress
 - Evidence: Provisional
 - Annual/joining fee tracked: INR 999.00
@@ -46,15 +46,16 @@
 | 2026-10-21 | BLINK COMMERCE PVT LTD | INR 289.00 | Grocery |
 | 2026-10-21 | BLINK COMMERCE PVT LTD | INR 180.00 | Grocery |
 | 2026-10-21 | BLINK COMMERCE PVT LTD | INR 238.00 | Grocery |
+| 2026-10-21 | BLINK COMMERCE PVT LTD | INR 370.00 | Grocery |
 
 ## 5. Benefit Utilization and Recommendation
-- Shared 10% cashback cap: INR 208.40 of INR 1,200.00; INR 991.60 remaining
+- Shared 10% cashback cap: INR 245.40 of INR 1,200.00; INR 954.60 remaining
 - Policy version: 2026-07-26 (effective 2026-07-26; reviewed 2026-07-29)
 
 | Benefit | Spend | Earned/Value | Cap/Target | Remaining | Transactions |
 | :--- | ---: | ---: | :--- | :--- | :---: |
 | Dining and food delivery | INR 0.00 | INR 0.00 | Shared INR 1,200.00 | See shared cap | 0 |
-| Grocery | INR 2,084.00 | INR 208.40 | Shared INR 1,200.00 | See shared cap | 8 |
+| Grocery | INR 2,454.00 | INR 245.40 | Shared INR 1,200.00 | See shared cap | 9 |
 | Shopping | INR 0.00 | INR 0.00 | Shared INR 1,200.00 | See shared cap | 0 |
 | Utilities | INR 0.00 | INR 0.00 | Shared INR 1,200.00 | See shared cap | 0 |
 | 1.5% Other Eligible Spends | INR 0.00 | INR 0.00 | Uncapped | - | 0 |
@@ -68,7 +69,7 @@ Keep using this card for categories where the tracked benefit rate is strongest.
 
 - Period: 2026-10-01 to 2026-12-31
 
-- Days left: 71
+- Days left: 70
 
 - Progress: INR 0.00 of INR 10,000.00
 - Remaining: INR 10,000.00

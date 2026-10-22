@@ -5,7 +5,7 @@
 - Variant status: confirmed
 - Current cycle: 2026-10-14 to 2026-11-13
 - Current cycle tracked spend: INR 179,367.00
-- Data freshness: Verified from gmail-api at 2026-10-21T16:05:32.999435+00:00; 49 unique alerts; cached total INR 704,848.50.
+- Data freshness: Verified from gmail-api at 2026-10-22T00:38:46.445455+00:00; 49 unique alerts; cached total INR 704,848.50.
 - Cycle source: HDFC Diners Black statement PDF for 14 June 2026 to 13 July 2026.
 
 ## 2. Fee and Waiver Tracker
@@ -13,7 +13,7 @@
 
 - Period: 2026-06-25 to 2027-06-24
 
-- Days left: 246
+- Days left: 245
 
 - Progress: INR 704,848.50 of INR 800,000.00
 - Remaining: INR 95,151.50
@@ -42,7 +42,7 @@
 
 - Period: 2026-10-01 to 2026-12-31
 
-- Days left: 71
+- Days left: 70
 
 - Progress: INR 179,367.00 of INR 400,000.00
 - Remaining: INR 220,633.00
