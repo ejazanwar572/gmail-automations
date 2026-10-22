@@ -3,18 +3,18 @@
 ## 1. Executive Summary
 - Card ending: 8690
 - Current cycle: 2026-10-14 to 2026-11-13
-- Current cycle tracked spend: INR 2,454.00
-- Data freshness: Verified from gmail-api at 2026-10-22T00:38:01.880145+00:00; 63 unique alerts; cached total INR 72,903.29.
+- Current cycle tracked spend: INR 2,853.00
+- Data freshness: Verified from gmail-api at 2026-10-22T01:39:39.397493+00:00; 64 unique alerts; cached total INR 73,302.29.
 
 ## 2. Fee and Waiver Tracker
-`███████░░░░░░░░░░░░░ 36.5%`
+`███████░░░░░░░░░░░░░ 36.7%`
 
 - Period: 2026-06-29 to 2027-06-28
 
 - Days left: 249
 
-- Progress: INR 72,903.29 of INR 200,000.00
-- Remaining: INR 127,096.71
+- Progress: INR 73,302.29 of INR 200,000.00
+- Remaining: INR 126,697.71
 - Status: In progress
 - Evidence: Provisional
 - Annual/joining fee tracked: INR 999.00
@@ -47,15 +47,16 @@
 | 2026-10-21 | BLINK COMMERCE PVT LTD | INR 180.00 | Grocery |
 | 2026-10-21 | BLINK COMMERCE PVT LTD | INR 238.00 | Grocery |
 | 2026-10-21 | BLINK COMMERCE PVT LTD | INR 370.00 | Grocery |
+| 2026-10-22 | BLINK COMMERCE PVT LTD | INR 399.00 | Grocery |
 
 ## 5. Benefit Utilization and Recommendation
-- Shared 10% cashback cap: INR 245.40 of INR 1,200.00; INR 954.60 remaining
+- Shared 10% cashback cap: INR 285.30 of INR 1,200.00; INR 914.70 remaining
 - Policy version: 2026-07-26 (effective 2026-07-26; reviewed 2026-07-29)
 
 | Benefit | Spend | Earned/Value | Cap/Target | Remaining | Transactions |
 | :--- | ---: | ---: | :--- | :--- | :---: |
 | Dining and food delivery | INR 0.00 | INR 0.00 | Shared INR 1,200.00 | See shared cap | 0 |
-| Grocery | INR 2,454.00 | INR 245.40 | Shared INR 1,200.00 | See shared cap | 9 |
+| Grocery | INR 2,853.00 | INR 285.30 | Shared INR 1,200.00 | See shared cap | 10 |
 | Shopping | INR 0.00 | INR 0.00 | Shared INR 1,200.00 | See shared cap | 0 |
 | Utilities | INR 0.00 | INR 0.00 | Shared INR 1,200.00 | See shared cap | 0 |
 | 1.5% Other Eligible Spends | INR 0.00 | INR 0.00 | Uncapped | - | 0 |
