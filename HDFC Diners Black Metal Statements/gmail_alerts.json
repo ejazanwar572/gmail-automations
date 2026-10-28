@@ -1,0 +1,479 @@
+[
+  {
+    "amount": 2.0,
+    "date": "2026-06-30",
+    "email_date": "2026-06-30T13:18:05+00:00",
+    "merchant": "WWW LOUNGEONE AI",
+    "message_id": "19f18ae077518d99",
+    "source": "gmail-api",
+    "subject": "A payment was made using your Credit Card"
+  },
+  {
+    "amount": 10316.0,
+    "date": "2026-06-30",
+    "email_date": "2026-06-30T22:31:21+05:30",
+    "merchant": "GOIBIBO FLIGHT VIA SMA",
+    "message_id": "19f197a6dfbf8000",
+    "source": "gmail-api",
+    "subject": "A payment was made using your Credit Card"
+  },
+  {
+    "amount": 2716.5,
+    "date": "2026-07-02",
+    "email_date": "2026-07-02T22:07:03+05:30",
+    "merchant": "ADITYA BIRLA FASHION A",
+    "message_id": "19f23b0e41c7e7df",
+    "source": "gmail-api",
+    "subject": "A payment was made using your Credit Card"
+  },
+  {
+    "amount": 2.0,
+    "date": "2026-07-03",
+    "email_date": "2026-07-03T02:20:50+00:00",
+    "merchant": "WWW LOUNGEONE AI",
+    "message_id": "19f25c7604eb076b",
+    "source": "gmail-api",
+    "subject": "A payment was made using your Credit Card"
+  },
+  {
+    "amount": 88800.0,
+    "date": "2026-07-05",
+    "email_date": "2026-07-05T13:40:23+05:30",
+    "merchant": "KAULESH CHANDRA",
+    "message_id": "19f31541d01be09b",
+    "source": "gmail-api",
+    "subject": "A payment was made using your Credit Card"
+  },
+  {
+    "amount": 24334.0,
+    "date": "2026-07-08",
+    "email_date": "2026-07-08T13:02:59+05:30",
+    "merchant": "YATRA FLIGHT VIA SMART",
+    "message_id": "19f40a4f2c112dbc",
+    "source": "gmail-api",
+    "subject": "A payment was made using your Credit Card"
+  },
+  {
+    "amount": 1399.0,
+    "date": "2026-07-08",
+    "email_date": "2026-07-08T19:49:59+05:30",
+    "merchant": "ADITYA BIRLA FASHION A",
+    "message_id": "19f421990e6c65bd",
+    "source": "gmail-api",
+    "subject": "A payment was made using your Credit Card"
+  },
+  {
+    "amount": 2.0,
+    "date": "2026-07-12",
+    "email_date": "2026-07-12T20:15:17+05:30",
+    "merchant": "Airport Lounge",
+    "message_id": "19f56ca2beb1c25c",
+    "source": "gmail-api",
+    "subject": "A payment was made using your Credit Card"
+  },
+  {
+    "amount": 1750.5,
+    "date": "2026-07-13",
+    "email_date": "2026-07-13T20:43:59+05:30",
+    "merchant": "5649 DMART KUDLU",
+    "message_id": "19f5c0acd9ecaa1f",
+    "source": "gmail-api",
+    "subject": "A payment was made using your Credit Card"
+  },
+  {
+    "amount": 19792.0,
+    "date": "2026-07-15",
+    "email_date": "2026-07-15T20:05:19+05:30",
+    "merchant": "EMT FLIGHT VIA SMARTBU",
+    "message_id": "19f66341fc43a5d0",
+    "source": "gmail-api",
+    "subject": "A payment was made using your Credit Card"
+  },
+  {
+    "amount": 2.0,
+    "date": "2026-07-22",
+    "email_date": "2026-07-22T20:13:23+05:30",
+    "merchant": "PAX INNOVATION ICT SER",
+    "message_id": "19f8a4806172162c",
+    "source": "gmail-api",
+    "subject": "A payment was made using your Credit Card"
+  },
+  {
+    "amount": 2.0,
+    "date": "2026-07-22",
+    "email_date": "2026-07-22T20:14:46+05:30",
+    "merchant": "PAX INNOVATION ICT SER",
+    "message_id": "19f8a494d1b7bc59",
+    "source": "gmail-api",
+    "subject": "A payment was made using your Credit Card"
+  },
+  {
+    "amount": 10468.0,
+    "date": "2026-07-27",
+    "email_date": "2026-07-27T01:04:16+05:30",
+    "merchant": "EMT FLIGHT VIA SMARTBU",
+    "message_id": "19f9febc8269302c",
+    "source": "gmail-api",
+    "subject": "A payment was made using your Credit Card"
+  },
+  {
+    "amount": 2.0,
+    "date": "2026-07-30",
+    "email_date": "2026-07-30T15:16:23+00:00",
+    "merchant": "LOUNGEONE AI",
+    "message_id": "19fb399209381ed7",
+    "source": "gmail-api",
+    "subject": "A payment was made using your Credit Card"
+  },
+  {
+    "amount": 11024.59,
+    "date": "2026-08-07",
+    "email_date": "2026-08-07T10:07:23+05:30",
+    "merchant": "AMAZON",
+    "message_id": "19fda82f94a73bb5",
+    "source": "gmail-api",
+    "subject": "A payment was made using your Credit Card"
+  },
+  {
+    "amount": 2.0,
+    "date": "2026-08-08",
+    "email_date": "2026-08-08T10:13:52+05:30",
+    "merchant": "PAX INNOVATION ICT SER",
+    "message_id": "19fdfaf45679d3b3",
+    "source": "gmail-api",
+    "subject": "A payment was made using your Credit Card"
+  },
+  {
+    "amount": 2.0,
+    "date": "2026-08-08",
+    "email_date": "2026-08-08T10:20:15+05:30",
+    "merchant": "LOUNGEONE AI",
+    "message_id": "19fdfb51a51cf712",
+    "source": "gmail-api",
+    "subject": "A payment was made using your Credit Card"
+  },
+  {
+    "amount": 3009.0,
+    "date": "2026-08-08",
+    "email_date": "2026-08-08T17:52:25+05:30",
+    "merchant": "MAKEMYTRIP INDIA PVT L",
+    "message_id": "19fe153143188db4",
+    "source": "gmail-api",
+    "subject": "A payment was made using your Credit Card"
+  },
+  {
+    "amount": 9373.0,
+    "date": "2026-08-17",
+    "email_date": "2026-08-17T13:16:43+05:30",
+    "merchant": "EMT FLIGHT VIA SMARTBU",
+    "message_id": "1a00eafe8d267ea2",
+    "source": "gmail-api",
+    "subject": "A payment was made using your Credit Card"
+  },
+  {
+    "amount": 19436.0,
+    "date": "2026-08-29",
+    "email_date": "2026-08-29T00:12:36+05:30",
+    "merchant": "EMT FLIGHT VIA SMARTBU",
+    "message_id": "1a049ae54aff923b",
+    "source": "gmail-api",
+    "subject": "A payment was made using your Credit Card"
+  },
+  {
+    "amount": 47360.0,
+    "date": "2026-08-29",
+    "email_date": "2026-08-29T19:01:48+05:30",
+    "merchant": "TITAN COMPANY LIMITED",
+    "message_id": "1a04db8248165518",
+    "source": "gmail-api",
+    "subject": "A payment was made using your Credit Card"
+  },
+  {
+    "amount": 2000.0,
+    "date": "2026-08-30",
+    "email_date": "2026-08-30T18:38:46+05:30",
+    "merchant": "MANYAVA",
+    "message_id": "1a052c96db0aa32a",
+    "source": "gmail-api",
+    "subject": "A payment was made using your Credit Card"
+  },
+  {
+    "amount": 24514.0,
+    "date": "2026-09-08",
+    "email_date": "2026-09-08T19:14:44+05:30",
+    "merchant": "SRI GANESH DIAMONDS AN",
+    "message_id": "1a0814397a8d63e4",
+    "source": "gmail-api",
+    "subject": "A payment was made using your Credit Card"
+  },
+  {
+    "amount": 13999.0,
+    "date": "2026-09-11",
+    "email_date": "2026-09-11T17:49:34+05:30",
+    "merchant": "MANYAVA",
+    "message_id": "1a09068b12367efe",
+    "source": "gmail-api",
+    "subject": "A payment was made using your Credit Card"
+  },
+  {
+    "amount": 8631.0,
+    "date": "2026-09-11",
+    "email_date": "2026-09-11T18:00:32+00:00",
+    "merchant": "EMT FLIGHT VIA SMARTBU",
+    "message_id": "1a091a0dbf929e86",
+    "source": "gmail-api",
+    "subject": "A payment was made using your Credit Card"
+  },
+  {
+    "amount": 26170.0,
+    "date": "2026-09-12",
+    "email_date": "2026-09-12T15:42:58+05:30",
+    "merchant": "Fazals Dress Point Jay",
+    "message_id": "1a0951b23d521754",
+    "source": "gmail-api",
+    "subject": "A payment was made using your Credit Card"
+  },
+  {
+    "amount": 21249.15,
+    "date": "2026-09-13",
+    "email_date": "2026-09-13T16:46:33+05:30",
+    "merchant": "M S INDIVINITY CLOTHIN",
+    "message_id": "1a09a7bb531cf5f7",
+    "source": "gmail-api",
+    "subject": "A payment was made using your Credit Card"
+  },
+  {
+    "amount": 576.0,
+    "date": "2026-09-19",
+    "email_date": "2026-09-19T20:44:36+05:30",
+    "merchant": "KAPOORS CAFE",
+    "message_id": "1a0ba3bd021130ef",
+    "source": "gmail-api",
+    "subject": "A payment was made using your Credit Card"
+  },
+  {
+    "amount": 1951.0,
+    "date": "2026-09-20",
+    "email_date": "2026-09-20T23:07:57+05:30",
+    "merchant": "ALIGARH HOUSE FOODS A",
+    "message_id": "1a0bfe569ac313d9",
+    "source": "gmail-api",
+    "subject": "A payment was made using your Credit Card"
+  },
+  {
+    "amount": 8914.0,
+    "date": "2026-09-22",
+    "email_date": "2026-09-22T14:04:21+05:30",
+    "merchant": "EMT FLIGHT VIA SMARTBU",
+    "message_id": "1a0c840729723986",
+    "source": "gmail-api",
+    "subject": "A payment was made using your Credit Card"
+  },
+  {
+    "amount": 10000.0,
+    "date": "2026-09-22",
+    "email_date": "2026-09-22T12:31:32+00:00",
+    "merchant": "GYFTR VIA SMARTBUY",
+    "message_id": "1a0c9199793b9793",
+    "source": "gmail-api",
+    "subject": "A payment was made using your Credit Card"
+  },
+  {
+    "amount": 20248.0,
+    "date": "2026-09-24",
+    "email_date": "2026-09-25T01:08:29+05:30",
+    "merchant": "EMT FLIGHT VIA SMARTBU",
+    "message_id": "1a0d4ed376b0d167",
+    "source": "gmail-api",
+    "subject": "A payment was made using your Credit Card"
+  },
+  {
+    "amount": 663.0,
+    "date": "2026-09-25",
+    "email_date": "2026-09-25T01:30:14+05:30",
+    "merchant": "AMAZON",
+    "message_id": "1a0d5011a462a2a5",
+    "source": "gmail-api",
+    "subject": "A payment was made using your Credit Card"
+  },
+  {
+    "amount": 4504.0,
+    "date": "2026-09-25",
+    "email_date": "2026-09-25T01:36:08+05:30",
+    "merchant": "AMAZON",
+    "message_id": "1a0d5068253e0ef8",
+    "source": "gmail-api",
+    "subject": "A payment was made using your Credit Card"
+  },
+  {
+    "amount": 334.0,
+    "date": "2026-09-25",
+    "email_date": "2026-09-25T01:37:30+05:30",
+    "merchant": "AMAZON",
+    "message_id": "1a0d507c49325653",
+    "source": "gmail-api",
+    "subject": "A payment was made using your Credit Card"
+  },
+  {
+    "amount": 1894.76,
+    "date": "2026-09-25",
+    "email_date": "2026-09-26T00:02:56+05:30",
+    "merchant": "AMAZON",
+    "message_id": "1a0d9d78854f08e3",
+    "source": "gmail-api",
+    "subject": "A payment was made using your Credit Card"
+  },
+  {
+    "amount": 953.0,
+    "date": "2026-09-26",
+    "email_date": "2026-09-27T05:06:44+05:30",
+    "merchant": "AMAZON",
+    "message_id": "1a0e0140acf72a66",
+    "source": "gmail-api",
+    "subject": "A payment was made using your Credit Card"
+  },
+  {
+    "amount": 2.0,
+    "date": "2026-09-29",
+    "email_date": "2026-09-29T22:51:10+05:30",
+    "merchant": "LOUNGEONE AI",
+    "message_id": "1a0ee2f49ec5bb16",
+    "source": "gmail-api",
+    "subject": "A payment was made using your Credit Card"
+  },
+  {
+    "amount": 14213.0,
+    "date": "2026-09-30",
+    "email_date": "2026-09-30T00:22:55+05:30",
+    "merchant": "GYFTR VIA SMARTBUY",
+    "message_id": "1a0ee834947a84c4",
+    "source": "gmail-api",
+    "subject": "A payment was made using your Credit Card"
+  },
+  {
+    "amount": 8992.0,
+    "date": "2026-10-01",
+    "email_date": "2026-10-01T19:40:05+05:30",
+    "merchant": "WESTSIDE A UNIT OF TRE",
+    "message_id": "1a0f7cd0f84a9ab4",
+    "source": "gmail-api",
+    "subject": "A payment was made using your Credit Card"
+  },
+  {
+    "amount": 15559.0,
+    "date": "2026-10-02",
+    "email_date": "2026-10-02T11:31:54+05:30",
+    "merchant": "EMT FLIGHT VIA SMARTBU",
+    "message_id": "1a0fb3478a03eabc",
+    "source": "gmail-api",
+    "subject": "A payment was made using your Credit Card"
+  },
+  {
+    "amount": 11818.0,
+    "date": "2026-10-02",
+    "email_date": "2026-10-02T09:53:47+00:00",
+    "merchant": "AMAZON",
+    "message_id": "1a0fc08c3d8f175c",
+    "source": "gmail-api",
+    "subject": "A payment was made using your Credit Card"
+  },
+  {
+    "amount": 7500.0,
+    "date": "2026-10-02",
+    "email_date": "2026-10-02T09:54:53+00:00",
+    "merchant": "BHARGAVI ENTERPRISES",
+    "message_id": "1a0fc09c9e681903",
+    "source": "gmail-api",
+    "subject": "A payment was made using your Credit Card"
+  },
+  {
+    "amount": 71000.0,
+    "date": "2026-10-02",
+    "email_date": "2026-10-02T20:51:28+05:30",
+    "merchant": "SRI GANESH DIAMONDS AN",
+    "message_id": "1a0fd34c236b032d",
+    "source": "gmail-api",
+    "subject": "A payment was made using your Credit Card"
+  },
+  {
+    "amount": 2.0,
+    "date": "2026-10-03",
+    "email_date": "2026-10-03T13:03:17+05:30",
+    "merchant": "TFS YAMUNA AIRPORT SER",
+    "message_id": "1a100ae7cdda64ef",
+    "source": "gmail-api",
+    "subject": "A payment was made using your Credit Card"
+  },
+  {
+    "amount": 2.0,
+    "date": "2026-10-15",
+    "email_date": "2026-10-15T08:03:03+05:30",
+    "merchant": "ELITEASSIST TECHNOLOGY",
+    "message_id": "1a13d67ef83e25fa",
+    "source": "gmail-api",
+    "subject": "A payment was made using your Credit Card"
+  },
+  {
+    "amount": 50000.0,
+    "date": "2026-10-17",
+    "email_date": "2026-10-17T18:13:32+05:30",
+    "merchant": "REHAN SIDDIQUI",
+    "message_id": "1a149e3905a7b3af",
+    "source": "gmail-api",
+    "subject": "A payment was made using your Credit Card"
+  },
+  {
+    "amount": 124800.0,
+    "date": "2026-10-19",
+    "email_date": "2026-10-19T17:36:57+05:30",
+    "merchant": "ALANKAR JEWELLERS",
+    "message_id": "1a1540ece470f7f6",
+    "source": "gmail-api",
+    "subject": "A payment was made using your Credit Card"
+  },
+  {
+    "amount": 4565.0,
+    "date": "2026-10-19",
+    "email_date": "2026-10-19T18:23:43+05:30",
+    "merchant": "PRIYA",
+    "message_id": "1a154399ca7b971d",
+    "source": "gmail-api",
+    "subject": "A payment was made using your Credit Card"
+  },
+  {
+    "amount": 2.0,
+    "date": "2026-10-24",
+    "email_date": "2026-10-24T09:21:37+05:30",
+    "merchant": "PAX INNOVATION ICT SER",
+    "message_id": "1a16c091b42424db",
+    "source": "gmail-api",
+    "subject": "A payment was made using your Credit Card"
+  },
+  {
+    "amount": 2.0,
+    "date": "2026-10-24",
+    "email_date": "2026-10-24T05:16:32+00:00",
+    "merchant": "PAX INNOVATION ICT SER",
+    "message_id": "1a16c56d66d48be8",
+    "source": "gmail-api",
+    "subject": "A payment was made using your Credit Card"
+  },
+  {
+    "amount": 2.0,
+    "date": "2026-10-24",
+    "email_date": "2026-10-24T11:01:15+05:30",
+    "merchant": "Airport Lounge",
+    "message_id": "1a16c644eee93251",
+    "source": "gmail-api",
+    "subject": "A payment was made using your Credit Card"
+  },
+  {
+    "amount": 8092.0,
+    "date": "2026-10-26",
+    "email_date": "2026-10-26T06:47:29+00:00",
+    "merchant": "PRAMOD LADDU BHANDAR",
+    "message_id": "1a176f6d51f8fe2e",
+    "source": "gmail-api",
+    "subject": "A payment was made using your Credit Card"
+  }
+]

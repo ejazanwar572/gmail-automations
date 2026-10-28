@@ -3,18 +3,18 @@
 ## 1. Executive Summary
 - Card ending: 8690
 - Current cycle: 2026-10-14 to 2026-11-13
-- Current cycle tracked spend: INR 2,853.00
-- Data freshness: Verified from gmail-api at 2026-10-22T07:45:28.576701+00:00; 64 unique alerts; cached total INR 73,302.29.
+- Current cycle tracked spend: INR 8,166.00
+- Data freshness: Verified from gmail-api at 2026-10-28T07:25:59.110463+00:00; 72 unique alerts; cached total INR 78,615.29.
 
 ## 2. Fee and Waiver Tracker
-`███████░░░░░░░░░░░░░ 36.7%`
+`████████░░░░░░░░░░░░ 39.3%`
 
 - Period: 2026-06-29 to 2027-06-28
 
-- Days left: 249
+- Days left: 243
 
-- Progress: INR 73,302.29 of INR 200,000.00
-- Remaining: INR 126,697.71
+- Progress: INR 78,615.29 of INR 200,000.00
+- Remaining: INR 121,384.71
 - Status: In progress
 - Evidence: Provisional
 - Annual/joining fee tracked: INR 999.00
@@ -48,29 +48,37 @@
 | 2026-10-21 | BLINK COMMERCE PVT LTD | INR 238.00 | Grocery |
 | 2026-10-21 | BLINK COMMERCE PVT LTD | INR 370.00 | Grocery |
 | 2026-10-22 | BLINK COMMERCE PVT LTD | INR 399.00 | Grocery |
+| 2026-10-23 | BLINK COMMERCE PVT LTD | INR 1,670.00 | Grocery |
+| 2026-10-23 | BLINK COMMERCE PVT LTD | INR 1,160.00 | Grocery |
+| 2026-10-24 | BLINK COMMERCE PVT LTD | INR 155.00 | Grocery |
+| 2026-10-25 | BLINKIT | INR 415.00 | Grocery |
+| 2026-10-25 | BLINKIT | INR 433.00 | Grocery |
+| 2026-10-25 | PRAMOD LADDU BHANDAR | INR 575.00 | Unclassified |
+| 2026-10-27 | BLINKIT | INR 185.00 | Grocery |
+| 2026-10-28 | PRAMOD LADDU BHANDAR | INR 720.00 | Unclassified |
 
 ## 5. Benefit Utilization and Recommendation
-- Shared 10% cashback cap: INR 285.30 of INR 1,200.00; INR 914.70 remaining
+- Shared 10% cashback cap: INR 687.10 of INR 1,200.00; INR 512.90 remaining
 - Policy version: 2026-07-26 (effective 2026-07-26; reviewed 2026-07-29)
 
 | Benefit | Spend | Earned/Value | Cap/Target | Remaining | Transactions |
 | :--- | ---: | ---: | :--- | :--- | :---: |
 | Dining and food delivery | INR 0.00 | INR 0.00 | Shared INR 1,200.00 | See shared cap | 0 |
-| Grocery | INR 2,853.00 | INR 285.30 | Shared INR 1,200.00 | See shared cap | 10 |
+| Grocery | INR 6,871.00 | INR 687.10 | Shared INR 1,200.00 | See shared cap | 16 |
 | Shopping | INR 0.00 | INR 0.00 | Shared INR 1,200.00 | See shared cap | 0 |
 | Utilities | INR 0.00 | INR 0.00 | Shared INR 1,200.00 | See shared cap | 0 |
 | 1.5% Other Eligible Spends | INR 0.00 | INR 0.00 | Uncapped | - | 0 |
 
 Keep using this card for categories where the tracked benefit rate is strongest.
 
-- Needs MCC evidence: INR 0.00 across 0 transactions
+- Needs MCC evidence: INR 1,295.00 across 2 transactions
 
 ### Contactless fuel offer
 `░░░░░░░░░░░░░░░░░░░░ 0.0%`
 
 - Period: 2026-10-01 to 2026-12-31
 
-- Days left: 70
+- Days left: 64
 
 - Progress: INR 0.00 of INR 10,000.00
 - Remaining: INR 10,000.00

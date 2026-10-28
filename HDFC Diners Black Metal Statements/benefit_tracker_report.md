@@ -4,19 +4,19 @@
 - Card ending: 2360
 - Variant status: confirmed
 - Current cycle: 2026-10-14 to 2026-11-13
-- Current cycle tracked spend: INR 179,367.00
-- Data freshness: Verified from gmail-api at 2026-10-22T07:45:56.521350+00:00; 49 unique alerts; cached total INR 704,848.50.
+- Current cycle tracked spend: INR 187,465.00
+- Data freshness: Verified from gmail-api at 2026-10-28T07:26:31.791181+00:00; 53 unique alerts; cached total INR 712,946.50.
 - Cycle source: HDFC Diners Black statement PDF for 14 June 2026 to 13 July 2026.
 
 ## 2. Fee and Waiver Tracker
-`██████████████████░░ 88.1%`
+`██████████████████░░ 89.1%`
 
 - Period: 2026-06-25 to 2027-06-24
 
-- Days left: 245
+- Days left: 239
 
-- Progress: INR 704,848.50 of INR 800,000.00
-- Remaining: INR 95,151.50
+- Progress: INR 712,946.50 of INR 800,000.00
+- Remaining: INR 87,053.50
 - Status: In progress
 - Evidence: Provisional
 - Annual/joining fee tracked: INR 10,000.00
@@ -38,14 +38,14 @@
 - Spend INR 1.5 lakh within first 90 days for the listed welcome memberships on the official HDFC page.
 
 ## 4. Quarterly Bonus Tracker
-`█████████░░░░░░░░░░░ 44.8%`
+`█████████░░░░░░░░░░░ 46.9%`
 
 - Period: 2026-10-01 to 2026-12-31
 
-- Days left: 70
+- Days left: 64
 
-- Progress: INR 179,367.00 of INR 400,000.00
-- Remaining: INR 220,633.00
+- Progress: INR 187,465.00 of INR 400,000.00
+- Remaining: INR 212,535.00
 - Status: In progress
 - Evidence: Provisional
 - Bonus on target: 10,000 reward points
@@ -53,6 +53,10 @@
 ## 5. Current Cycle Transaction Table
 | Date | Merchant | Amount | Benefit Bucket |
 | :--- | :--- | ---: | :--- |
+| 2026-10-26 | PRAMOD LADDU BHANDAR | INR 8,092.00 | Eligible Reward Points Spend |
+| 2026-10-24 | PAX INNOVATION ICT SER | INR 2.00 | Eligible Reward Points Spend |
+| 2026-10-24 | PAX INNOVATION ICT SER | INR 2.00 | Eligible Reward Points Spend |
+| 2026-10-24 | Airport Lounge | INR 2.00 | Eligible Reward Points Spend |
 | 2026-10-19 | ALANKAR JEWELLERS | INR 124,800.00 | Eligible Reward Points Spend |
 | 2026-10-19 | PRIYA | INR 4,565.00 | Eligible Reward Points Spend |
 | 2026-10-17 | REHAN SIDDIQUI | INR 50,000.00 | Eligible Reward Points Spend |
@@ -61,7 +65,7 @@
 ## 6. Benefit Utilization and Recommendation
 | Benefit | Spend | Earned/Value | Cap/Target | Remaining | Transactions |
 | :--- | ---: | ---: | :--- | :--- | :---: |
-| Eligible Reward Points Spend | INR 179,367.00 | INR 0.00 | Uncapped | - | 4 |
+| Eligible Reward Points Spend | INR 187,465.00 | INR 0.00 | Uncapped | - | 8 |
 
 Reward points summary:
 - Lifetime points: 38,026 (16,800 base + 21,080 accelerated + 146 bonus; confirmed evidence)

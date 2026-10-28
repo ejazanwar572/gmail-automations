@@ -1,0 +1,1304 @@
+{
+  "notes": [
+    "Statement PDF parsing is ready; current data is sourced from Gmail alerts until statement PDFs are available."
+  ],
+  "statements": [],
+  "transactions": [
+    {
+      "amount": 251.0,
+      "date": "2026-06-30",
+      "email_date": "2026-06-30T12:19:04+08:00",
+      "merchant": "BLINK COMMERCE PVT LTD",
+      "message_id": "19f16c090c94783b",
+      "raw": {
+        "amount": 251.0,
+        "date": "2026-06-30",
+        "email_date": "2026-06-30T12:19:04+08:00",
+        "merchant": "BLINK COMMERCE PVT LTD",
+        "message_id": "19f16c090c94783b",
+        "source": "gmail-api",
+        "subject": "You have used your HSBC Credit Card ending with 8690 for a purchase transaction"
+      },
+      "source": "gmail-api",
+      "subject": "You have used your HSBC Credit Card ending with 8690 for a purchase transaction"
+    },
+    {
+      "amount": 933.0,
+      "date": "2026-07-02",
+      "email_date": "2026-07-02T23:48:51+08:00",
+      "merchant": "RAZ*SWIGGY",
+      "message_id": "19f2384d42459ec4",
+      "raw": {
+        "amount": 933.0,
+        "date": "2026-07-02",
+        "email_date": "2026-07-02T23:48:51+08:00",
+        "merchant": "RAZ*SWIGGY",
+        "message_id": "19f2384d42459ec4",
+        "source": "gmail-api",
+        "subject": "You have used your HSBC Credit Card ending with 8690 for a purchase transaction"
+      },
+      "source": "gmail-api",
+      "subject": "You have used your HSBC Credit Card ending with 8690 for a purchase transaction"
+    },
+    {
+      "amount": 2.0,
+      "date": "2026-07-03",
+      "email_date": "2026-07-03T10:27:13+08:00",
+      "merchant": "BLR DOM 1",
+      "message_id": "19f25cd3a0ebe7f2",
+      "raw": {
+        "amount": 2.0,
+        "date": "2026-07-03",
+        "email_date": "2026-07-03T10:27:13+08:00",
+        "merchant": "BLR DOM 1",
+        "message_id": "19f25cd3a0ebe7f2",
+        "source": "gmail-api",
+        "subject": "You have used your HSBC Credit Card ending with 8690 for a purchase transaction"
+      },
+      "source": "gmail-api",
+      "subject": "You have used your HSBC Credit Card ending with 8690 for a purchase transaction"
+    },
+    {
+      "amount": 2.0,
+      "date": "2026-07-03",
+      "email_date": "2026-07-03T10:27:13+08:00",
+      "merchant": "BLR DOM 1",
+      "message_id": "19f25cd3d64652e3",
+      "raw": {
+        "amount": 2.0,
+        "date": "2026-07-03",
+        "email_date": "2026-07-03T10:27:13+08:00",
+        "merchant": "BLR DOM 1",
+        "message_id": "19f25cd3d64652e3",
+        "source": "gmail-api",
+        "subject": "You have used your HSBC Credit Card ending with 8690 for a purchase transaction"
+      },
+      "source": "gmail-api",
+      "subject": "You have used your HSBC Credit Card ending with 8690 for a purchase transaction"
+    },
+    {
+      "amount": 171.13,
+      "date": "2026-07-07",
+      "email_date": "2026-07-07T14:20:57+08:00",
+      "merchant": "RAZ*ZOMATO ONLINE ORDER",
+      "message_id": "19f3b3cab088b2e9",
+      "raw": {
+        "amount": 171.13,
+        "date": "2026-07-07",
+        "email_date": "2026-07-07T14:20:57+08:00",
+        "merchant": "RAZ*ZOMATO ONLINE ORDER",
+        "message_id": "19f3b3cab088b2e9",
+        "source": "gmail-api",
+        "subject": "You have used your HSBC Credit Card ending with 8690 for a purchase transaction"
+      },
+      "source": "gmail-api",
+      "subject": "You have used your HSBC Credit Card ending with 8690 for a purchase transaction"
+    },
+    {
+      "amount": 1507.0,
+      "date": "2026-07-12",
+      "email_date": "2026-07-12T13:40:23+08:00",
+      "merchant": "SWIGGY E COM",
+      "message_id": "19f54d751884704b",
+      "raw": {
+        "amount": 1507.0,
+        "date": "2026-07-12",
+        "email_date": "2026-07-12T13:40:23+08:00",
+        "merchant": "SWIGGY E COM",
+        "message_id": "19f54d751884704b",
+        "source": "gmail-api",
+        "subject": "You have used your HSBC Credit Card ending with 8690 for a purchase transaction"
+      },
+      "source": "gmail-api",
+      "subject": "You have used your HSBC Credit Card ending with 8690 for a purchase transaction"
+    },
+    {
+      "amount": 437.0,
+      "date": "2026-07-13",
+      "email_date": "2026-07-14T00:49:44+08:00",
+      "merchant": "BLINKIT",
+      "message_id": "19f5c627ae49b322",
+      "raw": {
+        "amount": 437.0,
+        "date": "2026-07-13",
+        "email_date": "2026-07-14T00:49:44+08:00",
+        "merchant": "BLINKIT",
+        "message_id": "19f5c627ae49b322",
+        "source": "gmail-api",
+        "subject": "You have used your HSBC Credit Card ending with 8690 for a purchase transaction"
+      },
+      "source": "gmail-api",
+      "subject": "You have used your HSBC Credit Card ending with 8690 for a purchase transaction"
+    },
+    {
+      "amount": 9975.0,
+      "date": "2026-07-18",
+      "email_date": "2026-07-18T23:35:32+08:00",
+      "merchant": "ZEPTO",
+      "message_id": "19f75de5bd73937d",
+      "raw": {
+        "amount": 9975.0,
+        "date": "2026-07-18",
+        "email_date": "2026-07-18T23:35:32+08:00",
+        "merchant": "ZEPTO",
+        "message_id": "19f75de5bd73937d",
+        "source": "gmail-api",
+        "subject": "You have used your HSBC Credit Card ending with 8690 for a purchase transaction"
+      },
+      "source": "gmail-api",
+      "subject": "You have used your HSBC Credit Card ending with 8690 for a purchase transaction"
+    },
+    {
+      "amount": 2530.33,
+      "date": "2026-07-18",
+      "email_date": "2026-07-19T00:25:52+08:00",
+      "merchant": "PNB*IRCTC TICKETING",
+      "message_id": "19f760c7008027f1",
+      "raw": {
+        "amount": 2530.33,
+        "date": "2026-07-18",
+        "email_date": "2026-07-19T00:25:52+08:00",
+        "merchant": "PNB*IRCTC TICKETING",
+        "message_id": "19f760c7008027f1",
+        "source": "gmail-api",
+        "subject": "You have used your HSBC Credit Card ending with 8690 for a purchase transaction"
+      },
+      "source": "gmail-api",
+      "subject": "You have used your HSBC Credit Card ending with 8690 for a purchase transaction"
+    },
+    {
+      "amount": 4988.0,
+      "date": "2026-07-27",
+      "email_date": "2026-07-28T00:48:50+08:00",
+      "merchant": "ZEPTO MARKETPLACE PRIV",
+      "message_id": "19fa47aaf7412d70",
+      "raw": {
+        "amount": 4988.0,
+        "date": "2026-07-27",
+        "email_date": "2026-07-28T00:48:50+08:00",
+        "merchant": "ZEPTO MARKETPLACE PRIV",
+        "message_id": "19fa47aaf7412d70",
+        "source": "gmail-api",
+        "subject": "You have used your HSBC Credit Card ending with 8690 for a purchase transaction"
+      },
+      "source": "gmail-api",
+      "subject": "You have used your HSBC Credit Card ending with 8690 for a purchase transaction"
+    },
+    {
+      "amount": 481.0,
+      "date": "2026-08-06",
+      "email_date": "2026-08-06T23:20:30+08:00",
+      "merchant": "ROYAL MART",
+      "message_id": "19fd7a96cd1a5bb3",
+      "raw": {
+        "amount": 481.0,
+        "date": "2026-08-06",
+        "email_date": "2026-08-06T23:20:30+08:00",
+        "merchant": "ROYAL MART",
+        "message_id": "19fd7a96cd1a5bb3",
+        "source": "gmail-api",
+        "subject": "You have used your HSBC Credit Card ending with 8690 for a purchase transaction"
+      },
+      "source": "gmail-api",
+      "subject": "You have used your HSBC Credit Card ending with 8690 for a purchase transaction"
+    },
+    {
+      "amount": 103.96,
+      "date": "2026-08-09",
+      "email_date": "2026-08-09T03:26:59+08:00",
+      "merchant": "MC DONALDS",
+      "message_id": "19fe2d7cd7897c4c",
+      "raw": {
+        "amount": 103.96,
+        "date": "2026-08-09",
+        "email_date": "2026-08-09T03:26:59+08:00",
+        "merchant": "MC DONALDS",
+        "message_id": "19fe2d7cd7897c4c",
+        "source": "gmail-api",
+        "subject": "You have used your HSBC Credit Card ending with 8690 for a purchase transaction"
+      },
+      "source": "gmail-api",
+      "subject": "You have used your HSBC Credit Card ending with 8690 for a purchase transaction"
+    },
+    {
+      "amount": 428.4,
+      "date": "2026-08-09",
+      "email_date": "2026-08-09T20:33:28+08:00",
+      "merchant": "AVENUE SUPERMARTS LTD",
+      "message_id": "19fe683930e44285",
+      "raw": {
+        "amount": 428.4,
+        "date": "2026-08-09",
+        "email_date": "2026-08-09T20:33:28+08:00",
+        "merchant": "AVENUE SUPERMARTS LTD",
+        "message_id": "19fe683930e44285",
+        "source": "gmail-api",
+        "subject": "You have used your HSBC Credit Card ending with 8690 for a purchase transaction"
+      },
+      "source": "gmail-api",
+      "subject": "You have used your HSBC Credit Card ending with 8690 for a purchase transaction"
+    },
+    {
+      "amount": 2.0,
+      "date": "2026-08-09",
+      "email_date": "2026-08-10T03:00:17+08:00",
+      "merchant": "PAX INNOVATION ICT SERVIC",
+      "message_id": "19fe7e5b7223c1d7",
+      "raw": {
+        "amount": 2.0,
+        "date": "2026-08-09",
+        "email_date": "2026-08-10T03:00:17+08:00",
+        "merchant": "PAX INNOVATION ICT SERVIC",
+        "message_id": "19fe7e5b7223c1d7",
+        "source": "gmail-api",
+        "subject": "You have used your HSBC Credit Card ending with 8690 for a purchase transaction"
+      },
+      "source": "gmail-api",
+      "subject": "You have used your HSBC Credit Card ending with 8690 for a purchase transaction"
+    },
+    {
+      "amount": 477.0,
+      "date": "2026-08-13",
+      "email_date": "2026-08-13T16:22:07+08:00",
+      "merchant": "AVENUE E COMMERCE LIMITED",
+      "message_id": "19ffa36e299aca7d",
+      "raw": {
+        "amount": 477.0,
+        "date": "2026-08-13",
+        "email_date": "2026-08-13T16:22:07+08:00",
+        "merchant": "AVENUE E COMMERCE LIMITED",
+        "message_id": "19ffa36e299aca7d",
+        "source": "gmail-api",
+        "subject": "You have used your HSBC Credit Card ending with 8690 for a purchase transaction"
+      },
+      "source": "gmail-api",
+      "subject": "You have used your HSBC Credit Card ending with 8690 for a purchase transaction"
+    },
+    {
+      "amount": 458.0,
+      "date": "2026-08-15",
+      "email_date": "2026-08-15T16:50:14+08:00",
+      "merchant": "ALIGARH HOUSE FOODS A",
+      "message_id": "1a0049d5b6bf8904",
+      "raw": {
+        "amount": 458.0,
+        "date": "2026-08-15",
+        "email_date": "2026-08-15T16:50:14+08:00",
+        "merchant": "ALIGARH HOUSE FOODS A",
+        "message_id": "1a0049d5b6bf8904",
+        "source": "gmail-api",
+        "subject": "You have used your HSBC Credit Card ending with 8690 for a purchase transaction"
+      },
+      "source": "gmail-api",
+      "subject": "You have used your HSBC Credit Card ending with 8690 for a purchase transaction"
+    },
+    {
+      "amount": 235.0,
+      "date": "2026-08-21",
+      "email_date": "2026-08-21T14:04:52+00:00",
+      "merchant": "FLIPKART INTERNET PRIV",
+      "message_id": "1a024a39a9d3c92f",
+      "raw": {
+        "amount": 235.0,
+        "date": "2026-08-21",
+        "email_date": "2026-08-21T14:04:52+00:00",
+        "merchant": "FLIPKART INTERNET PRIV",
+        "message_id": "1a024a39a9d3c92f",
+        "source": "gmail-api",
+        "subject": "Credit Card Transaction Alert"
+      },
+      "source": "gmail-api",
+      "subject": "Credit Card Transaction Alert"
+    },
+    {
+      "amount": 523.0,
+      "date": "2026-08-30",
+      "email_date": "2026-08-30T05:46:13+00:00",
+      "merchant": "ROYAL MART",
+      "message_id": "1a0513444da4fb9c",
+      "raw": {
+        "amount": 523.0,
+        "date": "2026-08-30",
+        "email_date": "2026-08-30T05:46:13+00:00",
+        "merchant": "ROYAL MART",
+        "message_id": "1a0513444da4fb9c",
+        "source": "gmail-api",
+        "subject": "Credit Card Transaction Alert"
+      },
+      "source": "gmail-api",
+      "subject": "Credit Card Transaction Alert"
+    },
+    {
+      "amount": 275.0,
+      "date": "2026-08-30",
+      "email_date": "2026-08-30T06:05:08+00:00",
+      "merchant": "ZEPTO MARKETPLACE PRIVATE",
+      "message_id": "1a0514594217c0d3",
+      "raw": {
+        "amount": 275.0,
+        "date": "2026-08-30",
+        "email_date": "2026-08-30T06:05:08+00:00",
+        "merchant": "ZEPTO MARKETPLACE PRIVATE",
+        "message_id": "1a0514594217c0d3",
+        "source": "gmail-api",
+        "subject": "Credit Card Transaction Alert"
+      },
+      "source": "gmail-api",
+      "subject": "Credit Card Transaction Alert"
+    },
+    {
+      "amount": 246.0,
+      "date": "2026-09-02",
+      "email_date": "2026-09-02T14:43:39+00:00",
+      "merchant": "SWIGGY INSTA MART E",
+      "message_id": "1a0629364d6678bb",
+      "raw": {
+        "amount": 246.0,
+        "date": "2026-09-02",
+        "email_date": "2026-09-02T14:43:39+00:00",
+        "merchant": "SWIGGY INSTA MART E",
+        "message_id": "1a0629364d6678bb",
+        "source": "gmail-api",
+        "subject": "Credit Card Transaction Alert"
+      },
+      "source": "gmail-api",
+      "subject": "Credit Card Transaction Alert"
+    },
+    {
+      "amount": 575.48,
+      "date": "2026-09-03",
+      "email_date": "2026-09-03T13:08:37+00:00",
+      "merchant": "5649 DMART KUDLU",
+      "message_id": "1a06762bdef96d54",
+      "raw": {
+        "amount": 575.48,
+        "date": "2026-09-03",
+        "email_date": "2026-09-03T13:08:37+00:00",
+        "merchant": "5649 DMART KUDLU",
+        "message_id": "1a06762bdef96d54",
+        "source": "gmail-api",
+        "subject": "Credit Card Transaction Alert"
+      },
+      "source": "gmail-api",
+      "subject": "Credit Card Transaction Alert"
+    },
+    {
+      "amount": 208.0,
+      "date": "2026-09-04",
+      "email_date": "2026-09-04T15:30:40+00:00",
+      "merchant": "SWIGGY PVT LTD FOOD2",
+      "message_id": "1a06d0b298942054",
+      "raw": {
+        "amount": 208.0,
+        "date": "2026-09-04",
+        "email_date": "2026-09-04T15:30:40+00:00",
+        "merchant": "SWIGGY PVT LTD FOOD2",
+        "message_id": "1a06d0b298942054",
+        "source": "gmail-api",
+        "subject": "Credit Card Transaction Alert"
+      },
+      "source": "gmail-api",
+      "subject": "Credit Card Transaction Alert"
+    },
+    {
+      "amount": 143.0,
+      "date": "2026-09-05",
+      "email_date": "2026-09-05T17:52:25+00:00",
+      "merchant": "SWIGGY PVT LTD FOOD1",
+      "message_id": "1a072b34b23b40b7",
+      "raw": {
+        "amount": 143.0,
+        "date": "2026-09-05",
+        "email_date": "2026-09-05T17:52:25+00:00",
+        "merchant": "SWIGGY PVT LTD FOOD1",
+        "message_id": "1a072b34b23b40b7",
+        "source": "gmail-api",
+        "subject": "Credit Card Transaction Alert"
+      },
+      "source": "gmail-api",
+      "subject": "Credit Card Transaction Alert"
+    },
+    {
+      "amount": 142.5,
+      "date": "2026-09-07",
+      "email_date": "2026-09-07T11:56:56+00:00",
+      "merchant": "RELIANCE SMART",
+      "message_id": "1a07bba8a5fc1789",
+      "raw": {
+        "amount": 142.5,
+        "date": "2026-09-07",
+        "email_date": "2026-09-07T11:56:56+00:00",
+        "merchant": "RELIANCE SMART",
+        "message_id": "1a07bba8a5fc1789",
+        "source": "gmail-api",
+        "subject": "Credit Card Transaction Alert"
+      },
+      "source": "gmail-api",
+      "subject": "Credit Card Transaction Alert"
+    },
+    {
+      "amount": 110.0,
+      "date": "2026-09-07",
+      "email_date": "2026-09-07T12:26:35+00:00",
+      "merchant": "SWIGGY FOOD",
+      "message_id": "1a07bd5af491c57e",
+      "raw": {
+        "amount": 110.0,
+        "date": "2026-09-07",
+        "email_date": "2026-09-07T12:26:35+00:00",
+        "merchant": "SWIGGY FOOD",
+        "message_id": "1a07bd5af491c57e",
+        "source": "gmail-api",
+        "subject": "Credit Card Transaction Alert"
+      },
+      "source": "gmail-api",
+      "subject": "Credit Card Transaction Alert"
+    },
+    {
+      "amount": 100.0,
+      "date": "2026-09-12",
+      "email_date": "2026-09-12T08:12:48+00:00",
+      "merchant": "PAYTM",
+      "message_id": "1a094ad25783a081",
+      "raw": {
+        "amount": 100.0,
+        "date": "2026-09-12",
+        "email_date": "2026-09-12T08:12:48+00:00",
+        "merchant": "PAYTM",
+        "message_id": "1a094ad25783a081",
+        "source": "gmail-api",
+        "subject": "Credit Card Transaction Alert"
+      },
+      "source": "gmail-api",
+      "subject": "Credit Card Transaction Alert"
+    },
+    {
+      "amount": 107.0,
+      "date": "2026-09-12",
+      "email_date": "2026-09-12T13:40:19+00:00",
+      "merchant": "SWIGGY FOOD",
+      "message_id": "1a095d8ff1748236",
+      "raw": {
+        "amount": 107.0,
+        "date": "2026-09-12",
+        "email_date": "2026-09-12T13:40:19+00:00",
+        "merchant": "SWIGGY FOOD",
+        "message_id": "1a095d8ff1748236",
+        "source": "gmail-api",
+        "subject": "Credit Card Transaction Alert"
+      },
+      "source": "gmail-api",
+      "subject": "Credit Card Transaction Alert"
+    },
+    {
+      "amount": 92.0,
+      "date": "2026-09-16",
+      "email_date": "2026-09-16T04:46:55+00:00",
+      "merchant": "ROYAL MART",
+      "message_id": "1a0a88a1691225e0",
+      "raw": {
+        "amount": 92.0,
+        "date": "2026-09-16",
+        "email_date": "2026-09-16T04:46:55+00:00",
+        "merchant": "ROYAL MART",
+        "message_id": "1a0a88a1691225e0",
+        "source": "gmail-api",
+        "subject": "Credit Card Transaction Alert"
+      },
+      "source": "gmail-api",
+      "subject": "Credit Card Transaction Alert"
+    },
+    {
+      "amount": 108.0,
+      "date": "2026-09-17",
+      "email_date": "2026-09-17T05:59:35+00:00",
+      "merchant": "SWIGGY FOOD",
+      "message_id": "1a0adf2fbb589acf",
+      "raw": {
+        "amount": 108.0,
+        "date": "2026-09-17",
+        "email_date": "2026-09-17T05:59:35+00:00",
+        "merchant": "SWIGGY FOOD",
+        "message_id": "1a0adf2fbb589acf",
+        "source": "gmail-api",
+        "subject": "Credit Card Transaction Alert"
+      },
+      "source": "gmail-api",
+      "subject": "Credit Card Transaction Alert"
+    },
+    {
+      "amount": 108.0,
+      "date": "2026-09-17",
+      "email_date": "2026-09-17T07:07:27+00:00",
+      "merchant": "SWIGGY FOOD",
+      "message_id": "1a0ae311c3c037a2",
+      "raw": {
+        "amount": 108.0,
+        "date": "2026-09-17",
+        "email_date": "2026-09-17T07:07:27+00:00",
+        "merchant": "SWIGGY FOOD",
+        "message_id": "1a0ae311c3c037a2",
+        "source": "gmail-api",
+        "subject": "Credit Card Transaction Alert"
+      },
+      "source": "gmail-api",
+      "subject": "Credit Card Transaction Alert"
+    },
+    {
+      "amount": 92.0,
+      "date": "2026-09-18",
+      "email_date": "2026-09-18T15:16:07+00:00",
+      "merchant": "CAS*SWIGGY",
+      "message_id": "1a0b516dc801638b",
+      "raw": {
+        "amount": 92.0,
+        "date": "2026-09-18",
+        "email_date": "2026-09-18T15:16:07+00:00",
+        "merchant": "CAS*SWIGGY",
+        "message_id": "1a0b516dc801638b",
+        "source": "gmail-api",
+        "subject": "Credit Card Transaction Alert"
+      },
+      "source": "gmail-api",
+      "subject": "Credit Card Transaction Alert"
+    },
+    {
+      "amount": 159.0,
+      "date": "2026-09-18",
+      "email_date": "2026-09-18T16:27:23+00:00",
+      "merchant": "CAS*SWIGGY",
+      "message_id": "1a0b5581844b28b2",
+      "raw": {
+        "amount": 159.0,
+        "date": "2026-09-18",
+        "email_date": "2026-09-18T16:27:23+00:00",
+        "merchant": "CAS*SWIGGY",
+        "message_id": "1a0b5581844b28b2",
+        "source": "gmail-api",
+        "subject": "Credit Card Transaction Alert"
+      },
+      "source": "gmail-api",
+      "subject": "Credit Card Transaction Alert"
+    },
+    {
+      "amount": 165.0,
+      "date": "2026-09-20",
+      "email_date": "2026-09-20T10:27:12+00:00",
+      "merchant": "SWIGGY INSTA MART GR",
+      "message_id": "1a0be5b14738c1f1",
+      "raw": {
+        "amount": 165.0,
+        "date": "2026-09-20",
+        "email_date": "2026-09-20T10:27:12+00:00",
+        "merchant": "SWIGGY INSTA MART GR",
+        "message_id": "1a0be5b14738c1f1",
+        "source": "gmail-api",
+        "subject": "Credit Card Transaction Alert"
+      },
+      "source": "gmail-api",
+      "subject": "Credit Card Transaction Alert"
+    },
+    {
+      "amount": 82.0,
+      "date": "2026-09-22",
+      "email_date": "2026-09-22T06:24:49+00:00",
+      "merchant": "SWIGGY PVT LTD FOOD2",
+      "message_id": "1a0c7c9e098b0fe9",
+      "raw": {
+        "amount": 82.0,
+        "date": "2026-09-22",
+        "email_date": "2026-09-22T06:24:49+00:00",
+        "merchant": "SWIGGY PVT LTD FOOD2",
+        "message_id": "1a0c7c9e098b0fe9",
+        "source": "gmail-api",
+        "subject": "Credit Card Transaction Alert"
+      },
+      "source": "gmail-api",
+      "subject": "Credit Card Transaction Alert"
+    },
+    {
+      "amount": 449.0,
+      "date": "2026-09-22",
+      "email_date": "2026-09-22T10:16:59+00:00",
+      "merchant": "GANGA FOODS",
+      "message_id": "1a0c89e6f4ee9cdd",
+      "raw": {
+        "amount": 449.0,
+        "date": "2026-09-22",
+        "email_date": "2026-09-22T10:16:59+00:00",
+        "merchant": "GANGA FOODS",
+        "message_id": "1a0c89e6f4ee9cdd",
+        "source": "gmail-api",
+        "subject": "Credit Card Transaction Alert"
+      },
+      "source": "gmail-api",
+      "subject": "Credit Card Transaction Alert"
+    },
+    {
+      "amount": 193.04,
+      "date": "2026-09-22",
+      "email_date": "2026-09-22T16:48:30+00:00",
+      "merchant": "LULU INTERNATIONAL SHO",
+      "message_id": "1a0ca04e1808e051",
+      "raw": {
+        "amount": 193.04,
+        "date": "2026-09-22",
+        "email_date": "2026-09-22T16:48:30+00:00",
+        "merchant": "LULU INTERNATIONAL SHO",
+        "message_id": "1a0ca04e1808e051",
+        "source": "gmail-api",
+        "subject": "Credit Card Transaction Alert"
+      },
+      "source": "gmail-api",
+      "subject": "Credit Card Transaction Alert"
+    },
+    {
+      "amount": 590.0,
+      "date": "2026-09-23",
+      "email_date": "2026-09-22T19:08:28+00:00",
+      "merchant": "PVR LIMITED",
+      "message_id": "1a0ca850557b72c9",
+      "raw": {
+        "amount": 590.0,
+        "date": "2026-09-23",
+        "email_date": "2026-09-22T19:08:28+00:00",
+        "merchant": "PVR LIMITED",
+        "message_id": "1a0ca850557b72c9",
+        "source": "gmail-api",
+        "subject": "Credit Card Transaction Alert"
+      },
+      "source": "gmail-api",
+      "subject": "Credit Card Transaction Alert"
+    },
+    {
+      "amount": 165.0,
+      "date": "2026-09-23",
+      "email_date": "2026-09-23T14:50:13+00:00",
+      "merchant": "SWIGGY FOOD",
+      "message_id": "1a0cebef323731e4",
+      "raw": {
+        "amount": 165.0,
+        "date": "2026-09-23",
+        "email_date": "2026-09-23T14:50:13+00:00",
+        "merchant": "SWIGGY FOOD",
+        "message_id": "1a0cebef323731e4",
+        "source": "gmail-api",
+        "subject": "Credit Card Transaction Alert"
+      },
+      "source": "gmail-api",
+      "subject": "Credit Card Transaction Alert"
+    },
+    {
+      "amount": 102.0,
+      "date": "2026-09-23",
+      "email_date": "2026-09-23T14:53:06+00:00",
+      "merchant": "SWIGGY PVT LTD FOOD1",
+      "message_id": "1a0cec1968adaaad",
+      "raw": {
+        "amount": 102.0,
+        "date": "2026-09-23",
+        "email_date": "2026-09-23T14:53:06+00:00",
+        "merchant": "SWIGGY PVT LTD FOOD1",
+        "message_id": "1a0cec1968adaaad",
+        "source": "gmail-api",
+        "subject": "Credit Card Transaction Alert"
+      },
+      "source": "gmail-api",
+      "subject": "Credit Card Transaction Alert"
+    },
+    {
+      "amount": 150.0,
+      "date": "2026-09-23",
+      "email_date": "2026-09-23T18:19:58+00:00",
+      "merchant": "SWIGGY FOOD",
+      "message_id": "1a0cf7efcdf38937",
+      "raw": {
+        "amount": 150.0,
+        "date": "2026-09-23",
+        "email_date": "2026-09-23T18:19:58+00:00",
+        "merchant": "SWIGGY FOOD",
+        "message_id": "1a0cf7efcdf38937",
+        "source": "gmail-api",
+        "subject": "Credit Card Transaction Alert"
+      },
+      "source": "gmail-api",
+      "subject": "Credit Card Transaction Alert"
+    },
+    {
+      "amount": 369.0,
+      "date": "2026-09-24",
+      "email_date": "2026-09-24T08:26:25+00:00",
+      "merchant": "SWIGGY E COM",
+      "message_id": "1a0d285e957eb22d",
+      "raw": {
+        "amount": 369.0,
+        "date": "2026-09-24",
+        "email_date": "2026-09-24T08:26:25+00:00",
+        "merchant": "SWIGGY E COM",
+        "message_id": "1a0d285e957eb22d",
+        "source": "gmail-api",
+        "subject": "Credit Card Transaction Alert"
+      },
+      "source": "gmail-api",
+      "subject": "Credit Card Transaction Alert"
+    },
+    {
+      "amount": 941.0,
+      "date": "2026-09-24",
+      "email_date": "2026-09-24T09:23:09+00:00",
+      "merchant": "SWIGGY E COM",
+      "message_id": "1a0d2b9dfaea1e95",
+      "raw": {
+        "amount": 941.0,
+        "date": "2026-09-24",
+        "email_date": "2026-09-24T09:23:09+00:00",
+        "merchant": "SWIGGY E COM",
+        "message_id": "1a0d2b9dfaea1e95",
+        "source": "gmail-api",
+        "subject": "Credit Card Transaction Alert"
+      },
+      "source": "gmail-api",
+      "subject": "Credit Card Transaction Alert"
+    },
+    {
+      "amount": 146.0,
+      "date": "2026-09-24",
+      "email_date": "2026-09-24T17:00:48+00:00",
+      "merchant": "SWIGGY FOOD",
+      "message_id": "1a0d45cdc8179adf",
+      "raw": {
+        "amount": 146.0,
+        "date": "2026-09-24",
+        "email_date": "2026-09-24T17:00:48+00:00",
+        "merchant": "SWIGGY FOOD",
+        "message_id": "1a0d45cdc8179adf",
+        "source": "gmail-api",
+        "subject": "Credit Card Transaction Alert"
+      },
+      "source": "gmail-api",
+      "subject": "Credit Card Transaction Alert"
+    },
+    {
+      "amount": 497.0,
+      "date": "2026-09-25",
+      "email_date": "2026-09-25T16:27:38+00:00",
+      "merchant": "KAPOORS CAFE",
+      "message_id": "1a0d964dd25c3c41",
+      "raw": {
+        "amount": 497.0,
+        "date": "2026-09-25",
+        "email_date": "2026-09-25T16:27:38+00:00",
+        "merchant": "KAPOORS CAFE",
+        "message_id": "1a0d964dd25c3c41",
+        "source": "gmail-api",
+        "subject": "Credit Card Transaction Alert"
+      },
+      "source": "gmail-api",
+      "subject": "Credit Card Transaction Alert"
+    },
+    {
+      "amount": 32783.5,
+      "date": "2026-09-26",
+      "email_date": "2026-09-26T08:06:40+00:00",
+      "merchant": "AIRBNB PAYMENTS IND",
+      "message_id": "1a0dcc091f96f967",
+      "raw": {
+        "amount": 32783.5,
+        "date": "2026-09-26",
+        "email_date": "2026-09-26T08:06:40+00:00",
+        "merchant": "AIRBNB PAYMENTS IND",
+        "message_id": "1a0dcc091f96f967",
+        "source": "gmail-api",
+        "subject": "Credit Card Transaction Alert"
+      },
+      "source": "gmail-api",
+      "subject": "Credit Card Transaction Alert"
+    },
+    {
+      "amount": 439.0,
+      "date": "2026-09-27",
+      "email_date": "2026-09-26T19:43:56+00:00",
+      "merchant": "SWIGGY INSTAMART",
+      "message_id": "1a0df3ef24cc923f",
+      "raw": {
+        "amount": 439.0,
+        "date": "2026-09-27",
+        "email_date": "2026-09-26T19:43:56+00:00",
+        "merchant": "SWIGGY INSTAMART",
+        "message_id": "1a0df3ef24cc923f",
+        "source": "gmail-api",
+        "subject": "Credit Card Transaction Alert"
+      },
+      "source": "gmail-api",
+      "subject": "Credit Card Transaction Alert"
+    },
+    {
+      "amount": 94.0,
+      "date": "2026-09-27",
+      "email_date": "2026-09-27T15:47:21+00:00",
+      "merchant": "SWIGGY FOOD",
+      "message_id": "1a0e38cafc52676e",
+      "raw": {
+        "amount": 94.0,
+        "date": "2026-09-27",
+        "email_date": "2026-09-27T15:47:21+00:00",
+        "merchant": "SWIGGY FOOD",
+        "message_id": "1a0e38cafc52676e",
+        "source": "gmail-api",
+        "subject": "Credit Card Transaction Alert"
+      },
+      "source": "gmail-api",
+      "subject": "Credit Card Transaction Alert"
+    },
+    {
+      "amount": 645.0,
+      "date": "2026-09-28",
+      "email_date": "2026-09-28T13:17:59+00:00",
+      "merchant": "ZEPTO",
+      "message_id": "1a0e82a4a9e8fe71",
+      "raw": {
+        "amount": 645.0,
+        "date": "2026-09-28",
+        "email_date": "2026-09-28T13:17:59+00:00",
+        "merchant": "ZEPTO",
+        "message_id": "1a0e82a4a9e8fe71",
+        "source": "gmail-api",
+        "subject": "Credit Card Transaction Alert"
+      },
+      "source": "gmail-api",
+      "subject": "Credit Card Transaction Alert"
+    },
+    {
+      "amount": 2.0,
+      "date": "2026-09-29",
+      "email_date": "2026-09-29T17:13:21+00:00",
+      "merchant": "LOUNGEONE AI",
+      "message_id": "1a0ee2823fe431da",
+      "raw": {
+        "amount": 2.0,
+        "date": "2026-09-29",
+        "email_date": "2026-09-29T17:13:21+00:00",
+        "merchant": "LOUNGEONE AI",
+        "message_id": "1a0ee2823fe431da",
+        "source": "gmail-api",
+        "subject": "Credit Card Transaction Alert"
+      },
+      "source": "gmail-api",
+      "subject": "Credit Card Transaction Alert"
+    },
+    {
+      "amount": 249.0,
+      "date": "2026-09-30",
+      "email_date": "2026-09-30T12:34:24+00:00",
+      "merchant": "SWIGGY",
+      "message_id": "1a0f24f1b93483df",
+      "raw": {
+        "amount": 249.0,
+        "date": "2026-09-30",
+        "email_date": "2026-09-30T12:34:24+00:00",
+        "merchant": "SWIGGY",
+        "message_id": "1a0f24f1b93483df",
+        "source": "gmail-api",
+        "subject": "Credit Card Transaction Alert"
+      },
+      "source": "gmail-api",
+      "subject": "Credit Card Transaction Alert"
+    },
+    {
+      "amount": 290.0,
+      "date": "2026-10-01",
+      "email_date": "2026-10-01T14:18:19+00:00",
+      "merchant": "PURANI DEHLI",
+      "message_id": "1a0f7d49f5c11de1",
+      "raw": {
+        "amount": 290.0,
+        "date": "2026-10-01",
+        "email_date": "2026-10-01T14:18:19+00:00",
+        "merchant": "PURANI DEHLI",
+        "message_id": "1a0f7d49f5c11de1",
+        "source": "gmail-api",
+        "subject": "Credit Card Transaction Alert"
+      },
+      "source": "gmail-api",
+      "subject": "Credit Card Transaction Alert"
+    },
+    {
+      "amount": 313.95,
+      "date": "2026-10-01",
+      "email_date": "2026-10-01T14:40:11+00:00",
+      "merchant": "CHICKING",
+      "message_id": "1a0f7e8a54175731",
+      "raw": {
+        "amount": 313.95,
+        "date": "2026-10-01",
+        "email_date": "2026-10-01T14:40:11+00:00",
+        "merchant": "CHICKING",
+        "message_id": "1a0f7e8a54175731",
+        "source": "gmail-api",
+        "subject": "Credit Card Transaction Alert"
+      },
+      "source": "gmail-api",
+      "subject": "Credit Card Transaction Alert"
+    },
+    {
+      "amount": 713.0,
+      "date": "2026-10-02",
+      "email_date": "2026-10-02T15:18:31+00:00",
+      "merchant": "GOPIZZA",
+      "message_id": "1a0fd3217723b5ff",
+      "raw": {
+        "amount": 713.0,
+        "date": "2026-10-02",
+        "email_date": "2026-10-02T15:18:31+00:00",
+        "merchant": "GOPIZZA",
+        "message_id": "1a0fd3217723b5ff",
+        "source": "gmail-api",
+        "subject": "Credit Card Transaction Alert"
+      },
+      "source": "gmail-api",
+      "subject": "Credit Card Transaction Alert"
+    },
+    {
+      "amount": 5100.0,
+      "date": "2026-10-03",
+      "email_date": "2026-10-03T03:47:24+00:00",
+      "merchant": "ZEPTO",
+      "message_id": "1a0ffdfb47169684",
+      "raw": {
+        "amount": 5100.0,
+        "date": "2026-10-03",
+        "email_date": "2026-10-03T03:47:24+00:00",
+        "merchant": "ZEPTO",
+        "message_id": "1a0ffdfb47169684",
+        "source": "gmail-api",
+        "subject": "Credit Card Transaction Alert"
+      },
+      "source": "gmail-api",
+      "subject": "Credit Card Transaction Alert"
+    },
+    {
+      "amount": 220.0,
+      "date": "2026-10-20",
+      "email_date": "2026-10-20T00:48:32+00:00",
+      "merchant": "BLINKIT",
+      "message_id": "1a156c811dc8d111",
+      "raw": {
+        "amount": 220.0,
+        "date": "2026-10-20",
+        "email_date": "2026-10-20T00:48:32+00:00",
+        "merchant": "BLINKIT",
+        "message_id": "1a156c811dc8d111",
+        "source": "gmail-api",
+        "subject": "Credit Card Transaction Alert"
+      },
+      "source": "gmail-api",
+      "subject": "Credit Card Transaction Alert"
+    },
+    {
+      "amount": 178.0,
+      "date": "2026-10-20",
+      "email_date": "2026-10-20T02:59:10+00:00",
+      "merchant": "BLINKIT",
+      "message_id": "1a1573fa9e96c928",
+      "raw": {
+        "amount": 178.0,
+        "date": "2026-10-20",
+        "email_date": "2026-10-20T02:59:10+00:00",
+        "merchant": "BLINKIT",
+        "message_id": "1a1573fa9e96c928",
+        "source": "gmail-api",
+        "subject": "Credit Card Transaction Alert"
+      },
+      "source": "gmail-api",
+      "subject": "Credit Card Transaction Alert"
+    },
+    {
+      "amount": 514.0,
+      "date": "2026-10-20",
+      "email_date": "2026-10-20T04:10:29+00:00",
+      "merchant": "BLINKIT",
+      "message_id": "1a15780f641fed34",
+      "raw": {
+        "amount": 514.0,
+        "date": "2026-10-20",
+        "email_date": "2026-10-20T04:10:29+00:00",
+        "merchant": "BLINKIT",
+        "message_id": "1a15780f641fed34",
+        "source": "gmail-api",
+        "subject": "Credit Card Transaction Alert"
+      },
+      "source": "gmail-api",
+      "subject": "Credit Card Transaction Alert"
+    },
+    {
+      "amount": 250.0,
+      "date": "2026-10-20",
+      "email_date": "2026-10-20T11:34:55+00:00",
+      "merchant": "BLINKIT",
+      "message_id": "1a15917db6e7bbbc",
+      "raw": {
+        "amount": 250.0,
+        "date": "2026-10-20",
+        "email_date": "2026-10-20T11:34:55+00:00",
+        "merchant": "BLINKIT",
+        "message_id": "1a15917db6e7bbbc",
+        "source": "gmail-api",
+        "subject": "Credit Card Transaction Alert"
+      },
+      "source": "gmail-api",
+      "subject": "Credit Card Transaction Alert"
+    },
+    {
+      "amount": 215.0,
+      "date": "2026-10-21",
+      "email_date": "2026-10-21T04:38:18+00:00",
+      "merchant": "BLINK COMMERCE PVT LTD",
+      "message_id": "1a15cc0c93b44900",
+      "raw": {
+        "amount": 215.0,
+        "date": "2026-10-21",
+        "email_date": "2026-10-21T04:38:18+00:00",
+        "merchant": "BLINK COMMERCE PVT LTD",
+        "message_id": "1a15cc0c93b44900",
+        "source": "gmail-api",
+        "subject": "Credit Card Transaction Alert"
+      },
+      "source": "gmail-api",
+      "subject": "Credit Card Transaction Alert"
+    },
+    {
+      "amount": 289.0,
+      "date": "2026-10-21",
+      "email_date": "2026-10-21T05:59:49+00:00",
+      "merchant": "BLINK COMMERCE PVT LTD",
+      "message_id": "1a15d0b6a64a3ad1",
+      "raw": {
+        "amount": 289.0,
+        "date": "2026-10-21",
+        "email_date": "2026-10-21T05:59:49+00:00",
+        "merchant": "BLINK COMMERCE PVT LTD",
+        "message_id": "1a15d0b6a64a3ad1",
+        "source": "gmail-api",
+        "subject": "Credit Card Transaction Alert"
+      },
+      "source": "gmail-api",
+      "subject": "Credit Card Transaction Alert"
+    },
+    {
+      "amount": 180.0,
+      "date": "2026-10-21",
+      "email_date": "2026-10-21T06:30:36+00:00",
+      "merchant": "BLINK COMMERCE PVT LTD",
+      "message_id": "1a15d279a0e79652",
+      "raw": {
+        "amount": 180.0,
+        "date": "2026-10-21",
+        "email_date": "2026-10-21T06:30:36+00:00",
+        "merchant": "BLINK COMMERCE PVT LTD",
+        "message_id": "1a15d279a0e79652",
+        "source": "gmail-api",
+        "subject": "Credit Card Transaction Alert"
+      },
+      "source": "gmail-api",
+      "subject": "Credit Card Transaction Alert"
+    },
+    {
+      "amount": 238.0,
+      "date": "2026-10-21",
+      "email_date": "2026-10-21T09:11:52+00:00",
+      "merchant": "BLINK COMMERCE PVT LTD",
+      "message_id": "1a15dbb3dd82c533",
+      "raw": {
+        "amount": 238.0,
+        "date": "2026-10-21",
+        "email_date": "2026-10-21T09:11:52+00:00",
+        "merchant": "BLINK COMMERCE PVT LTD",
+        "message_id": "1a15dbb3dd82c533",
+        "source": "gmail-api",
+        "subject": "Credit Card Transaction Alert"
+      },
+      "source": "gmail-api",
+      "subject": "Credit Card Transaction Alert"
+    },
+    {
+      "amount": 370.0,
+      "date": "2026-10-21",
+      "email_date": "2026-10-21T15:34:09+00:00",
+      "merchant": "BLINK COMMERCE PVT LTD",
+      "message_id": "1a15f193b4a2b780",
+      "raw": {
+        "amount": 370.0,
+        "date": "2026-10-21",
+        "email_date": "2026-10-21T15:34:09+00:00",
+        "merchant": "BLINK COMMERCE PVT LTD",
+        "message_id": "1a15f193b4a2b780",
+        "source": "gmail-api",
+        "subject": "Credit Card Transaction Alert"
+      },
+      "source": "gmail-api",
+      "subject": "Credit Card Transaction Alert"
+    },
+    {
+      "amount": 399.0,
+      "date": "2026-10-22",
+      "email_date": "2026-10-22T01:00:17+00:00",
+      "merchant": "BLINK COMMERCE PVT LTD",
+      "message_id": "1a1611f8ebdcf273",
+      "raw": {
+        "amount": 399.0,
+        "date": "2026-10-22",
+        "email_date": "2026-10-22T01:00:17+00:00",
+        "merchant": "BLINK COMMERCE PVT LTD",
+        "message_id": "1a1611f8ebdcf273",
+        "source": "gmail-api",
+        "subject": "Credit Card Transaction Alert"
+      },
+      "source": "gmail-api",
+      "subject": "Credit Card Transaction Alert"
+    },
+    {
+      "amount": 1670.0,
+      "date": "2026-10-23",
+      "email_date": "2026-10-23T05:59:00+00:00",
+      "merchant": "BLINK COMMERCE PVT LTD",
+      "message_id": "1a167576202a5257",
+      "raw": {
+        "amount": 1670.0,
+        "date": "2026-10-23",
+        "email_date": "2026-10-23T05:59:00+00:00",
+        "merchant": "BLINK COMMERCE PVT LTD",
+        "message_id": "1a167576202a5257",
+        "source": "gmail-api",
+        "subject": "Credit Card Transaction Alert"
+      },
+      "source": "gmail-api",
+      "subject": "Credit Card Transaction Alert"
+    },
+    {
+      "amount": 1160.0,
+      "date": "2026-10-23",
+      "email_date": "2026-10-23T18:57:08+00:00",
+      "merchant": "BLINK COMMERCE PVT LTD",
+      "message_id": "1a16a1fc9c65c38b",
+      "raw": {
+        "amount": 1160.0,
+        "date": "2026-10-23",
+        "email_date": "2026-10-23T18:57:08+00:00",
+        "merchant": "BLINK COMMERCE PVT LTD",
+        "message_id": "1a16a1fc9c65c38b",
+        "source": "gmail-api",
+        "subject": "Credit Card Transaction Alert"
+      },
+      "source": "gmail-api",
+      "subject": "Credit Card Transaction Alert"
+    },
+    {
+      "amount": 155.0,
+      "date": "2026-10-24",
+      "email_date": "2026-10-24T11:57:36+00:00",
+      "merchant": "BLINK COMMERCE PVT LTD",
+      "message_id": "1a16dc60d39d1132",
+      "raw": {
+        "amount": 155.0,
+        "date": "2026-10-24",
+        "email_date": "2026-10-24T11:57:36+00:00",
+        "merchant": "BLINK COMMERCE PVT LTD",
+        "message_id": "1a16dc60d39d1132",
+        "source": "gmail-api",
+        "subject": "Credit Card Transaction Alert"
+      },
+      "source": "gmail-api",
+      "subject": "Credit Card Transaction Alert"
+    },
+    {
+      "amount": 415.0,
+      "date": "2026-10-25",
+      "email_date": "2026-10-25T00:12:27+00:00",
+      "merchant": "BLINKIT",
+      "message_id": "1a17066d130f7551",
+      "raw": {
+        "amount": 415.0,
+        "date": "2026-10-25",
+        "email_date": "2026-10-25T00:12:27+00:00",
+        "merchant": "BLINKIT",
+        "message_id": "1a17066d130f7551",
+        "source": "gmail-api",
+        "subject": "Credit Card Transaction Alert"
+      },
+      "source": "gmail-api",
+      "subject": "Credit Card Transaction Alert"
+    },
+    {
+      "amount": 433.0,
+      "date": "2026-10-25",
+      "email_date": "2026-10-25T01:39:13+00:00",
+      "merchant": "BLINKIT",
+      "message_id": "1a170b643c840bf9",
+      "raw": {
+        "amount": 433.0,
+        "date": "2026-10-25",
+        "email_date": "2026-10-25T01:39:13+00:00",
+        "merchant": "BLINKIT",
+        "message_id": "1a170b643c840bf9",
+        "source": "gmail-api",
+        "subject": "Credit Card Transaction Alert"
+      },
+      "source": "gmail-api",
+      "subject": "Credit Card Transaction Alert"
+    },
+    {
+      "amount": 575.0,
+      "date": "2026-10-25",
+      "email_date": "2026-10-25T07:29:01+00:00",
+      "merchant": "PRAMOD LADDU BHANDAR",
+      "message_id": "1a171f6843bc3a11",
+      "raw": {
+        "amount": 575.0,
+        "date": "2026-10-25",
+        "email_date": "2026-10-25T07:29:01+00:00",
+        "merchant": "PRAMOD LADDU BHANDAR",
+        "message_id": "1a171f6843bc3a11",
+        "source": "gmail-api",
+        "subject": "Credit Card Transaction Alert"
+      },
+      "source": "gmail-api",
+      "subject": "Credit Card Transaction Alert"
+    },
+    {
+      "amount": 185.0,
+      "date": "2026-10-27",
+      "email_date": "2026-10-27T12:48:45+00:00",
+      "merchant": "BLINKIT",
+      "message_id": "1a17d67f6e5764e6",
+      "raw": {
+        "amount": 185.0,
+        "date": "2026-10-27",
+        "email_date": "2026-10-27T12:48:45+00:00",
+        "merchant": "BLINKIT",
+        "message_id": "1a17d67f6e5764e6",
+        "source": "gmail-api",
+        "subject": "Credit Card Transaction Alert"
+      },
+      "source": "gmail-api",
+      "subject": "Credit Card Transaction Alert"
+    },
+    {
+      "amount": 720.0,
+      "date": "2026-10-28",
+      "email_date": "2026-10-28T03:35:37+00:00",
+      "merchant": "PRAMOD LADDU BHANDAR",
+      "message_id": "1a18093eb0128cd4",
+      "raw": {
+        "amount": 720.0,
+        "date": "2026-10-28",
+        "email_date": "2026-10-28T03:35:37+00:00",
+        "merchant": "PRAMOD LADDU BHANDAR",
+        "message_id": "1a18093eb0128cd4",
+        "source": "gmail-api",
+        "subject": "Credit Card Transaction Alert"
+      },
+      "source": "gmail-api",
+      "subject": "Credit Card Transaction Alert"
+    }
+  ]
+}
