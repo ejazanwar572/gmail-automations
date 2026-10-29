@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-29T15:00:45.088560",
+  "generated_at": "2026-10-29T19:25:28.835877",
   "notes": [
     "Official statement data parsed directly from decrypted HDFC statement PDFs.",
     "Transactions include settled statement line items + unbilled live Gmail alerts."
@@ -1881,6 +1881,15 @@
       "date": "2026-10-26",
       "merchant": "PRAMOD LADDU BHANDAR",
       "amount": 8092.0,
+      "type": "debit",
+      "source": "gmail-api-unbilled",
+      "card_ending": "2360",
+      "card_role": "Primary"
+    },
+    {
+      "date": "2026-10-29",
+      "merchant": "SHUBHKAMNA HEART HOSPI",
+      "amount": 14417.0,
       "type": "debit",
       "source": "gmail-api-unbilled",
       "card_ending": "2360",

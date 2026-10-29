@@ -475,5 +475,14 @@
     "message_id": "1a176f6d51f8fe2e",
     "source": "gmail-api",
     "subject": "A payment was made using your Credit Card"
+  },
+  {
+    "amount": 14417.0,
+    "date": "2026-10-29",
+    "email_date": "2026-10-29T12:40:03+00:00",
+    "merchant": "SHUBHKAMNA HEART HOSPI",
+    "message_id": "1a187acb03f7a345",
+    "source": "gmail-api",
+    "subject": "A payment was made using your Credit Card"
   }
 ]
