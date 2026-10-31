@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-10-30T12:35:31.389554",
+  "generated_at": "2026-10-31T15:45:47.834494",
   "notes": [
     "Official statement data parsed directly from decrypted HDFC statement PDFs.",
     "Transactions include settled statement line items + unbilled live Gmail alerts."
@@ -1890,6 +1890,24 @@
       "date": "2026-10-29",
       "merchant": "SHUBHKAMNA HEART HOSPI",
       "amount": 14417.0,
+      "type": "debit",
+      "source": "gmail-api-unbilled",
+      "card_ending": "2360",
+      "card_role": "Primary"
+    },
+    {
+      "date": "2026-10-30",
+      "merchant": "PAX INNOVATION ICT SER",
+      "amount": 2.0,
+      "type": "debit",
+      "source": "gmail-api-unbilled",
+      "card_ending": "2360",
+      "card_role": "Primary"
+    },
+    {
+      "date": "2026-10-30",
+      "merchant": "Airport Lounge",
+      "amount": 2.0,
       "type": "debit",
       "source": "gmail-api-unbilled",
       "card_ending": "2360",

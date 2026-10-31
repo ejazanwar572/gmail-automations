@@ -484,5 +484,23 @@
     "message_id": "1a187acb03f7a345",
     "source": "gmail-api",
     "subject": "A payment was made using your Credit Card"
+  },
+  {
+    "amount": 2.0,
+    "date": "2026-10-30",
+    "email_date": "2026-10-30T14:11:20+00:00",
+    "merchant": "PAX INNOVATION ICT SER",
+    "message_id": "1a18d269e10277cd",
+    "source": "gmail-api",
+    "subject": "A payment was made using your Credit Card"
+  },
+  {
+    "amount": 2.0,
+    "date": "2026-10-30",
+    "email_date": "2026-10-30T14:53:14+00:00",
+    "merchant": "Airport Lounge",
+    "message_id": "1a18d4cfc29dd6c7",
+    "source": "gmail-api",
+    "subject": "A payment was made using your Credit Card"
   }
 ]
