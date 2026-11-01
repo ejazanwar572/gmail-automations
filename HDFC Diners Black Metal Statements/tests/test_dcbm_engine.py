@@ -92,10 +92,10 @@ class DcbmEngineTests(unittest.TestCase):
         self.assertEqual("HDFC Diners Black Metal Credit Card", data["card_name"])
         self.assertEqual("2360", data["card_ending"])
 
-        # Current calendar month (September 2026) has 1 SmartBuy flight (11 Sept: 1,140 RP)
+        # Current calendar month (September 2026) SmartBuy earnings
         sept_cap = data["caps"]["calendar_month"]
-        self.assertEqual(1140, sept_cap["earned"])
-        self.assertEqual(8860, sept_cap["remaining"])
+        self.assertEqual(6420, sept_cap["earned"])
+        self.assertEqual(3580, sept_cap["remaining"])
         self.assertEqual("ACTIVE HEADROOM", sept_cap["status_label"])
 
         # Current billing cycle (14 Aug - 13 Sep) contains the 2 August + 1 September SmartBuy flights

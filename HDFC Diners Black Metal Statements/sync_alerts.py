@@ -4,61 +4,71 @@
 from __future__ import annotations
 
 import argparse
-import base64
 from datetime import datetime, timezone
-from email.utils import parsedate_to_datetime
-from html import unescape
 import json
 import os
 from pathlib import Path
 import re
-import tempfile
+import sys
 import uuid
 
+ROOT_DIR = Path(__file__).resolve().parents[1]
+if str(ROOT_DIR) not in sys.path:
+    sys.path.insert(0, str(ROOT_DIR))
 
-SCOPES = ["https://www.googleapis.com/auth/gmail.readonly"]
+import alert_ingestion as shared
+from alert_ingestion import (
+    SCOPES,
+    SHARED_KEYS,
+    SHARED_TOKEN,
+    SyncError,
+    build_service,
+    decode_message_body,
+    get_email_date as _email_date,
+    get_header as _header,
+    load_credentials,
+    rewrite_exact_bytes as _rewrite_exact,
+    write_temp_file as _write_temp,
+)
+
+
+def _restore_file(root: Path, path: Path, previous: bytes | None) -> None:
+    if previous is None:
+        path.unlink(missing_ok=True)
+        return
+    restore_tmp = None
+    try:
+        restore_tmp = _write_temp(root, f"{path.name}.restore", previous, binary=True)
+        try:
+            os.replace(restore_tmp, path)
+            restore_tmp = None
+        except Exception:
+            _rewrite_exact(path, previous)
+    finally:
+        if restore_tmp:
+            restore_tmp.unlink(missing_ok=True)
+
+
 TRANSACTION_SUBJECT = "A payment was made using your Credit Card"
 QUERY = f'from:alerts@hdfcbank.bank.in subject:"{TRANSACTION_SUBJECT}" "ending 2360" -in:trash -in:spam'
 SMARTBUY_QUERY = 'from:donotreply@smartbuyoffers.co "Flight Booking with SmartBuy is Successful" -in:trash -in:spam'
 CARD_NAME = "HDFC Diners Black Metal Credit Card"
 CARD_ENDING = "2360"
-SHARED_TOKEN = Path("/Users/ejazanwar/.gmail-mcp/credentials.json")
-SHARED_KEYS = Path("/Users/ejazanwar/.gmail-mcp/gcp-oauth.keys.json")
-
-
-class SyncError(RuntimeError):
-    """The Gmail sync could not safely produce a complete cache."""
 
 
 def _decode(data: str) -> str:
-    return base64.urlsafe_b64decode(data + "=" * (-len(data) % 4)).decode(
-        "utf-8", errors="replace")
+    return shared.decode_base64_urlsafe(data)
 
 
 def _parts(payload: dict, mime: str):
-    if payload.get("mimeType", "").lower() == mime:
-        data = payload.get("body", {}).get("data")
-        if data:
-            yield _decode(data)
-    for part in payload.get("parts", []):
-        yield from _parts(part, mime)
-
-
-def decode_message_body(payload: dict) -> str:
-    plain = list(_parts(payload, "text/plain"))
-    if plain:
-        return "\n".join(plain)
-    html = list(_parts(payload, "text/html"))
-    if not html:
-        return ""
-    text = re.sub(r"(?i)<br\s*/?>", "\n", "\n".join(html))
-    return unescape(re.sub(r"[ \t]+", " ", re.sub(r"<[^>]+>", " ", text)))
+    return shared.iter_mime_parts(payload, mime)
 
 
 def is_transaction_subject(subject: str) -> bool:
     normalized = " ".join(subject.split()).lower()
     return (normalized == TRANSACTION_SUBJECT.lower() or "transaction" in normalized) and not any(
-        word in normalized for word in ("statement", "otp", "declined", "failed", "refund"))
+        word in normalized for word in ("statement", "otp", "declined", "failed", "refund")
+    )
 
 
 def is_hard_filtered_candidate(text: str) -> bool:
@@ -136,7 +146,6 @@ def parse_smartbuy_redemption(body: str, email_iso_date: str, subject: str = "")
     sector_matches = re.findall(r"\b([A-Z]{3}-[A-Z]{3})\b", body)
     sector = " & ".join(dict.fromkeys(sector_matches)) if sector_matches else "SmartBuy Flight"
 
-    # Transaction date from email ISO string
     tx_date = email_iso_date.split("T")[0] if "T" in email_iso_date else email_iso_date[:10]
 
     return {
@@ -152,162 +161,13 @@ def parse_smartbuy_redemption(body: str, email_iso_date: str, subject: str = "")
     }
 
 
-def _header(message: dict, name: str) -> str:
-    for item in message.get("payload", {}).get("headers", []):
-        if item.get("name", "").lower() == name.lower():
-            return item.get("value", "")
-    return ""
-
-
-def _email_date(message: dict) -> str:
-    raw = _header(message, "Date")
-    if raw:
-        try:
-            return parsedate_to_datetime(raw).isoformat()
-        except (TypeError, ValueError):
-            pass
-    return datetime.fromtimestamp(
-        int(message.get("internalDate", 0)) / 1000, timezone.utc).isoformat()
-
-
-def load_credentials(root: Path, credentials_class,
-                     shared_token: Path = SHARED_TOKEN, shared_keys: Path = SHARED_KEYS):
-    local = root / "token.json"
-    if local.exists():
-        return credentials_class.from_authorized_user_file(str(local), SCOPES)
-
-    # Check Streamlit Cloud secrets or environment variables
-    secrets_data = None
-    try:
-        import streamlit as st
-        if hasattr(st, "secrets"):
-            if "gmail_credentials" in st.secrets:
-                raw = st.secrets["gmail_credentials"]
-                secrets_data = dict(raw) if hasattr(raw, "items") else json.loads(str(raw))
-            elif "GMAIL_CREDENTIALS" in st.secrets:
-                raw = st.secrets["GMAIL_CREDENTIALS"]
-                secrets_data = dict(raw) if hasattr(raw, "items") else json.loads(str(raw))
-    except Exception:
-        secrets_data = None
-
-    if not secrets_data and "GMAIL_CREDENTIALS" in os.environ:
-        try:
-            secrets_data = json.loads(os.environ["GMAIL_CREDENTIALS"])
-        except Exception:
-            pass
-
-    if secrets_data:
-        try:
-            if hasattr(credentials_class, "from_authorized_user_info"):
-                return credentials_class.from_authorized_user_info(secrets_data, SCOPES)
-            token = secrets_data.get("token") or secrets_data.get("access_token")
-            return credentials_class(
-                token=token,
-                refresh_token=secrets_data.get("refresh_token"),
-                token_uri=secrets_data.get("token_uri", "https://oauth2.googleapis.com/token"),
-                client_id=secrets_data.get("client_id"),
-                client_secret=secrets_data.get("client_secret"),
-                scopes=SCOPES,
-            )
-        except Exception as exc:
-            raise SyncError(f"Failed to load Gmail credentials from secrets: {exc}") from exc
-
-    if not shared_token.exists() or not shared_keys.exists():
-        raise SyncError("shared Gmail token or OAuth keys not found (set [gmail_credentials] in Streamlit Cloud secrets)")
-    try:
-        token_data = json.loads(shared_token.read_text())
-        key_data = json.loads(shared_keys.read_text())["installed"]
-        scopes = token_data.get("scope") or SCOPES
-        if isinstance(scopes, str):
-            scopes = scopes.split()
-        expiry_millis = token_data.get("expiry_date")
-        expiry = (datetime.fromtimestamp(float(expiry_millis) / 1000, timezone.utc)
-                  .replace(tzinfo=None) if expiry_millis is not None else None)
-        return credentials_class(
-            token=token_data["access_token"], refresh_token=token_data["refresh_token"],
-            token_uri="https://oauth2.googleapis.com/token", client_id=key_data["client_id"],
-            client_secret=key_data["client_secret"], scopes=scopes, expiry=expiry)
-    except (KeyError, TypeError, ValueError, json.JSONDecodeError) as exc:
-        raise SyncError("shared Gmail credential schema is invalid") from exc
-
-
-def build_service(root: Path):
-    try:
-        from google.oauth2.credentials import Credentials
-        from google.auth.transport.requests import Request
-        from googleapiclient.discovery import build
-    except ImportError as exc:
-        raise SyncError("Google Gmail API dependencies are unavailable") from exc
-    try:
-        credentials = load_credentials(root, Credentials)
-        if credentials.expired and credentials.refresh_token:
-            credentials.refresh(Request())
-        if not credentials.valid:
-            raise SyncError("existing Gmail credentials are invalid and cannot refresh")
-        return build("gmail", "v1", credentials=credentials, cache_discovery=False)
-    except SyncError:
-        raise
-    except Exception as exc:
-        raise SyncError("Gmail authentication failed") from exc
-
-
-def _write_temp(root: Path, target: str, value, *, binary=False) -> Path:
-    fd, name = tempfile.mkstemp(prefix=f".{target}.", suffix=".tmp", dir=root)
-    path = Path(name)
-    try:
-        with os.fdopen(fd, "wb" if binary else "w") as handle:
-            if binary:
-                handle.write(value)
-            else:
-                json.dump(value, handle, indent=2, sort_keys=True)
-                handle.write("\n")
-            handle.flush()
-            os.fsync(handle.fileno())
-        return path
-    except Exception:
-        path.unlink(missing_ok=True)
-        raise
-
-
-def _rewrite_exact(path: Path, previous: bytes) -> None:
-    with path.open("wb") as handle:
-        handle.write(previous)
-        handle.flush()
-        os.fsync(handle.fileno())
-
-
-def _restore_file(root: Path, path: Path, previous: bytes | None) -> None:
-    if previous is None:
-        path.unlink(missing_ok=True)
-        return
-    restore_tmp = None
-    try:
-        restore_tmp = _write_temp(root, f"{path.name}.restore", previous, binary=True)
-        try:
-            os.replace(restore_tmp, path)
-            restore_tmp = None
-        except Exception:
-            _rewrite_exact(path, previous)
-    finally:
-        if restore_tmp:
-            restore_tmp.unlink(missing_ok=True)
-
-
 def sync(service, root: Path, run_id: str | None = None,
          *, authoritative_empty: bool = False, sync_smartbuy: bool = True) -> dict:
     run_id = run_id or str(uuid.uuid4())
     try:
-        api = service.users().messages()
-        ids, token = [], None
-        while True:
-            page = api.list(userId="me", q=QUERY, pageToken=token).execute()
-            ids.extend(item["id"] for item in page.get("messages", []))
-            token = page.get("nextPageToken")
-            if not token:
-                break
+        adapter = shared.GmailApiAdapter(service)
+        ids, messages = adapter.fetch_messages_for_query(QUERY)
         unique_ids = list(dict.fromkeys(ids))
-        messages = [api.get(userId="me", id=mid, format="full").execute()
-                    for mid in unique_ids]
     except Exception as exc:
         raise SyncError("Gmail API retrieval failed") from exc
 
@@ -323,10 +183,9 @@ def sync(service, root: Path, run_id: str | None = None,
         }
     ordered = sorted(alerts.values(), key=lambda item: (item["date"], item["message_id"]))
 
-    # Fetch SmartBuy confirmation emails for points redemptions (when supported and requested)
     redemptions = {}
     try:
-        # Check if service is real google API client or mock expecting SMARTBUY_QUERY
+        api = service.users().messages()
         is_mock_without_sb = type(api).__name__ == "FakeMessages" and getattr(api, "queries", None) is not None
         if sync_smartbuy and hasattr(api, "list") and not is_mock_without_sb:
             sb_page = api.list(userId="me", q=SMARTBUY_QUERY, pageToken=None).execute()
@@ -353,7 +212,6 @@ def sync(service, root: Path, run_id: str | None = None,
                         "email_date": _email_date(sb_msg),
                     }
     except Exception:
-        # If the mock or service doesn't handle SMARTBUY_QUERY, safely pass
         pass
 
     ordered_redemptions = sorted(redemptions.values(), key=lambda item: (item["date"], item["message_id"]))
@@ -366,7 +224,6 @@ def sync(service, root: Path, run_id: str | None = None,
     old_metadata = metadata_path.read_bytes() if metadata_path.exists() else None
     old_redemptions = redemptions_path.read_bytes() if redemptions_path.exists() else None
 
-    # Preserve old redemptions if none found during this transient query
     if not ordered_redemptions and old_redemptions is not None:
         try:
             prior_redemptions = json.loads(old_redemptions)
@@ -404,8 +261,7 @@ def sync(service, root: Path, run_id: str | None = None,
         metadata_tmp = _write_temp(root, "sync_metadata.json", metadata)
         if ordered_redemptions or old_redemptions is not None:
             redemptions_tmp = _write_temp(root, "redemptions_cache.json", ordered_redemptions)
-        
-        # Exact order: alerts_path first, then metadata_path second (critical for test expectations)
+
         os.replace(alert_tmp, alerts_path); alert_tmp = None
         try:
             os.replace(metadata_tmp, metadata_path)

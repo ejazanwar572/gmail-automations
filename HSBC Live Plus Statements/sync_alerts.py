@@ -4,56 +4,46 @@
 from __future__ import annotations
 
 import argparse
-import base64
 from datetime import datetime, timezone
-from email.utils import parsedate_to_datetime
-from html import unescape
 import json
 import os
 from pathlib import Path
 import re
-import tempfile
+import sys
 import uuid
 
+ROOT_DIR = Path(__file__).resolve().parents[1]
+if str(ROOT_DIR) not in sys.path:
+    sys.path.insert(0, str(ROOT_DIR))
 
-SCOPES = ["https://www.googleapis.com/auth/gmail.readonly"]
+import alert_ingestion as shared
+from alert_ingestion import (
+    SCOPES,
+    SHARED_KEYS,
+    SHARED_TOKEN,
+    SyncError,
+    build_service,
+    decode_message_body,
+    get_email_date as _email_date,
+    get_header as _header,
+    load_credentials,
+    write_temp_file,
+)
+
 TRANSACTION_SUBJECT = "You have used your HSBC Credit Card ending with 8690 for a purchase transaction"
 TRANSACTION_SUBJECT_NEW = "Credit Card Transaction Alert"
 TRANSACTION_SUBJECTS = {TRANSACTION_SUBJECT, TRANSACTION_SUBJECT_NEW}
 QUERY = f'(subject:"{TRANSACTION_SUBJECT_NEW}" OR subject:"{TRANSACTION_SUBJECT}") -in:spam -in:trash'
-SHARED_TOKEN = Path("/Users/ejazanwar/.gmail-mcp/credentials.json")
-SHARED_KEYS = Path("/Users/ejazanwar/.gmail-mcp/gcp-oauth.keys.json")
-
-
-class SyncError(RuntimeError):
-    """The Gmail sync could not safely produce a complete cache."""
+CARD_NAME = "HSBC Live+ Credit Card"
+CARD_ENDING = "8690"
 
 
 def _decode(data: str) -> str:
-    padded = data + "=" * (-len(data) % 4)
-    return base64.urlsafe_b64decode(padded).decode("utf-8", errors="replace")
+    return shared.decode_base64_urlsafe(data)
 
 
 def _parts(payload: dict, mime: str):
-    if payload.get("mimeType", "").lower() == mime:
-        data = payload.get("body", {}).get("data")
-        if data:
-            yield _decode(data)
-    for part in payload.get("parts", []):
-        yield from _parts(part, mime)
-
-
-def decode_message_body(payload: dict) -> str:
-    """Recursively select plain text, falling back to readable HTML."""
-    plain = list(_parts(payload, "text/plain"))
-    if plain:
-        return "\n".join(plain)
-    html = list(_parts(payload, "text/html"))
-    if not html:
-        return ""
-    text = re.sub(r"(?i)<br\s*/?>", "\n", "\n".join(html))
-    text = re.sub(r"<[^>]+>", " ", text)
-    return unescape(re.sub(r"[ \t]+", " ", text))
+    return shared.iter_mime_parts(payload, mime)
 
 
 def is_hard_filtered_candidate(text: str) -> bool:
@@ -114,162 +104,28 @@ def parse_transaction(text: str) -> dict[str, str | float]:
     raise SyncError("hard-filtered HSBC transaction alert could not be parsed")
 
 
-def _header(message: dict, name: str) -> str:
-    for item in message.get("payload", {}).get("headers", []):
-        if item.get("name", "").lower() == name.lower():
-            return item.get("value", "")
-    return ""
-
-
-def _email_date(message: dict) -> str:
-    raw = _header(message, "Date")
-    if raw:
-        try:
-            return parsedate_to_datetime(raw).isoformat()
-        except (TypeError, ValueError):
-            pass
-    millis = int(message.get("internalDate", 0))
-    return datetime.fromtimestamp(millis / 1000, timezone.utc).isoformat()
-
-
 def credential_paths(root: Path, shared_token: Path = SHARED_TOKEN,
                      shared_keys: Path = SHARED_KEYS) -> tuple[Path, Path]:
     local = root / "token.json"
-    return (local if local.exists() else shared_token, shared_keys)
-
-
-def load_credentials(root: Path, credentials_class,
-                     shared_token: Path = SHARED_TOKEN,
-                     shared_keys: Path = SHARED_KEYS):
-    """Load local authorized-user JSON, Streamlit Cloud secrets, or translate Gmail MCP credential JSON."""
-    local = root / "token.json"
     if local.exists():
-        return credentials_class.from_authorized_user_file(str(local), SCOPES)
-
-    # Check Streamlit Cloud secrets or environment variables
-    secrets_data = None
-    try:
-        import streamlit as st
-        if hasattr(st, "secrets"):
-            if "gmail_credentials" in st.secrets:
-                raw = st.secrets["gmail_credentials"]
-                secrets_data = dict(raw) if hasattr(raw, "items") else json.loads(str(raw))
-            elif "GMAIL_CREDENTIALS" in st.secrets:
-                raw = st.secrets["GMAIL_CREDENTIALS"]
-                secrets_data = dict(raw) if hasattr(raw, "items") else json.loads(str(raw))
-    except Exception:
-        secrets_data = None
-
-    if not secrets_data and "GMAIL_CREDENTIALS" in os.environ:
-        try:
-            secrets_data = json.loads(os.environ["GMAIL_CREDENTIALS"])
-        except Exception:
-            pass
-
-    if secrets_data:
-        try:
-            if hasattr(credentials_class, "from_authorized_user_info"):
-                return credentials_class.from_authorized_user_info(secrets_data, SCOPES)
-            token = secrets_data.get("token") or secrets_data.get("access_token")
-            return credentials_class(
-                token=token,
-                refresh_token=secrets_data.get("refresh_token"),
-                token_uri=secrets_data.get("token_uri", "https://oauth2.googleapis.com/token"),
-                client_id=secrets_data.get("client_id"),
-                client_secret=secrets_data.get("client_secret"),
-                scopes=SCOPES,
-            )
-        except Exception as exc:
-            raise SyncError(f"Failed to load Gmail credentials from secrets: {exc}") from exc
-
-    if not shared_token.exists() or not shared_keys.exists():
-        raise SyncError("shared Gmail token or OAuth keys not found (set [gmail_credentials] in Streamlit Cloud secrets)")
-    try:
-        token_data = json.loads(shared_token.read_text())
-        key_data = json.loads(shared_keys.read_text())["installed"]
-        scopes = token_data.get("scope") or SCOPES
-        if isinstance(scopes, str):
-            scopes = scopes.split()
-        expiry_millis = token_data.get("expiry_date")
-        expiry = (datetime.fromtimestamp(float(expiry_millis) / 1000, timezone.utc).replace(tzinfo=None)
-                  if expiry_millis is not None else None)
-        return credentials_class(
-            token=token_data["access_token"],
-            refresh_token=token_data["refresh_token"],
-            token_uri="https://oauth2.googleapis.com/token",
-            client_id=key_data["client_id"],
-            client_secret=key_data["client_secret"],
-            scopes=scopes,
-            expiry=expiry,
-        )
-    except (KeyError, TypeError, ValueError, json.JSONDecodeError) as exc:
-        raise SyncError("shared Gmail credential schema is invalid") from exc
-
-
-def build_service(root: Path):
-    """Build a readonly Gmail client from existing credentials only."""
-    try:
-        from google.oauth2.credentials import Credentials
-        from google.auth.transport.requests import Request
-        from googleapiclient.discovery import build
-    except ImportError as exc:
-        raise SyncError("Google Gmail API dependencies are unavailable") from exc
-    try:
-        credentials = load_credentials(root, Credentials)
-        if credentials.expired and credentials.refresh_token:
-            credentials.refresh(Request())
-        if not credentials.valid:
-            raise SyncError("existing Gmail credentials are invalid and cannot refresh")
-        return build("gmail", "v1", credentials=credentials, cache_discovery=False)
-    except SyncError:
-        raise
-    except Exception as exc:
-        raise SyncError("Gmail authentication failed") from exc
+        return local, local
+    return shared_token, shared_keys
 
 
 def _write_json_temp(root: Path, target: str, value) -> Path:
-    fd, name = tempfile.mkstemp(prefix=f".{target}.", suffix=".tmp", dir=root)
-    path = Path(name)
-    try:
-        with os.fdopen(fd, "w") as handle:
-            json.dump(value, handle, indent=2, sort_keys=True)
-            handle.write("\n")
-            handle.flush()
-            os.fsync(handle.fileno())
-        return path
-    except Exception:
-        path.unlink(missing_ok=True)
-        raise
+    return write_temp_file(root, target, value, binary=False)
 
 
 def _write_bytes_temp(root: Path, target: str, value: bytes) -> Path:
-    fd, name = tempfile.mkstemp(prefix=f".{target}.", suffix=".tmp", dir=root)
-    path = Path(name)
-    try:
-        with os.fdopen(fd, "wb") as handle:
-            handle.write(value)
-            handle.flush()
-            os.fsync(handle.fileno())
-        return path
-    except Exception:
-        path.unlink(missing_ok=True)
-        raise
+    return write_temp_file(root, target, value, binary=True)
 
 
 def sync(service, root: Path, *, run_id: str | None = None) -> dict:
     run_id = run_id or str(uuid.uuid4())
     try:
-        api = service.users().messages()
-        ids, token = [], None
-        while True:
-            page = api.list(userId="me", q=QUERY, pageToken=token).execute()
-            ids.extend(item["id"] for item in page.get("messages", []))
-            token = page.get("nextPageToken")
-            if not token:
-                break
+        adapter = shared.GmailApiAdapter(service)
+        ids, messages = adapter.fetch_messages_for_query(QUERY)
         unique_ids = list(dict.fromkeys(ids))
-        messages = [api.get(userId="me", id=mid, format="full").execute()
-                    for mid in unique_ids]
     except Exception as exc:
         raise SyncError("Gmail API retrieval failed") from exc
 
@@ -307,7 +163,7 @@ def sync(service, root: Path, *, run_id: str | None = None) -> dict:
     now = datetime.now(timezone.utc).isoformat()
     metadata = {
         "synced_at": now, "source": "gmail-api", "query": QUERY,
-        "card_name": "HSBC Live+ Credit Card", "card_ending": "8690",
+        "card_name": CARD_NAME, "card_ending": CARD_ENDING,
         "alert_count": len(ordered), "unique_alert_count": len(ordered),
         "previous_count": previous_count,
         "new_count": max(0, len(ordered) - previous_count),

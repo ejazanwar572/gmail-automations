@@ -18,10 +18,10 @@ def load_workflow():
 class RunWorkflowTests(unittest.TestCase):
     def test_sync_source_routes_expected_script_sequence(self):
         expected = {
-            None: ["sync_alerts.py", "parse_statements.py", "validate_statements.py", "update_report.py"],
-            "gmail-api": ["sync_alerts.py", "parse_statements.py", "validate_statements.py", "update_report.py"],
-            "mcp-step-logs": ["sync_gmail_mcp.py", "parse_statements.py", "validate_statements.py", "update_report.py"],
-            "none": ["parse_statements.py", "validate_statements.py", "update_report.py"],
+            None: ["sync_alerts.py", "download_statements.py", "parse_statements.py", "validate_statements.py", "update_report.py"],
+            "gmail-api": ["sync_alerts.py", "download_statements.py", "parse_statements.py", "validate_statements.py", "update_report.py"],
+            "mcp-step-logs": ["sync_gmail_mcp.py", "download_statements.py", "parse_statements.py", "validate_statements.py", "update_report.py"],
+            "none": ["download_statements.py", "parse_statements.py", "validate_statements.py", "update_report.py"],
         }
 
         for sync_source, expected_scripts in expected.items():
@@ -46,7 +46,7 @@ class RunWorkflowTests(unittest.TestCase):
             self.assertEqual(workflow.main(), 7)
 
         actual_scripts = [Path(call.args[0][1]).name for call in run.call_args_list]
-        self.assertEqual(actual_scripts, ["parse_statements.py", "validate_statements.py"])
+        self.assertEqual(actual_scripts, ["download_statements.py", "parse_statements.py"])
 
 
 if __name__ == "__main__":

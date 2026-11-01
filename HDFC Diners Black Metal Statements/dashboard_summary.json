@@ -1,105 +1,122 @@
 {
   "alert_count": 56,
   "annual_fee": {
-    "amount": 10000,
-    "eligible_spend": 727367.5,
-    "evidence_source": "HDFC approval email dated 25 June 2026 (application reference P26F18673727H0S2).",
-    "evidence_state": "provisional",
+    "days_left": 235,
+    "fee_amount": 10000.0,
+    "met": false,
     "period_end": "2027-06-24",
-    "period_start": "2026-06-25",
-    "remaining_spend_for_waiver": 72632.5,
-    "status": "In progress",
-    "waiver_spend": 800000
+    "progress": 90.9,
+    "remaining": 72632.5,
+    "spend": 727367.5,
+    "target": 800000.0
   },
-  "benefits": [
-    {
-      "cap": null,
-      "earned": 0.0,
-      "name": "Eligible Reward Points Spend",
-      "provisional": false,
-      "remaining": null,
-      "spend": 201886.0
+  "caps": {
+    "billing_cycle": {
+      "daily_cap": 2500,
+      "days_remaining": 12,
+      "earned": 0,
+      "end_date": "2026-11-13",
+      "flight_spend_capacity": 75000,
+      "hotel_spend_capacity": 33300,
+      "monthly_cap": 10000,
+      "percent_remaining": 100.0,
+      "percent_used": 0.0,
+      "remaining": 10000,
+      "reset_date": "2026-11-14",
+      "smartbuy_transaction_count": 0,
+      "start_date": "2026-10-14",
+      "status_color": "green",
+      "status_label": "FULL HEADROOM (100% UNUSED)",
+      "today_earned": 0,
+      "today_remaining": 2500
+    },
+    "calendar_month": {
+      "daily_cap": 2500,
+      "days_remaining": 29,
+      "earned": 0,
+      "end_date": "2026-11-30",
+      "flight_spend_capacity": 75000,
+      "hotel_spend_capacity": 33300,
+      "monthly_cap": 10000,
+      "percent_remaining": 100.0,
+      "percent_used": 0.0,
+      "remaining": 10000,
+      "reset_date": "2026-12-01",
+      "smartbuy_transaction_count": 0,
+      "start_date": "2026-11-01",
+      "status_color": "green",
+      "status_label": "FULL HEADROOM (100% UNUSED)",
+      "today_earned": 0,
+      "today_remaining": 2500
+    },
+    "previous_month": {
+      "daily_cap": 2500,
+      "days_remaining": 0,
+      "earned": 2060,
+      "end_date": "2026-10-31",
+      "flight_spend_capacity": 59550,
+      "hotel_spend_capacity": 26400,
+      "monthly_cap": 10000,
+      "percent_remaining": 79.4,
+      "percent_used": 20.6,
+      "remaining": 7940,
+      "reset_date": "2026-11-01",
+      "smartbuy_transaction_count": 1,
+      "start_date": "2026-10-01",
+      "status_color": "green",
+      "status_label": "ACTIVE HEADROOM",
+      "today_earned": 0,
+      "today_remaining": 2500
     }
-  ],
+  },
   "card": {
     "ending": "2360",
     "name": "HDFC Diners Black Metal Credit Card"
   },
   "cycle": {
+    "accelerated_points": 0,
+    "base_points": 6720,
     "end": "2026-11-13",
-    "evidence_status": "confirmed",
-    "source": "HDFC Diners Black statement PDF for 14 June 2026 to 13 July 2026.",
     "spend": 201886.0,
     "start": "2026-10-14",
-    "statement_date": "2026-07-13"
+    "total_cycle_points": 6720,
+    "transaction_count": 11
   },
-  "evergreen_benefits": [
-    "SmartBuy hotel redemptions up to Rs.1/RP and flight/hotel accelerated rewards as per official page.",
-    "Airmiles transfer value up to 1 mile/RP, vouchers up to Rs.0.50/RP, cashback up to Rs.0.30/RP.",
-    "2% foreign currency markup, unlimited lounge access, and 6 complimentary golf games per quarter."
-  ],
-  "evidence": {
-    "variant_status": "confirmed"
-  },
-  "generated_at": "2026-11-01T10:05:17.135109+05:30",
-  "provisional": false,
+  "generated_at": "2026-11-01T11:06:14.643162+05:30",
   "quarterly_bonus": {
     "bonus_points": 10000,
-    "deadline": "2026-12-31",
-    "period_start": "2026-10-01",
+    "daily_runrate_needed": 1387.38,
+    "days_left": 60,
+    "label": "Q4 2026",
+    "met": false,
+    "progress": 79.2,
     "remaining": 83243.0,
     "spend": 316757.0,
-    "status": "In progress",
     "target": 400000.0
   },
   "rewards": {
-    "accelerated_cap": {
-      "cap": 10000,
-      "days_remaining": 29,
-      "earned": 0,
-      "evidence_status": "unavailable",
-      "month_end": "2026-11-30",
-      "month_start": "2026-11-01",
-      "remaining": 10000,
-      "remaining_percent": 100.0,
-      "reset_date": "2026-12-01"
-    },
-    "base_points": 16800,
-    "lifetime_points": {
-      "accelerated": 21080,
-      "base": 16800,
-      "bonus": 146,
-      "evidence_status": "confirmed",
-      "total": 38026
-    },
-    "lifetime_spend": 727367.5,
-    "post_statement_points": {
-      "accelerated": 0,
-      "base": 0
-    },
-    "statement_through": "2026-10-13"
+    "confirmed_statement": 38026,
+    "mode": "Confirmed Statement Baseline + Live Gmail Tracking",
+    "net_available": 23678,
+    "post_statement_accelerated": 2060,
+    "post_statement_base": 6720,
+    "total_estimated": 46806,
+    "total_redeemed": 23128
   },
-  "run_id": "f42df36c-79e6-4da3-a48c-4fae45bc2740",
+  "run_id": "2efc6f6d-8f62-4e06-818b-a50045962b62",
   "schema_version": 1,
   "welcome": {
-    "activation_date": "2026-06-30",
-    "activation_proxy_date": "2026-06-30",
-    "activation_proxy_source": "HDFC MyCards control setting confirmation for xxxx2360 at 18:43 IST, followed by a successful card authorization at 18:47 IST.",
+    "days_left": 0,
     "deadline": "2026-09-28",
-    "evidence_source": "HDFC MyCards control setting confirmation for xxxx2360 at 18:43 IST, followed by a successful card authorization at 18:47 IST.",
-    "evidence_state": "provisional",
     "memberships": [
       "Club Marriott",
       "Amazon Prime",
       "Swiggy One"
     ],
-    "notes": [
-      "Spend INR 1.5 lakh within first 90 days for the listed welcome memberships on the official HDFC page."
-    ],
+    "met": true,
+    "progress": 100.0,
     "remaining": 0.0,
-    "reward": null,
     "spend": 396395.5,
-    "status": "Met",
-    "target": 150000
+    "target": 150000.0
   }
 }

@@ -16,6 +16,7 @@ from dataclasses import asdict, dataclass
 from datetime import date, datetime, timedelta, timezone
 import json
 import math
+import os
 from pathlib import Path
 import re
 from typing import Any, Dict, List, Optional, Tuple
@@ -688,3 +689,202 @@ def trigger_live_sync(card_dir: Path = CARD_DIR) -> Dict[str, Any]:
         spec.loader.exec_module(module)
         return module.run(card_dir)
     raise RuntimeError(f"could not load sync script at {sync_script}")
+
+
+def validate_card_dir(card_dir: Path | str = CARD_DIR) -> dict[str, Any]:
+    """Validate card directory configuration, alerts, and computation health."""
+    card_dir = Path(card_dir)
+    config = load_json_file(card_dir / "benefits_config.json") or {}
+    alerts = load_json_file(card_dir / "gmail_alerts.json") or []
+    metadata = load_json_file(card_dir / "sync_metadata.json") or {}
+    warnings = []
+    failures = []
+    if not config:
+        failures.append("benefits_config.json is missing or empty")
+    if not alerts:
+        warnings.append("No Gmail transaction alerts are cached yet")
+
+    if not metadata:
+        warnings.append("sync_metadata.json is missing; run sync_alerts")
+    else:
+        synced_at_str = metadata.get("synced_at")
+        if synced_at_str:
+            try:
+                synced_at = datetime.fromisoformat(synced_at_str.replace("Z", "+00:00"))
+                age_hours = (datetime.now(timezone.utc) - synced_at).total_seconds() / 3600
+                if age_hours > 36:
+                    warnings.append(f"sync_metadata is {age_hours:.1f} hours old (> 36 hours)")
+            except Exception:
+                pass
+
+    try:
+        compute_all_dashboard_data(card_dir)
+    except Exception as exc:
+        failures.append(f"Dashboard data computation failed: {exc}")
+
+    result = {
+        "ok": not failures,
+        "warnings": warnings,
+        "failures": failures,
+        "run_id": metadata.get("run_id"),
+        "alert_count": len(alerts) if isinstance(alerts, list) else 0,
+    }
+    with open(card_dir / "validation_report.json", "w", encoding="utf-8") as f:
+        json.dump(result, f, indent=2, sort_keys=True)
+        f.write("\n")
+    return result
+
+
+def print_validation(result: dict[str, Any]) -> int:
+    """Print validation report as JSON and return exit code."""
+    print(json.dumps(result, indent=2, sort_keys=True))
+    return 0 if result.get("ok") else 1
+
+
+def write_report(card_dir: Path | str = CARD_DIR, as_of: date | None = None) -> Path:
+    """Generate benefit tracker markdown report and update dashboard_summary.json atomically."""
+    card_dir = Path(card_dir)
+    as_of = as_of or date.today()
+    data = compute_all_dashboard_data(card_dir, as_of=as_of)
+    metadata = load_json_file(card_dir / "sync_metadata.json") or {}
+
+    dashboard = {
+        "schema_version": 1,
+        "card": {"name": data["card_name"], "ending": data["card_ending"]},
+        "cycle": data["billing_cycle"],
+        "welcome": data["milestones"]["welcome"],
+        "quarterly_bonus": data["milestones"]["quarterly"],
+        "annual_fee": data["milestones"]["annual_waiver"],
+        "rewards": data["points_summary"],
+        "caps": data["caps"],
+        "generated_at": datetime.now().astimezone().isoformat(),
+        "run_id": metadata.get("run_id"),
+        "alert_count": len(data.get("transactions", [])),
+    }
+
+    import tempfile
+    fd, temp_name = tempfile.mkstemp(prefix=".dashboard_summary.", suffix=".tmp", dir=card_dir)
+    try:
+        with open(fd, "w", encoding="utf-8") as handle:
+            json.dump(dashboard, handle, indent=2, sort_keys=True)
+            handle.write("\n")
+            handle.flush()
+            os.fsync(handle.fileno())
+        os.replace(temp_name, card_dir / "dashboard_summary.json")
+    finally:
+        if os.path.exists(temp_name):
+            os.unlink(temp_name)
+
+    report_lines = [
+        f"# {data['card_name']}: Benefit Tracker Report",
+        "",
+        "## 1. Executive Summary",
+        f"- Card ending: {data['card_ending']}",
+        f"- Current cycle: {data['billing_cycle']['start']} to {data['billing_cycle']['end']}",
+        f"- Current cycle tracked spend: INR {data['billing_cycle']['spend']:,.2f}",
+        f"- Data freshness: {metadata.get('alert_count', 0)} alerts; cached total INR {metadata.get('cached_total', 0.0):,.2f}.",
+        "",
+        "## 2. Fee and Waiver Tracker",
+        f"- Progress: INR {data['milestones']['annual_waiver']['spend']:,.2f} of INR {data['milestones']['annual_waiver']['target']:,.2f} ({data['milestones']['annual_waiver']['progress']}%)",
+        f"- Days left: {data['milestones']['annual_waiver']['days_left']}",
+        f"- Status: {'Met' if data['milestones']['annual_waiver']['met'] else 'In progress'}",
+        "",
+        "## 3. Welcome Benefit Tracker",
+        f"- Progress: INR {data['milestones']['welcome']['spend']:,.2f} of INR {data['milestones']['welcome']['target']:,.2f} ({data['milestones']['welcome']['progress']}%)",
+        f"- Status: {'Met' if data['milestones']['welcome']['met'] else 'In progress'}",
+        "",
+        "## 4. Quarterly Bonus Tracker",
+        f"- Progress: INR {data['milestones']['quarterly']['spend']:,.2f} of INR {data['milestones']['quarterly']['target']:,.2f} ({data['milestones']['quarterly']['progress']}%)",
+        f"- Remaining: INR {data['milestones']['quarterly']['remaining']:,.2f}",
+        f"- Status: {'Met' if data['milestones']['quarterly']['met'] else 'In progress'}",
+        "",
+        "## 5. Points Summary",
+        f"- Total estimated points: {data['points_summary']['total_estimated']:,}",
+        f"- Net available points: {data['points_summary']['net_available']:,}",
+        f"- Redemptions count: {data['redemptions_summary']['total_count']}",
+        "",
+    ]
+    report_path = card_dir / "benefit_tracker_report.md"
+    report_path.write_text("\n".join(report_lines), encoding="utf-8")
+    return report_path
+
+
+def run_card_pipeline(
+    card_dir: Path | str = CARD_DIR,
+    sync_source: str = "gmail-api",
+    download_statements_pdf: bool = True,
+) -> dict[str, Any]:
+    """Execute complete card workflow in-process without intermediate subprocess leakage."""
+    card_dir = Path(card_dir)
+    results: dict[str, Any] = {"ok": True, "steps": {}}
+
+    # 1. Alert Sync
+    if sync_source == "gmail-api":
+        try:
+            import importlib.util
+            spec = importlib.util.spec_from_file_location("dcbm_sync_alerts", card_dir / "sync_alerts.py")
+            if spec and spec.loader:
+                mod = importlib.util.module_from_spec(spec)
+                spec.loader.exec_module(mod)
+                sync_res = mod.run(card_dir)
+                results["steps"]["sync_alerts"] = {"ok": True, "count": sync_res.get("parsed_count", 0)}
+        except Exception as exc:
+            results["steps"]["sync_alerts"] = {"ok": False, "error": str(exc)}
+            results["ok"] = False
+            return results
+    elif sync_source == "mcp-step-logs":
+        try:
+            import importlib.util
+            spec = importlib.util.spec_from_file_location("dcbm_sync_mcp", card_dir / "sync_gmail_mcp.py")
+            if spec and spec.loader:
+                mod = importlib.util.module_from_spec(spec)
+                spec.loader.exec_module(mod)
+                if hasattr(mod, "main"):
+                    mod.main()
+                results["steps"]["sync_mcp"] = {"ok": True}
+        except Exception as exc:
+            results["steps"]["sync_mcp"] = {"ok": False, "error": str(exc)}
+            results["ok"] = False
+            return results
+
+    # 2. Download Statements
+    if download_statements_pdf and (card_dir / "download_statements.py").exists():
+        try:
+            import importlib.util
+            spec = importlib.util.spec_from_file_location("dcbm_download", card_dir / "download_statements.py")
+            if spec and spec.loader:
+                mod = importlib.util.module_from_spec(spec)
+                spec.loader.exec_module(mod)
+                dl_res = mod.download_statements(card_dir)
+                results["steps"]["download_statements"] = dl_res
+        except Exception as exc:
+            results["steps"]["download_statements"] = {"ok": False, "error": str(exc)}
+
+    # 3. Parse Statements
+    if (card_dir / "parse_statements.py").exists():
+        try:
+            import importlib.util
+            spec = importlib.util.spec_from_file_location("dcbm_parse", card_dir / "parse_statements.py")
+            if spec and spec.loader:
+                mod = importlib.util.module_from_spec(spec)
+                spec.loader.exec_module(mod)
+                if hasattr(mod, "parse_all_statements"):
+                    parse_res = mod.parse_all_statements(card_dir)
+                    results["steps"]["parse_statements"] = {"ok": True, "statements": len(parse_res.get("statements", []))}
+        except Exception as exc:
+            results["steps"]["parse_statements"] = {"ok": False, "error": str(exc)}
+            results["ok"] = False
+            return results
+
+    # 4. Validate
+    val_res = validate_card_dir(card_dir)
+    results["steps"]["validate"] = val_res
+    if not val_res.get("ok"):
+        results["ok"] = False
+        return results
+
+    # 5. Update Report
+    rep_path = write_report(card_dir)
+    results["steps"]["update_report"] = {"ok": True, "path": str(rep_path)}
+    return results
+
