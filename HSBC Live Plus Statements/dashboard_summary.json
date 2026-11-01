@@ -121,7 +121,7 @@
   "evidence": {
     "variant_status": "confirmed"
   },
-  "generated_at": "2026-11-01T09:03:47.618074+05:30",
+  "generated_at": "2026-11-01T10:04:50.589091+05:30",
   "limited_offers": {
     "fuel": {
       "days_left": 60,
@@ -196,7 +196,7 @@
   "provisional": true,
   "quarterly_bonus": null,
   "rewards": null,
-  "run_id": "1991d2c5-7f84-4ff1-a3a8-fd47885f7666",
+  "run_id": "d82145f3-e830-4ce7-96f6-91cecae9d878",
   "schema_version": 2,
   "shared_cap": {
     "bucket_ids": [
