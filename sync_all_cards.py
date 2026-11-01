@@ -32,7 +32,7 @@ def run_card_workflow(card_name: str, card_dir: Path) -> bool:
         return False
     try:
         proc = subprocess.run(
-            [sys.executable, str(workflow_script)],
+            [sys.executable, str(workflow_script), "--in-process"],
             cwd=str(card_dir),
             capture_output=True,
             text=True,

@@ -1,0 +1,30 @@
+[
+  {
+    "cash_paid": 8631.0,
+    "date": "2026-09-11",
+    "description": "Flight Booking (PGH-DEL & DEL-PAT)",
+    "email_date": "2026-09-11T18:00:56+00:00",
+    "message_id": "1a091a137cd2f039",
+    "order_reference": "44117891493470498396",
+    "points_redeemed": 14007,
+    "redemption_rate": 1.0,
+    "subject": "Your Flight Booking with SmartBuy is Successful - Order Reference Number 44117891493470498396.",
+    "total_fare": 22638.0,
+    "type": "SmartBuy Flight",
+    "value_saved_inr": 14007.0
+  },
+  {
+    "cash_paid": 15559.0,
+    "date": "2026-10-02",
+    "description": "Flight Booking (GAY-DEL & DEL-BLR)",
+    "email_date": "2026-10-02T06:02:14+00:00",
+    "message_id": "1a0fb34c5df475e2",
+    "order_reference": "44117909206441014120",
+    "points_redeemed": 9121,
+    "redemption_rate": 1.0,
+    "subject": "Your Flight Booking with SmartBuy is Successful - Order Reference Number 44117909206441014120.",
+    "total_fare": 24680.0,
+    "type": "SmartBuy Flight",
+    "value_saved_inr": 9121.0
+  }
+]

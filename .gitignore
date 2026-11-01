@@ -1,0 +1,21 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.pytest_cache/
+
+# Sensitive credentials & environment variables
+.env
+*.pem
+credentials.json
+token*.json
+
+# Logs & temp files
+*.log
+sync_daemon.log
+
+# Reflex build artifacts
+dcbm_reflex/.web/
+dcbm_reflex/.states/
+dcbm_reflex/reflex.lock/
