@@ -82,7 +82,7 @@
     "total_cycle_points": 6720,
     "transaction_count": 11
   },
-  "generated_at": "2026-11-01T18:12:59.635932+05:30",
+  "generated_at": "2026-11-01T19:14:00.838547+05:30",
   "quarterly_bonus": {
     "bonus_points": 10000,
     "daily_runrate_needed": 1387.38,
@@ -103,7 +103,7 @@
     "total_estimated": 46806,
     "total_redeemed": 23128
   },
-  "run_id": "e0e16de8-7df7-403b-96d5-9fbf3aa57eff",
+  "run_id": "797ddb5e-3487-48d1-8570-871b448537a7",
   "schema_version": 1,
   "welcome": {
     "days_left": 0,
