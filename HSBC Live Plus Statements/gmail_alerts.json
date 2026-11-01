@@ -655,5 +655,14 @@
     "message_id": "1a190ace1d9def6a",
     "source": "gmail-api",
     "subject": "Credit Card Transaction Alert"
+  },
+  {
+    "amount": 100.0,
+    "date": "2026-11-01",
+    "email_date": "2026-11-01T05:52:49+00:00",
+    "merchant": "ROYAL MART",
+    "message_id": "1a195aaf411d7d7e",
+    "source": "gmail-api",
+    "subject": "Credit Card Transaction Alert"
   }
 ]
