@@ -669,6 +669,15 @@
       "message_id": "1a195aaf411d7d7e",
       "source": "gmail-api",
       "subject": "Credit Card Transaction Alert"
+    },
+    {
+      "amount": 788.0,
+      "date": "2026-11-02",
+      "email_date": "2026-11-02T03:45:06+00:00",
+      "merchant": "SWIGGY PVT LTD FOOD1",
+      "message_id": "1a19a5c637d6107a",
+      "source": "gmail-api",
+      "subject": "Credit Card Transaction Alert"
     }
   ]
 }
