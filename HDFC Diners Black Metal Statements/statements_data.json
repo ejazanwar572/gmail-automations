@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-04T00:13:56.287745",
+  "generated_at": "2026-11-04T01:15:22.095535",
   "notes": [
     "Official statement data parsed directly from decrypted HDFC statement PDFs.",
     "Transactions include settled statement line items + unbilled live Gmail alerts."
@@ -1908,6 +1908,15 @@
       "date": "2026-10-30",
       "merchant": "Airport Lounge",
       "amount": 2.0,
+      "type": "debit",
+      "source": "gmail-api-unbilled",
+      "card_ending": "2360",
+      "card_role": "Primary"
+    },
+    {
+      "date": "2026-11-04",
+      "merchant": "BOOKING COM",
+      "amount": 13559.4,
       "type": "debit",
       "source": "gmail-api-unbilled",
       "card_ending": "2360",
