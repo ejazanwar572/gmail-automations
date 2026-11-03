@@ -31,45 +31,45 @@ if "selected_card" in st.session_state and "HSBC" in str(st.session_state["selec
         runpy.run_path(str(hsbc_app_path), run_name="__main__")
         st.stop()
 
-# Theme Palette: Haute Metal Light (Bespoke Champagne & Onyx)
+# Theme Palette: Modern Executive Slate & Brushed Champagne
 T = {
-    "app_bg": "#f7f4ee",
-    "text_main": "#1a1613",
-    "text_muted": "#6e675f",
-    "text_sub": "#8c8379",
-    "border": "#dfd5c6",
-    "border_sub": "#efeae0",
+    "app_bg": "#f8fafc",
+    "text_main": "#0f172a",
+    "text_muted": "#475569",
+    "text_sub": "#64748b",
+    "border": "#e2e8f0",
+    "border_sub": "#f1f5f9",
     "card_bg": "#ffffff",
-    "card_border": "#dfd5c6",
-    "card_shadow": "0 4px 16px rgba(60, 50, 40, 0.05)",
+    "card_border": "#e2e8f0",
+    "card_shadow": "0 1px 3px rgba(15, 23, 42, 0.04), 0 8px 24px -4px rgba(15, 23, 42, 0.06)",
     "hero_bg": "#ffffff",
-    "hero_border": "#d8cbba",
-    "hero_shadow": "0 10px 28px rgba(154, 96, 20, 0.08), 0 2px 6px rgba(0, 0, 0, 0.03)",
-    "subcard_bg": "#faf8f4",
-    "subcard_border": "#dfd5c6",
-    "input_bg": "#faf8f4",
-    "input_border": "#cec2b0",
-    "input_text": "#1a1613",
-    "input_focus_border": "#9a6014",
-    "input_focus_shadow": "rgba(154, 96, 20, 0.2)",
-    "btn_bg": "linear-gradient(135deg, #9a6014 0%, #784708 100%)",
-    "btn_hover": "linear-gradient(135deg, #b47820 0%, #9a6014 100%)",
-    "btn_border": "#b47820",
-    "btn_shadow": "0 4px 14px rgba(154, 96, 20, 0.25)",
-    "progress_bg": "#ede7dc",
-    "progress_fill": "linear-gradient(90deg, #9a6014 0%, #c48e38 100%)",
+    "hero_border": "#e2e8f0",
+    "hero_shadow": "0 1px 3px rgba(180, 120, 32, 0.06), 0 12px 32px -4px rgba(15, 23, 42, 0.08)",
+    "subcard_bg": "#f8fafc",
+    "subcard_border": "#e2e8f0",
+    "input_bg": "#ffffff",
+    "input_border": "#cbd5e1",
+    "input_text": "#0f172a",
+    "input_focus_border": "#b47820",
+    "input_focus_shadow": "rgba(180, 120, 32, 0.2)",
+    "btn_bg": "linear-gradient(135deg, #1e293b 0%, #0f172a 100%)",
+    "btn_hover": "linear-gradient(135deg, #334155 0%, #1e293b 100%)",
+    "btn_border": "#334155",
+    "btn_shadow": "0 2px 8px rgba(15, 23, 42, 0.15)",
+    "progress_bg": "#e2e8f0",
+    "progress_fill": "linear-gradient(90deg, #b47820 0%, #d4a359 100%)",
     "chip_bg": "#ffffff",
-    "chip_border": "#dfd5c6",
-    "card_number_badge_bg": "#ede7dc",
-    "card_number_badge_border": "#cec2b0",
-    "card_number_badge_color": "#38322b",
-    "footer_border": "#dfd5c6",
-    "footer_text": "#8c8379",
-    "val_hl_bg": "#faf7f2",
-    "val_hl_border": "#cec2b0",
-    "accent_gold": "#9a6014",
-    "accent_green": "#15803d",
-    "accent_amber": "#b45309",
+    "chip_border": "#e2e8f0",
+    "card_number_badge_bg": "#f1f5f9",
+    "card_number_badge_border": "#cbd5e1",
+    "card_number_badge_color": "#0f172a",
+    "footer_border": "#e2e8f0",
+    "footer_text": "#64748b",
+    "val_hl_bg": "#f8fafc",
+    "val_hl_border": "#e2e8f0",
+    "accent_gold": "#b47820",
+    "accent_green": "#16a34a",
+    "accent_amber": "#d97706",
 }
 
 st.html(
@@ -80,25 +80,25 @@ st.html(
     @import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200');
 
     :root {{
-        --bg-canvas: #f7f4ee;
+        --bg-canvas: #f8fafc;
         --bg-card: #ffffff;
-        --bg-subcard: #faf8f4;
-        --text-main: #1a1613;
-        --text-muted: #6e675f;
-        --text-sub: #8c8379;
-        --border-sub: #efeae0;
-        --border-default: #dfd5c6;
-        --border-strong: #cec2b0;
-        --accent-gold: #9a6014;
-        --accent-gold-dark: #784708;
-        --accent-gold-light: #b47820;
-        --accent-green: #15803d;
-        --accent-amber: #b45309;
-        --accent-red: #dc2626;
-        --progress-bg: #ede7dc;
-        --shadow-sm: 0 1px 4px rgba(60, 50, 40, 0.05);
-        --shadow-card: 0 4px 16px rgba(60, 50, 40, 0.05);
-        --shadow-hero: 0 10px 28px rgba(154, 96, 20, 0.08), 0 2px 6px rgba(0, 0, 0, 0.03);
+        --bg-subcard: #f8fafc;
+        --text-main: #0f172a;
+        --text-muted: #475569;
+        --text-sub: #64748b;
+        --border-sub: #f1f5f9;
+        --border-default: #e2e8f0;
+        --border-strong: #cbd5e1;
+        --accent-gold: #b47820;
+        --accent-gold-dark: #8c5310;
+        --accent-gold-light: #d4a359;
+        --accent-green: #16a34a;
+        --accent-amber: #d97706;
+        --accent-red: #ef4444;
+        --progress-bg: #e2e8f0;
+        --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.04);
+        --shadow-card: 0 1px 3px rgba(15, 23, 42, 0.04), 0 8px 24px -4px rgba(15, 23, 42, 0.06);
+        --shadow-hero: 0 1px 3px rgba(180, 120, 32, 0.06), 0 12px 32px -4px rgba(15, 23, 42, 0.08);
     }}
 
     html, body, [class*="css"], .stMarkdown, p, div, label, span, h1, h2, h3, h4, h5, h6 {{
@@ -167,7 +167,7 @@ st.html(
     /* Hero Card */
     .hero-card {{
         background: var(--bg-card);
-        border: 1px solid var(--border-strong);
+        border: 1px solid var(--border-default);
         border-radius: 18px;
         padding: 26px;
         box-shadow: var(--shadow-hero);
@@ -188,24 +188,29 @@ st.html(
         line-height: 1.4;
     }}
     .pill-green {{
-        background: rgba(21, 128, 61, 0.1);
-        color: var(--accent-green);
-        border: 1px solid rgba(21, 128, 61, 0.28);
+        background: #ecfdf5;
+        color: #059669;
+        border: 1px solid #a7f3d0;
     }}
     .pill-orange {{
-        background: rgba(180, 83, 9, 0.1);
-        color: var(--accent-amber);
-        border: 1px solid rgba(180, 83, 9, 0.28);
+        background: #fffbeb;
+        color: #d97706;
+        border: 1px solid #fde68a;
     }}
     .pill-red {{
-        background: rgba(220, 38, 38, 0.1);
-        color: var(--accent-red);
-        border: 1px solid rgba(220, 38, 38, 0.28);
+        background: #fef2f2;
+        color: #dc2626;
+        border: 1px solid #fecaca;
     }}
     .pill-blue {{
-        background: rgba(154, 96, 20, 0.08);
-        color: var(--accent-gold);
-        border: 1px solid rgba(154, 96, 20, 0.25);
+        background: #f1f5f9;
+        color: #0f172a;
+        border: 1px solid #cbd5e1;
+    }}
+    .pill-gold {{
+        background: #fffbeb;
+        color: #b47820;
+        border: 1px solid #fde68a;
     }}
 
     /* Status dot indicator */
@@ -687,77 +692,62 @@ current_available = pts_summary.get("net_available", 0)
 total_spend_all = sum(t["amount"] for t in data["transactions"])
 lifetime_reward_rate = (lifetime_earned / total_spend_all * 100) if total_spend_all > 0 else 0.0
 
-# Render Hero Cards
-hero_col1, hero_col2, hero_col3 = st.columns([1.35, 1.25, 1.4])
+# Render Hero Cards (Bento Grid)
+hero_col_left, hero_col_right = st.columns([1.7, 1.3])
 
-with hero_col1:
+with hero_col_left:
     today_earned = active_cap.get("today_earned", 0)
     today_daily_cap = active_cap.get("daily_cap", 2500)
     today_percent = min(100.0, round((today_earned / today_daily_cap) * 100, 1)) if today_daily_cap > 0 else 0.0
 
     st.markdown(
         f"""
-        <div class="hero-card" style="height: 240px; display: flex; flex-direction: column; justify-content: space-between;">
+        <div class="hero-card" style="padding: 24px; display: flex; flex-direction: column; justify-content: space-between; min-height: 270px;">
             <div>
                 <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 10px;">
                     <div>
-                        <div style="font-size: 12px; font-weight: 600; color: #9a6014;">
-                            Accelerated reward points limit
+                        <div style="font-size: 11.5px; font-weight: 600; color: #b47820;">
+                            SmartBuy accelerated points limit
                         </div>
-                        <div style="font-size: 18px; font-weight: 700; color: var(--text-main);">
+                        <div style="font-size: 20px; font-weight: 700; color: var(--text-main); margin-top: 1px;">
                             {cycle_title}
                         </div>
                     </div>
-                    <span class="pill pill-blue" style="font-size: 11px; padding: 4px 10px; white-space: nowrap;">
-                        {'Resets today' if active_cap['days_remaining'] == 0 else ('Resets tomorrow' if active_cap['days_remaining'] == 1 else f"Resets in {active_cap['days_remaining']}d")}
+                    <span class="pill pill-gold" style="font-size: 11.5px; padding: 4px 10px; white-space: nowrap;">
+                        {'Resets today' if active_cap['days_remaining'] == 0 else ('Resets tomorrow' if active_cap['days_remaining'] == 1 else f"Resets in {active_cap['days_remaining']}d")} · {active_cap['reset_date']}
                     </span>
                 </div>
                 <div style="display: flex; align-items: baseline; gap: 8px;">
-                    <span class="hero-number">{active_cap["remaining"]:,}</span>
+                    <span class="hero-number tabular-num">{active_cap["remaining"]:,}</span>
                     <span style="font-size: 16px; font-weight: 600; color: var(--text-muted);">/ {active_cap["monthly_cap"]:,} RP remaining</span>
                 </div>
-                <div class="hero-sub">{active_cap["percent_remaining"]}% of monthly cap still available to earn</div>
+                <div class="hero-sub">{active_cap["percent_remaining"]}% monthly headroom still available to earn</div>
             </div>
-            <div style="margin-top: 10px;">
-                <div style="display: flex; justify-content: space-between; font-size: 12px; color: var(--text-muted); margin-bottom: 4px;">
-                    <span>Monthly progress: <b>{active_cap["earned"]:,} / {active_cap["monthly_cap"]:,} RP</b></span>
-                    <span>Today: <b>{today_earned:,} / {today_daily_cap:,} RP</b></span>
+
+            <div style="margin-top: 14px;">
+                <div style="display: flex; justify-content: space-between; font-size: 12px; color: var(--text-muted); margin-bottom: 5px;">
+                    <span>Monthly progress: <b class="tabular-num">{active_cap["earned"]:,} / {active_cap["monthly_cap"]:,} RP ({active_cap['percent_used']}%)</b></span>
+                    <span>Today: <b class="tabular-num">{today_earned:,} / {today_daily_cap:,} RP</b></span>
                 </div>
-                <div style="background: var(--progress-bg); border-radius: 999px; height: 10px; overflow: hidden; margin-bottom: 4px;">
+                <div style="background: var(--progress-bg); border-radius: 999px; height: 9px; overflow: hidden; margin-bottom: 12px;">
                     <div style="background: {T['progress_fill']}; width: {min(100.0, active_cap['percent_used'])}%; height: 100%;"></div>
                 </div>
-            </div>
-        </div>
-        """,
-        unsafe_allow_html=True,
-    )
 
-with hero_col2:
-    st.markdown(
-        f"""
-        <div class="metal-card" style="height: 240px; display: flex; flex-direction: column; justify-content: space-between;">
-            <div>
-                <div style="font-size: 12px; font-weight: 600; color: var(--text-muted);">
-                    Remaining spend headroom
-                </div>
-                <div style="font-size: 14px; color: var(--text-sub); margin-top: 2px;">
-                    Spend buffer before hitting 10,000 RP cap
-                </div>
-            </div>
-            <div style="display: flex; flex-direction: column; gap: 10px;">
-                <div style="background: var(--bg-subcard); padding: 10px 14px; border-radius: 12px; border: 1px solid var(--border-default); display: flex; justify-content: space-between; align-items: center;">
-                    <div>
-                        <div style="font-size: 12px; color: var(--text-muted); font-weight: 600;">Flights · SmartBuy 5x</div>
-                        <div style="font-size: 20px; font-weight: 800; color: #9a6014;" class="tabular-num">₹{active_cap["flight_spend_capacity"]:,}</div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                    <div style="background: var(--bg-subcard); padding: 10px 14px; border-radius: 10px; border: 1px solid var(--border-default); display: flex; justify-content: space-between; align-items: center;">
+                        <div>
+                            <div style="font-size: 11.5px; color: var(--text-muted); font-weight: 600;">Flights · SmartBuy 5x</div>
+                            <div style="font-size: 18px; font-weight: 800; color: #b47820;" class="tabular-num">₹{active_cap["flight_spend_capacity"]:,}</div>
+                        </div>
+                        <span style="font-size: 11px; color: var(--text-sub); text-align: right;">4x bonus<br>(20 RP / ₹150)</span>
                     </div>
-                    <span style="font-size: 12px; color: var(--text-sub); text-align: right;">4x bonus<br>(20 RP / ₹150)</span>
-                </div>
-                <div style="background: var(--bg-subcard); padding: 10px 14px; border-radius: 12px; border: 1px solid var(--border-default); display: flex; justify-content: space-between; align-items: center;">
-                    <div>
-                        <div style="font-size: 12px; color: var(--text-muted); font-weight: 600;">Hotels · SmartBuy 10x</div>
-                        <div style="font-size: 20px; font-weight: 800; color: #784708;" class="tabular-num">₹{active_cap["hotel_spend_capacity"]:,}</div>
+                    <div style="background: var(--bg-subcard); padding: 10px 14px; border-radius: 10px; border: 1px solid var(--border-default); display: flex; justify-content: space-between; align-items: center;">
+                        <div>
+                            <div style="font-size: 11.5px; color: var(--text-muted); font-weight: 600;">Hotels · SmartBuy 10x</div>
+                            <div style="font-size: 18px; font-weight: 800; color: #0f172a;" class="tabular-num">₹{active_cap["hotel_spend_capacity"]:,}</div>
+                        </div>
+                        <span style="font-size: 11px; color: var(--text-sub); text-align: right;">9x bonus<br>(45 RP / ₹150)</span>
                     </div>
-                    <span style="font-size: 12px; color: var(--text-sub); text-align: right;">9x bonus<br>(45 RP / ₹150)</span>
                 </div>
             </div>
         </div>
@@ -765,51 +755,57 @@ with hero_col2:
         unsafe_allow_html=True,
     )
 
-with hero_col3:
+with hero_col_right:
     st.markdown(
         f"""
-        <div class="metal-card" style="height: 240px; padding: 24px; display: flex; flex-direction: column; justify-content: space-between; box-sizing: border-box;">
+        <div class="metal-card" style="padding: 24px; display: flex; flex-direction: column; justify-content: space-between; min-height: 270px; box-sizing: border-box;">
             <div>
-                <div style="display: flex; justify-content: space-between; align-items: center;">
-                    <div style="font-size: 12px; font-weight: 600; color: var(--text-muted);">
-                        Reward points summary
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
+                    <div style="font-size: 11.5px; font-weight: 600; color: var(--text-muted);">
+                        Reward points portfolio
                     </div>
-                    <span class="pill pill-green" style="font-size: 11px; padding: 2px 8px;">
-                        1 RP = ₹1.00
+                    <span class="pill pill-green" style="font-size: 11px; padding: 3px 8px;">
+                        1 RP = ₹1.00 SmartBuy
                     </span>
                 </div>
-                <div style="font-size: 13px; color: var(--text-sub); margin-top: 2px;">
-                    Net balance & portfolio value
+                <div style="font-size: 12px; color: var(--text-sub);">
+                    Available SmartBuy travel booking value
+                </div>
+                <div style="margin-top: 4px;">
+                    <span class="hero-number tabular-num" style="color: #059669;">₹{current_available:,}</span>
                 </div>
             </div>
-            <div style="display: flex; flex-direction: column; gap: 6px;">
-                <div style="background: var(--bg-subcard); padding: 5px 12px; border-radius: 10px; border: 1px solid var(--border-default); display: flex; justify-content: space-between; align-items: center;">
+
+            <div style="display: flex; flex-direction: column; gap: 8px; margin-top: 10px;">
+                <div style="background: var(--bg-subcard); padding: 8px 12px; border-radius: 10px; border: 1px solid var(--border-default); display: flex; justify-content: space-between; align-items: center;">
                     <div>
-                        <div style="font-size: 11px; color: var(--text-muted); font-weight: 600;">Lifetime reward points</div>
-                        <div style="font-size: 10.5px; color: var(--text-sub); line-height: 1.1;">Total points earned to date</div>
+                        <div style="font-size: 11.5px; color: var(--text-muted); font-weight: 600;">Lifetime reward points</div>
+                        <div style="font-size: 10.5px; color: var(--text-sub);">Total points earned to date</div>
                     </div>
                     <div style="text-align: right;" class="tabular-num">
-                        <span style="font-size: 17px; font-weight: 800; color: #b45309; letter-spacing: -0.01em;">{lifetime_earned:,}</span>
+                        <span style="font-size: 16px; font-weight: 700; color: #b47820;">{lifetime_earned:,}</span>
                         <span style="font-size: 11px; font-weight: 600; color: var(--text-muted);"> RP</span>
                     </div>
                 </div>
-                <div style="background: var(--bg-subcard); padding: 5px 12px; border-radius: 10px; border: 1px solid var(--border-default); display: flex; justify-content: space-between; align-items: center;">
+
+                <div style="background: var(--bg-subcard); padding: 8px 12px; border-radius: 10px; border: 1px solid var(--border-default); display: flex; justify-content: space-between; align-items: center;">
                     <div>
-                        <div style="font-size: 11px; color: var(--text-muted); font-weight: 600;">Current available</div>
-                        <div style="font-size: 10.5px; color: var(--text-sub); line-height: 1.1;">Worth <b>₹{current_available:,}</b> on SmartBuy</div>
+                        <div style="font-size: 11.5px; color: var(--text-muted); font-weight: 600;">Current spendable balance</div>
+                        <div style="font-size: 10.5px; color: var(--text-sub);">Net liquid reward points</div>
                     </div>
                     <div style="text-align: right;" class="tabular-num">
-                        <span style="font-size: 17px; font-weight: 800; color: #9a6014; letter-spacing: -0.01em;">{current_available:,}</span>
+                        <span style="font-size: 16px; font-weight: 700; color: #0f172a;">{current_available:,}</span>
                         <span style="font-size: 11px; font-weight: 600; color: var(--text-muted);"> RP</span>
                     </div>
                 </div>
-                <div style="background: var(--bg-subcard); padding: 5px 12px; border-radius: 10px; border: 1px solid var(--border-default); display: flex; justify-content: space-between; align-items: center;">
+
+                <div style="background: var(--bg-subcard); padding: 8px 12px; border-radius: 10px; border: 1px solid var(--border-default); display: flex; justify-content: space-between; align-items: center;">
                     <div>
-                        <div style="font-size: 11px; color: var(--text-muted); font-weight: 600;">Effective reward rate</div>
-                        <div style="font-size: 10.5px; color: var(--text-sub); line-height: 1.1;">{lifetime_earned:,} RP / ₹{total_spend_all:,.0f} spend</div>
+                        <div style="font-size: 11.5px; color: var(--text-muted); font-weight: 600;">Net reward rate</div>
+                        <div style="font-size: 10.5px; color: var(--text-sub);">{lifetime_earned:,} RP / ₹{total_spend_all:,.0f} spend</div>
                     </div>
                     <div style="text-align: right;" class="tabular-num">
-                        <span style="font-size: 17px; font-weight: 800; color: #15803d; letter-spacing: -0.01em;">{lifetime_reward_rate:.2f}%</span>
+                        <span style="font-size: 16px; font-weight: 700; color: #059669;">{lifetime_reward_rate:.2f}%</span>
                     </div>
                 </div>
             </div>

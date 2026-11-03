@@ -93,4 +93,15 @@ Build and test a modern, responsive web application prototype for the HDFC Diner
 - [x] Provide Reflex Cloud deployment configuration and instructions.
 - [x] End-to-end verification (76/76 unit tests pass, zero regressions).
 
+---
+
+## Phase 8: Hallmark Redesign of Live Streamlit App (`hdfc_dcbm_app.py`)
+- [x] Hallmark pre-flight & scope determination (Scope: App Screen, Theme: Haute Metal Champagne & Onyx)
+- [x] CSS Token Architecture: Define `:root` variables, Hallmark stamp skeleton, remove `transition: all`, add instant focus-visible rings
+- [x] Eliminate Floor violations: replace emoji icons with SVG/typography, eliminate tracked capitals and uppercase small caps
+- [x] Tabular numerals & control density for app screen ergonomics
+- [x] Preserve 100% data wiring, calculations, engine imports, and filter/export capabilities
+- [x] Verification: syntax check and run full pytest test suite (76/76 passing)
+
+
 
