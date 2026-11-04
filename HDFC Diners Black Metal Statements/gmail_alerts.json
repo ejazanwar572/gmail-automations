@@ -520,5 +520,14 @@
     "message_id": "1a1a54925f04989b",
     "source": "gmail-api",
     "subject": "A payment was made using your Credit Card"
+  },
+  {
+    "amount": 9900.0,
+    "date": "2026-11-04",
+    "email_date": "2026-11-04T23:26:12+05:30",
+    "merchant": "GYFTR COM VIA SMARTBUY",
+    "message_id": "1a1a7b44a4986b3c",
+    "source": "gmail-api",
+    "subject": "A payment was made using your Credit Card"
   }
 ]
