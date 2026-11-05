@@ -1,10 +1,10 @@
 {
-  "alert_count": 75,
+  "alert_count": 77,
   "annual_fee": {
     "amount": 999,
     "days_left": 235,
-    "progress": 79714.29000000001,
-    "remaining": 120285.70999999999,
+    "progress": 81032.29000000001,
+    "remaining": 118967.70999999999,
     "waiver_spend": 200000.0
   },
   "card": {
@@ -14,26 +14,26 @@
   "cycle": {
     "days_remaining": 8,
     "end": "2026-11-13",
-    "spend": 9271.0,
+    "spend": 10589.0,
     "start": "2026-10-14"
   },
-  "generated_at": "2026-11-05T15:48:18.567896+05:30",
+  "generated_at": "2026-11-05T23:40:04.947197+05:30",
   "period_totals": {
     "cashback": {
-      "current_cycle": 817.0199999999998,
-      "lifetime": 4713.13
+      "current_cycle": 948.8199999999998,
+      "lifetime": 4844.93
     },
     "spend": {
-      "current_cycle": 9271.0,
-      "lifetime": 79714.29000000001
+      "current_cycle": 10589.0,
+      "lifetime": 81032.29000000001
     }
   },
-  "run_id": "3b1deb98-62aa-4e9c-b41c-00dec2103d2c",
+  "run_id": "6d6c8458-ce68-4cf4-a4a3-0d816bcf0bbd",
   "schema_version": 2,
   "shared_cap": {
     "cap": 1200.0,
-    "earned": 797.5999999999998,
-    "remaining": 402.4000000000002
+    "earned": 929.3999999999999,
+    "remaining": 270.60000000000014
   },
   "welcome": {
     "met": true,

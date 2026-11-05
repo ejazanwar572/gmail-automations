@@ -678,6 +678,24 @@
       "message_id": "1a19a5c637d6107a",
       "source": "gmail-api",
       "subject": "Credit Card Transaction Alert"
+    },
+    {
+      "amount": 30.0,
+      "date": "2026-11-05",
+      "email_date": "2026-11-05T15:29:08+00:00",
+      "merchant": "CAS*SWIGGY",
+      "message_id": "1a1ac5404f4205d6",
+      "source": "gmail-api",
+      "subject": "Credit Card Transaction Alert"
+    },
+    {
+      "amount": 1288.0,
+      "date": "2026-11-05",
+      "email_date": "2026-11-05T16:18:16+00:00",
+      "merchant": "CAS*SWIGGY",
+      "message_id": "1a1ac8102775d8f1",
+      "source": "gmail-api",
+      "subject": "Credit Card Transaction Alert"
     }
   ]
 }
