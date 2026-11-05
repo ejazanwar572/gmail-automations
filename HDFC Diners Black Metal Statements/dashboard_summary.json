@@ -1,13 +1,13 @@
 {
-  "alert_count": 59,
+  "alert_count": 60,
   "annual_fee": {
     "days_left": 231,
     "fee_amount": 10000.0,
-    "met": false,
+    "met": true,
     "period_end": "2027-06-24",
-    "progress": 95.1,
-    "remaining": 39173.09999999998,
-    "spend": 760826.9,
+    "progress": 100.0,
+    "remaining": 0.0,
+    "spend": 915021.9,
     "target": 800000.0
   },
   "caps": {
@@ -75,35 +75,35 @@
   },
   "cycle": {
     "accelerated_points": 660,
-    "base_points": 7830,
+    "base_points": 12965,
     "end": "2026-11-13",
-    "spend": 235345.4,
+    "spend": 389540.4,
     "start": "2026-10-14",
-    "total_cycle_points": 8490,
-    "transaction_count": 14
+    "total_cycle_points": 13625,
+    "transaction_count": 15
   },
-  "generated_at": "2026-11-05T09:48:46.289918+05:30",
+  "generated_at": "2026-11-05T15:48:55.622856+05:30",
   "quarterly_bonus": {
     "bonus_points": 10000,
-    "daily_runrate_needed": 888.99,
+    "daily_runrate_needed": 0.0,
     "days_left": 56,
     "label": "Q4 2026",
-    "met": false,
-    "progress": 87.6,
-    "remaining": 49783.59999999998,
-    "spend": 350216.4,
+    "met": true,
+    "progress": 100.0,
+    "remaining": 0.0,
+    "spend": 504411.4,
     "target": 400000.0
   },
   "rewards": {
     "confirmed_statement": 38026,
     "mode": "Confirmed Statement Baseline + Live Gmail Tracking",
-    "net_available": 25448,
+    "net_available": 30583,
     "post_statement_accelerated": 2720,
-    "post_statement_base": 7830,
-    "total_estimated": 48576,
+    "post_statement_base": 12965,
+    "total_estimated": 53711,
     "total_redeemed": 23128
   },
-  "run_id": "67542594-ac1c-42a1-ac8f-1c3da0426db8",
+  "run_id": "1a4fda27-7f32-4195-ab31-894cc85817e1",
   "schema_version": 1,
   "welcome": {
     "days_left": 0,

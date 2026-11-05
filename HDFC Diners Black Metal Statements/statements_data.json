@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-05T09:48:46.286843",
+  "generated_at": "2026-11-05T15:48:55.620282",
   "notes": [
     "Official statement data parsed directly from decrypted HDFC statement PDFs.",
     "Transactions include settled statement line items + unbilled live Gmail alerts."
@@ -1935,6 +1935,15 @@
       "date": "2026-11-04",
       "merchant": "GYFTR COM VIA SMARTBUY",
       "amount": 9900.0,
+      "type": "debit",
+      "source": "gmail-api-unbilled",
+      "card_ending": "2360",
+      "card_role": "Primary"
+    },
+    {
+      "date": "2026-11-05",
+      "merchant": "ELECTRONIC CITY MOTORS",
+      "amount": 154195.0,
       "type": "debit",
       "source": "gmail-api-unbilled",
       "card_ending": "2360",

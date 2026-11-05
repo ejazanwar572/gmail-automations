@@ -529,5 +529,14 @@
     "message_id": "1a1a7b44a4986b3c",
     "source": "gmail-api",
     "subject": "A payment was made using your Credit Card"
+  },
+  {
+    "amount": 154195.0,
+    "date": "2026-11-05",
+    "email_date": "2026-11-05T13:55:09+05:30",
+    "merchant": "ELECTRONIC CITY MOTORS",
+    "message_id": "1a1aacfd91c3c3c0",
+    "source": "gmail-api",
+    "subject": "A payment was made using your Credit Card"
   }
 ]
