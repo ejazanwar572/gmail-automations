@@ -584,7 +584,7 @@ col_head_left, col_head_right = st.columns([2.8, 1.2], vertical_alignment="cente
 with col_head_left:
     sub_c1, sub_c2 = st.columns([0.08, 0.92], vertical_alignment="center")
     with sub_c1:
-        st.markdown(
+        st.html(
             f"""
             <div style="width: 38px; height: 38px; background: #faf8f4; color: {T['accent_gold']}; border-radius: 8px; display: flex; align-items: center; justify-content: center; border: 1px solid {T['border']};">
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="{T['accent_gold']}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -592,19 +592,17 @@ with col_head_left:
                     <line x1="2" y1="10" x2="22" y2="10"/>
                 </svg>
             </div>
-            """,
-            unsafe_allow_html=True,
+            """
         )
     with sub_c2:
         card_col, badge_col = st.columns([1.5, 1.2], vertical_alignment="center")
         with card_col:
-            st.markdown(
+            st.html(
                 f"""
-                <div style="font-size: 11px; font-weight: 600; color: #9a6014; margin-bottom: 3px;">
+                <div style="font-size: 11px; font-weight: 600; color: #b47820; margin-bottom: 3px;">
                     Selected card account
                 </div>
-                """,
-                unsafe_allow_html=True,
+                """
             )
             card_options = ["HDFC Diners Club Black Metal", "HSBC Live+ Credit Card"]
             current_card = st.session_state.get("selected_card", "HDFC Diners Club Black Metal")
@@ -623,7 +621,7 @@ with col_head_left:
                 label_visibility="collapsed",
             )
         with badge_col:
-            st.markdown(
+            st.html(
                 f"""
                 <div style="margin-top: 15px; display: flex; align-items: center; gap: 8px;">
                     <span class="mobile-card-badge" style="font-size: 13px; font-weight: 700; color: {T['card_number_badge_color']}; background: {T['card_number_badge_bg']}; padding: 3px 10px; border-radius: 8px; border: 1px solid {T['card_number_badge_border']};">
@@ -633,22 +631,20 @@ with col_head_left:
                         Diners Club Metal
                     </span>
                 </div>
-                """,
-                unsafe_allow_html=True,
+                """
             )
-        st.markdown(
+        st.html(
             f"""
             <div class="mobile-header-sub" style="font-size: 13px; color: {T['text_sub']}; font-weight: 500; margin-top: 2px;">
                 Automated Real-Time Rewards & Spend Tracker from Gmail InstaAlerts
             </div>
-            """,
-            unsafe_allow_html=True,
+            """
         )
 
 with col_head_right:
     btn_sync, btn_time = st.columns([1.1, 1.0], vertical_alignment="center")
     with btn_sync:
-        st.markdown("<div class='mobile-sync-btn' style='display:none;'></div>", unsafe_allow_html=True)
+        st.html("<div class='mobile-sync-btn' style='display:none;'></div>")
         if st.button("Sync alerts", use_container_width=True):
             with st.spinner("Fetching latest alerts from Gmail..."):
                 try:
@@ -665,19 +661,18 @@ with col_head_right:
             friendly_time = dt.strftime("%d %b %H:%M")
         except Exception:
             friendly_time = "Live"
-        st.markdown(
+        st.html(
             f"""
             <div style="text-align: right;">
                 <span class="pill pill-blue" style="font-size: 11px; white-space: nowrap; padding: 4px 10px; gap: 6px;">
                     <span class="status-dot"></span> {friendly_time}
                 </span>
             </div>
-            """,
-            unsafe_allow_html=True,
+            """
         )
 
 # ─── SECTION 1: HERO CAP MONITOR ──────────────────────────────────────────────
-st.markdown("<div style='height: 10px;'></div>", unsafe_allow_html=True)
+st.html("<div style='height: 10px;'></div>")
 
 # HDFC Bank enforces the 10,000 accelerated cap strictly by Calendar Month (1st to last day of month).
 active_cap = data["caps"]["calendar_month"]
@@ -700,7 +695,7 @@ with hero_col_left:
     today_daily_cap = active_cap.get("daily_cap", 2500)
     today_percent = min(100.0, round((today_earned / today_daily_cap) * 100, 1)) if today_daily_cap > 0 else 0.0
 
-    st.markdown(
+    st.html(
         f"""
         <div class="hero-card" style="padding: 24px; display: flex; flex-direction: column; justify-content: space-between; min-height: 270px;">
             <div>
@@ -723,7 +718,6 @@ with hero_col_left:
                 </div>
                 <div class="hero-sub">{active_cap["percent_remaining"]}% monthly headroom still available to earn</div>
             </div>
-
             <div style="margin-top: 14px;">
                 <div style="display: flex; justify-content: space-between; font-size: 12px; color: var(--text-muted); margin-bottom: 5px;">
                     <span>Monthly progress: <b class="tabular-num">{active_cap["earned"]:,} / {active_cap["monthly_cap"]:,} RP ({active_cap['percent_used']}%)</b></span>
@@ -732,7 +726,6 @@ with hero_col_left:
                 <div style="background: var(--progress-bg); border-radius: 999px; height: 9px; overflow: hidden; margin-bottom: 12px;">
                     <div style="background: {T['progress_fill']}; width: {min(100.0, active_cap['percent_used'])}%; height: 100%;"></div>
                 </div>
-
                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
                     <div style="background: var(--bg-subcard); padding: 10px 14px; border-radius: 10px; border: 1px solid var(--border-default); display: flex; justify-content: space-between; align-items: center;">
                         <div>
@@ -751,12 +744,11 @@ with hero_col_left:
                 </div>
             </div>
         </div>
-        """,
-        unsafe_allow_html=True,
+        """
     )
 
 with hero_col_right:
-    st.markdown(
+    st.html(
         f"""
         <div class="metal-card" style="padding: 24px; display: flex; flex-direction: column; justify-content: space-between; min-height: 270px; box-sizing: border-box;">
             <div>
@@ -775,7 +767,6 @@ with hero_col_right:
                     <span class="hero-number tabular-num" style="color: #059669;">₹{current_available:,}</span>
                 </div>
             </div>
-
             <div style="display: flex; flex-direction: column; gap: 8px; margin-top: 10px;">
                 <div style="background: var(--bg-subcard); padding: 8px 12px; border-radius: 10px; border: 1px solid var(--border-default); display: flex; justify-content: space-between; align-items: center;">
                     <div>
@@ -787,7 +778,6 @@ with hero_col_right:
                         <span style="font-size: 11px; font-weight: 600; color: var(--text-muted);"> RP</span>
                     </div>
                 </div>
-
                 <div style="background: var(--bg-subcard); padding: 8px 12px; border-radius: 10px; border: 1px solid var(--border-default); display: flex; justify-content: space-between; align-items: center;">
                     <div>
                         <div style="font-size: 11.5px; color: var(--text-muted); font-weight: 600;">Current spendable balance</div>
@@ -798,7 +788,6 @@ with hero_col_right:
                         <span style="font-size: 11px; font-weight: 600; color: var(--text-muted);"> RP</span>
                     </div>
                 </div>
-
                 <div style="background: var(--bg-subcard); padding: 8px 12px; border-radius: 10px; border: 1px solid var(--border-default); display: flex; justify-content: space-between; align-items: center;">
                     <div>
                         <div style="font-size: 11.5px; color: var(--text-muted); font-weight: 600;">Net reward rate</div>
@@ -810,12 +799,11 @@ with hero_col_right:
                 </div>
             </div>
         </div>
-        """,
-        unsafe_allow_html=True,
+        """
     )
 
 # ─── SECTION 2: MILESTONES ROW ────────────────────────────────────────────────
-st.markdown(f"<div style='font-size: 18px; font-weight: 700; margin: 10px 0 14px 0; color: var(--text-main);'>Spend milestones & fee waiver</div>", unsafe_allow_html=True)
+st.html(f"<div style='font-size: 18px; font-weight: 700; margin: 10px 0 14px 0; color: var(--text-main);'>Spend milestones & fee waiver</div>")
 
 m_col1, m_col2, m_col3 = st.columns(3)
 
@@ -824,7 +812,7 @@ welcome = data["milestones"]["welcome"]
 with m_col1:
     status_tag = "Unlocked" if welcome["met"] else f"{welcome['days_left']}d remaining"
     tag_class = "pill-green" if welcome["met"] else "pill-blue"
-    st.markdown(
+    st.html(
         f"""
         <div class="metal-card" style="min-height: 236px; display: flex; flex-direction: column; justify-content: space-between;">
             <div>
@@ -854,8 +842,7 @@ with m_col1:
                 </div>
             </div>
         </div>
-        """,
-        unsafe_allow_html=True,
+        """
     )
 
 # 2. Quarterly Milestone
@@ -863,7 +850,7 @@ q_bonus = data["milestones"]["quarterly"]
 with m_col2:
     q_tag = "Unlocked" if q_bonus["met"] else f"{q_bonus['days_left']}d remaining"
     q_class = "pill-green" if q_bonus["met"] else "pill-orange"
-    st.markdown(
+    st.html(
         f"""
         <div class="metal-card" style="min-height: 236px; display: flex; flex-direction: column; justify-content: space-between;">
             <div>
@@ -893,8 +880,7 @@ with m_col2:
                 </div>
             </div>
         </div>
-        """,
-        unsafe_allow_html=True,
+        """
     )
 
 # 3. Annual Fee Waiver
@@ -902,7 +888,7 @@ annual = data["milestones"]["annual_waiver"]
 with m_col3:
     ann_tag = "Waived" if annual["met"] else f"{annual['days_left']}d remaining"
     ann_class = "pill-green" if annual["met"] else "pill-blue"
-    st.markdown(
+    st.html(
         f"""
         <div class="metal-card" style="min-height: 236px; display: flex; flex-direction: column; justify-content: space-between;">
             <div>
@@ -932,8 +918,7 @@ with m_col3:
                 </div>
             </div>
         </div>
-        """,
-        unsafe_allow_html=True,
+        """
     )
 
 # ─── SECTION 3: INTERACTIVE TABS (HISTORY, LEDGER & REDEMPTIONS) ──────────────
@@ -981,7 +966,7 @@ with tab_history:
         )
 
     # Month Drilldown Expander
-    st.markdown("<div style='height: 10px;'></div>", unsafe_allow_html=True)
+    st.html("<div style='height: 10px;'></div>")
     with st.expander("Itemized transactions by month"):
         month_choices = [h["label"] for h in history]
         # Default to current ongoing month (first entry in history)
@@ -1061,7 +1046,7 @@ with tab_ledger:
         avg_rate = (total_filtered_rp / total_filtered_spend * 100) if total_filtered_spend > 0 else 0.0
 
         # Summary Metrics Chips
-        st.markdown(
+        st.html(
             f"""
             <div style="display: flex; gap: 12px; flex-wrap: wrap; margin: 12px 0 16px 0;">
                 <div style="background: var(--bg-card); border: 1px solid var(--border-default); padding: 7px 14px; border-radius: 10px;">
@@ -1085,8 +1070,7 @@ with tab_ledger:
                     <span style="font-size: 14px; font-weight: 700; color: #15803d; margin-left: 6px;" class="tabular-num">{total_filtered_rp:,} RP</span>
                 </div>
             </div>
-            """,
-            unsafe_allow_html=True,
+            """
         )
 
         ledger_data = [
@@ -1139,7 +1123,7 @@ with tab_redemptions:
     total_saved = sum(r.get("value_saved_inr", 0.0) for r in redemptions_list)
     total_cash = sum(r.get("cash_paid", 0.0) for r in redemptions_list)
 
-    st.markdown(
+    st.html(
         f"""
         <div style="background: var(--bg-subcard); border: 1px solid var(--border-default); border-radius: 12px; padding: 14px 20px; margin-bottom: 16px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;">
             <div>
@@ -1159,8 +1143,7 @@ with tab_redemptions:
                 <span style="font-size: 16px; font-weight: 700; color: #9a6014; margin-left: 6px;" class="tabular-num">₹{total_cash:,.0f}</span>
             </div>
         </div>
-        """,
-        unsafe_allow_html=True,
+        """
     )
 
     if redemptions_list:
@@ -1198,11 +1181,10 @@ with tab_redemptions:
         st.info("No reward points redemptions found in synced Gmail messages.")
 
 # ─── Footer ───────────────────────────────────────────────────────────────────
-st.markdown(
+st.html(
     f"""
     <div style="text-align: center; font-size: 12px; color: {T['footer_text']}; margin-top: 30px; border-top: 1px solid {T['footer_border']}; padding-top: 15px;">
         HDFC Diners Club Black Metal Dashboard • Automated via Gmail Alerts • Built for Ejaz Anwar
     </div>
-    """,
-    unsafe_allow_html=True,
+    """
 )
