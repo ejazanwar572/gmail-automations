@@ -538,5 +538,32 @@
     "message_id": "1a1aacfd91c3c3c0",
     "source": "gmail-api",
     "subject": "A payment was made using your Credit Card"
+  },
+  {
+    "amount": 20889.0,
+    "date": "2026-11-06",
+    "email_date": "2026-11-06T12:14:21+00:00",
+    "merchant": "MOTODRIFT 2385139A",
+    "message_id": "1a1b0c80b0e6dfd8",
+    "source": "gmail-api",
+    "subject": "A payment was made using your Credit Card"
+  },
+  {
+    "amount": 5500.0,
+    "date": "2026-11-06",
+    "email_date": "2026-11-06T19:06:19+05:30",
+    "merchant": "POWER SPORTS",
+    "message_id": "1a1b113553779680",
+    "source": "gmail-api",
+    "subject": "A payment was made using your Credit Card"
+  },
+  {
+    "amount": 39374.0,
+    "date": "2026-11-09",
+    "email_date": "2026-11-09T11:34:52+05:30",
+    "merchant": "EMT FLIGHT VIA SMARTBU",
+    "message_id": "1a1bee8d915f9cd8",
+    "source": "gmail-api",
+    "subject": "A payment was made using your Credit Card"
   }
 ]
