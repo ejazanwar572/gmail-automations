@@ -1,7 +1,7 @@
 {
   "alert_count": 63,
   "annual_fee": {
-    "days_left": 227,
+    "days_left": 226,
     "fee_amount": 10000.0,
     "met": true,
     "period_end": "2027-06-24",
@@ -13,7 +13,7 @@
   "caps": {
     "billing_cycle": {
       "daily_cap": 2500,
-      "days_remaining": 4,
+      "days_remaining": 3,
       "earned": 3160,
       "end_date": "2026-11-13",
       "flight_spend_capacity": 51300,
@@ -27,12 +27,12 @@
       "start_date": "2026-10-14",
       "status_color": "green",
       "status_label": "ACTIVE HEADROOM",
-      "today_earned": 2500,
-      "today_remaining": 0
+      "today_earned": 0,
+      "today_remaining": 2500
     },
     "calendar_month": {
       "daily_cap": 2500,
-      "days_remaining": 21,
+      "days_remaining": 20,
       "earned": 3160,
       "end_date": "2026-11-30",
       "flight_spend_capacity": 51300,
@@ -46,8 +46,8 @@
       "start_date": "2026-11-01",
       "status_color": "green",
       "status_label": "ACTIVE HEADROOM",
-      "today_earned": 2500,
-      "today_remaining": 0
+      "today_earned": 0,
+      "today_remaining": 2500
     },
     "previous_month": {
       "daily_cap": 2500,
@@ -82,11 +82,11 @@
     "total_cycle_points": 18310,
     "transaction_count": 18
   },
-  "generated_at": "2026-11-09T22:06:08.435298+05:30",
+  "generated_at": "2026-11-10T01:57:28.515679+05:30",
   "quarterly_bonus": {
     "bonus_points": 10000,
     "daily_runrate_needed": 0.0,
-    "days_left": 52,
+    "days_left": 51,
     "label": "Q4 2026",
     "met": true,
     "progress": 100.0,
@@ -103,7 +103,7 @@
     "total_estimated": 58396,
     "total_redeemed": 23128
   },
-  "run_id": "b0b255a7-1654-4444-9f7a-b975d16fa6b4",
+  "run_id": "63ee201e-e4e8-4677-be25-45ef6c75249c",
   "schema_version": 1,
   "welcome": {
     "days_left": 0,
