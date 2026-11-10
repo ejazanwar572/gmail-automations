@@ -121,20 +121,61 @@ def render_app():
             color: var(--text-main) !important;
         }}
 
-        /* Header spacing and container max-width centering */
-        [data-testid="stToolbar"], #stDecoration {{ display: none !important; }}
-        header[data-testid="stHeader"] {{
+        /* Header space removal & line cut-through elimination */
+        header[data-testid="stHeader"], [data-testid="stHeader"], header {{
+            display: none !important;
             height: 0 !important;
             min-height: 0 !important;
             padding: 0 !important;
-            background-color: var(--bg-canvas) !important;
+            margin: 0 !important;
+            border: none !important;
+            border-bottom: none !important;
+            box-shadow: none !important;
         }}
+        [data-testid="stToolbar"], #stDecoration, div[data-testid="stDecoration"] {{
+            display: none !important;
+            height: 0 !important;
+            border: none !important;
+        }}
+        .stApp hr {{
+            display: none !important;
+        }}
+
         .block-container, div[data-testid="stMainBlockContainer"], [data-testid="stAppViewBlockContainer"] {{
-            padding-top: 1.5rem !important;
+            padding-top: 1.2rem !important;
             padding-bottom: 3rem !important;
             max-width: 1260px !important;
             margin-left: auto !important;
             margin-right: auto !important;
+            border: none !important;
+        }}
+
+        /* Symmetrical Bento Grid Equal Height Flex Rules */
+        div[data-testid="stHorizontalBlock"] {{
+            align-items: stretch !important;
+        }}
+        div[data-testid="stHorizontalBlock"] > div[data-testid="stColumn"] {{
+            display: flex !important;
+            flex-direction: column !important;
+        }}
+        div[data-testid="stHorizontalBlock"] > div[data-testid="stColumn"] > div {{
+            display: flex !important;
+            flex-direction: column !important;
+            flex: 1 1 100% !important;
+            height: 100% !important;
+        }}
+        div[data-testid="stHorizontalBlock"] > div[data-testid="stColumn"] [data-testid="stVerticalBlock"] {{
+            display: flex !important;
+            flex-direction: column !important;
+            flex: 1 1 100% !important;
+            height: 100% !important;
+        }}
+        div[data-testid="stHorizontalBlock"] > div[data-testid="stColumn"] [data-testid="stHtml"],
+        div[data-testid="stHorizontalBlock"] > div[data-testid="stColumn"] div.element-container {{
+            display: flex !important;
+            flex-direction: column !important;
+            flex: 1 1 100% !important;
+            height: 100% !important;
         }}
 
         /* Executive Cards */
@@ -144,11 +185,13 @@ def render_app():
             border-radius: 18px;
             padding: 24px;
             box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04), 0 8px 24px -4px rgba(15, 23, 42, 0.05);
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            min-height: 270px;
-            margin-bottom: 16px;
+            display: flex !important;
+            flex-direction: column !important;
+            justify-content: space-between !important;
+            flex: 1 1 100% !important;
+            height: 100% !important;
+            min-height: 295px;
+            margin-bottom: 0px !important;
             box-sizing: border-box;
             transition: border-color 150ms ease, box-shadow 150ms ease;
         }}
@@ -161,13 +204,15 @@ def render_app():
             background: var(--bg-card);
             border: 1px solid var(--border-default);
             border-radius: 16px;
-            padding: 20px;
+            padding: 22px;
             box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04), 0 6px 16px -4px rgba(15, 23, 42, 0.04);
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            min-height: 195px;
-            margin-bottom: 16px;
+            display: flex !important;
+            flex-direction: column !important;
+            justify-content: space-between !important;
+            flex: 1 1 100% !important;
+            height: 100% !important;
+            min-height: 205px;
+            margin-bottom: 0px !important;
             box-sizing: border-box;
             transition: border-color 150ms ease;
         }}
@@ -225,6 +270,7 @@ def render_app():
             font-weight: 600;
             letter-spacing: 0.01em;
             white-space: nowrap;
+            line-height: 1.3;
         }}
         .pill-red {{
             background: rgba(219, 0, 17, 0.07);
@@ -284,10 +330,10 @@ def render_app():
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 8px 12px;
+            padding: 7px 11px;
             background: var(--bg-subcard);
             border: 1px solid var(--border-default);
-            border-radius: 9px;
+            border-radius: 8px;
             margin-bottom: 6px;
         }}
 
@@ -312,7 +358,7 @@ def render_app():
             flex: 1 1 0;
         }}
         .hsbc-stat-label {{
-            font-size: 10.5px;
+            font-size: 10px;
             color: var(--text-muted);
             font-weight: 700;
             text-transform: uppercase;
@@ -329,6 +375,7 @@ def render_app():
         div.stButton > button {{
             height: 38px !important;
             min-height: 38px !important;
+            max-height: 38px !important;
             background: {T["btn_bg"]} !important;
             color: {T["btn_color"]} !important;
             border: 1px solid {T["btn_border"]} !important;
@@ -461,8 +508,8 @@ def render_app():
             display: flex;
             align-items: center;
             gap: 8px;
-            margin-top: 18px;
-            margin-bottom: 12px;
+            margin-top: 22px;
+            margin-bottom: 14px;
         }}
 
         /* Executive Luxury Toast Notification */
@@ -502,6 +549,7 @@ def render_app():
             .hsbc-card, .hsbc-milestone-card {{
                 min-height: 0 !important;
                 padding: 18px !important;
+                margin-bottom: 14px !important;
             }}
             .hsbc-metric-large {{
                 font-size: 30px !important;
@@ -560,11 +608,11 @@ def render_app():
 
     data = load_data()
 
-    # ─── Top Header Bar (Executive Haute Metal Symmetrical Layout) ──────────────
+    # ─── Top Header Controls Row (Flawlessly Aligned on Center Baseline) ────────
     col_head_left, col_head_right = st.columns([2.6, 1.4], vertical_alignment="center")
 
     with col_head_left:
-        card_col, badge_col = st.columns([1.5, 1.1], vertical_alignment="center")
+        card_col, badge_col = st.columns([1.45, 1.15], vertical_alignment="center")
         with card_col:
             card_options = ["HDFC Diners Club Black Metal", "HSBC Live+ Credit Card"]
             current_card = st.session_state.get("selected_card", "HSBC Live+ Credit Card")
@@ -585,23 +633,16 @@ def render_app():
         with badge_col:
             st.html(
                 f"""
-                <div style="display: flex; align-items: center; gap: 8px;">
+                <div style="display: flex; align-items: center; gap: 8px; height: 38px;">
                     <span class="mobile-card-badge" style="font-size: 13px; font-weight: 700; color: {T['text_main']}; background: {T['badge_bg']}; padding: 4px 10px; border-radius: 8px; border: 1px solid {T['badge_border']};">
                         •••• {data.get('card_ending', '8690')}
                     </span>
-                    <span class="pill pill-gold" style="font-size: 11px; font-weight: 700; padding: 3px 8px;">
+                    <span class="pill pill-gold" style="font-size: 11px; font-weight: 700; padding: 4px 9px;">
                         Visa Infinite
                     </span>
                 </div>
                 """
             )
-        st.html(
-            f"""
-            <div class="mobile-header-sub" style="font-size: 12.5px; color: {T['text_sub']}; font-weight: 500; margin-top: 3px;">
-                Automated Real-Time Cashback & Spend Tracker from Gmail InstaAlerts
-            </div>
-            """
-        )
 
     with col_head_right:
         sync_time_str = data["sync_metadata"]["last_synced"]
@@ -633,7 +674,7 @@ def render_app():
         with btn_time:
             st.html(
                 f"""
-                <div style="text-align: right; display: flex; justify-content: flex-end;">
+                <div style="text-align: right; display: flex; justify-content: flex-end; align-items: center; height: 38px;">
                     <span class="pill pill-green" style="font-size: 11.5px; white-space: nowrap; padding: 5px 12px; gap: 6px; font-weight: 600;">
                         <span class="status-dot status-dot-green"></span> {friendly_time}
                     </span>
@@ -641,7 +682,14 @@ def render_app():
                 """
             )
 
-    st.html("<div style='height: 10px;'></div>")
+    # Header Subtitle (Placed cleanly below the controls)
+    st.html(
+        f"""
+        <div class="mobile-header-sub" style="font-size: 12.5px; color: {T['text_sub']}; font-weight: 500; margin-top: 4px; margin-bottom: 14px;">
+            Automated Real-Time Cashback & Spend Tracker from Gmail InstaAlerts
+        </div>
+        """
+    )
 
     # ─── Section 1: Hero Cashback & Headroom (3 Symmetrical Bento Columns) ──────
     h_col1, h_col2, h_col3 = st.columns(3)
@@ -668,28 +716,29 @@ def render_app():
                             <div class="hsbc-label-tag" style="color: {T['accent_red']};">10% Accelerated Cashback</div>
                             <div class="hsbc-heading">{cycle_info['label']}</div>
                         </div>
-                        <span class="pill pill-red">⏳ {cycle_info['reset_str']}</span>
+                        <span class="pill pill-red">
+                            <span class="status-dot" style="background:{T['accent_red']};"></span> {cycle_info['days_remaining']}D Left
+                        </span>
                     </div>
                     <div style="display: flex; align-items: baseline; gap: 8px; margin-top: 6px;">
                         <span class="hsbc-metric-large" style="color: {T['text_main']};">₹{cap_info['earned']:.2f}</span>
                         <span class="hsbc-metric-unit">/ ₹{cap_info['cap_limit']:,.0f} Cashback</span>
                     </div>
-                    <div class="hsbc-metric-sub">
-                        <span>₹{confirmed_cb:,.2f} confirmed + ₹{estimated_cb:,.2f} estimated</span>
-                        <span style="margin: 0 4px; opacity: 0.6;">•</span>
-                        <span style="font-weight: 600; color: {T['accent_red']};">₹{cap_info['remaining_cb']:,.2f} remaining</span>
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 6px; font-size: 12.5px; color: var(--text-muted);">
+                        <span>₹{confirmed_cb:,.2f} confirmed</span>
+                        <span style="font-weight: 600; color: {T['accent_red']};">₹{cap_info['remaining_cb']:,.2f} left</span>
                     </div>
                 </div>
 
                 <div style="margin-top: 16px;">
-                    <div style="display: flex; justify-content: space-between; font-size: 12px; color: {T['text_muted']}; font-weight: 600;">
+                    <div style="display: flex; justify-content: space-between; font-size: 12px; color: var(--text-muted); font-weight: 600;">
                         <span>Cap Used: <b>{cap_info['percent_used']}%</b></span>
                         <span>Accelerated Spend: <b>₹{cap_info['accelerated_spend']:,.0f} / ₹{cap_info['max_accelerated_spend']:,.0f}</b></span>
                     </div>
                     <div class="hsbc-progress-container">
-                        <div class="hsbc-progress-bar" style="width: {min(100.0, cap_info['percent_used'])}%; background: {T['accent_red']};"></div>
+                        <div class="hsbc-progress-bar" style="width: {min(100.0, cap_info['percent_used'])}%; background: linear-gradient(90deg, #db0011 0%, #ff4d5a 100%);"></div>
                     </div>
-                    <div style="display: flex; justify-content: space-between; font-size: 12px; color: {T['text_muted']};">
+                    <div style="display: flex; justify-content: space-between; font-size: 12px; color: var(--text-muted);">
                         <span>Cycle: <b>{datetime.date.fromisoformat(cycle_info['start']).strftime('%d %b')} – {datetime.date.fromisoformat(cycle_info['end']).strftime('%d %b')}</b></span>
                         <span>Monthly Cap: <b>₹{cap_info['cap_limit']:,.0f}</b></span>
                     </div>
@@ -706,7 +755,7 @@ def render_app():
                 <div>
                     <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px;">
                         <div>
-                            <div class="hsbc-label-tag" style="color: {T['text_muted']};">Spend Headroom</div>
+                            <div class="hsbc-label-tag" style="color: var(--text-muted);">Spend Headroom</div>
                             <div class="hsbc-heading">Food Delivery, Groceries & Dining</div>
                         </div>
                         <span class="pill pill-green">10% Rate</span>
@@ -715,12 +764,14 @@ def render_app():
                         <span class="hsbc-metric-large" style="color: {T['accent_red']};">₹{cap_info['remaining_accelerated_spend']:,.0f}</span>
                         <span class="hsbc-metric-unit">spend headroom</span>
                     </div>
-                    <div class="hsbc-metric-sub">Headroom before reaching the ₹{cap_info['cap_limit']:,.0f} monthly cap</div>
+                    <div style="font-size: 12.5px; color: var(--text-muted); margin-top: 6px;">
+                        Spend capacity before reaching the ₹{cap_info['cap_limit']:,.0f} monthly cap
+                    </div>
                 </div>
 
                 <div style="margin-top: 16px;">
                     <div class="hsbc-subcard">
-                        <div style="font-size: 10.5px; font-weight: 700; color: {T['text_muted']}; text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 6px;">
+                        <div style="font-size: 10px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 6px;">
                             Eligible 10% Merchant Platforms
                         </div>
                         <div style="display: flex; flex-wrap: wrap; gap: 4px;">
@@ -746,7 +797,7 @@ def render_app():
                 <div>
                     <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px;">
                         <div>
-                            <div class="hsbc-label-tag" style="color: {T['text_muted']};">Direct Statement Credit</div>
+                            <div class="hsbc-label-tag" style="color: var(--text-muted);">Direct Statement Credit</div>
                             <div class="hsbc-heading">Portfolio Net Savings</div>
                         </div>
                         <span class="pill pill-green">Direct Credit</span>
@@ -755,7 +806,9 @@ def render_app():
                         <span class="hsbc-metric-large" style="color: {T['accent_green']};">₹{portfolio['lifetime_cashback']:,.2f}</span>
                         <span class="hsbc-metric-unit">lifetime savings</span>
                     </div>
-                    <div class="hsbc-metric-sub">Credited directly to reduce statement balance</div>
+                    <div style="font-size: 12.5px; color: var(--text-muted); margin-top: 6px;">
+                        Credited directly to reduce statement balance
+                    </div>
                 </div>
 
                 <div style="margin-top: 16px;">
@@ -797,21 +850,21 @@ def render_app():
                 <div>
                     <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 6px;">
                         <div>
-                            <div class="hsbc-label-tag" style="color: {T['text_muted']};">30-Day Welcome Benefit</div>
+                            <div class="hsbc-label-tag" style="color: var(--text-muted);">30-Day Welcome Benefit</div>
                             <div class="hsbc-heading">₹{welcome['reward']:,} Welcome Cashback</div>
                         </div>
                         <span class="pill pill-green">Unlocked</span>
                     </div>
-                    <div style="display: flex; align-items: baseline; gap: 6px; margin-top: 4px;">
+                    <div style="display: flex; align-items: baseline; gap: 6px; margin-top: 6px;">
                         <span style="font-size: 24px; font-weight: 800; color: {T['accent_green']};">₹{welcome['spent']:,.0f}</span>
-                        <span style="font-size: 13.5px; color: {T['text_muted']}; font-weight: 600;">/ ₹{welcome['target']:,.0f} spent</span>
+                        <span style="font-size: 13.5px; color: var(--text-muted); font-weight: 600;">/ ₹{welcome['target']:,.0f} spent</span>
                     </div>
                 </div>
                 <div style="margin-top: 12px;">
                     <div class="hsbc-progress-container">
                         <div class="hsbc-progress-bar" style="width: 100%; background: {T['accent_green']};"></div>
                     </div>
-                    <div style="display: flex; justify-content: space-between; font-size: 11.5px; color: {T['text_muted']};">
+                    <div style="display: flex; justify-content: space-between; font-size: 11.5px; color: var(--text-muted);">
                         <span>Target Met in First 30 Days</span>
                         <span style="font-weight: 600; color: {T['accent_green']};">+ ₹750 Activation Voucher</span>
                     </div>
@@ -828,21 +881,23 @@ def render_app():
                 <div>
                     <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 6px;">
                         <div>
-                            <div class="hsbc-label-tag" style="color: {T['text_muted']};">Annual Fee Waiver</div>
+                            <div class="hsbc-label-tag" style="color: var(--text-muted);">Annual Fee Waiver</div>
                             <div class="hsbc-heading">Save ₹{fee['annual_fee']} + GST</div>
                         </div>
-                        <span class="pill pill-gold">⏳ {fee['days_left']}D Left</span>
+                        <span class="pill pill-gold">
+                            <span class="status-dot" style="background:{T['accent_gold']};"></span> {fee['days_left']}D Left
+                        </span>
                     </div>
-                    <div style="display: flex; align-items: baseline; gap: 6px; margin-top: 4px;">
-                        <span style="font-size: 24px; font-weight: 800; color: {T['text_main']};">₹{fee['spent']:,.0f}</span>
-                        <span style="font-size: 13.5px; color: {T['text_muted']}; font-weight: 600;">/ ₹{fee['target']:,.0f} ({fee['percent']}%)</span>
+                    <div style="display: flex; align-items: baseline; gap: 6px; margin-top: 6px;">
+                        <span style="font-size: 24px; font-weight: 800; color: var(--text-main);">₹{fee['spent']:,.0f}</span>
+                        <span style="font-size: 13.5px; color: var(--text-muted); font-weight: 600;">/ ₹{fee['target']:,.0f} ({fee['percent']}%)</span>
                     </div>
                 </div>
                 <div style="margin-top: 12px;">
                     <div class="hsbc-progress-container">
                         <div class="hsbc-progress-bar" style="width: {min(100.0, fee['percent'])}%; background: {T['accent_gold']};"></div>
                     </div>
-                    <div style="display: flex; justify-content: space-between; font-size: 11.5px; color: {T['text_muted']};">
+                    <div style="display: flex; justify-content: space-between; font-size: 11.5px; color: var(--text-muted);">
                         <span>Remaining: <b>₹{fee['remaining']:,.0f}</b></span>
                         <span>Run-rate: <b>₹{fee['run_rate_needed']:,.0f} / day</b></span>
                     </div>
@@ -857,24 +912,24 @@ def render_app():
             f"""
             <div class="hsbc-milestone-card">
                 <div>
-                    <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 6px;">
+                    <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px;">
                         <div>
-                            <div class="hsbc-label-tag" style="color: {T['text_muted']};">Visa Infinite Privileges</div>
+                            <div class="hsbc-label-tag" style="color: var(--text-muted);">Visa Infinite Privileges</div>
                             <div class="hsbc-heading">Lounge & Global Roaming</div>
                         </div>
                         <span class="pill pill-green">Active Tier</span>
                     </div>
-                    <div style="display: flex; flex-direction: column; gap: 5px; margin-top: 6px;">
+                    <div style="display: flex; flex-direction: column; gap: 6px; margin-top: 4px;">
                         <div class="hsbc-subcard-row">
-                            <span style="font-size: 12px; font-weight: 600; color: {T['text_main']};">Domestic Lounge (Jul–Dec)</span>
+                            <span style="font-size: 12px; font-weight: 600; color: var(--text-main);">Domestic Lounge (Jul–Dec)</span>
                             <span class="pill pill-green" style="font-size: 10px; padding: 2px 8px;">{lounge['domestic_h2']}</span>
                         </div>
                         <div class="hsbc-subcard-row">
-                            <span style="font-size: 12px; font-weight: 600; color: {T['text_main']};">International Lounge (Annual)</span>
+                            <span style="font-size: 12px; font-weight: 600; color: var(--text-main);">International Lounge (Annual)</span>
                             <span class="pill pill-green" style="font-size: 10px; padding: 2px 8px;">{lounge['international']}</span>
                         </div>
                         <div class="hsbc-subcard-row" style="margin-bottom: 0;">
-                            <span style="font-size: 12px; font-weight: 600; color: {T['text_main']};">Complimentary Global eSIM</span>
+                            <span style="font-size: 12px; font-weight: 600; color: var(--text-main);">Complimentary Global eSIM</span>
                             <span class="pill pill-green" style="font-size: 10px; padding: 2px 8px;">{lounge['esim']}</span>
                         </div>
                     </div>
@@ -884,7 +939,7 @@ def render_app():
         )
 
     # ─── Section 3: Interactive Tabs Section ───────────────────────────────────
-    st.html("<div style='height: 12px;'></div>")
+    st.html("<div style='height: 16px;'></div>")
     tab_txns, tab_history, tab_perks = st.tabs([
         "Live Transactions",
         "Monthly History & Caps",

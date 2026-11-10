@@ -152,7 +152,17 @@ Build and test a modern, responsive web application prototype for the HDFC Diner
   - Compile with `python3 -m py_compile`
   - Pass all 76 unit tests with `pytest`
   - Restore test-touched JSON files
-  - Git commit and push to `origin main`
+---
+
+## Phase 11: Fix Visual Glitches (Equal Card Heights, Header Alignment, Progress Tracks)
+- [x] Eliminate top horizontal line cut-through (`header[data-testid="stHeader"]` and `#stDecoration` display none & zero border)
+- [x] Fix Header Alignment: Separate controls row from subtitle so `Sync alerts` and timestamp pill share the exact center baseline with the card switcher and badges
+- [x] Enforce Equal Card Heights: Add CSS flex-stretch rules on `div[data-testid="stHorizontalBlock"]` and columns so all cards in Hero row and Milestones row have identical height and flush bottom baselines
+- [x] Fix Card 1 Orphan Text Wrapping: Cleanly split confirmed/estimated and remaining cashback without orphan words
+- [x] Remove all raw browser emoji glyphs (`⏳`) from countdown pills in Card 1 and Milestone 2, replacing with clean typography and status dots
+- [x] Refine Progress Bars: Use elegant linear-gradient progress tracks for Card 1 (10% Cap), calibrated 5px track for Card 2 (Fee Waiver) and Card 1 (Welcome Benefit)
+- [x] Verify locally with `py_compile`, run `pytest` (all 76 tests), commit and deploy to Streamlit Cloud
+
 
 
 
