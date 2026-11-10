@@ -122,10 +122,38 @@ Build and test a modern, responsive web application prototype for the HDFC Diner
   - Replace default Streamlit red tab indicator with Champagne Gold (`#b47820`)
   - Ensure max-width container centering (1260px) for large desktop displays
 - [x] Verification & Deployment:
-  - Verify syntax with `py_compile`
-  - Run `pytest` (all 76 tests)
-  - Revert test-modified JSON files
+---
+
+## Phase 10: HSBC Live+ Dashboard Executive Redesign
+- [x] Refactor CSS & Design Tokens in `HSBC Live Plus Statements/hsbc_live_plus_app.py`:
+  - Set container max-width to 1260px centered
+  - Define Haute Metal / HSBC executive palette (:root variables, Crimson `#db0011`, Obsidian `#0f172a`, Pearl `#f8fafc`)
+  - Replace solid brown button with clean executive white button `#ffffff` + subtle border + hover
+  - Tab styling without raw emojis, elegant crimson active highlight
+  - Executive dark slate toast notifications
+- [x] Redesign Top Header Bar:
+  - Eliminate awkward floating red "H" box
+  - Symmetrical header: Card switcher selectbox, `•••• 8690` badge, `Visa Infinite` pill, and subtitle
+  - Right action cluster: Executive `Sync alerts` button + live pulse status pill (`friendly_time`)
+- [x] Redesign Hero Section (3-Column Bento Grid):
+  - Card 1: 10% Cashback Cap Monitor (`₹929.40 / ₹1,200 Cashback`, cycle countdown pill, slim 6px progress bar, confirmed + estimated split, remaining cashback)
+  - Card 2: Spend Headroom (`₹2,706 spend headroom`, 10% rate pill, clean eligible merchant chips)
+  - Card 3: Direct Statement Savings (`₹4,844.93 lifetime savings`, total spend tracked, and 5.98% effective reward rate)
+  - Equal min-height (270px) and vertical distribution for perfect alignment
+- [x] Redesign Milestones, Fee Waiver & Travel Privileges:
+  - Remove harsh heavy solid colored divider bars
+  - Card 1: 30-Day Welcome Benefit (`₹1,000 Cashback`, `₹20,796 spent / ₹10,000 target`, `Unlocked & Credited` pill, slim 5px progress bar)
+  - Card 2: Annual Fee Waiver (`Save ₹999 + GST`, `₹81,032 / ₹200,000 spent (40.5%)`, `243D Left` pill, slim 5px progress bar, daily run-rate)
+  - Card 3: Visa Infinite Privileges (`Domestic Lounge (Jul-Dec)`, `International Lounge (Annual)`, `Complimentary 1GB Global eSIM` with sleek subcard rows)
+- [x] Clean Tabs & Section Titles:
+  - Remove raw emoji icons from tabs and section headers (Hallmark Rule 11)
+  - Modernize tab tables and perks cards
+- [x] Verification & Deployment:
+  - Compile with `python3 -m py_compile`
+  - Pass all 76 unit tests with `pytest`
+  - Restore test-touched JSON files
   - Git commit and push to `origin main`
+
 
 
 

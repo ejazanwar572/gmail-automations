@@ -1,15 +1,15 @@
 #!/usr/bin/env python3
 """
 HSBC Live+ Credit Card Streamlit Dashboard.
-Faithful implementation of approved V5 prototype.
+Executive Haute Metal Bento Redesign (Option 1).
 """
 
 from __future__ import annotations
 
 import datetime
+import json
 from pathlib import Path
 import sys
-import textwrap
 
 import pandas as pd
 import streamlit as st
@@ -31,7 +31,7 @@ def clean_html(raw_html: str) -> str:
 
 
 def render_app():
-    # Page configuration (safe if already set)
+    # Page configuration
     try:
         st.set_page_config(
             page_title="HSBC Live+ | Control Center",
@@ -50,90 +50,129 @@ def render_app():
             runpy.run_path(str(hdfc_app_path), run_name="__main__")
             st.stop()
 
-    # Theme Palette (Light Theme)
+    # Design Tokens (Haute Metal Executive Palette with Signature HSBC Crimson)
     T = {
-        "app_bg": "#fbf9f4",
-        "text_main": "#18181b",
-        "text_muted": "#71717a",
-        "text_sub": "#8c8379",
-        "border": "#e2ded5",
-        "border_sub": "#ece8e1",
+        "app_bg": "#f8fafc",
         "card_bg": "#ffffff",
-        "card_border": "#e2ded5",
-        "card_shadow": "0 4px 16px rgba(40, 30, 20, 0.05)",
-        "hero_bg": "#ffffff",
-        "hero_border": "#e2ded5",
-        "subcard_bg": "#f5f3ed",
-        "subcard_border": "#e2ded5",
+        "subcard_bg": "#f8fafc",
+        "text_main": "#0f172a",
+        "text_muted": "#475569",
+        "text_sub": "#64748b",
+        "border_default": "#e2e8f0",
+        "border_sub": "#f1f5f9",
+        "border_strong": "#cbd5e1",
         "accent_red": "#db0011",
-        "accent_red_bg": "rgba(219, 0, 17, 0.08)",
-        "accent_red_border": "rgba(219, 0, 17, 0.25)",
-        "accent_green": "#15803d",
-        "accent_green_bg": "rgba(21, 128, 61, 0.1)",
-        "accent_green_border": "rgba(21, 128, 61, 0.25)",
-        "accent_gold": "#9a6014",
-        "accent_gold_bg": "rgba(154, 96, 20, 0.1)",
-        "accent_gold_border": "rgba(154, 96, 20, 0.25)",
-        "progress_bg": "#ede7dc",
-        "sync_bg": "linear-gradient(135deg, #9a6014 0%, #784708 100%)",
-        "sync_hover": "linear-gradient(135deg, #b47820 0%, #9a6014 100%)",
-        "sync_border": "#b47820",
-        "sync_shadow": "0 4px 14px rgba(154, 96, 20, 0.25)",
-        "pill_time_bg": "rgba(154, 96, 20, 0.1)",
-        "pill_time_color": "#9a6014",
-        "pill_time_border": "rgba(154, 96, 20, 0.25)",
+        "accent_red_hover": "#b8000e",
+        "accent_red_subtle": "rgba(219, 0, 17, 0.08)",
+        "accent_red_border": "rgba(219, 0, 17, 0.22)",
+        "accent_green": "#059669",
+        "accent_green_bg": "#ecfdf5",
+        "accent_green_border": "#a7f3d0",
+        "accent_gold": "#b47820",
+        "accent_gold_bg": "#fffbeb",
+        "accent_gold_border": "#fde68a",
+        "progress_bg": "#e2e8f0",
+        "btn_bg": "#ffffff",
+        "btn_color": "#0f172a",
+        "btn_border": "#cbd5e1",
+        "btn_hover": "#f8fafc",
+        "badge_bg": "#f1f5f9",
+        "badge_border": "#cbd5e1",
     }
 
-    # Inject Custom CSS matching V5 Prototype
+    # Inject Haute Metal Executive CSS
     st.html(
         clean_html(f"""
         <style>
+        @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200');
+
+        :root {{
+            --bg-canvas: {T["app_bg"]};
+            --bg-card: {T["card_bg"]};
+            --bg-subcard: {T["subcard_bg"]};
+            --text-main: {T["text_main"]};
+            --text-muted: {T["text_muted"]};
+            --text-sub: {T["text_sub"]};
+            --border-default: {T["border_default"]};
+            --border-sub: {T["border_sub"]};
+            --border-strong: {T["border_strong"]};
+            --accent-red: {T["accent_red"]};
+            --accent-green: {T["accent_green"]};
+            --accent-gold: {T["accent_gold"]};
+            --progress-bg: {T["progress_bg"]};
+        }}
+
+        html, body, [class*="css"], .stMarkdown, p, div, label, span, h1, h2, h3, h4, h5, h6 {{
+            font-family: 'Outfit', sans-serif !important;
+        }}
+
+        .tabular-num, .hsbc-metric-large, [data-testid="stDataFrame"], table, .pill {{
+            font-variant-numeric: tabular-nums lining-nums;
+        }}
+
+        *:focus-visible {{
+            outline: 2px solid {T["accent_red"]} !important;
+            outline-offset: 2px !important;
+        }}
+
         .stApp {{
-            background-color: {T["app_bg"]} !important;
-            color: {T["text_main"]} !important;
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
-        }}
-        [data-testid="stHeader"] {{
-            background-color: transparent !important;
-        }}
-        [data-testid="stAppViewBlockContainer"] {{
-            padding-top: 1.2rem !important;
-            padding-bottom: 2rem !important;
-            max-width: 1400px;
+            background-color: var(--bg-canvas) !important;
+            color: var(--text-main) !important;
         }}
 
-        /* Typography & Headings */
-        h1, h2, h3, h4, h5, h6, p, span, div {{
-            color: {T["text_main"]};
+        /* Header spacing and container max-width centering */
+        [data-testid="stToolbar"], #stDecoration {{ display: none !important; }}
+        header[data-testid="stHeader"] {{
+            height: 0 !important;
+            min-height: 0 !important;
+            padding: 0 !important;
+            background-color: var(--bg-canvas) !important;
+        }}
+        .block-container, div[data-testid="stMainBlockContainer"], [data-testid="stAppViewBlockContainer"] {{
+            padding-top: 1.5rem !important;
+            padding-bottom: 3rem !important;
+            max-width: 1260px !important;
+            margin-left: auto !important;
+            margin-right: auto !important;
         }}
 
-        /* Symmetrical Hero Card Container */
+        /* Executive Cards */
         .hsbc-card {{
-            background: {T["card_bg"]};
-            border: 1px solid {T["card_border"]};
-            border-radius: 16px;
-            padding: 22px;
-            box-shadow: {T["card_shadow"]};
+            background: var(--bg-card);
+            border: 1px solid var(--border-default);
+            border-radius: 18px;
+            padding: 24px;
+            box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04), 0 8px 24px -4px rgba(15, 23, 42, 0.05);
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            min-height: 232px;
+            min-height: 270px;
             margin-bottom: 16px;
             box-sizing: border-box;
+            transition: border-color 150ms ease, box-shadow 150ms ease;
+        }}
+        .hsbc-card:hover {{
+            border-color: var(--border-strong);
+            box-shadow: 0 4px 12px rgba(15, 23, 42, 0.08);
         }}
 
         .hsbc-milestone-card {{
-            background: {T["card_bg"]};
-            border: 1px solid {T["card_border"]};
+            background: var(--bg-card);
+            border: 1px solid var(--border-default);
             border-radius: 16px;
             padding: 20px;
-            box-shadow: {T["card_shadow"]};
+            box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04), 0 6px 16px -4px rgba(15, 23, 42, 0.04);
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            min-height: 185px;
+            min-height: 195px;
             margin-bottom: 16px;
             box-sizing: border-box;
+            transition: border-color 150ms ease;
+        }}
+        .hsbc-milestone-card:hover {{
+            border-color: var(--border-strong);
         }}
 
         /* Label Tag */
@@ -142,15 +181,15 @@ def render_app():
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 0.05em;
-            margin-bottom: 4px;
+            margin-bottom: 3px;
         }}
 
         /* Card Headings */
         .hsbc-heading {{
-            font-size: 16px;
-            font-weight: 800;
+            font-size: 16.5px;
+            font-weight: 700;
             letter-spacing: -0.01em;
-            color: {T["text_main"]};
+            color: var(--text-main);
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
@@ -158,7 +197,7 @@ def render_app():
 
         /* Big Metrics */
         .hsbc-metric-large {{
-            font-size: 34px;
+            font-size: 38px;
             font-weight: 800;
             letter-spacing: -0.03em;
             line-height: 1.05;
@@ -166,66 +205,66 @@ def render_app():
         .hsbc-metric-unit {{
             font-size: 14px;
             font-weight: 600;
-            color: {T["text_muted"]};
+            color: var(--text-muted);
         }}
         .hsbc-metric-sub {{
             font-size: 12.5px;
-            color: {T["text_muted"]};
+            color: var(--text-muted);
             margin-top: 4px;
             font-weight: 500;
         }}
 
-        /* Pills */
-        .hsbc-pill {{
+        /* Clean Pills */
+        .pill {{
             display: inline-flex;
             align-items: center;
-            gap: 5px;
-            padding: 4px 10px;
+            gap: 6px;
+            padding: 4px 11px;
             border-radius: 9999px;
             font-size: 11.5px;
-            font-weight: 700;
-            letter-spacing: 0.02em;
+            font-weight: 600;
+            letter-spacing: 0.01em;
             white-space: nowrap;
         }}
-        .hsbc-pill-red {{
-            background: {T["accent_red_bg"]};
+        .pill-red {{
+            background: rgba(219, 0, 17, 0.07);
             color: {T["accent_red"]};
-            border: 1px solid {T["accent_red_border"]};
+            border: 1px solid rgba(219, 0, 17, 0.22);
         }}
-        .hsbc-pill-green {{
-            background: {T["accent_green_bg"]};
-            color: {T["accent_green"]};
-            border: 1px solid {T["accent_green_border"]};
+        .pill-green {{
+            background: #ecfdf5;
+            color: #059669;
+            border: 1px solid #a7f3d0;
         }}
-        .hsbc-pill-gold {{
-            background: {T["accent_gold_bg"]};
-            color: {T["accent_gold"]};
-            border: 1px solid {T["accent_gold_border"]};
+        .pill-gold {{
+            background: #fffbeb;
+            color: #b47820;
+            border: 1px solid #fde68a;
         }}
-        .hsbc-pill-time {{
-            background: {T["pill_time_bg"]};
-            color: {T["pill_time_color"]};
-            border: 1px solid {T["pill_time_border"]};
-            font-size: 11.5px;
-            font-weight: 700;
-            padding: 0 10px;
-            height: 36px;
-            border-radius: 8px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            white-space: nowrap;
-            box-sizing: border-box;
+        .pill-slate {{
+            background: #f1f5f9;
+            color: #0f172a;
+            border: 1px solid #cbd5e1;
         }}
 
-        /* Custom Progress Bars */
+        .status-dot {{
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            display: inline-block;
+        }}
+        .status-dot-green {{
+            background-color: #10b981;
+        }}
+
+        /* Custom Slim Progress Bars */
         .hsbc-progress-container {{
             width: 100%;
-            height: 7px;
-            background: {T["progress_bg"]};
+            height: 6px;
+            background: var(--progress-bg);
             border-radius: 999px;
             overflow: hidden;
-            margin: 6px 0;
+            margin: 8px 0;
         }}
         .hsbc-progress-bar {{
             height: 100%;
@@ -233,10 +272,10 @@ def render_app():
             transition: width 0.3s ease;
         }}
 
-        /* Subcards inside Headroom / Privileges */
+        /* Subcards & Merchant Chips */
         .hsbc-subcard {{
-            background: {T["subcard_bg"]};
-            border: 1px solid {T["subcard_border"]};
+            background: var(--bg-subcard);
+            border: 1px solid var(--border-default);
             border-radius: 10px;
             padding: 10px 12px;
             box-sizing: border-box;
@@ -245,67 +284,72 @@ def render_app():
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 6px 10px;
-            background: {T["subcard_bg"]};
-            border: 1px solid {T["subcard_border"]};
-            border-radius: 8px;
+            padding: 8px 12px;
+            background: var(--bg-subcard);
+            border: 1px solid var(--border-default);
+            border-radius: 9px;
             margin-bottom: 6px;
+        }}
+
+        .hsbc-chip {{
+            display: inline-block;
+            background: #ffffff;
+            border: 1px solid var(--border-default);
+            border-radius: 6px;
+            padding: 3px 8px;
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--text-muted);
+            margin: 2px 2px;
         }}
 
         /* Stat Badge Box */
         .hsbc-stat-badge {{
-            background: {T["subcard_bg"]};
-            border: 1px solid {T["subcard_border"]};
-            border-radius: 8px;
-            padding: 8px 12px;
+            background: var(--bg-subcard);
+            border: 1px solid var(--border-default);
+            border-radius: 10px;
+            padding: 10px 14px;
             flex: 1 1 0;
         }}
         .hsbc-stat-label {{
-            font-size: 10px;
-            color: {T["text_muted"]};
+            font-size: 10.5px;
+            color: var(--text-muted);
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 0.04em;
         }}
         .hsbc-stat-val {{
-            font-size: 14.5px;
+            font-size: 16px;
             font-weight: 800;
-            color: {T["text_main"]};
-            margin-top: 2px;
+            color: var(--text-main);
+            margin-top: 3px;
         }}
 
-        /* Header Alignment & Controls */
-        div[data-testid="stHorizontalBlock"]:has(.mobile-sync-btn) {{
-            align-items: center !important;
-        }}
-        div[data-testid="stHorizontalBlock"]:has(.mobile-sync-btn) div[data-testid="stButtonGroup"] button {{
-            height: 36px !important;
-            min-height: 36px !important;
-            max-height: 36px !important;
-            padding: 0 10px !important;
-            font-size: 12.5px !important;
-            line-height: 36px !important;
+        /* Executive Sync Button */
+        div.stButton > button {{
+            height: 38px !important;
+            min-height: 38px !important;
+            background: {T["btn_bg"]} !important;
+            color: {T["btn_color"]} !important;
+            border: 1px solid {T["btn_border"]} !important;
+            box-shadow: 0 1px 3px rgba(15, 23, 42, 0.06) !important;
+            font-size: 13.5px !important;
             font-weight: 600 !important;
-            white-space: nowrap !important;
+            border-radius: 10px !important;
+            padding: 0 16px !important;
+            transition: border-color 150ms ease, background-color 150ms ease, box-shadow 150ms ease !important;
         }}
-        div[data-testid="stHorizontalBlock"]:has(.mobile-sync-btn) div.stButton > button {{
-            height: 36px !important;
-            min-height: 36px !important;
-            max-height: 36px !important;
-            background: {T["sync_bg"]} !important;
-            color: #ffffff !important;
-            border: 1px solid {T["sync_border"]} !important;
-            box-shadow: {T["sync_shadow"]} !important;
-            font-size: 13px !important;
-            font-weight: 700 !important;
-            border-radius: 8px !important;
-            padding: 0 14px !important;
+        div.stButton > button:hover {{
+            background-color: {T["btn_hover"]} !important;
+            border-color: #94a3b8 !important;
+            box-shadow: 0 2px 6px rgba(15, 23, 42, 0.08) !important;
         }}
-        div[data-testid="stHorizontalBlock"]:has(.mobile-sync-btn) div.stButton > button:hover {{
-            background: {T["sync_hover"]} !important;
+        div.stButton > button:focus-visible {{
+            outline: 2px solid {T["accent_red"]} !important;
+            outline-offset: 2px !important;
         }}
 
-        /* ─── Selectbox for Card Switcher - Executive Variant 2 (Both React-Aria & BaseWeb) ─── */
+        /* Selectbox for Card Switcher */
         div[data-testid="stSelectbox"] {{
             margin-bottom: 0px !important;
         }}
@@ -314,15 +358,15 @@ def render_app():
         div[data-testid="stSelectbox"] div[data-baseweb="select"] {{
             background: #ffffff !important;
             background-color: #ffffff !important;
-            border: 1px solid {T["border"]} !important;
+            border: 1px solid var(--border-default) !important;
             border-radius: 10px !important;
             font-weight: 700 !important;
             font-size: 14.5px !important;
-            color: {T["text_main"]} !important;
-            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05) !important;
+            color: var(--text-main) !important;
+            box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04) !important;
             height: 38px !important;
             min-height: 38px !important;
-            transition: border-color 0.2s ease, box-shadow 0.2s ease !important;
+            transition: border-color 150ms ease, box-shadow 150ms ease !important;
         }}
         div[data-testid="stSelectbox"] div[data-baseweb="select"] > div {{
             background: #ffffff !important;
@@ -340,24 +384,24 @@ def render_app():
             box-shadow: 0 2px 8px rgba(219, 0, 17, 0.15) !important;
         }}
         div[data-testid="stSelectbox"] input {{
-            color: {T["text_main"]} !important;
+            color: var(--text-main) !important;
             font-weight: 700 !important;
             font-size: 14.5px !important;
             font-family: 'Outfit', sans-serif !important;
             background: transparent !important;
         }}
         div[data-testid="stSelectbox"] * {{
-            color: {T["text_main"]} !important;
+            color: var(--text-main) !important;
             font-family: 'Outfit', sans-serif !important;
         }}
         div[data-baseweb="popover"] {{
             border-radius: 12px !important;
             overflow: hidden !important;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25) !important;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18) !important;
         }}
         div[data-baseweb="menu"] {{
-            background: {T["card_bg"]} !important;
-            border: 1px solid {T["border"]} !important;
+            background: var(--bg-card) !important;
+            border: 1px solid var(--border-default) !important;
             border-radius: 12px !important;
             padding: 6px !important;
         }}
@@ -365,41 +409,60 @@ def render_app():
             border-radius: 8px !important;
             font-size: 13.5px !important;
             font-weight: 600 !important;
-            color: {T["text_main"]} !important;
+            color: var(--text-main) !important;
             padding: 8px 12px !important;
             margin-bottom: 2px !important;
         }}
         li[data-baseweb="menu-item"]:hover {{
-            background-color: {T["subcard_bg"]} !important;
+            background-color: var(--bg-subcard) !important;
             color: {T["accent_red"]} !important;
         }}
         li[data-baseweb="menu-item"][aria-selected="true"] {{
-            background-color: rgba(219, 0, 17, 0.12) !important;
+            background-color: rgba(219, 0, 17, 0.08) !important;
             color: {T["accent_red"]} !important;
             font-weight: 700 !important;
         }}
 
         /* Tabs styling */
+        div[data-baseweb="tab-list"] {{
+            gap: 8px !important;
+            border-bottom: 1px solid var(--border-default) !important;
+            padding-bottom: 2px !important;
+        }}
         button[data-baseweb="tab"] {{
-            font-weight: 700 !important;
+            font-weight: 600 !important;
             font-size: 14px !important;
-            color: {T["text_muted"]} !important;
+            color: var(--text-muted) !important;
+            border-radius: 8px !important;
+            padding: 8px 16px !important;
+            border-bottom: none !important;
+            transition: color 150ms ease, background-color 150ms ease !important;
+        }}
+        button[data-baseweb="tab"]:hover {{
+            color: var(--text-main) !important;
+            background-color: var(--bg-subcard) !important;
         }}
         button[data-baseweb="tab"][aria-selected="true"] {{
             color: {T["accent_red"]} !important;
-            border-bottom-color: {T["accent_red"]} !important;
+            font-weight: 700 !important;
+            background-color: rgba(219, 0, 17, 0.06) !important;
+        }}
+        div[data-baseweb="tab-highlight"] {{
+            background-color: {T["accent_red"]} !important;
+            height: 2.5px !important;
+            border-radius: 2px !important;
         }}
 
         /* Section Titles */
         .hsbc-section-title {{
             font-size: 17px;
-            font-weight: 800;
-            color: {T["text_main"]};
+            font-weight: 700;
+            color: var(--text-main);
             display: flex;
             align-items: center;
             gap: 8px;
-            margin-top: 10px;
-            margin-bottom: 14px;
+            margin-top: 18px;
+            margin-bottom: 12px;
         }}
 
         /* Executive Luxury Toast Notification */
@@ -436,12 +499,18 @@ def render_app():
                 padding-right: 0.8rem !important;
                 padding-top: 0.8rem !important;
             }}
-            /* Stack main columns */
+            .hsbc-card, .hsbc-milestone-card {{
+                min-height: 0 !important;
+                padding: 18px !important;
+            }}
+            .hsbc-metric-large {{
+                font-size: 30px !important;
+            }}
             div[data-testid="stHorizontalBlock"]:has(.mobile-card-badge) {{
                 display: flex !important;
                 flex-direction: column !important;
                 width: 100% !important;
-                gap: 12px !important;
+                gap: 10px !important;
             }}
             div[data-testid="stHorizontalBlock"]:has(.mobile-card-badge) > div[data-testid="stColumn"] {{
                 width: 100% !important;
@@ -449,7 +518,6 @@ def render_app():
                 max-width: 100% !important;
                 flex: 1 1 100% !important;
             }}
-            /* Controls row on mobile: Sync, Time side-by-side */
             div[data-testid="stHorizontalBlock"]:has(.mobile-sync-btn):not(:has(.mobile-card-badge)) {{
                 display: flex !important;
                 flex-direction: row !important;
@@ -465,15 +533,10 @@ def render_app():
                 width: auto !important;
                 flex: 1 1 auto !important;
             }}
-            div[data-testid="stHorizontalBlock"]:has(.mobile-sync-btn):not(:has(.mobile-card-badge)) > div[data-testid="stColumn"]:first-child {{
-                flex: 1 1 auto !important;
-            }}
-            div[data-testid="stHorizontalBlock"]:has(.mobile-sync-btn):not(:has(.mobile-card-badge)) > div[data-testid="stColumn"]:last-child {{
-                flex: 0 0 auto !important;
-            }}
         }}
         </style>
-        """))
+        """)
+    )
 
     # ─── Load Data ─────────────────────────────────────────────────────────────
     @st.cache_data(ttl=60)
@@ -483,7 +546,7 @@ def render_app():
         needs_sync = not alerts_file.exists()
         if not needs_sync and meta_file.exists():
             try:
-                meta = json.loads(meta_file.read_text())
+                meta = json.loads(meta_file.read_text(encoding="utf-8"))
                 if meta.get("card_ending") != "8690":
                     needs_sync = True
             except Exception:
@@ -497,69 +560,48 @@ def render_app():
 
     data = load_data()
 
-    # ─── Top Header Bar ────────────────────────────────────────────────────────
-    col_head_left, col_head_right = st.columns([2.8, 1.2], vertical_alignment="center")
+    # ─── Top Header Bar (Executive Haute Metal Symmetrical Layout) ──────────────
+    col_head_left, col_head_right = st.columns([2.6, 1.4], vertical_alignment="center")
 
     with col_head_left:
-        sub_c1, sub_c2 = st.columns([0.08, 0.92], vertical_alignment="center")
-        with sub_c1:
-            st.markdown(
-                clean_html(f"""
-                <div style="width: 38px; height: 38px; background: {T['accent_red']}; color: #ffffff; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 20px; font-weight: 900; box-shadow: 0 3px 10px rgba(219, 0, 17, 0.3);">
-                    H
-                </div>
-                """),
-                unsafe_allow_html=True,
-            )
-        with sub_c2:
-            card_col, badge_col = st.columns([1.5, 1.2], vertical_alignment="center")
-            with card_col:
-                st.markdown(
-                    clean_html(f"""
-                    <div style="font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: {T['accent_red']}; margin-bottom: 2px;">
-                        Selected Card Account
-                    </div>
-                    """),
-                    unsafe_allow_html=True,
-                )
-                card_options = ["HDFC Diners Club Black Metal", "HSBC Live+ Credit Card"]
-                current_card = st.session_state.get("selected_card", "HSBC Live+ Credit Card")
-                if current_card not in card_options:
-                    current_card = "HSBC Live+ Credit Card"
+        card_col, badge_col = st.columns([1.5, 1.1], vertical_alignment="center")
+        with card_col:
+            card_options = ["HDFC Diners Club Black Metal", "HSBC Live+ Credit Card"]
+            current_card = st.session_state.get("selected_card", "HSBC Live+ Credit Card")
+            if current_card not in card_options:
+                current_card = "HSBC Live+ Credit Card"
 
-                def on_hsbc_card_change():
-                    st.session_state["selected_card"] = st.session_state["active_card_switcher"]
+            def on_hsbc_card_change():
+                st.session_state["selected_card"] = st.session_state["active_card_switcher"]
 
-                st.selectbox(
-                    "Credit Card",
-                    options=card_options,
-                    index=card_options.index(current_card),
-                    key="active_card_switcher",
-                    on_change=on_hsbc_card_change,
-                    label_visibility="collapsed",
-                )
-            with badge_col:
-                st.markdown(
-                    clean_html(f"""
-                    <div style="margin-top: 15px; display: flex; align-items: center; gap: 8px;">
-                        <span class="mobile-card-badge" style="font-size: 13px; font-weight: 700; color: {T['text_main']}; background: {T['subcard_bg']}; padding: 3px 10px; border-radius: 8px; border: 1px solid {T['border']};">
-                            •••• {data['card_ending']}
-                        </span>
-                        <span class="hsbc-pill hsbc-pill-gold" style="font-size: 11px;">
-                            Visa Infinite
-                        </span>
-                    </div>
-                    """),
-                    unsafe_allow_html=True,
-                )
-            st.markdown(
-                clean_html(f"""
-                <div class="mobile-header-sub" style="font-size: 13px; color: {T['text_sub']}; font-weight: 500; margin-top: 2px;">
-                    Automated Real-Time Cashback & Spend Tracker from Gmail InstaAlerts
-                </div>
-                """),
-                unsafe_allow_html=True,
+            st.selectbox(
+                "Credit Card",
+                options=card_options,
+                index=card_options.index(current_card),
+                key="active_card_switcher",
+                on_change=on_hsbc_card_change,
+                label_visibility="collapsed",
             )
+        with badge_col:
+            st.html(
+                f"""
+                <div style="display: flex; align-items: center; gap: 8px;">
+                    <span class="mobile-card-badge" style="font-size: 13px; font-weight: 700; color: {T['text_main']}; background: {T['badge_bg']}; padding: 4px 10px; border-radius: 8px; border: 1px solid {T['badge_border']};">
+                        •••• {data.get('card_ending', '8690')}
+                    </span>
+                    <span class="pill pill-gold" style="font-size: 11px; font-weight: 700; padding: 3px 8px;">
+                        Visa Infinite
+                    </span>
+                </div>
+                """
+            )
+        st.html(
+            f"""
+            <div class="mobile-header-sub" style="font-size: 12.5px; color: {T['text_sub']}; font-weight: 500; margin-top: 3px;">
+                Automated Real-Time Cashback & Spend Tracker from Gmail InstaAlerts
+            </div>
+            """
+        )
 
     with col_head_right:
         sync_time_str = data["sync_metadata"]["last_synced"]
@@ -569,11 +611,11 @@ def render_app():
         except Exception:
             friendly_time = "Live"
 
-        btn_sync, btn_time = st.columns([1.1, 1.0], vertical_alignment="center")
+        btn_sync, btn_time = st.columns([1.0, 1.0], vertical_alignment="center")
         with btn_sync:
-            st.markdown("<div class='mobile-sync-btn' style='display:none;'></div>", unsafe_allow_html=True)
-            if st.button("🔄 Sync", use_container_width=True):
-                with st.spinner("Fetching latest alerts from Gmail..."):
+            st.html("<div class='mobile-sync-btn' style='display:none;'></div>")
+            if st.button("Sync alerts", use_container_width=True):
+                with st.spinner("Checking Gmail alerts..."):
                     try:
                         sync_res = hsbc_engine.trigger_live_sync(CARD_DIR)
                         if sync_res.get("status") == "error":
@@ -589,20 +631,19 @@ def render_app():
                         else:
                             st.toast(f"Sync notice: {err_msg[:50]}")
         with btn_time:
-            st.markdown(
-                clean_html(f"""
-                <div style="text-align: right;">
-                    <span class="hsbc-pill-time">
-                        ● {friendly_time}
+            st.html(
+                f"""
+                <div style="text-align: right; display: flex; justify-content: flex-end;">
+                    <span class="pill pill-green" style="font-size: 11.5px; white-space: nowrap; padding: 5px 12px; gap: 6px; font-weight: 600;">
+                        <span class="status-dot status-dot-green"></span> {friendly_time}
                     </span>
                 </div>
-                """),
-                unsafe_allow_html=True,
+                """
             )
 
-    st.markdown("<div style='height: 10px;'></div>", unsafe_allow_html=True)
+    st.html("<div style='height: 10px;'></div>")
 
-    # ─── Section 1: Hero Cashback & Headroom (3 Equal Symmetrical Columns) ──────
+    # ─── Section 1: Hero Cashback & Headroom (3 Symmetrical Bento Columns) ──────
     h_col1, h_col2, h_col3 = st.columns(3)
 
     cycle_info = data["cycle"]
@@ -616,18 +657,18 @@ def render_app():
     confirmed_cb = calc_confirmed if cycle_txns else cap_info.get("confirmed_cb", cap_info.get("earned", 0.0))
     estimated_cb = calc_estimated if cycle_txns else cap_info.get("estimated_cb", 0.0)
 
-    # Tile 1: 10% Cashback Tracker
+    # Tile 1: 10% Cashback Cap Monitor
     with h_col1:
-        st.markdown(
-            clean_html(f"""
+        st.html(
+            f"""
             <div class="hsbc-card">
                 <div>
                     <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px;">
                         <div>
-                            <div class="hsbc-label-tag" style="color: {T['accent_red']};">10% Cashback</div>
+                            <div class="hsbc-label-tag" style="color: {T['accent_red']};">10% Accelerated Cashback</div>
                             <div class="hsbc-heading">{cycle_info['label']}</div>
                         </div>
-                        <span class="hsbc-pill hsbc-pill-red">⏳ {cycle_info['reset_str']}</span>
+                        <span class="pill pill-red">⏳ {cycle_info['reset_str']}</span>
                     </div>
                     <div style="display: flex; align-items: baseline; gap: 8px; margin-top: 6px;">
                         <span class="hsbc-metric-large" style="color: {T['text_main']};">₹{cap_info['earned']:.2f}</span>
@@ -636,7 +677,7 @@ def render_app():
                     <div class="hsbc-metric-sub">
                         <span>₹{confirmed_cb:,.2f} confirmed + ₹{estimated_cb:,.2f} estimated</span>
                         <span style="margin: 0 4px; opacity: 0.6;">•</span>
-                        <span>₹{cap_info['remaining_cb']:,.2f} remaining this cycle</span>
+                        <span style="font-weight: 600; color: {T['accent_red']};">₹{cap_info['remaining_cb']:,.2f} remaining</span>
                     </div>
                 </div>
 
@@ -650,64 +691,69 @@ def render_app():
                     </div>
                     <div style="display: flex; justify-content: space-between; font-size: 12px; color: {T['text_muted']};">
                         <span>Cycle: <b>{datetime.date.fromisoformat(cycle_info['start']).strftime('%d %b')} – {datetime.date.fromisoformat(cycle_info['end']).strftime('%d %b')}</b></span>
-                        <span>Monthly Limit: <b>₹{cap_info['cap_limit']:,.0f}</b></span>
+                        <span>Monthly Cap: <b>₹{cap_info['cap_limit']:,.0f}</b></span>
                     </div>
                 </div>
             </div>
-            """),
-            unsafe_allow_html=True,
+            """
         )
 
-    # Tile 2: Food Delivery, Groceries, Dining - Remaining Room
+    # Tile 2: Food Delivery, Groceries & Dining Headroom
     with h_col2:
-        st.markdown(
-            clean_html(f"""
+        st.html(
+            f"""
             <div class="hsbc-card">
                 <div>
                     <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px;">
                         <div>
-                            <div class="hsbc-label-tag" style="color: {T['text_muted']};">Remaining Room</div>
-                            <div class="hsbc-heading">Food Delivery, Groceries, Dining</div>
+                            <div class="hsbc-label-tag" style="color: {T['text_muted']};">Spend Headroom</div>
+                            <div class="hsbc-heading">Food Delivery, Groceries & Dining</div>
                         </div>
-                        <span class="hsbc-pill hsbc-pill-green">10% Rate</span>
+                        <span class="pill pill-green">10% Rate</span>
                     </div>
                     <div style="display: flex; align-items: baseline; gap: 6px; margin-top: 6px;">
                         <span class="hsbc-metric-large" style="color: {T['accent_red']};">₹{cap_info['remaining_accelerated_spend']:,.0f}</span>
-                        <span class="hsbc-metric-unit">spend left</span>
+                        <span class="hsbc-metric-unit">spend headroom</span>
                     </div>
-                    <div class="hsbc-metric-sub">Spend headroom before reaching ₹{cap_info['cap_limit']:,.0f} cap</div>
+                    <div class="hsbc-metric-sub">Headroom before reaching the ₹{cap_info['cap_limit']:,.0f} monthly cap</div>
                 </div>
 
                 <div style="margin-top: 16px;">
                     <div class="hsbc-subcard">
-                        <div style="font-size: 10.5px; font-weight: 700; color: {T['text_muted']}; text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 3px;">
-                            Eligible Merchants & Platforms
+                        <div style="font-size: 10.5px; font-weight: 700; color: {T['text_muted']}; text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 6px;">
+                            Eligible 10% Merchant Platforms
                         </div>
-                        <div style="font-size: 12px; color: {T['text_sub']}; line-height: 1.4;">
-                            Zomato, Swiggy, Blinkit, Zepto, BigBasket, Instamart, Nature's Basket, standalone restaurants & cafes
+                        <div style="display: flex; flex-wrap: wrap; gap: 4px;">
+                            <span class="hsbc-chip">Zomato</span>
+                            <span class="hsbc-chip">Swiggy</span>
+                            <span class="hsbc-chip">Blinkit</span>
+                            <span class="hsbc-chip">Zepto</span>
+                            <span class="hsbc-chip">Instamart</span>
+                            <span class="hsbc-chip">BigBasket</span>
+                            <span class="hsbc-chip">Dining & Cafes</span>
                         </div>
                     </div>
                 </div>
             </div>
-            """),
-            unsafe_allow_html=True,
+            """
         )
 
-    # Tile 3: Direct Statement Savings & Portfolio
+    # Tile 3: Direct Statement Savings & Portfolio Net Return
     with h_col3:
-        st.markdown(
-            clean_html(f"""
+        st.html(
+            f"""
             <div class="hsbc-card">
                 <div>
                     <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px;">
                         <div>
-                            <div class="hsbc-label-tag" style="color: {T['text_muted']};">Direct Statement Savings</div>
+                            <div class="hsbc-label-tag" style="color: {T['text_muted']};">Direct Statement Credit</div>
                             <div class="hsbc-heading">Portfolio Net Savings</div>
                         </div>
+                        <span class="pill pill-green">Direct Credit</span>
                     </div>
                     <div style="display: flex; align-items: baseline; gap: 6px; margin-top: 6px;">
                         <span class="hsbc-metric-large" style="color: {T['accent_green']};">₹{portfolio['lifetime_cashback']:,.2f}</span>
-                        <span class="hsbc-metric-unit">lifetime</span>
+                        <span class="hsbc-metric-unit">lifetime savings</span>
                     </div>
                     <div class="hsbc-metric-sub">Credited directly to reduce statement balance</div>
                 </div>
@@ -720,19 +766,21 @@ def render_app():
                         </div>
                         <div class="hsbc-stat-badge">
                             <div class="hsbc-stat-label">EFFECTIVE REWARD RATE</div>
-                            <div class="hsbc-stat-val">{portfolio['effective_reward_rate']:.2f}%</div>
+                            <div class="hsbc-stat-val" style="color: {T['accent_green']};">{portfolio['effective_reward_rate']:.2f}%</div>
                         </div>
                     </div>
                 </div>
             </div>
-            """),
-            unsafe_allow_html=True,
+            """
         )
 
-    # ─── Section 2: Milestones, Fee Waiver & Lounge Perks ───────────────────────
-    st.markdown(
-        clean_html(f"<div class='hsbc-section-title'>🎯 Milestones, Fee Waiver & Travel Privileges</div>"),
-        unsafe_allow_html=True,
+    # ─── Section 2: Milestones, Fee Waiver & Travel Privileges ──────────────────
+    st.html(
+        f"""
+        <div class="hsbc-section-title">
+            Milestones, Fee Waiver & Travel Privileges
+        </div>
+        """
     )
 
     m_col1, m_col2, m_col3 = st.columns(3)
@@ -741,10 +789,10 @@ def render_app():
     fee = data["fee_waiver"]
     lounge = data["lounge"]
 
-    # Milestone 1: Welcome Offer
+    # Milestone 1: 30-Day Welcome Benefit
     with m_col1:
-        st.markdown(
-            clean_html(f"""
+        st.html(
+            f"""
             <div class="hsbc-milestone-card">
                 <div>
                     <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 6px;">
@@ -752,7 +800,7 @@ def render_app():
                             <div class="hsbc-label-tag" style="color: {T['text_muted']};">30-Day Welcome Benefit</div>
                             <div class="hsbc-heading">₹{welcome['reward']:,} Welcome Cashback</div>
                         </div>
-                        <span class="hsbc-pill hsbc-pill-green">✔ Unlocked</span>
+                        <span class="pill pill-green">Unlocked</span>
                     </div>
                     <div style="display: flex; align-items: baseline; gap: 6px; margin-top: 4px;">
                         <span style="font-size: 24px; font-weight: 800; color: {T['accent_green']};">₹{welcome['spent']:,.0f}</span>
@@ -765,18 +813,17 @@ def render_app():
                     </div>
                     <div style="display: flex; justify-content: space-between; font-size: 11.5px; color: {T['text_muted']};">
                         <span>Target Met in First 30 Days</span>
-                        <span>+ ₹750 Activation Voucher</span>
+                        <span style="font-weight: 600; color: {T['accent_green']};">+ ₹750 Activation Voucher</span>
                     </div>
                 </div>
             </div>
-            """),
-            unsafe_allow_html=True,
+            """
         )
 
     # Milestone 2: Annual Fee Waiver
     with m_col2:
-        st.markdown(
-            clean_html(f"""
+        st.html(
+            f"""
             <div class="hsbc-milestone-card">
                 <div>
                     <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 6px;">
@@ -784,7 +831,7 @@ def render_app():
                             <div class="hsbc-label-tag" style="color: {T['text_muted']};">Annual Fee Waiver</div>
                             <div class="hsbc-heading">Save ₹{fee['annual_fee']} + GST</div>
                         </div>
-                        <span class="hsbc-pill hsbc-pill-gold">⏳ {fee['days_left']}D Left</span>
+                        <span class="pill pill-gold">⏳ {fee['days_left']}D Left</span>
                     </div>
                     <div style="display: flex; align-items: baseline; gap: 6px; margin-top: 4px;">
                         <span style="font-size: 24px; font-weight: 800; color: {T['text_main']};">₹{fee['spent']:,.0f}</span>
@@ -801,49 +848,47 @@ def render_app():
                     </div>
                 </div>
             </div>
-            """),
-            unsafe_allow_html=True,
+            """
         )
 
-    # Milestone 3: Lounge & Travel Perks
+    # Milestone 3: Visa Infinite Privileges
     with m_col3:
-        st.markdown(
-            clean_html(f"""
+        st.html(
+            f"""
             <div class="hsbc-milestone-card">
                 <div>
                     <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 6px;">
                         <div>
                             <div class="hsbc-label-tag" style="color: {T['text_muted']};">Visa Infinite Privileges</div>
-                            <div class="hsbc-heading">Lounge & Global eSIM</div>
+                            <div class="hsbc-heading">Lounge & Global Roaming</div>
                         </div>
-                        <span class="hsbc-pill hsbc-pill-green">Available</span>
+                        <span class="pill pill-green">Active Tier</span>
                     </div>
                     <div style="display: flex; flex-direction: column; gap: 5px; margin-top: 6px;">
                         <div class="hsbc-subcard-row">
-                            <span style="font-size: 12px; font-weight: 600;">Domestic Lounge (Jul–Dec)</span>
-                            <span class="hsbc-pill hsbc-pill-green" style="font-size: 10px; padding: 2px 7px;">{lounge['domestic_h2']}</span>
+                            <span style="font-size: 12px; font-weight: 600; color: {T['text_main']};">Domestic Lounge (Jul–Dec)</span>
+                            <span class="pill pill-green" style="font-size: 10px; padding: 2px 8px;">{lounge['domestic_h2']}</span>
                         </div>
                         <div class="hsbc-subcard-row">
-                            <span style="font-size: 12px; font-weight: 600;">International Lounge (Annual)</span>
-                            <span class="hsbc-pill hsbc-pill-green" style="font-size: 10px; padding: 2px 7px;">{lounge['international']}</span>
+                            <span style="font-size: 12px; font-weight: 600; color: {T['text_main']};">International Lounge (Annual)</span>
+                            <span class="pill pill-green" style="font-size: 10px; padding: 2px 8px;">{lounge['international']}</span>
                         </div>
                         <div class="hsbc-subcard-row" style="margin-bottom: 0;">
-                            <span style="font-size: 12px; font-weight: 600;">Complimentary 1GB Global eSIM</span>
-                            <span class="hsbc-pill hsbc-pill-green" style="font-size: 10px; padding: 2px 7px;">{lounge['esim']}</span>
+                            <span style="font-size: 12px; font-weight: 600; color: {T['text_main']};">Complimentary Global eSIM</span>
+                            <span class="pill pill-green" style="font-size: 10px; padding: 2px 8px;">{lounge['esim']}</span>
                         </div>
                     </div>
                 </div>
             </div>
-            """),
-            unsafe_allow_html=True,
+            """
         )
 
-    # ─── Section 3: Tabs Section ───────────────────────────────────────────────
-    st.markdown("<div style='height: 12px;'></div>", unsafe_allow_html=True)
+    # ─── Section 3: Interactive Tabs Section ───────────────────────────────────
+    st.html("<div style='height: 12px;'></div>")
     tab_txns, tab_history, tab_perks = st.tabs([
-        "📋 Live Transactions (Current Cycle)",
-        "📊 Monthly History & Caps",
-        "🍷 Live+ Reserve & Dining Perks",
+        "Live Transactions",
+        "Monthly History & Caps",
+        "Reserve & Dining Privileges",
     ])
 
     # Tab 1: Live Transactions
@@ -853,14 +898,20 @@ def render_app():
 
         t_head_c1, t_head_c2 = st.columns([3, 1], vertical_alignment="center")
         with t_head_c1:
-            st.markdown(
-                clean_html(f"<div style='font-weight: 700; font-size: 15px;'>Statement Cycle: {datetime.date.fromisoformat(cycle_info['start']).strftime('%d %b %Y')} – {datetime.date.fromisoformat(cycle_info['end']).strftime('%d %b %Y')}</div>"),
-                unsafe_allow_html=True,
+            st.html(
+                f"""
+                <div style='font-weight: 700; font-size: 15px; color: {T['text_main']};'>
+                    Statement Cycle: {datetime.date.fromisoformat(cycle_info['start']).strftime('%d %b %Y')} – {datetime.date.fromisoformat(cycle_info['end']).strftime('%d %b %Y')}
+                </div>
+                """
             )
         with t_head_c2:
-            st.markdown(
-                clean_html(f"<div style='text-align: right;'><span class='hsbc-pill hsbc-pill-green'>{len(cycle_txns)} Transactions Audited</span></div>"),
-                unsafe_allow_html=True,
+            st.html(
+                f"""
+                <div style='text-align: right;'>
+                    <span class='pill pill-green'>{len(cycle_txns)} Transactions Audited</span>
+                </div>
+                """
             )
 
         if cycle_txns:
@@ -882,7 +933,7 @@ def render_app():
             st.info("No purchase transactions recorded yet for the active billing cycle.")
 
         # Expandable All Transactions
-        with st.expander("🔍 View All Historical Transactions Across Cycles", expanded=False):
+        with st.expander("View All Historical Transactions Across Cycles", expanded=False):
             df_all = pd.DataFrame([
                 {
                     "Date": item["date"],
@@ -900,9 +951,12 @@ def render_app():
 
     # Tab 2: Monthly History & Caps
     with tab_history:
-        st.markdown(
-            clean_html("<div style='font-weight: 700; font-size: 15px; margin-bottom: 12px;'>Historical Cashback by Cycle</div>"),
-            unsafe_allow_html=True,
+        st.html(
+            f"""
+            <div style='font-weight: 700; font-size: 15px; margin-bottom: 12px; color: {T['text_main']};'>
+                Historical Cashback by Billing Cycle
+            </div>
+            """
         )
         history_data = [
             {
@@ -926,46 +980,46 @@ def render_app():
 
     # Tab 3: Curated Privileges
     with tab_perks:
-        st.markdown(
-            clean_html("<div style='font-weight: 700; font-size: 15px; margin-bottom: 14px;'>Curated Visa Infinite & Live+ Reserve Benefits</div>"),
-            unsafe_allow_html=True,
+        st.html(
+            f"""
+            <div style='font-weight: 700; font-size: 15px; margin-bottom: 14px; color: {T['text_main']};'>
+                Curated Visa Infinite & Live+ Reserve Benefits
+            </div>
+            """
         )
         p_c1, p_c2, p_c3 = st.columns(3)
         with p_c1:
-            st.markdown(
-                clean_html(f"""
-                <div class="hsbc-subcard" style="padding: 16px;">
-                    <div style="font-weight: 800; font-size: 14.5px; color: {T['text_main']};">🍽️ The Live+ Reserve (TimesPrime)</div>
-                    <div style="font-size: 12.5px; color: {T['text_muted']}; margin-top: 6px; line-height: 1.4;">
-                        Curated menus & complimentary dessert/drinks at Indian Accent, Tresind, Comorin, Olive.
+            st.html(
+                f"""
+                <div class="hsbc-subcard" style="padding: 18px; min-height: 120px;">
+                    <div style="font-weight: 700; font-size: 14.5px; color: {T['text_main']};">The Live+ Reserve (TimesPrime)</div>
+                    <div style="font-size: 12.5px; color: {T['text_sub']}; margin-top: 6px; line-height: 1.45;">
+                        Curated dining menus & complimentary dessert/drinks at Indian Accent, Tresind, Comorin, and Olive.
                     </div>
                 </div>
-                """),
-                unsafe_allow_html=True,
+                """
             )
         with p_c2:
-            st.markdown(
-                clean_html(f"""
-                <div class="hsbc-subcard" style="padding: 16px;">
-                    <div style="font-weight: 800; font-size: 14.5px; color: {T['text_main']};">🎟️ BOGO Cinema Tickets</div>
-                    <div style="font-size: 12.5px; color: {T['text_muted']}; margin-top: 6px; line-height: 1.4;">
-                        Buy-1-Get-1 free movie tickets via District by Zomato and BookMyShow.
+            st.html(
+                f"""
+                <div class="hsbc-subcard" style="padding: 18px; min-height: 120px;">
+                    <div style="font-weight: 700; font-size: 14.5px; color: {T['text_main']};">BOGO Cinema Tickets</div>
+                    <div style="font-size: 12.5px; color: {T['text_sub']}; margin-top: 6px; line-height: 1.45;">
+                        Buy-1-Get-1 complimentary movie tickets via District by Zomato and BookMyShow platforms.
                     </div>
                 </div>
-                """),
-                unsafe_allow_html=True,
+                """
             )
         with p_c3:
-            st.markdown(
-                clean_html(f"""
-                <div class="hsbc-subcard" style="padding: 16px;">
-                    <div style="font-weight: 800; font-size: 14.5px; color: {T['text_main']};">🏨 ITC Hotels Stay 2 Pay 1</div>
-                    <div style="font-size: 12.5px; color: {T['text_muted']}; margin-top: 6px; line-height: 1.4;">
-                        Complimentary 3rd night on 2 paid nights, or 50% off 2nd night at luxury ITC properties.
+            st.html(
+                f"""
+                <div class="hsbc-subcard" style="padding: 18px; min-height: 120px;">
+                    <div style="font-weight: 700; font-size: 14.5px; color: {T['text_main']};">ITC Hotels Stay 2 Pay 1</div>
+                    <div style="font-size: 12.5px; color: {T['text_sub']}; margin-top: 6px; line-height: 1.45;">
+                        Complimentary 3rd night on 2 paid nights, or 50% discount on 2nd night at luxury ITC properties.
                     </div>
                 </div>
-                """),
-                unsafe_allow_html=True,
+                """
             )
 
 
