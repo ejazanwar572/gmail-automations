@@ -653,7 +653,11 @@ with col_head_right:
                     st.toast(f"Synced {sync_res.get('alert_count', 0)} alerts")
                     st.rerun()
                 except Exception as exc:
-                    st.error(f"Sync error: {exc}")
+                    err_msg = str(exc)
+                    if "credentials are not configured" in err_msg:
+                        st.toast("Cloud sync requires GMAIL_CREDENTIALS in Streamlit Secrets. Alerts are auto-synced from your Mac.", icon="⚠️")
+                    else:
+                        st.toast(f"Sync error: {err_msg}", icon="❌")
     with btn_time:
         sync_time_str = data["sync_metadata"]["last_synced"]
         try:

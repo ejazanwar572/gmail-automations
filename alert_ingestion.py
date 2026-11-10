@@ -104,13 +104,21 @@ def load_credentials(
     try:
         import streamlit as st
         if hasattr(st, "secrets") and "GMAIL_CREDENTIALS" in st.secrets:
-            secrets_data = json.loads(st.secrets["GMAIL_CREDENTIALS"])
+            val = st.secrets["GMAIL_CREDENTIALS"]
+            if isinstance(val, str):
+                secrets_data = json.loads(val)
+            elif hasattr(val, "get"):
+                secrets_data = dict(val)
     except Exception:
         pass
 
     if not secrets_data and "GMAIL_CREDENTIALS" in os.environ:
         try:
-            secrets_data = json.loads(os.environ["GMAIL_CREDENTIALS"])
+            val = os.environ["GMAIL_CREDENTIALS"]
+            if isinstance(val, str):
+                secrets_data = json.loads(val)
+            elif hasattr(val, "get"):
+                secrets_data = dict(val)
         except Exception:
             pass
 

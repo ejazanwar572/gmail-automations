@@ -543,13 +543,17 @@ def render_app():
                     try:
                         sync_res = hsbc_engine.trigger_live_sync(CARD_DIR)
                         if sync_res.get("status") == "error":
-                            st.error(f"Sync error: {sync_res.get('message')}")
+                            st.toast(f"Sync error: {sync_res.get('message')}", icon="⚠️")
                         else:
                             st.cache_data.clear()
                             st.toast(f"✅ Synced {sync_res.get('alert_count', 0)} alerts!", icon="📬")
                             st.rerun()
                     except Exception as exc:
-                        st.error(f"Sync error: {exc}")
+                        err_msg = str(exc)
+                        if "credentials are not configured" in err_msg:
+                            st.toast("Cloud sync requires GMAIL_CREDENTIALS in Streamlit Secrets. Alerts are auto-synced from your Mac.", icon="⚠️")
+                        else:
+                            st.toast(f"Sync error: {err_msg}", icon="❌")
         with btn_time:
             sync_time_str = data["sync_metadata"]["last_synced"]
             try:
