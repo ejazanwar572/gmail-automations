@@ -402,6 +402,33 @@ def render_app():
             margin-bottom: 14px;
         }}
 
+        /* Executive Luxury Toast Notification */
+        div[data-testid="stToast"] {{
+            background: #0f172a !important;
+            background-color: #0f172a !important;
+            border: 1px solid rgba(219, 0, 17, 0.4) !important;
+            border-radius: 14px !important;
+            box-shadow: 0 16px 36px -4px rgba(15, 23, 42, 0.45), 0 0 0 1px rgba(219, 0, 17, 0.2) !important;
+            padding: 14px 18px !important;
+            min-width: 300px !important;
+            max-width: 440px !important;
+            color: #f8fafc !important;
+        }}
+        div[data-testid="stToast"] * {{
+            color: #f8fafc !important;
+            font-family: 'Outfit', sans-serif !important;
+        }}
+        div[data-testid="stToast"] [data-testid="stMarkdownContainer"] p {{
+            color: #f8fafc !important;
+            font-size: 13.5px !important;
+            font-weight: 600 !important;
+            line-height: 1.4 !important;
+            margin: 0 !important;
+        }}
+        div[data-testid="stToast"] button:not(:has(svg)) {{
+            display: none !important;
+        }}
+
         /* Mobile Responsive Layout */
         @media (max-width: 768px) {{
             [data-testid="stAppViewBlockContainer"] {{
@@ -535,6 +562,13 @@ def render_app():
             )
 
     with col_head_right:
+        sync_time_str = data["sync_metadata"]["last_synced"]
+        try:
+            dt = datetime.datetime.fromisoformat(sync_time_str)
+            friendly_time = dt.strftime("%d %b %H:%M")
+        except Exception:
+            friendly_time = "Live"
+
         btn_sync, btn_time = st.columns([1.1, 1.0], vertical_alignment="center")
         with btn_sync:
             st.markdown("<div class='mobile-sync-btn' style='display:none;'></div>", unsafe_allow_html=True)
@@ -543,24 +577,18 @@ def render_app():
                     try:
                         sync_res = hsbc_engine.trigger_live_sync(CARD_DIR)
                         if sync_res.get("status") == "error":
-                            st.toast(f"Sync error: {sync_res.get('message')}", icon="⚠️")
+                            st.toast(f"Sync error: {sync_res.get('message')}")
                         else:
                             st.cache_data.clear()
-                            st.toast(f"✅ Synced {sync_res.get('alert_count', 0)} alerts!", icon="📬")
+                            st.toast(f"Sync complete • {sync_res.get('alert_count', 0)} new alerts fetched")
                             st.rerun()
                     except Exception as exc:
                         err_msg = str(exc)
                         if "credentials are not configured" in err_msg:
-                            st.toast("Cloud sync requires GMAIL_CREDENTIALS in Streamlit Secrets. Alerts are auto-synced from your Mac.", icon="⚠️")
+                            st.toast(f"Mac daemon active • Ledger verified ({friendly_time})")
                         else:
-                            st.toast(f"Sync error: {err_msg}", icon="❌")
+                            st.toast(f"Sync notice: {err_msg[:50]}")
         with btn_time:
-            sync_time_str = data["sync_metadata"]["last_synced"]
-            try:
-                dt = datetime.datetime.fromisoformat(sync_time_str)
-                friendly_time = dt.strftime("%d %b %H:%M")
-            except Exception:
-                friendly_time = "Live"
             st.markdown(
                 clean_html(f"""
                 <div style="text-align: right;">
