@@ -103,5 +103,30 @@ Build and test a modern, responsive web application prototype for the HDFC Diner
 - [x] Preserve 100% data wiring, calculations, engine imports, and filter/export capabilities
 - [x] Verification: syntax check and run full pytest test suite (76/76 passing)
 
+---
+
+## Phase 9: Implement Option 1 (Haute Metal Bento Executive Redesign)
+- [x] Refactor Top Header Bar:
+  - Eliminate the empty white box on the left (`sub_c1`)
+  - Create a cohesive header: card icon, card title, `•••• 2360` badge, `Metal Edition` pill, subtitle
+  - Clean action cluster on the right: secondary-style `Sync alerts` button and live status pulse pill (`09 Nov 16:56`)
+- [x] Redesign Hero Bento Grid:
+  - Rebalance Left Card (SmartBuy Cap Monitor): 6,840 / 10,000 RP remaining, 68.4% available, calibrated progress bar, Flights 5x and Hotels 10x headroom chips
+  - Rebalance Right Card (Liquid Travel Wealth): ₹35,268 large emerald valuation, eliminate giant empty white gaps, tight 3-row metric strip (58,396 RP lifetime, 35,268 RP spendable, 5.95% net return)
+  - Ensure equal height and symmetrical bento proportions
+- [x] Redesign Milestones Cards:
+  - Remove harsh solid underline divider bars
+  - Clean 3-card layout: Welcome (Unlocked), Quarterly Bonus (10k RP Credited), Annual Fee Waiver (₹10,000 Waived)
+  - Slim 5px rounded progress bars and clear achievement context
+- [x] Polish Tabs & Theme CSS:
+  - Replace default Streamlit red tab indicator with Champagne Gold (`#b47820`)
+  - Ensure max-width container centering (1260px) for large desktop displays
+- [x] Verification & Deployment:
+  - Verify syntax with `py_compile`
+  - Run `pytest` (all 76 tests)
+  - Revert test-modified JSON files
+  - Git commit and push to `origin main`
+
+
 
 

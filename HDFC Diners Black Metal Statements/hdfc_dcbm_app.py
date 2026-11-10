@@ -51,11 +51,11 @@ T = {
     "input_border": "#cbd5e1",
     "input_text": "#0f172a",
     "input_focus_border": "#b47820",
-    "input_focus_shadow": "rgba(180, 120, 32, 0.2)",
-    "btn_bg": "linear-gradient(135deg, #1e293b 0%, #0f172a 100%)",
-    "btn_hover": "linear-gradient(135deg, #334155 0%, #1e293b 100%)",
-    "btn_border": "#334155",
-    "btn_shadow": "0 2px 8px rgba(15, 23, 42, 0.15)",
+    "btn_bg": "#ffffff",
+    "btn_hover": "#f8fafc",
+    "btn_border": "#cbd5e1",
+    "btn_color": "#0f172a",
+    "btn_shadow": "0 1px 3px rgba(15, 23, 42, 0.06)",
     "progress_bg": "#e2e8f0",
     "progress_fill": "linear-gradient(90deg, #b47820 0%, #d4a359 100%)",
     "chip_bg": "#ffffff",
@@ -144,10 +144,12 @@ st.html(
         padding: 0 !important;
         background-color: var(--bg-canvas) !important;
     }}
-    [data-testid="stAppViewBlockContainer"] {{
-        padding-top: 1.2rem !important;
-        padding-bottom: 2rem !important;
-        max-width: 1400px;
+    .block-container, div[data-testid="stMainBlockContainer"], [data-testid="stAppViewBlockContainer"] {{
+        padding-top: 1.5rem !important;
+        padding-bottom: 3rem !important;
+        max-width: 1260px !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
     }}
 
     /* Card container */
@@ -155,10 +157,10 @@ st.html(
         background: var(--bg-card);
         border: 1px solid var(--border-default);
         border-radius: 16px;
-        padding: 24px;
-        box-shadow: var(--shadow-card);
-        margin-bottom: 20px;
-        transition: transform 150ms ease, border-color 150ms ease, box-shadow 150ms ease;
+        padding: 22px;
+        box-shadow: 0 1px 3px rgba(15, 23, 42, 0.04), 0 6px 16px -4px rgba(15, 23, 42, 0.05);
+        margin-bottom: 16px;
+        transition: border-color 150ms ease, box-shadow 150ms ease;
     }}
     .metal-card:hover {{
         border-color: var(--border-strong);
@@ -169,9 +171,9 @@ st.html(
         background: var(--bg-card);
         border: 1px solid var(--border-default);
         border-radius: 18px;
-        padding: 26px;
-        box-shadow: var(--shadow-hero);
-        margin-bottom: 24px;
+        padding: 24px;
+        box-shadow: 0 1px 3px rgba(180, 120, 32, 0.06), 0 8px 24px -4px rgba(15, 23, 42, 0.06);
+        margin-bottom: 20px;
     }}
 
     /* Badge Pills - Untracked, calm typography */
@@ -244,20 +246,19 @@ st.html(
     /* Buttons & Download Buttons - Targeted transitions */
     div.stButton > button, div[data-testid="stDownloadButton"] > button {{
         background: {T["btn_bg"]} !important;
-        color: #ffffff !important;
+        color: {T["btn_color"]} !important;
         border-radius: 10px !important;
         border: 1px solid {T["btn_border"]} !important;
         font-weight: 600 !important;
-        font-size: 14px !important;
+        font-size: 13.5px !important;
         padding: 8px 18px !important;
         box-shadow: {T["btn_shadow"]} !important;
-        transition: background-color 150ms ease, border-color 150ms ease, transform 150ms ease, box-shadow 150ms ease !important;
+        transition: background-color 150ms ease, border-color 150ms ease, color 150ms ease, box-shadow 150ms ease !important;
     }}
     div.stButton > button:hover, div[data-testid="stDownloadButton"] > button:hover {{
         background: {T["btn_hover"]} !important;
-        border-color: #d97706 !important;
-        color: #ffffff !important;
-        transform: translateY(-1px) !important;
+        border-color: var(--accent-gold) !important;
+        color: var(--accent-gold) !important;
     }}
 
     /* Input controls: Selectboxes, Text Inputs, Multiselects */
@@ -362,17 +363,36 @@ st.html(
     }}
 
     /* Tabs Styling */
+    div[data-baseweb="tab-list"] {{
+        border-bottom: 1px solid var(--border-default) !important;
+        gap: 6px !important;
+        background: transparent !important;
+    }}
     button[data-baseweb="tab"] {{
         font-weight: 600 !important;
-        font-size: 14px !important;
+        font-size: 13.5px !important;
         color: var(--text-muted) !important;
         letter-spacing: normal !important;
         text-transform: none !important;
+        background: transparent !important;
+        padding: 10px 16px !important;
+        border-bottom: 2px solid transparent !important;
+        transition: color 150ms ease !important;
+    }}
+    button[data-baseweb="tab"]:hover {{
+        color: var(--text-main) !important;
     }}
     button[data-baseweb="tab"][aria-selected="true"] {{
         color: var(--accent-gold) !important;
-        border-bottom-color: var(--accent-gold) !important;
         font-weight: 700 !important;
+    }}
+    div[data-baseweb="tab-highlight"] {{
+        background-color: var(--accent-gold) !important;
+        height: 2.5px !important;
+        border-radius: 999px !important;
+    }}
+    div[data-baseweb="tab-border"] {{
+        background-color: var(--border-default) !important;
     }}
 
     /* Streamlit Dataframe */
@@ -579,70 +599,50 @@ def load_data():
 data = load_data()
 
 # ─── Top Header Bar ───────────────────────────────────────────────────────────
-col_head_left, col_head_right = st.columns([2.8, 1.2], vertical_alignment="center")
+col_head_left, col_head_right = st.columns([2.6, 1.4], vertical_alignment="center")
 
 with col_head_left:
-    sub_c1, sub_c2 = st.columns([0.08, 0.92], vertical_alignment="center")
-    with sub_c1:
+    card_col, badge_col = st.columns([1.5, 1.1], vertical_alignment="center")
+    with card_col:
+        card_options = ["HDFC Diners Club Black Metal", "HSBC Live+ Credit Card"]
+        current_card = st.session_state.get("selected_card", "HDFC Diners Club Black Metal")
+        if current_card not in card_options:
+            current_card = "HDFC Diners Club Black Metal"
+
+        def on_hdfc_card_change():
+            st.session_state["selected_card"] = st.session_state["active_card_switcher"]
+
+        st.selectbox(
+            "Credit Card",
+            options=card_options,
+            index=card_options.index(current_card),
+            key="active_card_switcher",
+            on_change=on_hdfc_card_change,
+            label_visibility="collapsed",
+        )
+    with badge_col:
         st.html(
             f"""
-            <div style="width: 38px; height: 38px; background: #faf8f4; color: {T['accent_gold']}; border-radius: 8px; display: flex; align-items: center; justify-content: center; border: 1px solid {T['border']};">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="{T['accent_gold']}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <rect x="2" y="5" width="20" height="14" rx="2"/>
-                    <line x1="2" y1="10" x2="22" y2="10"/>
-                </svg>
+            <div style="display: flex; align-items: center; gap: 8px;">
+                <span class="mobile-card-badge" style="font-size: 13px; font-weight: 700; color: {T['card_number_badge_color']}; background: {T['card_number_badge_bg']}; padding: 4px 10px; border-radius: 8px; border: 1px solid {T['card_number_badge_border']};">
+                    •••• 2360
+                </span>
+                <span class="pill pill-gold" style="font-size: 11px; font-weight: 700; padding: 3px 8px;">
+                    Metal
+                </span>
             </div>
             """
         )
-    with sub_c2:
-        card_col, badge_col = st.columns([1.5, 1.2], vertical_alignment="center")
-        with card_col:
-            st.html(
-                f"""
-                <div style="font-size: 11px; font-weight: 600; color: #b47820; margin-bottom: 3px;">
-                    Selected card account
-                </div>
-                """
-            )
-            card_options = ["HDFC Diners Club Black Metal", "HSBC Live+ Credit Card"]
-            current_card = st.session_state.get("selected_card", "HDFC Diners Club Black Metal")
-            if current_card not in card_options:
-                current_card = "HDFC Diners Club Black Metal"
-
-            def on_hdfc_card_change():
-                st.session_state["selected_card"] = st.session_state["active_card_switcher"]
-
-            st.selectbox(
-                "Credit Card",
-                options=card_options,
-                index=card_options.index(current_card),
-                key="active_card_switcher",
-                on_change=on_hdfc_card_change,
-                label_visibility="collapsed",
-            )
-        with badge_col:
-            st.html(
-                f"""
-                <div style="margin-top: 15px; display: flex; align-items: center; gap: 8px;">
-                    <span class="mobile-card-badge" style="font-size: 13px; font-weight: 700; color: {T['card_number_badge_color']}; background: {T['card_number_badge_bg']}; padding: 3px 10px; border-radius: 8px; border: 1px solid {T['card_number_badge_border']};">
-                        •••• 2360
-                    </span>
-                    <span class="pill pill-blue" style="font-size: 11px;">
-                        Diners Club Metal
-                    </span>
-                </div>
-                """
-            )
-        st.html(
-            f"""
-            <div class="mobile-header-sub" style="font-size: 13px; color: {T['text_sub']}; font-weight: 500; margin-top: 2px;">
-                Automated Real-Time Rewards & Spend Tracker from Gmail InstaAlerts
-            </div>
-            """
-        )
+    st.html(
+        f"""
+        <div class="mobile-header-sub" style="font-size: 12.5px; color: {T['text_sub']}; font-weight: 500; margin-top: 3px;">
+            Automated Real-Time Rewards & Spend Tracker from Gmail InstaAlerts
+        </div>
+        """
+    )
 
 with col_head_right:
-    btn_sync, btn_time = st.columns([1.1, 1.0], vertical_alignment="center")
+    btn_sync, btn_time = st.columns([1.0, 1.0], vertical_alignment="center")
     with btn_sync:
         st.html("<div class='mobile-sync-btn' style='display:none;'></div>")
         if st.button("Sync alerts", use_container_width=True):
@@ -663,9 +663,9 @@ with col_head_right:
             friendly_time = "Live"
         st.html(
             f"""
-            <div style="text-align: right;">
-                <span class="pill pill-blue" style="font-size: 11px; white-space: nowrap; padding: 4px 10px; gap: 6px;">
-                    <span class="status-dot"></span> {friendly_time}
+            <div style="text-align: right; display: flex; justify-content: flex-end;">
+                <span class="pill pill-green" style="font-size: 11.5px; white-space: nowrap; padding: 5px 12px; gap: 6px; font-weight: 600;">
+                    <span class="status-dot status-dot-green"></span> {friendly_time}
                 </span>
             </div>
             """
@@ -688,7 +688,7 @@ total_spend_all = sum(t["amount"] for t in data["transactions"])
 lifetime_reward_rate = (lifetime_earned / total_spend_all * 100) if total_spend_all > 0 else 0.0
 
 # Render Hero Cards (Bento Grid)
-hero_col_left, hero_col_right = st.columns([1.7, 1.3])
+hero_col_left, hero_col_right = st.columns([1.55, 1.45])
 
 with hero_col_left:
     today_earned = active_cap.get("today_earned", 0)
@@ -697,50 +697,56 @@ with hero_col_left:
 
     st.html(
         f"""
-        <div class="hero-card" style="padding: 24px; display: flex; flex-direction: column; justify-content: space-between; min-height: 270px;">
+        <div class="hero-card" style="padding: 24px; min-height: 275px; display: flex; flex-direction: column; justify-content: space-between; box-sizing: border-box;">
             <div>
-                <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 10px;">
+                <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px;">
                     <div>
-                        <div style="font-size: 11.5px; font-weight: 600; color: #b47820;">
-                            SmartBuy accelerated points limit
-                        </div>
+                        <span style="font-size: 11.5px; font-weight: 700; color: #b47820; text-transform: uppercase; letter-spacing: 0.04em;">
+                            SmartBuy Accelerated Points Limit
+                        </span>
                         <div style="font-size: 20px; font-weight: 700; color: var(--text-main); margin-top: 1px;">
                             {cycle_title}
                         </div>
                     </div>
-                    <span class="pill pill-gold" style="font-size: 11.5px; padding: 4px 10px; white-space: nowrap;">
-                        {'Resets today' if active_cap['days_remaining'] == 0 else ('Resets tomorrow' if active_cap['days_remaining'] == 1 else f"Resets in {active_cap['days_remaining']}d")} · {active_cap['reset_date']}
+                    <span class="pill pill-gold" style="font-size: 11px; padding: 4px 10px; font-weight: 600;">
+                        {'Resets today' if active_cap['days_remaining'] == 0 else ('Resets tomorrow' if active_cap['days_remaining'] == 1 else f"Resets in {active_cap['days_remaining']}d")} ({active_cap['reset_date']})
                     </span>
                 </div>
-                <div style="display: flex; align-items: baseline; gap: 8px;">
-                    <span class="hero-number tabular-num">{active_cap["remaining"]:,}</span>
-                    <span style="font-size: 16px; font-weight: 600; color: var(--text-muted);">/ {active_cap["monthly_cap"]:,} RP remaining</span>
+                <div style="display: flex; align-items: baseline; justify-content: space-between; margin-top: 6px;">
+                    <div style="display: flex; align-items: baseline; gap: 8px;">
+                        <span class="hero-number tabular-num">{active_cap["remaining"]:,}</span>
+                        <span style="font-size: 16px; font-weight: 600; color: var(--text-muted);">/ {active_cap["monthly_cap"]:,} RP remaining</span>
+                    </div>
+                    <span class="pill pill-green" style="font-size: 11.5px; padding: 3px 9px; font-weight: 700;">
+                        {active_cap["percent_remaining"]}% Available
+                    </span>
                 </div>
-                <div class="hero-sub">{active_cap["percent_remaining"]}% monthly headroom still available to earn</div>
+                <div style="margin-top: 12px;">
+                    <div style="display: flex; justify-content: space-between; font-size: 12px; color: var(--text-muted); margin-bottom: 6px;">
+                        <span>Monthly progress: <b class="tabular-num" style="color: var(--text-main);">{active_cap["earned"]:,} / {active_cap["monthly_cap"]:,} RP ({active_cap['percent_used']}%)</b></span>
+                        <span>Daily cap: <b class="tabular-num" style="color: var(--text-main);">{today_daily_cap:,} RP</b></span>
+                    </div>
+                    <div style="background: var(--progress-bg); border-radius: 999px; height: 7px; overflow: hidden;">
+                        <div style="background: {T['progress_fill']}; width: {min(100.0, active_cap['percent_used'])}%; height: 100%; border-radius: 999px;"></div>
+                    </div>
+                </div>
             </div>
-            <div style="margin-top: 14px;">
-                <div style="display: flex; justify-content: space-between; font-size: 12px; color: var(--text-muted); margin-bottom: 5px;">
-                    <span>Monthly progress: <b class="tabular-num">{active_cap["earned"]:,} / {active_cap["monthly_cap"]:,} RP ({active_cap['percent_used']}%)</b></span>
-                    <span>Today: <b class="tabular-num">{today_earned:,} / {today_daily_cap:,} RP</b></span>
-                </div>
-                <div style="background: var(--progress-bg); border-radius: 999px; height: 9px; overflow: hidden; margin-bottom: 12px;">
-                    <div style="background: {T['progress_fill']}; width: {min(100.0, active_cap['percent_used'])}%; height: 100%;"></div>
-                </div>
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
-                    <div style="background: var(--bg-subcard); padding: 10px 14px; border-radius: 10px; border: 1px solid var(--border-default); display: flex; justify-content: space-between; align-items: center;">
-                        <div>
-                            <div style="font-size: 11.5px; color: var(--text-muted); font-weight: 600;">Flights · SmartBuy 5x</div>
-                            <div style="font-size: 18px; font-weight: 800; color: #b47820;" class="tabular-num">₹{active_cap["flight_spend_capacity"]:,}</div>
-                        </div>
-                        <span style="font-size: 11px; color: var(--text-sub); text-align: right;">4x bonus<br>(20 RP / ₹150)</span>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 16px; padding-top: 14px; border-top: 1px solid var(--border-sub);">
+                <div style="background: var(--bg-subcard); padding: 10px 14px; border-radius: 12px; border: 1px solid var(--border-default);">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 3px;">
+                        <span style="font-size: 11.5px; color: var(--text-muted); font-weight: 600;">Flights · SmartBuy 5x</span>
+                        <span style="font-size: 10.5px; color: #b47820; font-weight: 600; background: #fef3c7; padding: 1px 6px; border-radius: 4px;">20 RP / ₹150</span>
                     </div>
-                    <div style="background: var(--bg-subcard); padding: 10px 14px; border-radius: 10px; border: 1px solid var(--border-default); display: flex; justify-content: space-between; align-items: center;">
-                        <div>
-                            <div style="font-size: 11.5px; color: var(--text-muted); font-weight: 600;">Hotels · SmartBuy 10x</div>
-                            <div style="font-size: 18px; font-weight: 800; color: #0f172a;" class="tabular-num">₹{active_cap["hotel_spend_capacity"]:,}</div>
-                        </div>
-                        <span style="font-size: 11px; color: var(--text-sub); text-align: right;">9x bonus<br>(45 RP / ₹150)</span>
+                    <div style="font-size: 18px; font-weight: 800; color: #b47820;" class="tabular-num">₹{active_cap["flight_spend_capacity"]:,}</div>
+                    <div style="font-size: 10.5px; color: var(--text-sub); margin-top: 1px;">Max headroom spend</div>
+                </div>
+                <div style="background: var(--bg-subcard); padding: 10px 14px; border-radius: 12px; border: 1px solid var(--border-default);">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 3px;">
+                        <span style="font-size: 11.5px; color: var(--text-muted); font-weight: 600;">Hotels · SmartBuy 10x</span>
+                        <span style="font-size: 10.5px; color: #0f172a; font-weight: 600; background: #f1f5f9; padding: 1px 6px; border-radius: 4px;">45 RP / ₹150</span>
                     </div>
+                    <div style="font-size: 18px; font-weight: 800; color: #0f172a;" class="tabular-num">₹{active_cap["hotel_spend_capacity"]:,}</div>
+                    <div style="font-size: 10.5px; color: var(--text-sub); margin-top: 1px;">Max headroom spend</div>
                 </div>
             </div>
         </div>
@@ -750,51 +756,53 @@ with hero_col_left:
 with hero_col_right:
     st.html(
         f"""
-        <div class="metal-card" style="padding: 24px; display: flex; flex-direction: column; justify-content: space-between; min-height: 270px; box-sizing: border-box;">
+        <div class="metal-card" style="padding: 24px; min-height: 275px; display: flex; flex-direction: column; justify-content: space-between; box-sizing: border-box; margin-bottom: 20px;">
             <div>
-                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;">
-                    <div style="font-size: 11.5px; font-weight: 600; color: var(--text-muted);">
-                        Reward points portfolio
+                <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 4px;">
+                    <div>
+                        <span style="font-size: 11.5px; font-weight: 700; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.04em;">
+                            Reward Points Portfolio
+                        </span>
+                        <div style="font-size: 12px; color: var(--text-sub); margin-top: 1px;">
+                            Available SmartBuy travel booking value
+                        </div>
                     </div>
-                    <span class="pill pill-green" style="font-size: 11px; padding: 3px 8px;">
+                    <span class="pill pill-green" style="font-size: 11px; padding: 3px 8px; font-weight: 700;">
                         1 RP = ₹1.00 SmartBuy
                     </span>
                 </div>
-                <div style="font-size: 12px; color: var(--text-sub);">
-                    Available SmartBuy travel booking value
-                </div>
                 <div style="margin-top: 4px;">
-                    <span class="hero-number tabular-num" style="color: #059669;">₹{current_available:,}</span>
+                    <span class="hero-number tabular-num" style="color: #059669; font-size: 38px;">₹{current_available:,}</span>
                 </div>
             </div>
-            <div style="display: flex; flex-direction: column; gap: 8px; margin-top: 10px;">
+            <div style="display: flex; flex-direction: column; gap: 7px; margin-top: 14px;">
                 <div style="background: var(--bg-subcard); padding: 8px 12px; border-radius: 10px; border: 1px solid var(--border-default); display: flex; justify-content: space-between; align-items: center;">
                     <div>
                         <div style="font-size: 11.5px; color: var(--text-muted); font-weight: 600;">Lifetime reward points</div>
                         <div style="font-size: 10.5px; color: var(--text-sub);">Total points earned to date</div>
                     </div>
                     <div style="text-align: right;" class="tabular-num">
-                        <span style="font-size: 16px; font-weight: 700; color: #b47820;">{lifetime_earned:,}</span>
+                        <span style="font-size: 15px; font-weight: 700; color: #b47820;">{lifetime_earned:,}</span>
                         <span style="font-size: 11px; font-weight: 600; color: var(--text-muted);"> RP</span>
                     </div>
                 </div>
                 <div style="background: var(--bg-subcard); padding: 8px 12px; border-radius: 10px; border: 1px solid var(--border-default); display: flex; justify-content: space-between; align-items: center;">
                     <div>
                         <div style="font-size: 11.5px; color: var(--text-muted); font-weight: 600;">Current spendable balance</div>
-                        <div style="font-size: 10.5px; color: var(--text-sub);">Net liquid reward points</div>
+                        <div style="font-size: 10.5px; color: var(--text-sub);">Net liquid points in account</div>
                     </div>
                     <div style="text-align: right;" class="tabular-num">
-                        <span style="font-size: 16px; font-weight: 700; color: #0f172a;">{current_available:,}</span>
+                        <span style="font-size: 15px; font-weight: 700; color: #0f172a;">{current_available:,}</span>
                         <span style="font-size: 11px; font-weight: 600; color: var(--text-muted);"> RP</span>
                     </div>
                 </div>
                 <div style="background: var(--bg-subcard); padding: 8px 12px; border-radius: 10px; border: 1px solid var(--border-default); display: flex; justify-content: space-between; align-items: center;">
                     <div>
                         <div style="font-size: 11.5px; color: var(--text-muted); font-weight: 600;">Net reward rate</div>
-                        <div style="font-size: 10.5px; color: var(--text-sub);">{lifetime_earned:,} RP / ₹{total_spend_all:,.0f} spend</div>
+                        <div style="font-size: 10.5px; color: var(--text-sub);">{lifetime_earned:,} RP on ₹{total_spend_all:,.0f} spend</div>
                     </div>
                     <div style="text-align: right;" class="tabular-num">
-                        <span style="font-size: 16px; font-weight: 700; color: #059669;">{lifetime_reward_rate:.2f}%</span>
+                        <span style="font-size: 15px; font-weight: 700; color: #059669;">{lifetime_reward_rate:.2f}%</span>
                     </div>
                 </div>
             </div>
@@ -803,7 +811,7 @@ with hero_col_right:
     )
 
 # ─── SECTION 2: MILESTONES ROW ────────────────────────────────────────────────
-st.html(f"<div style='font-size: 18px; font-weight: 700; margin: 10px 0 14px 0; color: var(--text-main);'>Spend milestones & fee waiver</div>")
+st.html(f"<div style='font-size: 16px; font-weight: 700; margin: 12px 0 14px 0; color: var(--text-main); text-transform: uppercase; letter-spacing: 0.03em;'>Spend milestones & fee waiver</div>")
 
 m_col1, m_col2, m_col3 = st.columns(3)
 
@@ -814,31 +822,31 @@ with m_col1:
     tag_class = "pill-green" if welcome["met"] else "pill-blue"
     st.html(
         f"""
-        <div class="metal-card" style="min-height: 236px; display: flex; flex-direction: column; justify-content: space-between;">
+        <div class="metal-card" style="min-height: 220px; display: flex; flex-direction: column; justify-content: space-between; margin-bottom: 20px;">
             <div>
-                <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px;">
+                <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 6px;">
                     <div>
-                        <div style="font-size: 12px; font-weight: 600; color: var(--text-muted);">Welcome milestone</div>
-                        <div style="font-size: 16px; font-weight: 700; color: var(--text-main);">₹1.5 Lakhs in 90 Days</div>
+                        <div style="font-size: 11.5px; font-weight: 600; color: var(--text-muted);">Welcome milestone</div>
+                        <div style="font-size: 15px; font-weight: 700; color: var(--text-main);">₹1.5 Lakhs in 90 Days</div>
                     </div>
-                    <span class="pill {tag_class}">{status_tag}</span>
+                    <span class="pill {tag_class}" style="font-size: 11px; padding: 3px 8px; font-weight: 700;">{status_tag}</span>
                 </div>
-                <div style="font-size: 26px; font-weight: 800; color: #15803d; margin: 6px 0;" class="tabular-num">
-                    ₹{welcome["spend"]:,.0f} <span style="font-size: 14px; font-weight: 500; color: var(--text-sub);">/ ₹{welcome["target"]:,.0f}</span>
-                    <span style="font-size: 13px; font-weight: 700; color: #15803d; margin-left: 6px;">({welcome['progress']}%)</span>
+                <div style="font-size: 22px; font-weight: 800; color: #059669; margin: 4px 0;" class="tabular-num">
+                    ₹{welcome["spend"]:,.0f} <span style="font-size: 13px; font-weight: 500; color: var(--text-muted);">/ ₹{welcome["target"]:,.0f}</span>
+                    <span style="font-size: 12px; font-weight: 700; color: #059669; margin-left: 4px;">({welcome['progress']}%)</span>
                 </div>
-                <div style="background: var(--progress-bg); border-radius: 999px; height: 8px; margin: 8px 0; overflow: hidden;">
-                    <div style="background: #15803d; width: {welcome['progress']}%; height: 100%;"></div>
+                <div style="background: #e2e8f0; border-radius: 999px; height: 5px; margin: 8px 0; overflow: hidden;">
+                    <div style="background: #059669; width: {min(100.0, welcome['progress'])}%; height: 100%; border-radius: 999px;"></div>
                 </div>
             </div>
-            <div style="background: var(--bg-subcard); border: 1px solid var(--border-default); border-radius: 10px; padding: 9px 12px; display: flex; justify-content: space-between; align-items: center; margin-top: 10px;">
+            <div style="background: var(--bg-subcard); border: 1px solid var(--border-default); border-radius: 10px; padding: 8px 12px; display: flex; justify-content: space-between; align-items: center; margin-top: 8px;">
                 <div>
-                    <div style="font-size: 11px; font-weight: 600; color: var(--text-sub);">Perks status</div>
-                    <div style="font-size: 13px; font-weight: 800; color: #15803d;">Unlocked & claimed</div>
+                    <div style="font-size: 10.5px; font-weight: 600; color: var(--text-sub);">Perks status</div>
+                    <div style="font-size: 12px; font-weight: 700; color: #059669;">Unlocked & claimed</div>
                 </div>
                 <div style="text-align: right;">
-                    <div style="font-size: 11px; font-weight: 600; color: var(--text-sub);">Memberships</div>
-                    <div style="font-size: 11px; color: var(--text-muted); font-weight: 600;">Club Marriott · Prime · Swiggy</div>
+                    <div style="font-size: 10.5px; font-weight: 600; color: var(--text-sub);">Memberships</div>
+                    <div style="font-size: 11px; color: var(--text-muted); font-weight: 600;">Marriott · Prime · Swiggy</div>
                 </div>
             </div>
         </div>
@@ -852,30 +860,30 @@ with m_col2:
     q_class = "pill-green" if q_bonus["met"] else "pill-orange"
     st.html(
         f"""
-        <div class="metal-card" style="min-height: 236px; display: flex; flex-direction: column; justify-content: space-between;">
+        <div class="metal-card" style="min-height: 220px; display: flex; flex-direction: column; justify-content: space-between; margin-bottom: 20px;">
             <div>
-                <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px;">
+                <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 6px;">
                     <div>
-                        <div style="font-size: 12px; font-weight: 600; color: var(--text-muted);">Quarterly bonus ({q_bonus['label']})</div>
-                        <div style="font-size: 16px; font-weight: 700; color: var(--text-main);">10,000 Bonus RP</div>
+                        <div style="font-size: 11.5px; font-weight: 600; color: var(--text-muted);">Quarterly bonus ({q_bonus['label']})</div>
+                        <div style="font-size: 15px; font-weight: 700; color: var(--text-main);">10,000 Bonus RP</div>
                     </div>
-                    <span class="pill {q_class}">{q_tag}</span>
+                    <span class="pill {q_class}" style="font-size: 11px; padding: 3px 8px; font-weight: 700;">{q_tag}</span>
                 </div>
-                <div style="font-size: 26px; font-weight: 800; color: #b45309; margin: 6px 0;" class="tabular-num">
-                    ₹{q_bonus["spend"]:,.0f} <span style="font-size: 14px; font-weight: 500; color: var(--text-sub);">/ ₹{q_bonus["target"]:,.0f}</span>
-                    <span style="font-size: 13px; font-weight: 700; color: #b45309; margin-left: 6px;">({q_bonus['progress']}%)</span>
+                <div style="font-size: 22px; font-weight: 800; color: #b47820; margin: 4px 0;" class="tabular-num">
+                    ₹{q_bonus["spend"]:,.0f} <span style="font-size: 13px; font-weight: 500; color: var(--text-muted);">/ ₹{q_bonus["target"]:,.0f}</span>
+                    <span style="font-size: 12px; font-weight: 700; color: #b47820; margin-left: 4px;">({q_bonus['progress']}%)</span>
                 </div>
-                <div style="background: var(--progress-bg); border-radius: 999px; height: 8px; margin: 8px 0; overflow: hidden;">
-                    <div style="background: #b45309; width: {q_bonus['progress']}%; height: 100%;"></div>
+                <div style="background: #e2e8f0; border-radius: 999px; height: 5px; margin: 8px 0; overflow: hidden;">
+                    <div style="background: #b47820; width: {min(100.0, q_bonus['progress'])}%; height: 100%; border-radius: 999px;"></div>
                 </div>
             </div>
-            <div style="background: var(--bg-subcard); border: 1px solid var(--border-default); border-radius: 10px; padding: 9px 12px; display: flex; justify-content: space-between; align-items: center; margin-top: 10px;">
+            <div style="background: var(--bg-subcard); border: 1px solid var(--border-default); border-radius: 10px; padding: 8px 12px; display: flex; justify-content: space-between; align-items: center; margin-top: 8px;">
                 <div>
-                    <div style="font-size: 11px; font-weight: 600; color: var(--text-sub);">Remaining needed</div>
-                    <div style="font-size: 15px; font-weight: 800; color: #b45309; letter-spacing: -0.01em;" class="tabular-num">₹{q_bonus['remaining']:,.0f}</div>
+                    <div style="font-size: 10.5px; font-weight: 600; color: var(--text-sub);">Remaining needed</div>
+                    <div style="font-size: 13px; font-weight: 800; color: #b47820;" class="tabular-num">₹{q_bonus['remaining']:,.0f}</div>
                 </div>
                 <div style="text-align: right;">
-                    <div style="font-size: 11px; font-weight: 600; color: var(--text-sub);">Run-rate needed</div>
+                    <div style="font-size: 10.5px; font-weight: 600; color: var(--text-sub);">Run-rate needed</div>
                     <div style="font-size: 11px; color: var(--text-muted);"><b class="tabular-num">₹{q_bonus['daily_runrate_needed']:,.0f}</b> / day</div>
                 </div>
             </div>
@@ -890,30 +898,30 @@ with m_col3:
     ann_class = "pill-green" if annual["met"] else "pill-blue"
     st.html(
         f"""
-        <div class="metal-card" style="min-height: 236px; display: flex; flex-direction: column; justify-content: space-between;">
+        <div class="metal-card" style="min-height: 220px; display: flex; flex-direction: column; justify-content: space-between; margin-bottom: 20px;">
             <div>
-                <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 8px;">
+                <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 6px;">
                     <div>
-                        <div style="font-size: 12px; font-weight: 600; color: var(--text-muted);">Annual fee waiver</div>
-                        <div style="font-size: 16px; font-weight: 700; color: var(--text-main);">Save ₹10,000 Fee</div>
+                        <div style="font-size: 11.5px; font-weight: 600; color: var(--text-muted);">Annual fee waiver</div>
+                        <div style="font-size: 15px; font-weight: 700; color: var(--text-main);">Save ₹10,000 Fee</div>
                     </div>
-                    <span class="pill {ann_class}">{ann_tag}</span>
+                    <span class="pill {ann_class}" style="font-size: 11px; padding: 3px 8px; font-weight: 700;">{ann_tag}</span>
                 </div>
-                <div style="font-size: 26px; font-weight: 800; color: #9a6014; margin: 6px 0;" class="tabular-num">
-                    ₹{annual["spend"]:,.0f} <span style="font-size: 14px; font-weight: 500; color: var(--text-sub);">/ ₹{annual["target"]:,.0f}</span>
-                    <span style="font-size: 13px; font-weight: 700; color: #9a6014; margin-left: 6px;">({annual['progress']}%)</span>
+                <div style="font-size: 22px; font-weight: 800; color: #0f172a; margin: 4px 0;" class="tabular-num">
+                    ₹{annual["spend"]:,.0f} <span style="font-size: 13px; font-weight: 500; color: var(--text-muted);">/ ₹{annual["target"]:,.0f}</span>
+                    <span style="font-size: 12px; font-weight: 700; color: #059669; margin-left: 4px;">({annual['progress']}%)</span>
                 </div>
-                <div style="background: var(--progress-bg); border-radius: 999px; height: 8px; margin: 8px 0; overflow: hidden;">
-                    <div style="background: #9a6014; width: {annual['progress']}%; height: 100%;"></div>
+                <div style="background: #e2e8f0; border-radius: 999px; height: 5px; margin: 8px 0; overflow: hidden;">
+                    <div style="background: #059669; width: {min(100.0, annual['progress'])}%; height: 100%; border-radius: 999px;"></div>
                 </div>
             </div>
-            <div style="background: var(--bg-subcard); border: 1px solid var(--border-default); border-radius: 10px; padding: 9px 12px; display: flex; justify-content: space-between; align-items: center; margin-top: 10px;">
+            <div style="background: var(--bg-subcard); border: 1px solid var(--border-default); border-radius: 10px; padding: 8px 12px; display: flex; justify-content: space-between; align-items: center; margin-top: 8px;">
                 <div>
-                    <div style="font-size: 11px; font-weight: 600; color: var(--text-sub);">Remaining to waive</div>
-                    <div style="font-size: 15px; font-weight: 800; color: #9a6014; letter-spacing: -0.01em;" class="tabular-num">₹{annual['remaining']:,.0f}</div>
+                    <div style="font-size: 10.5px; font-weight: 600; color: var(--text-sub);">Fee status</div>
+                    <div style="font-size: 13px; font-weight: 800; color: #059669;">100% Fee Waived</div>
                 </div>
                 <div style="text-align: right;">
-                    <div style="font-size: 11px; font-weight: 600; color: var(--text-sub);">Deadline</div>
+                    <div style="font-size: 10.5px; font-weight: 600; color: var(--text-sub);">Cycle deadline</div>
                     <div style="font-size: 11px; color: var(--text-muted);"><b class="tabular-num">{annual['period_end']}</b> ({annual['days_left']}d left)</div>
                 </div>
             </div>
