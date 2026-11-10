@@ -894,7 +894,7 @@ with m_col1:
             <div style="background: var(--bg-subcard); border: 1px solid var(--border-default); border-radius: 10px; padding: 8px 12px; display: flex; justify-content: space-between; align-items: center; margin-top: 8px;">
                 <div>
                     <div style="font-size: 10.5px; font-weight: 600; color: var(--text-sub);">Perks status</div>
-                    <div style="font-size: 12px; font-weight: 700; color: #059669;">Unlocked & claimed</div>
+                    <div style="font-size: 12px; font-weight: 700; color: #059669;">Eligible (Spend met)</div>
                 </div>
                 <div style="text-align: right;">
                     <div style="font-size: 10.5px; font-weight: 600; color: var(--text-sub);">Memberships</div>
