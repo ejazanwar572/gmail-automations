@@ -336,32 +336,22 @@ def compute_hsbc_dashboard_data(card_dir: Path, today: Optional[date] = None) ->
     }
 
 
-def trigger_live_sync(card_dir: Path) -> dict:
+def trigger_live_sync(card_dir: Path = ENGINE_DIR) -> dict:
     """Executes HSBC-specific sync_alerts to fetch new Gmail alerts in-process with isolated module loading."""
     import importlib.util
-    sync_script = card_dir / "sync_alerts.py"
+    sync_script = Path(card_dir) / "sync_alerts.py"
     if not sync_script.exists():
-        return {"status": "error", "message": "sync script not found"}
-    try:
-        module_name = "hsbc_live_plus_sync_alerts"
-        spec = importlib.util.spec_from_file_location(module_name, sync_script)
-        if spec and spec.loader:
-            module = importlib.util.module_from_spec(spec)
-            spec.loader.exec_module(module)
-            result = module.run(card_dir)
-            alerts_file = card_dir / "gmail_alerts.json"
-            count = len(json.loads(alerts_file.read_text())) if alerts_file.exists() else 0
-            return {"status": "ok", "alert_count": count, "metadata": result}
-        return {"status": "error", "message": "could not load sync script specification"}
-    except Exception as exc:
-        import subprocess
-        import sys
-        proc = subprocess.run([sys.executable, str(sync_script)], cwd=str(card_dir), capture_output=True, text=True)
-        if proc.returncode == 0:
-            alerts_file = card_dir / "gmail_alerts.json"
-            count = len(json.loads(alerts_file.read_text())) if alerts_file.exists() else 0
-            return {"status": "ok", "alert_count": count}
-        return {"status": "error", "message": proc.stderr or str(exc)}
+        raise FileNotFoundError(f"sync script not found at {sync_script}")
+    module_name = "hsbc_live_plus_sync_alerts"
+    spec = importlib.util.spec_from_file_location(module_name, sync_script)
+    if spec and spec.loader:
+        module = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(module)
+        result = module.run(Path(card_dir))
+        alerts_file = Path(card_dir) / "gmail_alerts.json"
+        count = len(json.loads(alerts_file.read_text())) if alerts_file.exists() else 0
+        return {"status": "ok", "alert_count": count, "metadata": result}
+    raise RuntimeError(f"could not load sync script at {sync_script}")
 
 
 def build_statements_data(card_dir: Path | str = ENGINE_DIR) -> dict[str, Any]:

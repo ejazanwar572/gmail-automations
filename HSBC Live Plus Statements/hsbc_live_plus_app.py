@@ -659,12 +659,9 @@ def render_app():
                 with st.spinner("Checking Gmail alerts..."):
                     try:
                         sync_res = hsbc_engine.trigger_live_sync(CARD_DIR)
-                        if sync_res.get("status") == "error":
-                            st.toast(f"Sync error: {sync_res.get('message')}")
-                        else:
-                            st.cache_data.clear()
-                            st.toast(f"Sync complete • {sync_res.get('alert_count', 0)} new alerts fetched")
-                            st.rerun()
+                        st.cache_data.clear()
+                        st.toast(f"Sync complete • {sync_res.get('alert_count', 0)} new alerts fetched")
+                        st.rerun()
                     except Exception as exc:
                         err_msg = str(exc)
                         if "credentials are not configured" in err_msg:

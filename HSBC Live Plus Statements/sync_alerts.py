@@ -211,13 +211,18 @@ def run(root: Path) -> dict:
     return sync(build_service(root), root)
 
 
-def main() -> None:
+def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--root", type=Path, default=Path(__file__).resolve().parent)
     args = parser.parse_args()
-    result = run(args.root)
-    print(json.dumps(result, indent=2, sort_keys=True))
+    try:
+        result = run(args.root)
+        print(json.dumps(result, indent=2, sort_keys=True))
+        return 0
+    except SyncError as exc:
+        print(f"HSBC Gmail sync failed: {exc}", file=__import__("sys").stderr)
+        return 1
 
 
 if __name__ == "__main__":
-    main()
+    raise SystemExit(main())
