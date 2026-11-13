@@ -2,13 +2,13 @@
 
 ## 1. Executive Summary
 - Card ending: 2360
-- Current cycle: 2026-10-14 to 2026-11-13
-- Current cycle tracked spend: INR 455,303.40
+- Current cycle: 2026-11-14 to 2026-12-13
+- Current cycle tracked spend: INR 0.00
 - Data freshness: 63 alerts; cached total INR 980,784.90.
 
 ## 2. Fee and Waiver Tracker
 - Progress: INR 980,784.90 of INR 800,000.00 (100.0%)
-- Days left: 223
+- Days left: 222
 - Status: Met
 
 ## 3. Welcome Benefit Tracker
