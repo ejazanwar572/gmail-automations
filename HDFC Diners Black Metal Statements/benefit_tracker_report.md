@@ -21,6 +21,6 @@
 - Status: Met
 
 ## 5. Points Summary
-- Total estimated points: 58,396
-- Net available points: 35,268
+- Total estimated points: 78,420
+- Net available points: 55,292
 - Redemptions count: 2

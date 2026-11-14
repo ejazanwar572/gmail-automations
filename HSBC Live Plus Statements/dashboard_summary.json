@@ -17,7 +17,7 @@
     "spend": 0,
     "start": "2026-11-14"
   },
-  "generated_at": "2026-11-15T00:47:58.994412+05:30",
+  "generated_at": "2026-11-15T01:49:30.008010+05:30",
   "period_totals": {
     "cashback": {
       "current_cycle": 0.0,
@@ -28,7 +28,7 @@
       "lifetime": 81032.29000000001
     }
   },
-  "run_id": "8f274e89-2b30-47d6-8c86-11ea34acec2d",
+  "run_id": "4968ff2e-f5f8-45a1-a68d-92c30533d0df",
   "schema_version": 2,
   "shared_cap": {
     "cap": 1200.0,

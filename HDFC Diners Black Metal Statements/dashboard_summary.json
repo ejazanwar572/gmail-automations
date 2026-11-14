@@ -82,7 +82,7 @@
     "total_cycle_points": 0,
     "transaction_count": 0
   },
-  "generated_at": "2026-11-15T00:48:48.933253+05:30",
+  "generated_at": "2026-11-15T01:50:03.956331+05:30",
   "quarterly_bonus": {
     "bonus_points": 10000,
     "daily_runrate_needed": 0.0,
@@ -95,15 +95,15 @@
     "target": 400000.0
   },
   "rewards": {
-    "confirmed_statement": 38026,
+    "confirmed_statement": 78420,
     "mode": "Confirmed Statement Baseline + Live Gmail Tracking",
-    "net_available": 35268,
-    "post_statement_accelerated": 5220,
-    "post_statement_base": 15150,
-    "total_estimated": 58396,
+    "net_available": 55292,
+    "post_statement_accelerated": 0,
+    "post_statement_base": 0,
+    "total_estimated": 78420,
     "total_redeemed": 23128
   },
-  "run_id": "e2ec2e37-9aed-435c-a629-e3498e7f6fac",
+  "run_id": "6012c513-69aa-4cb2-8583-e3a88879d997",
   "schema_version": 1,
   "welcome": {
     "days_left": 0,
