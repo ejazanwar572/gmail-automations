@@ -3,11 +3,11 @@
 ## 1. Executive Summary
 - Card ending: 2360
 - Current cycle: 2026-11-14 to 2026-12-13
-- Current cycle tracked spend: INR 0.00
-- Data freshness: 63 alerts; cached total INR 980,784.90.
+- Current cycle tracked spend: INR 6,055.00
+- Data freshness: 65 alerts; cached total INR 986,839.90.
 
 ## 2. Fee and Waiver Tracker
-- Progress: INR 980,784.90 of INR 800,000.00 (100.0%)
+- Progress: INR 986,839.90 of INR 800,000.00 (100.0%)
 - Days left: 221
 - Status: Met
 
@@ -16,11 +16,11 @@
 - Status: Met
 
 ## 4. Quarterly Bonus Tracker
-- Progress: INR 570,174.40 of INR 400,000.00 (100.0%)
+- Progress: INR 576,229.40 of INR 400,000.00 (100.0%)
 - Remaining: INR 0.00
 - Status: Met
 
 ## 5. Points Summary
-- Total estimated points: 78,420
-- Net available points: 55,292
-- Redemptions count: 2
+- Total estimated points: 82,235
+- Net available points: 44,982
+- Redemptions count: 4

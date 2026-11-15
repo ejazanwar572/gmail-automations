@@ -565,5 +565,23 @@
     "message_id": "1a1bee8d915f9cd8",
     "source": "gmail-api",
     "subject": "A payment was made using your Credit Card"
+  },
+  {
+    "amount": 2467.0,
+    "date": "2026-11-15",
+    "email_date": "2026-11-15T14:21:47+05:30",
+    "merchant": "CT FLIGHT VIA SMARTBUY",
+    "message_id": "1a1de67d27f8f1e4",
+    "source": "gmail-api",
+    "subject": "A payment was made using your Credit Card"
+  },
+  {
+    "amount": 3588.0,
+    "date": "2026-11-15",
+    "email_date": "2026-11-15T14:49:11+05:30",
+    "merchant": "EMT FLIGHT VIA SMARTBU",
+    "message_id": "1a1de80e5423247c",
+    "source": "gmail-api",
+    "subject": "A payment was made using your Credit Card"
   }
 ]

@@ -1,5 +1,5 @@
 {
-  "alert_count": 63,
+  "alert_count": 65,
   "annual_fee": {
     "days_left": 221,
     "fee_amount": 10000.0,
@@ -7,47 +7,47 @@
     "period_end": "2027-06-24",
     "progress": 100.0,
     "remaining": 0.0,
-    "spend": 980784.9,
+    "spend": 986839.9,
     "target": 800000.0
   },
   "caps": {
     "billing_cycle": {
       "daily_cap": 2500,
       "days_remaining": 28,
-      "earned": 0,
+      "earned": 460,
       "end_date": "2026-12-13",
-      "flight_spend_capacity": 75000,
-      "hotel_spend_capacity": 33300,
+      "flight_spend_capacity": 71550,
+      "hotel_spend_capacity": 31800,
       "monthly_cap": 10000,
-      "percent_remaining": 100.0,
-      "percent_used": 0.0,
-      "remaining": 10000,
+      "percent_remaining": 95.4,
+      "percent_used": 4.6,
+      "remaining": 9540,
       "reset_date": "2026-12-14",
-      "smartbuy_transaction_count": 0,
+      "smartbuy_transaction_count": 1,
       "start_date": "2026-11-14",
       "status_color": "green",
-      "status_label": "FULL HEADROOM (100% UNUSED)",
-      "today_earned": 0,
-      "today_remaining": 2500
+      "status_label": "ACTIVE HEADROOM",
+      "today_earned": 460,
+      "today_remaining": 2040
     },
     "calendar_month": {
       "daily_cap": 2500,
       "days_remaining": 15,
-      "earned": 3160,
+      "earned": 3620,
       "end_date": "2026-11-30",
-      "flight_spend_capacity": 51300,
-      "hotel_spend_capacity": 22800,
+      "flight_spend_capacity": 47850,
+      "hotel_spend_capacity": 21150,
       "monthly_cap": 10000,
-      "percent_remaining": 68.4,
-      "percent_used": 31.6,
-      "remaining": 6840,
+      "percent_remaining": 63.8,
+      "percent_used": 36.2,
+      "remaining": 6380,
       "reset_date": "2026-12-01",
-      "smartbuy_transaction_count": 2,
+      "smartbuy_transaction_count": 3,
       "start_date": "2026-11-01",
       "status_color": "green",
       "status_label": "ACTIVE HEADROOM",
-      "today_earned": 0,
-      "today_remaining": 2500
+      "today_earned": 460,
+      "today_remaining": 2040
     },
     "previous_month": {
       "daily_cap": 2500,
@@ -74,15 +74,15 @@
     "name": "HDFC Diners Black Metal Credit Card"
   },
   "cycle": {
-    "accelerated_points": 0,
-    "base_points": 0,
+    "accelerated_points": 460,
+    "base_points": 195,
     "end": "2026-12-13",
-    "spend": 0,
+    "spend": 6055.0,
     "start": "2026-11-14",
-    "total_cycle_points": 0,
-    "transaction_count": 0
+    "total_cycle_points": 655,
+    "transaction_count": 2
   },
-  "generated_at": "2026-11-15T14:04:17.987909+05:30",
+  "generated_at": "2026-11-15T15:05:25.542991+05:30",
   "quarterly_bonus": {
     "bonus_points": 10000,
     "daily_runrate_needed": 0.0,
@@ -91,19 +91,19 @@
     "met": true,
     "progress": 100.0,
     "remaining": 0.0,
-    "spend": 570174.4,
+    "spend": 576229.4,
     "target": 400000.0
   },
   "rewards": {
     "confirmed_statement": 78420,
     "mode": "Confirmed Statement Baseline + Live Gmail Tracking",
-    "net_available": 55292,
-    "post_statement_accelerated": 0,
-    "post_statement_base": 0,
-    "total_estimated": 78420,
-    "total_redeemed": 23128
+    "net_available": 44982,
+    "post_statement_accelerated": 3620,
+    "post_statement_base": 195,
+    "total_estimated": 82235,
+    "total_redeemed": 37253
   },
-  "run_id": "0f57e10b-339b-40f9-8b7f-4f835adf646d",
+  "run_id": "e40fb3bc-2224-483b-ab85-359bcf635da4",
   "schema_version": 1,
   "welcome": {
     "days_left": 0,

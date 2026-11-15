@@ -26,5 +26,33 @@
     "total_fare": 24680.0,
     "type": "SmartBuy Flight",
     "value_saved_inr": 9121.0
+  },
+  {
+    "cash_paid": 2467.0,
+    "date": "2026-11-15",
+    "description": "Flight Booking (BLR-BOM & BOM-CCU)",
+    "email_date": "2026-11-15T08:52:29+00:00",
+    "message_id": "1a1de6872f6c43e8",
+    "order_reference": "44117947325151540802",
+    "points_redeemed": 5754,
+    "redemption_rate": 1.0,
+    "subject": "Your Flight Booking with SmartBuy is Successful - Order Reference Number 44117947325151540802.",
+    "total_fare": 8221.0,
+    "type": "SmartBuy Flight",
+    "value_saved_inr": 5754.0
+  },
+  {
+    "cash_paid": 3588.0,
+    "date": "2026-11-15",
+    "description": "Flight Booking (GAY-CCU & CCU-BLR)",
+    "email_date": "2026-11-15T09:19:26+00:00",
+    "message_id": "1a1de81209f16736",
+    "order_reference": "44117947341856499272",
+    "points_redeemed": 8371,
+    "redemption_rate": 1.0,
+    "subject": "Your Flight Booking with SmartBuy is Successful - Order Reference Number 44117947341856499272.",
+    "total_fare": 11959.0,
+    "type": "SmartBuy Flight",
+    "value_saved_inr": 8371.0
   }
 ]

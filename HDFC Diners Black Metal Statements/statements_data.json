@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-15T14:04:17.984792",
+  "generated_at": "2026-11-15T15:05:25.539515",
   "notes": [
     "Official statement data parsed directly from decrypted HDFC statement PDFs.",
     "Transactions include settled statement line items + unbilled live Gmail alerts."
@@ -2585,6 +2585,24 @@
       "card_role": "Primary",
       "source": "statement-pdf",
       "statement_file": "statement_2026_11_13.pdf"
+    },
+    {
+      "date": "2026-11-15",
+      "merchant": "CT FLIGHT VIA SMARTBUY",
+      "amount": 2467.0,
+      "type": "debit",
+      "source": "gmail-api-unbilled",
+      "card_ending": "2360",
+      "card_role": "Primary"
+    },
+    {
+      "date": "2026-11-15",
+      "merchant": "EMT FLIGHT VIA SMARTBU",
+      "amount": 3588.0,
+      "type": "debit",
+      "source": "gmail-api-unbilled",
+      "card_ending": "2360",
+      "card_role": "Primary"
     }
   ]
 }
