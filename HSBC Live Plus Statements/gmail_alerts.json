@@ -691,5 +691,14 @@
     "message_id": "1a1ac8102775d8f1",
     "source": "gmail-api",
     "subject": "Credit Card Transaction Alert"
+  },
+  {
+    "amount": 358.0,
+    "date": "2026-11-16",
+    "email_date": "2026-11-16T13:27:35+00:00",
+    "merchant": "SWIGGY INSTAMART",
+    "message_id": "1a1e48ab54202257",
+    "source": "gmail-api",
+    "subject": "Credit Card Transaction Alert"
   }
 ]
