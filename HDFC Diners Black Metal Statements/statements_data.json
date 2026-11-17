@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-16T23:20:53.773382",
+  "generated_at": "2026-11-17T06:54:43.933374",
   "notes": [
     "Official statement data parsed directly from decrypted HDFC statement PDFs.",
     "Transactions include settled statement line items + unbilled live Gmail alerts."
