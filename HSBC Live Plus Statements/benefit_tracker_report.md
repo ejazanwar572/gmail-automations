@@ -3,12 +3,12 @@
 ## 1. Executive Summary
 - Card ending: 8690
 - Current cycle: 2026-11-14 to 2026-12-13
-- Current cycle tracked spend: INR 358.00
-- Current cycle cashback earned: INR 35.80
-- Data freshness: 78 alerts; cached total INR 81,396.29.
+- Current cycle tracked spend: INR 658.00
+- Current cycle cashback earned: INR 40.30
+- Data freshness: 79 alerts; cached total INR 81,696.29.
 
 ## 2. Fee and Waiver Tracker
-- Progress: INR 81,390.29 of INR 200,000.00 (40.7%)
+- Progress: INR 81,690.29 of INR 200,000.00 (40.8%)
 - Days left: 222
 - Status: In progress
 
