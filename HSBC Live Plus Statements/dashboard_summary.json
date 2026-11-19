@@ -2,7 +2,7 @@
   "alert_count": 79,
   "annual_fee": {
     "amount": 999,
-    "days_left": 221,
+    "days_left": 220,
     "progress": 81690.29000000001,
     "remaining": 118309.70999999999,
     "waiver_spend": 200000.0
@@ -12,12 +12,12 @@
     "name": "HSBC Live+ Credit Card"
   },
   "cycle": {
-    "days_remaining": 24,
+    "days_remaining": 23,
     "end": "2026-12-13",
     "spend": 658.0,
     "start": "2026-11-14"
   },
-  "generated_at": "2026-11-19T23:38:55.726609+05:30",
+  "generated_at": "2026-11-20T00:40:11.905158+05:30",
   "period_totals": {
     "cashback": {
       "current_cycle": 40.3,
@@ -28,7 +28,7 @@
       "lifetime": 81690.29000000001
     }
   },
-  "run_id": "2e2713fe-ae8f-4f4a-911f-60d09dfb678b",
+  "run_id": "a58e8d9d-ebb7-4488-a4c8-c74763fbc916",
   "schema_version": 2,
   "shared_cap": {
     "cap": 1200.0,
