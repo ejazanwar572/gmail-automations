@@ -583,5 +583,14 @@
     "message_id": "1a1de80e5423247c",
     "source": "gmail-api",
     "subject": "A payment was made using your Credit Card"
+  },
+  {
+    "amount": 26560.0,
+    "date": "2026-11-20",
+    "email_date": "2026-11-20T09:01:13+05:30",
+    "merchant": "EMT FLIGHT VIA SMARTBU",
+    "message_id": "1a1f70221d2bb57d",
+    "source": "gmail-api",
+    "subject": "A payment was made using your Credit Card"
   }
 ]
