@@ -704,14 +704,14 @@ with col_head_right:
                 try:
                     sync_res = dcbm_engine.trigger_live_sync(CARD_DIR)
                     st.cache_data.clear()
-                    st.toast(f"Sync complete • {sync_res.get('alert_count', 0)} new alerts fetched")
+                    st.toast(f"✅ Sync complete • {sync_res.get('alert_count', 0)} alerts in ledger")
                     st.rerun()
                 except Exception as exc:
                     err_msg = str(exc)
                     if "credentials are not configured" in err_msg:
-                        st.toast(f"Mac daemon active • Ledger verified ({friendly_time})")
+                        st.toast(f"ℹ️ Mac daemon active • Ledger verified ({friendly_time})")
                     else:
-                        st.toast(f"Sync notice: {err_msg[:50]}")
+                        st.toast(f"⚠️ {err_msg[:100]}")
     with btn_time:
         st.html(
             f"""

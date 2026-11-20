@@ -103,12 +103,17 @@ def load_credentials(
     secrets_data = None
     try:
         import streamlit as st
-        if hasattr(st, "secrets") and "GMAIL_CREDENTIALS" in st.secrets:
-            val = st.secrets["GMAIL_CREDENTIALS"]
-            if isinstance(val, str):
-                secrets_data = json.loads(val)
-            elif hasattr(val, "get"):
-                secrets_data = dict(val)
+        if hasattr(st, "secrets"):
+            for candidate in ("GMAIL_CREDENTIALS", "gmail_credentials", "gmail", "GMAIL"):
+                if candidate in st.secrets:
+                    val = st.secrets[candidate]
+                    if isinstance(val, str):
+                        secrets_data = json.loads(val)
+                    elif hasattr(val, "to_dict"):
+                        secrets_data = val.to_dict()
+                    elif hasattr(val, "get"):
+                        secrets_data = dict(val)
+                    break
     except Exception:
         pass
 
@@ -124,23 +129,56 @@ def load_credentials(
 
     if secrets_data:
         try:
+            # Flatten if nested under installed or web (e.g. from Google Cloud client JSON)
+            flat = dict(secrets_data)
+            for subkey in ("installed", "web"):
+                if subkey in flat and isinstance(flat[subkey], dict):
+                    flat.update(flat[subkey])
+
+            def get_field(*names, default=None):
+                for n in names:
+                    if n in flat and flat[n]:
+                        return flat[n]
+                    if n.lower() in flat and flat[n.lower()]:
+                        return flat[n.lower()]
+                    if n.upper() in flat and flat[n.upper()]:
+                        return flat[n.upper()]
+                return default
+
+            client_id = get_field("client_id")
+            client_secret = get_field("client_secret")
+            refresh_token = get_field("refresh_token")
+            token_val = get_field("token", "access_token")
+            token_uri = get_field("token_uri", default="https://oauth2.googleapis.com/token")
+
+            if not client_id or not client_secret:
+                found_keys = list(flat.keys())
+                raise SyncError(f"Streamlit GMAIL_CREDENTIALS missing client_id/client_secret (found keys: {found_keys})")
+
             expiry = None
-            if "expiry" in secrets_data:
+            raw_expiry = get_field("expiry", "expiry_date")
+            if raw_expiry is not None:
                 try:
-                    expiry = datetime.fromisoformat(secrets_data["expiry"].replace("Z", "+00:00"))
+                    if isinstance(raw_expiry, (int, float)) or (isinstance(raw_expiry, str) and str(raw_expiry).isdigit()):
+                        expiry = datetime.fromtimestamp(float(raw_expiry) / 1000, timezone.utc).replace(tzinfo=None)
+                    else:
+                        expiry = datetime.fromisoformat(str(raw_expiry).replace("Z", "+00:00")).replace(tzinfo=None)
                 except (ValueError, TypeError):
                     expiry = None
+
             return credentials_class(
-                token=secrets_data.get("token"),
-                refresh_token=secrets_data.get("refresh_token"),
-                token_uri=secrets_data.get("token_uri", "https://oauth2.googleapis.com/token"),
-                client_id=secrets_data.get("client_id"),
-                client_secret=secrets_data.get("client_secret"),
+                token=token_val,
+                refresh_token=refresh_token,
+                token_uri=token_uri,
+                client_id=client_id,
+                client_secret=client_secret,
                 scopes=scopes,
                 expiry=expiry,
             )
+        except SyncError:
+            raise
         except (KeyError, TypeError, ValueError) as exc:
-            raise SyncError("Streamlit / env Gmail credential schema is invalid") from exc
+            raise SyncError(f"Streamlit / env Gmail credential schema is invalid: {exc}") from exc
 
     if not shared_token.exists() or not shared_keys.exists():
         raise SyncError("Gmail credentials are not configured locally or in shared MCP store")
@@ -201,7 +239,7 @@ def build_service(root: Path):
     except SyncError:
         raise
     except Exception as exc:
-        raise SyncError("Gmail authentication failed") from exc
+        raise SyncError(f"Gmail authentication failed: {exc}") from exc
 
 
 # ---------------------------------------------------------------------------
