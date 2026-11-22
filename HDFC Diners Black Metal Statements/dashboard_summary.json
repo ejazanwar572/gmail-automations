@@ -1,19 +1,19 @@
 {
-  "alert_count": 66,
+  "alert_count": 68,
   "annual_fee": {
-    "days_left": 214,
+    "days_left": 213,
     "fee_amount": 10000.0,
     "met": true,
     "period_end": "2027-06-24",
     "progress": 100.0,
     "remaining": 0.0,
-    "spend": 1013399.9,
+    "spend": 1040397.9,
     "target": 800000.0
   },
   "caps": {
     "billing_cycle": {
       "daily_cap": 2500,
-      "days_remaining": 21,
+      "days_remaining": 20,
       "earned": 2960,
       "end_date": "2026-12-13",
       "flight_spend_capacity": 52800,
@@ -32,7 +32,7 @@
     },
     "calendar_month": {
       "daily_cap": 2500,
-      "days_remaining": 8,
+      "days_remaining": 7,
       "earned": 6120,
       "end_date": "2026-11-30",
       "flight_spend_capacity": 29100,
@@ -75,35 +75,35 @@
   },
   "cycle": {
     "accelerated_points": 2960,
-    "base_points": 1080,
+    "base_points": 1975,
     "end": "2026-12-13",
-    "spend": 32615.0,
+    "spend": 59613.0,
     "start": "2026-11-14",
-    "total_cycle_points": 4040,
-    "transaction_count": 3
+    "total_cycle_points": 4935,
+    "transaction_count": 5
   },
-  "generated_at": "2026-11-22T16:16:30.013439+05:30",
+  "generated_at": "2026-11-23T00:05:56.653157+05:30",
   "quarterly_bonus": {
     "bonus_points": 10000,
     "daily_runrate_needed": 0.0,
-    "days_left": 39,
+    "days_left": 38,
     "label": "Q4 2026",
     "met": true,
     "progress": 100.0,
     "remaining": 0.0,
-    "spend": 602789.4,
+    "spend": 629787.4,
     "target": 400000.0
   },
   "rewards": {
     "confirmed_statement": 78420,
     "mode": "Confirmed Statement Baseline + Live Gmail Tracking",
-    "net_available": 48367,
+    "net_available": 49262,
     "post_statement_accelerated": 6120,
-    "post_statement_base": 1080,
-    "total_estimated": 85620,
+    "post_statement_base": 1975,
+    "total_estimated": 86515,
     "total_redeemed": 37253
   },
-  "run_id": "79b454e0-3064-4f47-9e1b-a742610c0215",
+  "run_id": "236c6321-3224-41d0-b5ae-a6fecc85728e",
   "schema_version": 1,
   "welcome": {
     "days_left": 0,

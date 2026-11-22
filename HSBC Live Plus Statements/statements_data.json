@@ -723,6 +723,24 @@
       "message_id": "1a1f7e83d4c7930b",
       "source": "gmail-api",
       "subject": "Credit Card Transaction Alert"
+    },
+    {
+      "amount": 355.0,
+      "date": "2026-11-22",
+      "email_date": "2026-11-22T13:56:35+00:00",
+      "merchant": "M K AHMED SUPER MART H S",
+      "message_id": "1a2038b67039b578",
+      "source": "gmail-api",
+      "subject": "Credit Card Transaction Alert"
+    },
+    {
+      "amount": 2183.0,
+      "date": "2026-11-22",
+      "email_date": "2026-11-22T15:51:58+00:00",
+      "merchant": "COPPER KITCHEN RESTAUR",
+      "message_id": "1a203f50963852f5",
+      "source": "gmail-api",
+      "subject": "Credit Card Transaction Alert"
     }
   ]
 }

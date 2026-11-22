@@ -592,5 +592,23 @@
     "message_id": "1a1f70221d2bb57d",
     "source": "gmail-api",
     "subject": "A payment was made using your Credit Card"
+  },
+  {
+    "amount": 18999.0,
+    "date": "2026-11-22",
+    "email_date": "2026-11-22T17:46:00+05:30",
+    "merchant": "THE WOODEN STREET FURN",
+    "message_id": "1a2032f4a02b34c6",
+    "source": "gmail-api",
+    "subject": "A payment was made using your Credit Card"
+  },
+  {
+    "amount": 7999.0,
+    "date": "2026-11-22",
+    "email_date": "2026-11-22T18:23:17+05:30",
+    "merchant": "ASICS",
+    "message_id": "1a203516c6f624b6",
+    "source": "gmail-api",
+    "subject": "A payment was made using your Credit Card"
   }
 ]
