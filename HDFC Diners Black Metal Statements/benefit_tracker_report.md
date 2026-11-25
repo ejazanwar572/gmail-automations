@@ -8,7 +8,7 @@
 
 ## 2. Fee and Waiver Tracker
 - Progress: INR 1,040,397.90 of INR 800,000.00 (100.0%)
-- Days left: 212
+- Days left: 211
 - Status: Met
 
 ## 3. Welcome Benefit Tracker
