@@ -45,5 +45,49 @@ class AlertIngestionTests(unittest.TestCase):
             self.assertEqual(loaded_alerts[0]["amount"], 100.0)
 
 
+    def test_build_service_refreshes_when_invalid_with_refresh_token(self):
+        from unittest.mock import MagicMock, patch
+        mock_creds = MagicMock()
+        mock_creds.valid = False
+        mock_creds.expired = False
+        mock_creds.refresh_token = "valid_refresh_token"
+
+        def do_refresh(req):
+            mock_creds.valid = True
+
+        mock_creds.refresh.side_effect = do_refresh
+
+        with patch("alert_ingestion.load_credentials", return_value=mock_creds), \
+             patch("googleapiclient.discovery.build") as mock_build:
+            ai.build_service(Path("/tmp"))
+            self.assertTrue(mock_creds.refresh.called)
+            mock_build.assert_called_once()
+
+    def test_build_service_raises_when_no_refresh_token_and_invalid(self):
+        from unittest.mock import MagicMock, patch
+        mock_creds = MagicMock()
+        mock_creds.valid = False
+        mock_creds.expired = False
+        mock_creds.refresh_token = None
+
+        with patch("alert_ingestion.load_credentials", return_value=mock_creds):
+            with self.assertRaises(ai.SyncError) as ctx:
+                ai.build_service(Path("/tmp"))
+            self.assertIn("lack a refresh_token", str(ctx.exception))
+
+    def test_build_service_raises_when_refresh_fails(self):
+        from unittest.mock import MagicMock, patch
+        mock_creds = MagicMock()
+        mock_creds.valid = False
+        mock_creds.expired = False
+        mock_creds.refresh_token = "valid_refresh_token"
+        mock_creds.refresh.side_effect = Exception("invalid_grant: Token has been revoked")
+
+        with patch("alert_ingestion.load_credentials", return_value=mock_creds):
+            with self.assertRaises(ai.SyncError) as ctx:
+                ai.build_service(Path("/tmp"))
+            self.assertIn("Gmail token refresh failed", str(ctx.exception))
+
+
 if __name__ == "__main__":
     unittest.main()

@@ -231,9 +231,15 @@ def build_service(root: Path):
 
     try:
         credentials = load_credentials(root, Credentials)
-        if credentials.expired and credentials.refresh_token:
-            credentials.refresh(Request())
+        if (not credentials.valid or credentials.expired) and credentials.refresh_token:
+            try:
+                credentials.refresh(Request())
+            except Exception as exc:
+                raise SyncError(f"Gmail token refresh failed: {exc}") from exc
+
         if not credentials.valid:
+            if not credentials.refresh_token:
+                raise SyncError("existing Gmail credentials lack a refresh_token and cannot refresh")
             raise SyncError("existing Gmail credentials are invalid and cannot refresh")
         return build("gmail", "v1", credentials=credentials, cache_discovery=False)
     except SyncError:
