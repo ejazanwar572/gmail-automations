@@ -741,6 +741,15 @@
       "message_id": "1a203f50963852f5",
       "source": "gmail-api",
       "subject": "Credit Card Transaction Alert"
+    },
+    {
+      "amount": 220.0,
+      "date": "2026-11-26",
+      "email_date": "2026-11-26T14:10:25+00:00",
+      "merchant": "SRIVARI",
+      "message_id": "1a2183193bd30403",
+      "source": "gmail-api",
+      "subject": "Credit Card Transaction Alert"
     }
   ]
 }
