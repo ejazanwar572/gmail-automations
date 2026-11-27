@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-11-27T18:12:01.393731",
+  "generated_at": "2026-11-27T19:13:16.078617",
   "notes": [
     "Official statement data parsed directly from decrypted HDFC statement PDFs.",
     "Transactions include settled statement line items + unbilled live Gmail alerts."
@@ -2626,6 +2626,15 @@
       "date": "2026-11-22",
       "merchant": "ASICS",
       "amount": 7999.0,
+      "type": "debit",
+      "source": "gmail-api-unbilled",
+      "card_ending": "2360",
+      "card_role": "Primary"
+    },
+    {
+      "date": "2026-11-27",
+      "merchant": "RELIANCE DIGITAL",
+      "amount": 121990.0,
       "type": "debit",
       "source": "gmail-api-unbilled",
       "card_ending": "2360",

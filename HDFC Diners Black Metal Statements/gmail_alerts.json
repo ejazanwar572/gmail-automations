@@ -610,5 +610,14 @@
     "message_id": "1a203516c6f624b6",
     "source": "gmail-api",
     "subject": "A payment was made using your Credit Card"
+  },
+  {
+    "amount": 121990.0,
+    "date": "2026-11-27",
+    "email_date": "2026-11-27T19:03:48+05:30",
+    "merchant": "RELIANCE DIGITAL",
+    "message_id": "1a21d365245118e8",
+    "source": "gmail-api",
+    "subject": "A payment was made using your Credit Card"
   }
 ]
